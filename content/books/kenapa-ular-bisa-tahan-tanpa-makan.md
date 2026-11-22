@@ -2,7 +2,7 @@
 
 Ayo kenali ular, hewan hemat energi yang bisa bertahan lama tanpa makan!
 
-_Topik: Kenapa ular bisa tahan tanpa makan · Gaya gambar: kartun_
+_Topik: Kenapa ular bisa tahan tanpa makan · Gaya gambar: semi-realistis_
 
 ![Sampul](../images/kenapa-ular-bisa-tahan-tanpa-makan/cover.webp)
 
