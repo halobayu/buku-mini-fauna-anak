@@ -9,8 +9,28 @@
       "subtitle": "Ayo kenali ular, hewan hemat energi yang bisa bertahan lama tanpa makan!",
       "title": "Ular Hebat Tanpa Makan Lama",
       "topic": "Kenapa ular bisa tahan tanpa makan"
+    },
+    {
+      "cover": "images/belalang-sembah/cover.webp",
+      "file": "books/belalang-sembah.json",
+      "id": "belalang-sembah",
+      "pageCount": 6,
+      "style": "semi-realistis",
+      "subtitle": "Ayo mengintip si pemburu hijau yang menunggu diam-diam di antara daun!",
+      "title": "Belalang Sembah, Pemburu Diam-Diam",
+      "topic": "Belalang sembah"
+    },
+    {
+      "cover": "images/axolotl/cover.webp",
+      "file": "books/axolotl.json",
+      "id": "axolotl",
+      "pageCount": 6,
+      "style": "semi-realistis",
+      "subtitle": "Siap bertemu axolotl, salamander tersenyum yang bisa menumbuhkan lagi bagian tubuhnya?",
+      "title": "Axolotl Si Salamander Ajaib",
+      "topic": "Axolotl"
     }
   ],
-  "contentVersion": 3,
-  "generatedAt": "2026-11-22T13:38:39.685Z"
+  "contentVersion": 4,
+  "generatedAt": "2026-11-22T23:10:32.000Z"
 }
