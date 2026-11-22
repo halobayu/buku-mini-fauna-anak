@@ -16,7 +16,7 @@ android {
     }
 
     signingConfigs {
-        create("debug") {
+        getByName("debug") {
             storeFile = file(System.getenv("KEYSTORE_FILE") ?: "buku-fauna.keystore")
             storePassword = System.getenv("KEYSTORE_PASSWORD")
             keyAlias = System.getenv("KEY_ALIAS")
