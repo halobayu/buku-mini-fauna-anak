@@ -15,6 +15,21 @@ android {
         versionName = "1.3"
     }
 
+    signingConfigs {
+        create("debug") {
+            storeFile = file(System.getenv("KEYSTORE_FILE") ?: "buku-fauna.keystore")
+            storePassword = System.getenv("KEYSTORE_PASSWORD")
+            keyAlias = System.getenv("KEY_ALIAS")
+            keyPassword = System.getenv("KEY_PASSWORD")
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig = signingConfigs.getByName("debug")
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
