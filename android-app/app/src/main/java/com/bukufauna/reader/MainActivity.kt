@@ -403,16 +403,23 @@ var aspects = {};
 var imgOk = {};
 var tiers = {};
 var TIERS = [
-  {body: 33, fact: 29, heading: 56, gap: 26, imgPct: 50},
-  {body: 30, fact: 27.5, heading: 51, gap: 24, imgPct: 47},
-  {body: 27.5, fact: 26, heading: 47, gap: 22, imgPct: 44},
-  {body: 25, fact: 24.5, heading: 43, gap: 20, imgPct: 41},
-  {body: 22.5, fact: 23, heading: 39, gap: 18, imgPct: 38},
-  {body: 20.5, fact: 21.5, heading: 36, gap: 16, imgPct: 35},
-  {body: 19, fact: 20, heading: 33, gap: 14, imgPct: 32}
+  {body: 33, fact: 29, heading: 56, gap: 26, imgPct: 58},
+  {body: 30, fact: 27.5, heading: 51, gap: 24, imgPct: 55},
+  {body: 27.5, fact: 26, heading: 47, gap: 22, imgPct: 52},
+  {body: 25, fact: 24.5, heading: 43, gap: 20, imgPct: 48},
+  {body: 22.5, fact: 23, heading: 39, gap: 18, imgPct: 44},
+  {body: 20.5, fact: 21.5, heading: 36, gap: 16, imgPct: 40},
+  {body: 19, fact: 20, heading: 33, gap: 14, imgPct: 36}
 ];
 function isLandscape() { return window.innerWidth / Math.max(1, window.innerHeight) > 1.05; }
-function S() { return window.innerWidth / (isLandscape() ? 1240 : 900); }
+function S() {
+  // Tablet: wider design canvas -> smaller scale -> type renders
+  // relatively smaller and the illustration share grows (Space parity).
+  var dw = isLandscape()
+    ? (window.innerWidth >= 1500 ? 1420 : 1240)
+    : (window.innerWidth >= 700 ? 1080 : 900);
+  return window.innerWidth / dw;
+}
 function px(v) { return Math.round(v * S() * 10) / 10; }
 function paperBg() {
   return "background-color:" + pal.paper
@@ -555,13 +562,13 @@ function pageHtml(p, pi) {
     return '<div class="sheet" style="' + paperBg() + 'color:' + pal.ink + '">'
       + '<div style="position:absolute;inset:0;display:flex;flex-direction:column;padding:' + px(44) + 'px ' + px(54) + 'px">'
       + '<div class="missingbox" style="padding:' + px(36) + 'px ' + px(20) + 'px;font-size:' + Math.max(13, px(24)) + 'px">Halaman ini belum ada gambarnya</div>'
-      + '<div id="textzone" class="textzone" style="flex:1;gap:' + px(t.gap) + 'px;margin-top:' + px(30) + 'px">' + spreadHtml(p, pi, t) + '</div>'
+      + '<div id="textzone" class="textzone" style="flex:1;justify-content:flex-start;gap:' + px(t.gap) + 'px;margin-top:' + px(30) + 'px">' + spreadHtml(p, pi, t) + '</div>'
       + '</div>' + folio + '</div>';
   }
   var sa = p.storyboard && p.storyboard.sceneAction ? p.storyboard.sceneAction : "";
   var caption = "";
   if (isLandscape()) {
-    var imgPct = Math.min(60, t.imgPct + 8 + (p.layout === "gambar-penuh" ? 4 : 0));
+    var imgPct = Math.min(66, t.imgPct + 8 + (p.layout === "gambar-penuh" ? 4 : 0));
     var right = p.layout === "gambar-kanan";
     var seamStyle = right
       ? "left:0;top:0;bottom:0;width:54px;background:linear-gradient(to left, " + pal.paper + "00 0%, " + pal.paper + " 100%)"
@@ -579,23 +586,30 @@ function pageHtml(p, pi) {
       + spreadHtml(p, pi, t) + '</div>'
       + folio + '</div>';
   }
-  var cap = Math.min(58, t.imgPct + (p.layout === "gambar-penuh" ? 6 : 0));
+  var cap = Math.min(66, t.imgPct + (p.layout === "gambar-penuh" ? 8 : 0));
   var sheetRatio = window.innerWidth / Math.max(1, window.innerHeight);
   var asp = aspects[key];
   var naturalPct = asp ? (sheetRatio * 100) / asp : cap;
-  var zonePct = Math.max(28, Math.min(naturalPct, cap));
-  var fits = naturalPct <= cap + 1;
+  // Bigger zone, never a cropped animal (Space parity): the zone
+  // may grow past the natural height (up to 1.6x natural, capped by
+  // the tier share) so the illustration claims more of a tall
+  // portrait screen, but the picture is always shown whole
+  // (contain) over a blurred ambience copy of itself — the extra
+  // height is the picture's own colors, never a crop. A cover-zoom
+  // was tried and rejected: any side crop eats the edges of a
+  // wide-spanning animal (page 5's snake).
+  var zonePct = naturalPct <= cap
+    ? Math.max(30, Math.min(naturalPct * 1.6, cap))
+    : Math.max(28, cap);
   var seamB = '<div class="seam" style="left:0;right:0;bottom:0;height:54px;background:linear-gradient(to bottom, ' + pal.paper + '00 0%, ' + pal.paper + ' 100%)"></div>';
-  var zoneInner = fits
-    ? '<img class="zoneimg" src="' + p.image + '" alt=""/>' + seamB
-    : '<img class="amb" src="' + p.image + '" alt=""/><img class="whole" src="' + p.image + '" alt=""/>' + seamB;
+  var zoneInner = '<img class="amb" src="' + p.image + '" alt=""/><img class="whole" src="' + p.image + '" alt=""/>' + seamB;
   if (sa) {
     caption = '<p class="caption" style="bottom:' + px(76) + 'px;left:' + px(22) + 'px;font-size:' + Math.max(11, px(19)) + 'px;padding:'
       + Math.max(6, px(10)) + 'px ' + Math.max(9, px(16)) + 'px">' + esc(sa) + '</p>';
   }
   return '<div class="sheet" style="background:' + pal.paper + ';color:' + pal.ink + ';display:flex;flex-direction:column">'
     + '<div class="imgzone" style="height:' + zonePct + '%">' + zoneInner + caption + '</div>'
-    + '<div id="textzone" class="textzone" style="flex:1;gap:' + px(t.gap) + 'px;padding:' + px(30) + 'px ' + px(48) + 'px ' + px(44) + 'px;' + paperBg() + '">'
+    + '<div id="textzone" class="textzone" style="flex:1;justify-content:flex-start;gap:' + px(t.gap) + 'px;padding:' + px(22) + 'px ' + px(48) + 'px ' + px(44) + 'px;' + paperBg() + '">'
     + spreadHtml(p, pi, t) + '</div>'
     + folio + '</div>';
 }
