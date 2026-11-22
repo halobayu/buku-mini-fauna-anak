@@ -1,19 +1,24 @@
 # Buku Mini Fauna Anak
 
-Konten buku fakta hewan untuk anak SD kelas 2 — dibaca oleh aplikasi pembaca (APK) tanpa perlu install ulang saat konten bertambah.
+Repo ini adalah rumah untuk aplikasi baca Buku Mini Fauna Anak:
 
-## Struktur konten
+- **content/** — isi buku (ditulis & digambar dari Space "Buku Mini Fauna Anak",
+  lalu di-upload ke sini). APK membaca folder ini setiap dibuka, jadi buku baru
+  atau edit halaman langsung muncul di tablet TANPA install ulang APK.
+- **android-app/** — kode aplikasi Android (reader). Hanya berubah kalau ada
+  fitur baru; build-nya otomatis lewat GitHub Actions dan hasilnya dibagikan
+  lewat GitHub Releases (tag apk-v*).
 
-- `content/manifest.json` — daftar buku + `contentVersion` (APK mengecek versi ini untuk update konten)
-- `content/books/` — tiap buku dalam format `.json` dan `.md`
-- `content/images/<id-buku>/` — sampul (`cover.webp`) + ilustrasi halaman (`page-1.webp` … `page-6.webp`)
+## Cara update isi buku
 
-## Buku saat ini
+1. Di Space, buka menu Publikasikan, lalu klik "Publish ke GitHub".
+2. Unduh paket konten (ZIP), ekstrak.
+3. Upload isi folder content/ dari ZIP ke folder content/ di repo ini
+   (tulis/timpa file yang sama), lalu commit.
+4. Buka aplikasi di tablet — buku terbaru langsung tampil.
 
-1. **Ular Hebat Tanpa Makan Lama** — Kenapa ular bisa tahan tanpa makan (6 halaman)
+## Cara update aplikasi (jarang, hanya kalau ada fitur baru)
 
-## Cara update konten
-
-Tambah / ubah file di `content/`, naikkan `contentVersion` di `content/manifest.json`, lalu commit + push. APK akan mengambil konten terbaru dari repo ini.
-
-Panduan gambar yang mengikat untuk semua ilustrasi ada di tiap file buku (bagian "Panduan Gambar Buku Fauna").
+1. Ubah kode di android-app/.
+2. Push dengan tag, misalnya: git tag apk-v1.1 && git push origin apk-v1.1
+3. GitHub Actions membangun APK dan melampirkannya ke GitHub Release.
