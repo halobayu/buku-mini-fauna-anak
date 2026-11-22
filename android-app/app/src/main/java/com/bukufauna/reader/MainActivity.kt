@@ -20,14 +20,18 @@ const val REPO = "buku-mini-fauna-anak"
 const val RAW = "https://raw.githubusercontent.com/" + GITHUB_USER + "/" + REPO + "/main/content"
 
 // Reader APK ini SENGAJA dibuat sama persis dengan Reader di Space:
-// rak buku kayu di depan (buku berdiri per baris di atas papan rak,
-// judul tercetak di sampul, label topik/gaya/palet di bawahnya), lalu
+// rak buku NEUMORPHISM NETRAL di depan (abu-abu hangat, elemen
+// timbul/cekung dari bayangan lembut sewarna latar, TANPA hijau;
+// buku berdiri per baris di atas papan rak netral, judul tercetak
+// di sampul), lalu
 // buku dibuka SATU HALAMAN PENUH tepi-ke-tepi — tanpa scroll, bukan
 // dua halaman, bukan PDF. Halamannya dibalik seperti buku beneran:
 // animasinya berengsel di TEPI KIRI kertas (punggung buku,
 // transform-origin: left center, bukan tengah), dan bisa dibalik
-// lewat geser, ketuk tepi kiri/kanan, tombol panah, atau pill bawah
-// yang memuat label halaman + batang kemajuan baca. Semua tampilan
+// lewat geser, ketuk tepi kiri/kanan, tombol panah, atau bar bawah
+// minimal (dua lingkaran panah SVG netral melayang + label halaman
+// kecil dengan garis kemajuan tipis di tengah bawah — tanpa pill
+// gelap). Semua tampilan
 // itu dirender HTML/CSS/JS di bawah ini dari JSON konten yang sama
 // dengan yang dibaca Space (manifest.json + books/<slug>.json).
 // Tombol "Perbarui Konten" di rak menarik ulang manifest.json dari
@@ -191,16 +195,21 @@ class MainActivity : Activity() {
 
     private fun simplePage(body: String): String {
         return "<!doctype html><html><head><meta name='viewport' content='width=device-width, initial-scale=1'>" +
-            "<style>body{font-family:sans-serif;background:#FBF3E4;color:#2E2A23;margin:16px}" +
-            "h1{font-size:28px} .dim{color:#7A6F5C} a{color:#14665A;font-weight:bold}</style></head><body>" +
+            "<style>body{font-family:sans-serif;background:#E9E5DD;color:#35322C;margin:16px}" +
+            "h1{font-size:28px} .dim{color:#655E52} a{color:#6F6152;font-weight:bold}</style></head><body>" +
             body + "</body></html>"
     }
 }
 
 // Palet terkunci per gaya gambar — cerminan persis dari styles-data.ts
 // di Space (nama gaya, nama palet, 5 warna terkunci, kertas, tinta,
-// wash, warna callout, nada gelap), supaya label rak dan halaman buku
-// di APK memakai sistem warna yang sama dengan Space.
+// wash, warna callout, nada gelap). Palet gaya tetap kunci ilustrasi
+// (pelat palet di sampul), tetapi CHROME rak + halaman baca memakai
+// sistem NEUMORPHISM NETRAL yang sama dengan Space (READER_NEU di
+// styles-data.ts): NEU di bawah menimpa paper/ink/wash/callout/deep/
+// accent saat render — abu-abu hangat, aksen taupe, TANPA hijau —
+// dan karena gradient melt ilustrasi + zona teks sama-sama diambil
+// dari paper yang sama, sambungan gambar-ke-teks tetap seamless.
 private val STYLE_SCRIPT = """<script>
 var STYLES = {
 "cat-air": {"name": "Cat Air Semi-Realistis", "accent": "#14665a", "palette": {"name": "Rimba Lembut", "colors": ["#4c6b4f", "#a8c8bc", "#d9a441", "#a8c3cf", "#c47f5a"], "paper": "#fbf4e2", "ink": "#2f3a2c", "wash": "#e9efdb", "callout": "#d9a441", "calloutInk": "#5b4305", "deep": "#22301f"}},
@@ -209,6 +218,7 @@ var STYLES = {
 "kolase": {"name": "Kolase Tekstur Naturalis", "accent": "#7c2d52", "palette": {"name": "Potong Tempel", "colors": ["#ef476f", "#ffd166", "#06d6a0", "#118ab2", "#7c2d52"], "paper": "#fbf1e4", "ink": "#33272e", "wash": "#fdebd3", "callout": "#ffd166", "calloutInk": "#5b4305", "deep": "#2a1b26"}}
 };
 function styleInfo(id) { return STYLES[id] || STYLES["cat-air"]; }
+var NEU = {"paper": "#E9E5DD", "ink": "#35322C", "accent": "#6F6152", "accentInk": "#5C5041", "deep": "#2B2721", "calloutInk": "#FBF7EE", "raised": "7px 7px 14px rgba(133,122,102,0.5), -7px -7px 14px rgba(255,255,255,0.95)", "raisedSm": "5px 5px 10px rgba(133,122,102,0.5), -5px -5px 10px rgba(255,255,255,0.95)", "inset": "inset 5px 5px 10px rgba(133,122,102,0.45), inset -5px -5px 10px rgba(255,255,255,0.9)", "rule": ["#6F6152", "#A79C88", "#CFC7B6"]};
 function esc(s) { var d = document.createElement("div"); d.textContent = s == null ? "" : String(s); return d.innerHTML; }
 </script>"""
 
@@ -218,47 +228,43 @@ private val SHELF_HEAD = """<!doctype html><html><head><meta name="viewport" con
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{font-family:'Nunito',sans-serif;background:#FBF3E4;color:#2E2A23}
+body{font-family:'Nunito',sans-serif;background:#E9E5DD;color:#35322C}
 button{font-family:inherit}
 .wrap{max-width:768px;margin:0 auto;padding:16px 16px 40px}
 h1{font-family:'Fredoka','Nunito',sans-serif;font-size:36px;margin:8px 0 4px;font-weight:600}
-.sub{color:#7A6F5C;font-size:16px;font-weight:600;margin:0;line-height:1.45}
-.statusbar{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:#FFFAF0;border-radius:24px;padding:14px 16px;box-shadow:inset 0 2px 0 rgba(255,255,255,.65), inset 0 -3px 0 rgba(46,42,35,.06), 0 14px 28px -12px rgba(80,55,15,.35)}
-.statusbar .ver{font-size:13px;font-weight:700;color:#7A6F5C}
-.refresh{margin-left:auto;background:#F2A93B;color:#2E2A23;border:0;border-radius:999px;padding:10px 18px;font-size:15px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;cursor:pointer;min-height:44px;box-shadow:inset 0 2px 0 rgba(255,255,255,.35), inset 0 -4px 0 rgba(0,0,0,.16), 0 10px 20px -10px rgba(80,55,15,.45)}
-.refresh:active{transform:translateY(2px)}
-.status{font-size:14px;font-weight:700;color:#14665A;margin:10px 2px 0}
-.case{margin-top:18px;border:12px solid #6B4423;border-radius:30px;background:#FDF6E3;overflow:hidden;box-shadow:0 28px 52px -18px rgba(80,50,15,.6)}
+.sub{color:#655E52;font-size:16px;font-weight:600;margin:0;line-height:1.45}
+.statusbar{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:#E9E5DD;border-radius:24px;padding:14px 16px;box-shadow:10px 10px 20px #C7C0AF, -10px -10px 20px #FFFFFF}
+.statusbar .ver{font-size:13px;font-weight:700;color:#655E52}
+.refresh{margin-left:auto;background:#6F6152;color:#FFFFFF;border:0;border-radius:999px;padding:10px 18px;font-size:15px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;cursor:pointer;min-height:44px;box-shadow:inset 0 2px 0 rgba(255,255,255,.28), inset 0 -2px 0 rgba(0,0,0,.10), 0 10px 20px -10px rgba(90,78,58,.45)}
+.refresh:active{transform:translateY(1px)}
+.status{font-size:14px;font-weight:700;color:#5C5041;margin:10px 2px 0}
+.case{margin-top:18px;background:#E9E5DD;overflow:hidden;border-radius:28px;box-shadow:inset 6px 6px 14px #CBC4B3, inset -6px -6px 14px #FFFFFF}
 .shelf-row{display:flex;gap:10px;padding:14px 10px 0;list-style:none;margin:0}
 .bookcell{flex:1;min-width:0;display:flex;flex-direction:column;padding-bottom:12px}
-.book{position:relative;display:block;width:100%;max-width:190px;margin:0 auto;border-radius:4px 12px 12px 4px;overflow:hidden;box-shadow:0 16px 24px -8px rgba(60,35,8,.6);text-decoration:none;background:#F3E8CF}
+.book{position:relative;display:block;width:100%;max-width:190px;margin:0 auto;border-radius:4px 12px 12px 4px;overflow:hidden;box-shadow:0 16px 24px -8px rgba(90,80,64,.55);text-decoration:none;background:#DED8CB}
 .book img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
 .book .scrim{position:absolute;left:0;right:0;top:0;height:52%}
 .book .ctitle{position:absolute;left:0;right:0;top:0;padding:10px 12px 4px;text-align:center;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;font-size:15px;line-height:1.25}
 .book .spine{position:absolute;top:0;bottom:0;left:0;width:9px;background:linear-gradient(to right, rgba(0,0,0,.35), rgba(0,0,0,.10), rgba(0,0,0,0))}
 .book .fore{position:absolute;top:0;bottom:0;right:0;width:4px;background:repeating-linear-gradient(to right, rgba(120,100,60,.25) 0 1px, rgba(255,252,244,.95) 1px 2.5px)}
-.plank{height:20px;background:linear-gradient(to bottom, #C89B62 0%, #8A5A33 45%, #6B4423 100%);box-shadow:inset 0 2px 0 rgba(255,235,200,.5), 0 14px 18px -8px rgba(60,35,8,.6)}
+.plank{height:20px;background:linear-gradient(to bottom, #F4F0E7 0%, #E7E2D6 45%, #DAD3C1 100%);box-shadow:inset 0 2px 0 rgba(255,255,255,.55), 0 14px 18px -10px rgba(101,90,70,.55)}
 .plankshadow{height:8px;background:rgba(0,0,0,.10)}
-.tag{margin:12px auto 0;width:100%;max-width:190px;background:rgba(255,250,240,.95);border-radius:18px;padding:10px;text-align:center;box-shadow:inset 0 2px 0 rgba(255,255,255,.6), inset 0 -2px 0 rgba(46,42,35,.05), 0 8px 16px -8px rgba(80,55,15,.3)}
-.tag .topic{display:block;font-size:13px;font-weight:800;line-height:1.3}
-.tag .sty{display:block;font-size:11px;font-weight:600;color:#7A6F5C;line-height:1.3}
-.tag .strip{display:flex;gap:3px;margin-top:6px}
-.tag .strip i{flex:1;height:8px;border-radius:99px;display:block}
-.tag .meta{display:block;margin-top:4px;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#7A6F5C}
 .empty{padding:40px 24px 8px;text-align:center}
 .empty .lion{font-size:56px;margin:0}
 .empty h2{font-family:'Fredoka','Nunito',sans-serif;font-size:24px;font-weight:600;margin:10px 0 4px}
-.empty p{color:#7A6F5C;font-weight:600;margin:0 auto;max-width:360px;line-height:1.5}
+.empty p{color:#655E52;font-weight:600;margin:0 auto;max-width:360px;line-height:1.5}
 .gap{height:40px}
 @media (prefers-color-scheme: dark){
-body{background:#221C14;color:#F5ECD9}
-.sub{color:#B3A68C}
-.statusbar{background:#2E2619}
-.statusbar .ver{color:#B3A68C}
-.case{background:#3A3122;border-color:#7D5836}
-.tag{background:rgba(46,38,25,.95)}
-.tag .sty,.tag .meta{color:#B3A68C}
-.book{background:#3A3122}
+body{background:#26231E;color:#F2EDE2}
+.sub{color:#B4AB99}
+.statusbar{background:#26231E;box-shadow:10px 10px 20px #161310, -10px -10px 20px #38332B}
+.statusbar .ver{color:#B4AB99}
+.refresh{background:#7D6C55}
+.status{color:#C9BBA3}
+.case{background:#26231E;box-shadow:inset 6px 6px 14px #171410, inset -6px -6px 14px #38332B}
+.plank{background:linear-gradient(to bottom, #3A352B 0%, #2E2A22 45%, #26231E 100%)}
+.book{background:#332E26}
+.empty p{color:#B4AB99}
 }
 </style></head>
 <body>
@@ -273,20 +279,15 @@ private val SHELF_SCRIPT = """<script>
 function perShelf() { return window.innerWidth < 560 ? 2 : 3; }
 function goRefresh() { location.href = "refresh:"; }
 function bookCell(b) {
-  var sti = styleInfo(b.style);
-  var p = sti.palette;
-  var strip = "";
-  for (var i = 0; i < p.colors.length; i++) strip += '<i style="background:' + p.colors[i] + '"></i>';
+  // Title scrim = shelf chrome: the neutral NEU paper/ink, not the
+  // book's art palette (Space parity).
+  var p = NEU;
   return '<li class="bookcell">'
     + '<a class="book" href="book:' + b.file + '">'
     + '<img src="' + b.cover + '" alt=""/>'
     + '<span class="scrim" style="background:linear-gradient(to bottom, ' + p.paper + 'F0 0%, ' + p.paper + 'A6 52%, ' + p.paper + '00 100%)"></span>'
     + '<span class="ctitle" style="color:' + p.ink + '">' + esc(b.title) + '</span>'
-    + '<span class="spine"></span><span class="fore"></span></a>'
-    + '<div class="tag"><span class="topic">tentang ' + esc(b.topic) + '</span>'
-    + '<span class="sty">' + esc(sti.name) + '</span>'
-    + '<span class="strip">' + strip + '</span>'
-    + '<span class="meta">Palet ' + esc(p.name) + '</span></div></li>';
+    + '<span class="spine"></span><span class="fore"></span></a></li>';
 }
 function renderShelf() {
   var books = (typeof MANIFEST !== "undefined" && MANIFEST && MANIFEST.books) || [];
@@ -324,7 +325,7 @@ private val READER_HEAD = """<!doctype html><html><head><meta name="viewport" co
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;height:100%}
-body{font-family:'Nunito',sans-serif;overflow:hidden;background:#171106;color:#F5ECD9}
+body{font-family:'Nunito',sans-serif;overflow:hidden;background:#14120E;color:#F2EDE2}
 button{font-family:inherit}
 #stage{position:fixed;inset:0;perspective:1800px;perspective-origin:50% 50%}
 #leaf{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;backface-visibility:hidden}
@@ -339,21 +340,20 @@ button{font-family:inherit}
 .bindshade{position:absolute;top:0;bottom:0;left:0;width:22px;background:linear-gradient(to right, rgba(0,0,0,.15), rgba(0,0,0,.05), rgba(0,0,0,0));z-index:30;pointer-events:none}
 .foreedge{position:absolute;top:0;bottom:0;right:0;width:7px;background:repeating-linear-gradient(to right, rgba(120,100,60,.20) 0 1.5px, rgba(255,252,244,.9) 1.5px 3.5px);z-index:30;pointer-events:none}
 .bottomstack{position:absolute;left:0;right:0;bottom:0;height:6px;background:repeating-linear-gradient(to bottom, rgba(120,100,60,.18) 0 1.5px, rgba(255,252,244,.9) 1.5px 3.5px);z-index:30;pointer-events:none}
-#topbar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:flex-start;padding:10px 12px;pointer-events:none}
-#topbar a,#topbar span{pointer-events:auto}
-#backbtn{background:rgba(20,30,20,.55);color:#F5ECD9;text-decoration:none;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;font-size:15px;padding:12px 18px;border-radius:999px;display:inline-block;box-shadow:inset 0 2px 0 rgba(255,255,255,.14), inset 0 -3px 0 rgba(0,0,0,.28), 0 16px 32px -12px rgba(0,0,0,.55)}
-#toplabel{background:rgba(20,30,20,.5);color:#E8DCC2;font-weight:700;font-size:13px;padding:9px 15px;border-radius:999px;box-shadow:inset 0 2px 0 rgba(255,255,255,.14), inset 0 -3px 0 rgba(0,0,0,.28), 0 16px 32px -12px rgba(0,0,0,.55)}
+#backbtn{position:fixed;left:12px;bottom:14px;z-index:20;width:52px;height:52px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:#E9E5DD;color:#5C5041;text-decoration:none;font-size:24px;line-height:1;box-shadow:5px 5px 10px rgba(133,122,102,.5), -5px -5px 10px rgba(255,255,255,.95)}
 .edge{position:fixed;top:0;bottom:0;width:13%;z-index:10;background:transparent;border:0;padding:0;cursor:pointer}
 #edgeL{left:0}
 #edgeR{right:0}
 .edge[disabled]{cursor:default}
-#pill{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:20;display:flex;align-items:center;gap:10px;background:rgba(20,30,20,.88);border-radius:999px;padding:8px;box-shadow:inset 0 2px 0 rgba(255,255,255,.14), inset 0 -3px 0 rgba(0,0,0,.28), 0 16px 32px -12px rgba(0,0,0,.55)}
-#pill button{width:48px;height:48px;border-radius:999px;border:0;font-size:22px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;color:#F5ECD9;background:rgba(255,255,255,.12);cursor:pointer;box-shadow:inset 0 2px 0 rgba(255,255,255,.18), inset 0 -3px 0 rgba(0,0,0,.25)}
-#pill button:active{transform:scale(.95)}
-#pill button[disabled]{opacity:.25}
-.pillmid{display:flex;flex-direction:column;align-items:center;gap:5px;padding:0 2px}
-#pilllabel{font-size:13px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;color:#F5ECD9;white-space:nowrap;line-height:1}
-.progbar{width:116px;height:7px;border-radius:99px;background:rgba(255,255,255,.20);overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.35)}
+.navbtn{position:fixed;bottom:14px;z-index:20;width:48px;height:48px;border-radius:999px;border:0;padding:0;color:#5C5041;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:0;box-shadow:5px 5px 10px rgba(133,122,102,.5), -5px -5px 10px rgba(255,255,255,.95)}
+#prevBtn{left:76px}
+#nextBtn{right:12px}
+.navbtn:active{transform:scale(.95)}
+.navbtn[disabled]{opacity:.25}
+#pageind{position:fixed;left:136px;right:72px;bottom:22px;z-index:20;display:flex;flex-direction:column;align-items:center;gap:5px;pointer-events:none}
+#indlabel{font-size:13px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;white-space:nowrap;line-height:1}
+.progbar{width:116px;height:5px;border-radius:99px;overflow:hidden}
+@media (max-width:399px){.progbar{width:88px}.folio{display:none}}
 #prog{height:100%;border-radius:99px;transition:width .3s}
 .coverimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .coverscrim{position:absolute;left:0;right:0;top:0;height:46%;pointer-events:none}
@@ -361,8 +361,8 @@ button{font-family:inherit}
 .covertitle h2{margin:0;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;line-height:1.08}
 .composed h2{font-family:'Fredoka','Nunito',sans-serif;font-weight:600}
 .covertitle p{margin:8px auto 0;font-weight:600;line-height:1.35;max-width:78%}
-.platec{position:absolute;bottom:10%;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;border-radius:999px;padding:9px 18px 9px 13px;box-shadow:inset 0 2px 0 rgba(255,255,255,.55), inset 0 -3px 0 rgba(46,42,35,.07), 0 12px 22px -10px rgba(80,55,15,.35);white-space:nowrap}
-.plate{display:inline-flex;flex-direction:column;align-items:center;gap:7px;border-radius:24px;padding:13px 22px;box-shadow:inset 0 2px 0 rgba(255,255,255,.55), inset 0 -3px 0 rgba(46,42,35,.07), 0 12px 22px -10px rgba(80,55,15,.35)}
+.platec{position:absolute;bottom:10%;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;border-radius:999px;padding:9px 18px 9px 13px;box-shadow:7px 7px 14px rgba(133,122,102,.5), -7px -7px 14px rgba(255,255,255,.95);white-space:nowrap}
+.plate{display:inline-flex;flex-direction:column;align-items:center;gap:7px;border-radius:24px;padding:13px 22px;box-shadow:7px 7px 14px rgba(133,122,102,.5), -7px -7px 14px rgba(255,255,255,.95)}
 .chips{display:inline-flex;gap:5px}
 .chip{display:inline-block;border-radius:6px;border:1px solid rgba(0,0,0,.10)}
 .platecap{font-family:'Fredoka','Nunito',sans-serif;font-weight:600}
@@ -377,34 +377,42 @@ button{font-family:inherit}
 .textzone{position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden;min-height:0;min-width:0}
 .textzone>*{flex:0 0 auto}
 .spreadhead{display:flex;align-items:center;gap:14px}
-.badge{display:flex;align-items:center;justify-content:center;border-radius:20px;color:#fff;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;box-shadow:inset 0 2px 0 rgba(255,255,255,.35), inset 0 -4px 0 rgba(0,0,0,.18), 0 10px 16px -8px rgba(80,55,15,.5);flex:0 0 auto}
+.badge{display:flex;align-items:center;justify-content:center;border-radius:20px;color:#5C5041;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;box-shadow:5px 5px 10px rgba(133,122,102,.5), -5px -5px 10px rgba(255,255,255,.95);flex:0 0 auto}
 .spreadhead h3{margin:0;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;line-height:1.15}
 .rule{display:flex;gap:6px}
 .rule i{display:block;height:8px;border-radius:99px}
-.anchor{border-radius:24px;font-weight:700;line-height:1.42;margin:0;box-shadow:inset 0 2px 0 rgba(255,255,255,.5), 0 10px 18px -10px rgba(80,55,15,.3)}
+.anchor{border-radius:24px;font-weight:700;line-height:1.42;margin:0;box-shadow:7px 7px 14px rgba(133,122,102,.5), -7px -7px 14px rgba(255,255,255,.95)}
 .cluster{font-weight:600;line-height:1.5;margin:0;opacity:.88}
-.callout{position:relative;border:3px solid;border-radius:26px;box-shadow:inset 0 2px 0 rgba(255,255,255,.45), 0 10px 18px -10px rgba(80,55,15,.3)}
-.callouttab{position:absolute;left:22px;border-radius:999px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.14em;box-shadow:inset 0 2px 0 rgba(255,255,255,.4), inset 0 -2px 0 rgba(0,0,0,.12), 0 6px 10px -4px rgba(80,55,15,.4)}
+.callout{position:relative;border-radius:26px;box-shadow:inset 5px 5px 10px rgba(133,122,102,.45), inset -5px -5px 10px rgba(255,255,255,.9)}
+.callouttab{position:absolute;left:22px;border-radius:999px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.14em;box-shadow:inset 0 2px 0 rgba(255,255,255,.35), inset 0 -2px 0 rgba(0,0,0,.14), 0 6px 10px -4px rgba(90,78,58,.45)}
 .callout p{margin:0;font-weight:600;line-height:1.45}
-.caption{position:absolute;z-index:10;background:rgba(255,250,240,.92);color:#5C5342;font-style:italic;font-weight:600;line-height:1.35;border-radius:16px;box-shadow:inset 0 2px 0 rgba(255,255,255,.6), 0 10px 16px -8px rgba(60,35,8,.45);max-width:46%;margin:0}
+.caption{position:absolute;z-index:10;background:rgba(233,229,221,.94);color:#4A453C;font-style:italic;font-weight:600;line-height:1.35;border-radius:16px;box-shadow:inset 0 2px 0 rgba(255,255,255,.6), 0 10px 16px -8px rgba(90,80,64,.4);max-width:46%;margin:0}
 .folio{position:absolute;bottom:22px;z-index:20;border-radius:999px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;box-shadow:inset 0 2px 0 rgba(255,255,255,.22), inset 0 -2px 0 rgba(0,0,0,.3), 0 8px 14px -6px rgba(0,0,0,.4)}
-.missingbox{border:3px dashed #D8C9A8;background:#F3E8CF;border-radius:26px;text-align:center;font-weight:700;color:#7A6F5C}
+.missingbox{border:3px dashed #B9B09C;background:#E1DBCE;border-radius:26px;text-align:center;font-weight:700;color:#655E52}
 .endinner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .endinner h2{font-family:'Fredoka','Nunito',sans-serif;font-weight:600}
-.endbtn{display:inline-block;color:#fff;text-decoration:none;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;border-radius:999px;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -4px 0 rgba(0,0,0,.2), 0 14px 24px -10px rgba(80,55,15,.5)}
+.endbtn{display:inline-block;color:#fff;text-decoration:none;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;border-radius:999px;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -4px 0 rgba(0,0,0,.2), 0 14px 24px -10px rgba(90,78,58,.5)}
 </style></head>
 <body>
 <div id="stage"></div>
 <button class="edge" id="edgeL" aria-label="Ketuk tepi kiri untuk halaman sebelumnya"></button>
 <button class="edge" id="edgeR" aria-label="Ketuk tepi kanan untuk halaman berikutnya"></button>
-<div id="topbar"><a id="backbtn" href="shelf:">&#8592; Rak Buku</a><span id="toplabel"></span></div>
-<div id="pill"><button id="prevBtn" aria-label="Halaman sebelumnya">&#8592;</button><div class="pillmid"><span id="pilllabel"></span><div class="progbar"><div id="prog"></div></div></div><button id="nextBtn" aria-label="Halaman berikutnya">&#8594;</button></div>
+<a id="backbtn" href="shelf:" aria-label="Kembali ke rak buku"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.2C10.3 4.6 8.1 4 5.5 4c-.5 0-1 .1-1.5.2v13.1c.5-.1 1-.2 1.5-.2 2.6 0 4.8.6 6.5 2.2 1.7-1.6 3.9-2.2 6.5-2.2.5 0 1 .1 1.5.2V4.2c-.5-.1-1-.2-1.5-.2-2.6 0-4.8.6-6.5 2.2z"/><path d="M12 6.2v13.1"/></svg></a>
+<button class="navbtn" id="prevBtn" aria-label="Halaman sebelumnya"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg></button><div id="pageind"><span id="indlabel"></span><div class="progbar" id="progbar"><div id="prog"></div></div></div><button class="navbtn" id="nextBtn" aria-label="Halaman berikutnya"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button>
 """
 
 private val READER_SCRIPT = """<script>
 var st = styleInfo(BOOK.style);
 var pal = st.palette;
 var accent = st.accent;
+// Neutral Neumorphism chrome (Space parity, READER_NEU): paper, ink,
+// wash, callout, and deep are overridden with the one neutral system
+// for every book. The melt gradient and the text zone both read
+// pal.paper, so the illustration still melts seamlessly into the
+// text — now onto the neutral paper instead of the style's cream.
+// pal.colors + pal.name survive for the palette-plate specimen.
+pal = Object.assign({}, pal, {"paper": NEU.paper, "ink": NEU.ink, "wash": NEU.paper, "callout": NEU.accent, "calloutInk": NEU.calloutInk, "deep": NEU.deep});
+accent = NEU.accent;
 var pages = BOOK.pages || [];
 var total = pages.length + 2;
 var idx = 0;
@@ -427,7 +435,7 @@ function S() {
   // relatively smaller and the illustration share grows (Space parity).
   var dw = isLandscape()
     ? (window.innerWidth >= 1500 ? 1420 : 1240)
-    : (window.innerWidth >= 700 ? 1080 : 900);
+    : (window.innerWidth >= 700 ? 1080 : 700);
   return window.innerWidth / dw;
 }
 function px(v) { return Math.round(v * S() * 10) / 10; }
@@ -509,25 +517,25 @@ function spreadHtml(p, pi, t) {
   var parts = splitAnchor(p.body || "");
   var widths = [64, 38, 22];
   var rule = "";
-  for (var i = 0; i < 3; i++) rule += '<i style="background:' + pal.colors[i] + ';width:' + Math.max(10, px(widths[i])) + 'px"></i>';
-  var h = '<div class="spreadhead"><span class="badge" style="background:' + accent
+  for (var i = 0; i < 3; i++) rule += '<i style="background:' + NEU.rule[i] + ';width:' + Math.max(10, px(widths[i])) + 'px"></i>';
+  var h = '<div class="spreadhead"><span class="badge" style="background:' + pal.paper
     + ';width:' + Math.max(30, px(54)) + 'px;height:' + Math.max(30, px(54)) + 'px;font-size:' + Math.max(14, px(27)) + 'px">'
     + (pi + 1) + '</span>'
     + '<h3 style="font-size:' + Math.max(16, px(t.heading)) + 'px;color:' + pal.ink + '">' + esc(p.heading) + '</h3></div>'
     + '<div class="rule">' + rule + '</div>'
     + '<p class="anchor" style="font-size:' + Math.max(13, px(t.body + 4.5)) + 'px;color:' + pal.ink
-    + ';background:' + pal.wash + ';box-shadow:inset ' + Math.max(4, px(8)) + 'px 0 0 ' + pal.colors[0] + ', inset 0 2px 0 rgba(255,255,255,.5), 0 10px 18px -10px rgba(80,55,15,.3)'
+    + ';background:' + pal.wash
     + ';padding:' + Math.max(8, px(16)) + 'px ' + Math.max(10, px(22)) + 'px">' + esc(parts.anchor) + '</p>';
   if (parts.cluster) {
     h += '<p class="cluster" style="font-size:' + Math.max(12, px(t.body)) + 'px;color:' + pal.ink + '">' + esc(parts.cluster) + '</p>';
   }
-  h += '<div class="callout" style="border-color:' + pal.callout + ';background:' + pal.callout + '26'
+  h += '<div class="callout" style="background:' + pal.paper
     + ';padding:' + Math.max(14, px(30)) + 'px ' + Math.max(12, px(30)) + 'px ' + Math.max(10, px(22)) + 'px'
     + ';margin-top:' + Math.max(6, px(12)) + 'px">'
     + '<span class="callouttab" style="background:' + pal.callout + ';color:' + pal.calloutInk
     + ';top:' + (-Math.max(9, px(17))) + 'px;font-size:' + Math.max(10, px(17)) + 'px;padding:'
     + Math.max(2, px(3)) + 'px ' + Math.max(8, px(14)) + 'px">&#128161; Tahukah Kamu?</span>'
-    + '<p style="font-size:' + Math.max(12, px(t.fact)) + 'px;color:' + pal.calloutInk + '">' + esc(p.funFact) + '</p></div>';
+    + '<p style="font-size:' + Math.max(12, px(t.fact)) + 'px;color:' + pal.ink + '">' + esc(p.funFact) + '</p></div>';
   return h;
 }
 function coverHtml() {
@@ -566,7 +574,7 @@ function pageHtml(p, pi) {
   var key = "p" + pi;
   var folioSide = p.layout === "gambar-kiri" ? "left:" + px(30) + "px" : "right:" + px(30) + "px";
   var folio = '<span class="folio" style="background:' + pal.ink + ';color:' + pal.paper + ';' + folioSide
-    + ';font-size:' + Math.max(12, px(20)) + 'px;padding:' + Math.max(2, px(3)) + 'px ' + Math.max(8, px(13)) + 'px">'
+    + ';bottom:' + (px(48) + 76) + 'px;font-size:' + Math.max(12, px(20)) + 'px;padding:' + Math.max(2, px(3)) + 'px ' + Math.max(8, px(13)) + 'px">'
     + (pi + 1) + '</span>';
   if (imgOk[key] === false) {
     return '<div class="sheet" style="' + paperBg() + 'color:' + pal.ink + '">'
@@ -596,7 +604,7 @@ function pageHtml(p, pi) {
       + '<div class="imgzone" style="width:' + imgPct + '%;height:100%">'
       + '<img class="whole" src="' + p.image + '" alt=""/>'
       + '<div class="melts" style="' + meltStyle + '"></div>' + caption + '</div>'
-      + '<div id="textzone" class="textzone" style="flex:1;height:100%;gap:' + px(t.gap) + 'px;padding:' + px(36) + 'px ' + px(44) + 'px ' + (px(36) + 132) + 'px;' + paperBg() + '">'
+      + '<div id="textzone" class="textzone" style="flex:1;height:100%;gap:' + px(t.gap) + 'px;padding:' + px(36) + 'px ' + px(44) + 'px ' + (px(36) + 76) + 'px;' + paperBg() + '">'
       + spreadHtml(p, pi, t) + '</div>'
       + folio + '</div>';
   }
@@ -620,7 +628,7 @@ function pageHtml(p, pi) {
   }
   return '<div class="sheet" style="background:' + pal.paper + ';color:' + pal.ink + ';display:flex;flex-direction:column">'
     + '<div class="imgzone" style="height:' + zonePct + '%">' + zoneInner + caption + '</div>'
-    + '<div id="textzone" class="textzone" style="flex:1;justify-content:flex-start;gap:' + px(t.gap) + 'px;padding:' + px(20) + 'px ' + px(48) + 'px ' + (px(44) + 132) + 'px;' + paperBg() + '">'
+    + '<div id="textzone" class="textzone" style="flex:1;justify-content:flex-start;gap:' + px(t.gap) + 'px;padding:' + px(20) + 'px ' + px(48) + 'px ' + (px(44) + 76) + 'px;' + paperBg() + '">'
     + spreadHtml(p, pi, t) + '</div>'
     + folio + '</div>';
 }
@@ -640,7 +648,7 @@ function fitCheck() {
   }
 }
 function render() {
-  document.body.style.background = "radial-gradient(120% 90% at 50% 0%, " + pal.deep + " 0%, #171106 130%)";
+  document.body.style.background = "radial-gradient(120% 90% at 50% 0%, " + pal.deep + " 0%, #14120E 130%)";
   var stage = document.getElementById("stage");
   var leaf = document.createElement("div");
   leaf.id = "leaf";
@@ -648,14 +656,20 @@ function render() {
   leaf.innerHTML = sheetHtml() + '<div class="bindshade"></div><div class="foreedge"></div><div class="bottomstack"></div>';
   stage.innerHTML = "";
   stage.appendChild(leaf);
-  document.getElementById("toplabel").textContent = slideLabel();
-  document.getElementById("pilllabel").textContent = slideLabel();
+  document.getElementById("indlabel").textContent = slideLabel();
+  document.getElementById("indlabel").style.color = pal.ink;
+  document.getElementById("indlabel").style.textShadow = "0 1px 6px " + pal.paper + ", 0 0 2px " + pal.paper;
+  document.getElementById("backbtn").style.background = pal.paper;
+  document.getElementById("backbtn").style.color = NEU.accentInk;
   var prog = document.getElementById("prog");
   prog.style.width = ((idx + 1) / total * 100) + "%";
   prog.style.background = accent;
-  document.getElementById("pill").style.background = pal.deep + "E0";
-  document.getElementById("nextBtn").style.background = accent;
-  document.getElementById("nextBtn").style.boxShadow = "inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 0 rgba(0,0,0,.22)";
+  document.getElementById("progbar").style.background = pal.ink + "2E";
+  document.getElementById("progbar").style.boxShadow = "0 0 0 1px " + pal.paper + "59, inset 0 1px 2px rgba(0,0,0,.18)";
+  document.getElementById("prevBtn").style.background = pal.paper;
+  document.getElementById("prevBtn").style.color = NEU.accentInk;
+  document.getElementById("nextBtn").style.background = pal.paper;
+  document.getElementById("nextBtn").style.color = NEU.accentInk;
   document.getElementById("prevBtn").disabled = idx === 0;
   document.getElementById("nextBtn").disabled = idx >= total - 1;
   document.getElementById("edgeL").disabled = idx === 0;
