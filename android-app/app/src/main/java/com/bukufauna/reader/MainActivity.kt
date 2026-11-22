@@ -353,7 +353,7 @@ button{font-family:inherit}
 #pageind{position:fixed;left:136px;right:72px;bottom:22px;z-index:20;display:flex;flex-direction:column;align-items:center;gap:5px;pointer-events:none}
 #indlabel{font-size:13px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;white-space:nowrap;line-height:1}
 .progbar{width:116px;height:5px;border-radius:99px;overflow:hidden}
-@media (max-width:399px){.progbar{width:88px}.folio{display:none}}
+@media (max-width:399px){.progbar{width:88px}}
 #prog{height:100%;border-radius:99px;transition:width .3s}
 .coverimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .coverscrim{position:absolute;left:0;right:0;top:0;height:46%;pointer-events:none}
@@ -361,12 +361,6 @@ button{font-family:inherit}
 .covertitle h2{margin:0;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;line-height:1.08}
 .composed h2{font-family:'Fredoka','Nunito',sans-serif;font-weight:600}
 .covertitle p{margin:8px auto 0;font-weight:600;line-height:1.35;max-width:78%}
-.platec{position:absolute;bottom:10%;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;border-radius:999px;padding:9px 18px 9px 13px;box-shadow:7px 7px 14px rgba(133,122,102,.5), -7px -7px 14px rgba(255,255,255,.95);white-space:nowrap}
-.plate{display:inline-flex;flex-direction:column;align-items:center;gap:7px;border-radius:24px;padding:13px 22px;box-shadow:7px 7px 14px rgba(133,122,102,.5), -7px -7px 14px rgba(255,255,255,.95)}
-.chips{display:inline-flex;gap:5px}
-.chip{display:inline-block;border-radius:6px;border:1px solid rgba(0,0,0,.10)}
-.platecap{font-family:'Fredoka','Nunito',sans-serif;font-weight:600}
-.platename{font-family:'Fredoka','Nunito',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.16em}
 .composed{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .kicker{font-family:'Fredoka','Nunito',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.22em;margin:0}
 .imgzone{position:relative;overflow:hidden;flex:0 0 auto;width:100%}
@@ -377,7 +371,6 @@ button{font-family:inherit}
 .textzone{position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden;min-height:0;min-width:0}
 .textzone>*{flex:0 0 auto}
 .spreadhead{display:flex;align-items:center;gap:14px}
-.badge{display:flex;align-items:center;justify-content:center;border-radius:20px;color:#5C5041;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;box-shadow:5px 5px 10px rgba(133,122,102,.5), -5px -5px 10px rgba(255,255,255,.95);flex:0 0 auto}
 .spreadhead h3{margin:0;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;line-height:1.15}
 .rule{display:flex;gap:6px}
 .rule i{display:block;height:8px;border-radius:99px}
@@ -387,7 +380,6 @@ button{font-family:inherit}
 .callouttab{position:absolute;left:22px;border-radius:999px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.14em;box-shadow:inset 0 2px 0 rgba(255,255,255,.35), inset 0 -2px 0 rgba(0,0,0,.14), 0 6px 10px -4px rgba(90,78,58,.45)}
 .callout p{margin:0;font-weight:600;line-height:1.45}
 .caption{position:absolute;z-index:10;background:rgba(233,229,221,.94);color:#4A453C;font-style:italic;font-weight:600;line-height:1.35;border-radius:16px;box-shadow:inset 0 2px 0 rgba(255,255,255,.6), 0 10px 16px -8px rgba(90,80,64,.4);max-width:46%;margin:0}
-.folio{position:absolute;bottom:22px;z-index:20;border-radius:999px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;box-shadow:inset 0 2px 0 rgba(255,255,255,.22), inset 0 -2px 0 rgba(0,0,0,.3), 0 8px 14px -6px rgba(0,0,0,.4)}
 .missingbox{border:3px dashed #B9B09C;background:#E1DBCE;border-radius:26px;text-align:center;font-weight:700;color:#655E52}
 .endinner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .endinner h2{font-family:'Fredoka','Nunito',sans-serif;font-weight:600}
@@ -410,7 +402,6 @@ var accent = st.accent;
 // for every book. The melt gradient and the text zone both read
 // pal.paper, so the illustration still melts seamlessly into the
 // text — now onto the neutral paper instead of the style's cream.
-// pal.colors + pal.name survive for the palette-plate specimen.
 pal = Object.assign({}, pal, {"paper": NEU.paper, "ink": NEU.ink, "wash": NEU.paper, "callout": NEU.accent, "calloutInk": NEU.calloutInk, "deep": NEU.deep});
 accent = NEU.accent;
 var pages = BOOK.pages || [];
@@ -497,30 +488,15 @@ function splitAnchor(body) {
   if (cluster.length < 40) return {anchor: body, cluster: ""};
   return {anchor: anchor, cluster: cluster};
 }
-function plateHtml(compact, caption) {
-  var chips = "";
-  for (var i = 0; i < pal.colors.length; i++) {
-    var w = compact ? Math.max(12, px(24)) : Math.max(16, px(34));
-    var h = compact ? Math.max(8, px(16)) : Math.max(11, px(22));
-    chips += '<span class="chip" style="background:' + pal.colors[i] + ';width:' + w + 'px;height:' + h + 'px"></span>';
-  }
-  if (compact) {
-    return '<div class="platec" style="' + paperBg() + '"><span class="chips">' + chips
-      + '</span><span class="platecap" style="color:' + pal.ink + ';font-size:' + Math.max(10, px(17)) + 'px">'
-      + esc(caption) + '</span></div>';
-  }
-  return '<div class="plate" style="' + paperBg() + '"><span class="chips">' + chips
-    + '</span><span class="platename" style="color:' + pal.ink + ';font-size:' + Math.max(10, px(16)) + 'px">Palet Terkunci · '
-    + esc(pal.name) + '</span></div>';
-}
 function spreadHtml(p, pi, t) {
   var parts = splitAnchor(p.body || "");
   var widths = [64, 38, 22];
   var rule = "";
   for (var i = 0; i < 3; i++) rule += '<i style="background:' + NEU.rule[i] + ';width:' + Math.max(10, px(widths[i])) + 'px"></i>';
-  var h = '<div class="spreadhead"><span class="badge" style="background:' + pal.paper
-    + ';width:' + Math.max(30, px(54)) + 'px;height:' + Math.max(30, px(54)) + 'px;font-size:' + Math.max(14, px(27)) + 'px">'
-    + (pi + 1) + '</span>'
+  // The heading stands alone — no number badge beside it (v1.5,
+  // Space parity): the page number lives only in the bottom bar's
+  // "Halaman X dari 6" label + progress bar.
+  var h = '<div class="spreadhead">'
     + '<h3 style="font-size:' + Math.max(16, px(t.heading)) + 'px;color:' + pal.ink + '">' + esc(p.heading) + '</h3></div>'
     + '<div class="rule">' + rule + '</div>'
     + '<p class="anchor" style="font-size:' + Math.max(13, px(t.body + 4.5)) + 'px;color:' + pal.ink
@@ -545,7 +521,6 @@ function coverHtml() {
       + '<p class="kicker" style="color:' + accent + ';font-size:' + Math.max(12, px(26)) + 'px">Buku Mini Fauna</p>'
       + '<h2 style="font-size:' + Math.max(24, px(76)) + 'px;font-weight:800;line-height:1.08;margin:' + px(18) + 'px 0 0">' + esc(BOOK.title) + '</h2>'
       + '<p style="font-size:' + Math.max(14, px(30)) + 'px;font-weight:600;opacity:.7;margin:' + px(14) + 'px 0 0">' + esc(BOOK.subtitle) + '</p>'
-      + '<div style="margin-top:' + px(26) + 'px">' + plateHtml(false, "") + '</div>'
       + '</div></div>';
   }
   return '<div class="sheet" style="background:' + pal.paper + '">'
@@ -555,7 +530,6 @@ function coverHtml() {
     + '<h2 style="font-size:' + Math.max(20, px(60)) + 'px;color:' + pal.ink + '">' + esc(BOOK.title) + '</h2>'
     + '<p style="font-size:' + Math.max(12, px(25)) + 'px;color:' + pal.ink + ';opacity:.75">' + esc(BOOK.subtitle) + '</p>'
     + '</div>'
-    + plateHtml(true, "Buku Mini Fauna · " + st.name + " · Palet " + pal.name)
     + '</div>';
 }
 function endHtml() {
@@ -566,22 +540,19 @@ function endHtml() {
     + '<h2 style="font-size:' + Math.max(24, px(58)) + 'px;font-weight:800;line-height:1.15;margin:' + px(14) + 'px 0 0">Selesai Dibaca!</h2>'
     + '<p style="font-size:' + Math.max(14, px(29)) + 'px;font-weight:600;line-height:1.5;opacity:.75;max-width:' + px(560) + 'px;margin:' + px(14) + 'px 0 0">Hebat, kamu sudah membaca sampai akhir. Hewan apa yang mau kamu kenal berikutnya?</p>'
     + '<a class="endbtn" href="shelf:" style="background:' + accent + ';font-size:' + Math.max(14, px(26)) + 'px;padding:' + Math.max(10, px(14)) + 'px ' + Math.max(18, px(34)) + 'px;margin-top:' + px(22) + 'px">Kembali ke Rak Buku</a>'
-    + '<div style="margin-top:' + px(24) + 'px">' + plateHtml(false, "") + '</div>'
     + '</div></div>';
 }
 function pageHtml(p, pi) {
   var t = TIERS[tierOf(pi, p)];
   var key = "p" + pi;
-  var folioSide = p.layout === "gambar-kiri" ? "left:" + px(30) + "px" : "right:" + px(30) + "px";
-  var folio = '<span class="folio" style="background:' + pal.ink + ';color:' + pal.paper + ';' + folioSide
-    + ';bottom:' + (px(48) + 76) + 'px;font-size:' + Math.max(12, px(20)) + 'px;padding:' + Math.max(2, px(3)) + 'px ' + Math.max(8, px(13)) + 'px">'
-    + (pi + 1) + '</span>';
+  // No folio printed on the sheet (v1.5, Space parity) — the page
+  // number appears once, in the bottom bar's label + progress bar.
   if (imgOk[key] === false) {
     return '<div class="sheet" style="' + paperBg() + 'color:' + pal.ink + '">'
       + '<div style="position:absolute;inset:0;display:flex;flex-direction:column;padding:' + px(44) + 'px ' + px(54) + 'px">'
       + '<div class="missingbox" style="padding:' + px(36) + 'px ' + px(20) + 'px;font-size:' + Math.max(13, px(24)) + 'px">Halaman ini belum ada gambarnya</div>'
       + '<div id="textzone" class="textzone" style="flex:1;justify-content:flex-start;gap:' + px(t.gap) + 'px;margin-top:' + px(30) + 'px">' + spreadHtml(p, pi, t) + '</div>'
-      + '</div>' + folio + '</div>';
+      + '</div></div>';
   }
   var sa = p.storyboard && p.storyboard.sceneAction ? p.storyboard.sceneAction : "";
   var caption = "";
@@ -606,7 +577,7 @@ function pageHtml(p, pi) {
       + '<div class="melts" style="' + meltStyle + '"></div>' + caption + '</div>'
       + '<div id="textzone" class="textzone" style="flex:1;height:100%;gap:' + px(t.gap) + 'px;padding:' + px(36) + 'px ' + px(44) + 'px ' + (px(36) + 76) + 'px;' + paperBg() + '">'
       + spreadHtml(p, pi, t) + '</div>'
-      + folio + '</div>';
+      + '</div>';
   }
   var cap = Math.min(72, t.imgPct + (p.layout === "gambar-penuh" ? 6 : 0));
   var sheetRatio = window.innerWidth / Math.max(1, window.innerHeight);
@@ -630,7 +601,7 @@ function pageHtml(p, pi) {
     + '<div class="imgzone" style="height:' + zonePct + '%">' + zoneInner + caption + '</div>'
     + '<div id="textzone" class="textzone" style="flex:1;justify-content:flex-start;gap:' + px(t.gap) + 'px;padding:' + px(20) + 'px ' + px(48) + 'px ' + (px(44) + 76) + 'px;' + paperBg() + '">'
     + spreadHtml(p, pi, t) + '</div>'
-    + folio + '</div>';
+    + '</div>';
 }
 function sheetHtml() {
   if (idx === 0) return coverHtml();
