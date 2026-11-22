@@ -35,8 +35,18 @@ jobs:
         with:
           gradle-version: "8.7"
 
+      - name: Siapkan keystore signing tetap
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: echo "$KEYSTORE_BASE64" | base64 -d > android-app/buku-fauna.keystore
+
       - name: Build APK (debug, bisa langsung diinstall)
         working-directory: android-app
+        env:
+          KEYSTORE_FILE: buku-fauna.keystore
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: gradle assembleDebug --stacktrace
 
       - name: Simpan APK sebagai artifact
