@@ -1,0 +1,105 @@
+# Belalang Sembah, Pemburu Diam-Diam
+
+Ayo mengintip si pemburu hijau yang menunggu diam-diam di antara daun!
+
+_Topik: Belalang sembah · Gaya gambar: cat-air_
+
+![Sampul](../images/belalang-sembah/cover.webp)
+
+## 1. Si Pemburu Berdoa
+
+![Si Pemburu Berdoa](../images/belalang-sembah/page-1.webp)
+
+Belalang sembah adalah serangga pemburu yang kaki depannya selalu terlipat seperti sedang berdoa, padahal itu adalah perangkapnya. Kepalanya berbentuk segitiga dan bisa menoleh ke kiri dan ke kanan tanpa menggerakkan badannya, sehingga ia bisa mengawasi sekelilingnya. Matanya yang besar sangat peka terhadap gerakan, dan kaki depannya yang berduri kuat mencengkeram mangsa agar tidak lepas. Diam-diam, ia mengawasi.
+
+> **Tahukah Kamu?** Belalang sembah adalah salah satu dari sedikit serangga yang bisa menolehkan kepalanya seperti kita, bahkan sampai menoleh ke belakang tanpa menggerakkan badannya!
+
+## 2. Rumah di Kebun
+
+![Rumah di Kebun](../images/belalang-sembah/page-2.webp)
+
+Belalang sembah tinggal di tempat yang hangat dan banyak tumbuhan, seperti kebun, semak, dan sawah. Ia suka bertengger di daun dan ranting karena di sana banyak serangga kecil yang lewat dan ia bisa bersembunyi di antara daun. Warna dan bentuk tubuhnya membantunya menyamar seperti daun atau ranting, sehingga mangsa dan musuh sulit melihatnya. Kalau kamu berjalan pelan di kebun, coba cari sosok yang diam di antara daun — diam-diam, ia mengawasi.
+
+> **Tahukah Kamu?** Ada belalang sembah yang bentuk dan warnanya mirip bunga, daun kering, bahkan ranting, sampai serangga lain datang mendekat tanpa sadar!
+
+## 3. Pemburu Serangga Kecil
+
+![Pemburu Serangga Kecil](../images/belalang-sembah/page-3.webp)
+
+Belalang sembah adalah pemakan daging, dan makanannya adalah serangga lain seperti lalat, nyamuk, kupu-kupu kecil, dan belalang kecil. Ia tidak mengejar mangsanya jauh-jauh, melainkan menunggu diam sampai serangga itu datang cukup dekat. Begitu mangsa mendekat, kaki depannya menyambar dengan sangat cepat dan mencengkeramnya erat, lalu ia memakannya sedikit demi sedikit. Diam-diam, ia mengawasi mangsa berikutnya — coba tebak, serangga apa yang datang selanjutnya?
+
+> **Tahukah Kamu?** Belalang sembah hanya mau makan mangsa yang masih hidup dan bergerak, dan ia tidak mau makan serangga yang sudah mati!
+
+## 4. Kepala yang Bisa Menoleh
+
+![Kepala yang Bisa Menoleh](../images/belalang-sembah/page-4.webp)
+
+Kehebatan belalang sembah ada pada matanya: ia bisa melihat dengan dua mata sekaligus, sehingga ia tahu seberapa jauh mangsanya, seperti kita melihat dengan dua mata. Ia juga punya tiga mata kecil tambahan di tengah kepalanya yang peka terhadap cahaya. Kepalanya yang bisa menoleh membantunya mengikuti mangsa tanpa menggerakkan badan, lalu kaki depannya menyambar dalam sekejap. Diam-diam, ia mengawasi — dan dalam sekejap, ia sudah menangkapnya!
+
+> **Tahukah Kamu?** Belalang sembah punya satu telinga di tengah tubuhnya, bukan di kepala, dan telinga itu bisa mendengar suara kelelawar yang berburu di malam hari!
+
+## 5. Tumbuh dan Berganti Kulit
+
+![Tumbuh dan Berganti Kulit](../images/belalang-sembah/page-5.webp)
+
+Belalang sembah hidup sendiri-sendiri dan tidak tinggal berkelompok seperti semut. Ketika masih kecil, ia disebut nimfa, dan bentuknya sudah mirip belalang sembah dewasa tetapi belum bersayap. Supaya bisa tumbuh besar, ia berganti kulit, atau molting, yaitu melepaskan kulit lamanya yang sudah sempit, dan ia melakukannya beberapa kali sampai dewasa. Induk betina meletakkan telurnya dalam busa yang mengeras menjadi sarang telur bernama ooteka, dan anak-anak yang menetas langsung hidup sendiri — diam-diam, ia mengawasi dunia barunya.
+
+> **Tahukah Kamu?** Anak belalang sembah yang baru menetas sudah bisa berburu sendiri tanpa diajari induknya!
+
+## 6. Penjaga Kebun Kita
+
+![Penjaga Kebun Kita](../images/belalang-sembah/page-6.webp)
+
+Belalang sembah adalah sahabat kebun karena ia memakan serangga yang bisa merusak daun dan tanaman. Dengan begitu, ia membantu petani dan pekebun menjaga tanaman tetap sehat tanpa harus selalu memakai racun serangga. Kalau kamu bertemu belalang sembah, cukup lihat dari jauh dan jangan menangkap atau mengganggunya, supaya ia bisa terus berburu dengan tenang. Diam-diam, ia menjaga kebun kita — dan sekarang giliran kita menjaga rumahnya, ya?
+
+> **Tahukah Kamu?** Belalang sembah tidak menyengat dan tidak berbahaya bagi manusia, padahal ia pemburu yang hebat bagi serangga!
+
+## Storyboard & Layout
+
+| Halaman | Layout | Adegan gambar | Komposisi | Suasana | Kesinambungan |
+| --- | --- | --- | --- | --- | --- |
+| 1. Si Pemburu Berdoa | gambar-kanan | Belalang sembah bertengger tegak di atas daun, kaki depan terlipat seperti berdoa sambil menoleh ke samping. | Shot ESTABLISHING WIDE (pembuka): belalang sembah utuh dilihat dari samping agak jauh, tegak di atas daun dengan kaki depan terlipat seperti berdoa, memakai 70–80% lebar bingkai 4:5 di area aman tengah, margin latar ~10% di keempat sisi; seperempat bawah hanya latar tenang tanpa bagian hewan. | takjub dan penasaran | Corak dan bentuk belalang sembah yang sama dipakai di semua halaman. |
+| 2. Rumah di Kebun | gambar-atas | Belalang sembah bertengger diam di antara daun dan ranting semak, menyamar di habitatnya. | Shot CAMOUFLAGE WIDE: belalang sembah LEBIH KECIL, sekitar 40–50% lebar bingkai, setengah tersembunyi menyamar di antara daun dan ranting semak — pembaca harus menemukannya di antara dedaunan; tubuh tetap utuh di area aman tengah dengan margin di semua sisi; seperempat bawah hanya latar tenang. | tenang dan tersembunyi | Semak dan daun kebun yang sama dengan halaman 1. |
+| 3. Pemburu Serangga Kecil | gambar-kiri | Belalang sembah menyambar seekor lalat kecil dengan kaki depannya yang berduri sambil tetap bertengger di daun. | Shot ACTION CLOSE-UP: momen menyambar — belalang lebih besar di bingkai dengan sudut diagonal yang dinamis, kaki depan berduri terentang ke arah lalat kecil di dekatnya; seluruh tubuh tetap utuh di area aman tengah dengan margin di semua sisi; seperempat bawah hanya latar tenang. | tegang dan seru | Daun tempat bertengger yang sama dengan halaman sebelumnya, dan lalat kecil sebagai mangsa baru. |
+| 4. Kepala yang Bisa Menoleh | gambar-penuh | Belalang sembah menolehkan kepalanya ke arah lalat sambil bersiap menyambar dengan kaki depannya. | Shot HEAD-FOCUS THREE-QUARTER: dilihat tiga perempat dari sedikit atas — kepala segitiga menoleh ke arah penonton dan lalat di dekatnya, mata majemuk besar jadi titik fokus; seluruh badan tetap utuh di area aman tengah dengan margin di keempat sisi; seperempat bawah hanya latar tenang. | takjub dan kagum | Belalang sembah dan lalat yang sama seperti halaman 3. |
+| 5. Tumbuh dan Berganti Kulit | gambar-kiri | Belalang sembah dewasa bertengger di ranting di samping sarang telur ooteka berwarna cokelat yang menempel di ranting. | Shot LIFE-CYCLE / MULTI-SUBJECT: framing lebih lebar — belalang dewasa di ranting di samping ooteka cokelat yang menempel, plus satu nimfa kecil tak bersayap di dekatnya; dua subjek beda skala, keduanya utuh di area aman tengah dengan margin di semua sisi; seperempat bawah hanya latar tenang. | penasaran dan hangat | Ranting dan daun kebun yang sama, serta ooteka cokelat yang baru muncul di halaman ini. |
+| 6. Penjaga Kebun Kita | gambar-kanan | Belalang sembah bertengger tenang di atas daun di kebun yang sehat, menghadap ke tanaman hijau. | Shot WIDE ENVIRONMENT: kebun hijau sehat yang luas memenuhi bingkai; belalang kecil, sekitar 35–45% lebar bingkai, bertengger di daun di area tengah dengan banyak ruang kebun lega di sekelilingnya; tubuh tetap utuh dengan margin di semua sisi; seperempat bawah hanya latar tenang. | hangat dan peduli | Kebun, daun, dan belalang sembah yang sama seperti halaman-halaman sebelumnya. |
+
+**Jangkar penampilan hewan:** A slender green praying mantis with a long, narrow leaf-green body, a small triangular head, two very large bulging compound eyes, and two long, spiny front legs folded together like praying hands. It has a thin abdomen, four slender walking legs, and delicate folded wings along its back.
+
+**Jangkar habitat:** A sunny tropical Indonesian garden with leafy green shrubs, tall grass, broad leaves, small white flowers, soft morning sunlight filtering through leaves, and a calm, fresh, natural mood.
+
+## Panduan Gambar Buku Fauna (mengikat untuk semua gambar buku ini)
+
+Panduan ini mengikat: perintah gambar sampul dan semua halaman di semua buku selalu memuat panduan ini, dan setiap gambar dicek dengan daftar periksa di bawah sebelum tampil. Tujuannya satu — hewan selalu tampil utuh dan langsung kebaca oleh anak kelas 2 SD.
+
+1. Hewan utuh selalu: seluruh tubuh hewan — kepala, badan, kaki/sayap/sirip, dan ekor — terlihat lengkap di dalam bingkai, dari kepala sampai ekor.
+2. Ruang aman di semua sisi: ada jarak latar yang jelas (kira-kira sepersepuluh bingkai) antara hewan dan setiap tepi gambar; hewan tidak pernah menyentuh atau melewati tepi.
+3. Dilarang close-up ekstrem: jangan memperbesar satu bagian tubuh atau pola kulit sampai hewannya sendiri hilang. Detail boleh ditonjolkan hanya bila seluruh hewan tetap terlihat dalam bingkai yang sama.
+4. Langsung kebaca sekali lihat: anak kelas 2 harus bisa mengenali hewannya dan apa yang sedang ia lakukan dalam sekali pandang — satu subjek yang jelas, satu aksi yang jelas.
+5. Latar habitat lengkap tapi selalu di belakang: habitat digambar utuh dan mudah dikenali di belakang dan di sekeliling hewan; tidak ada tanaman, batu, atau benda apa pun yang menutupi kepala atau tubuh hewan.
+6. Tanpa teks di dalam gambar: tidak ada kata, huruf, atau angka di gambar. Semua tulisan dipasang sebagai teks asli di halaman buku, bukan digambar.
+7. Rasio gambar 4:5 potret, selalu: setiap gambar halaman digambar dalam bingkai potret 4:5 (tegak, 1408x1760) — BUKAN lanskap. Halaman dibaca potret satu halaman penuh: gambar 4:5 berdiri di atas, teks di zona kertas di bawahnya. Hewan memakai sebagian besar lebar bingkai — sekitar 70–80% — supaya gambarnya terasa penuh dan hewannya besar, tetap utuh dengan ruang aman latar di semua sisi, dan teks TIDAK dicetak di dalam gambar.
+8. Seperempat bawah = safe space transisi: seperempat bagian bawah gambar WAJIB tenang — latar depan sederhana minim detail (tanah lembut, air, atau rumput polos) yang warnanya melebur perlahan (gradasi mulus, tanpa garis keras) ke arah warna kertas krem buku. Di mode baca, safe space inilah yang bertransisi langsung ke teks di bawahnya, jadi hewan dan detail penting TIDAK BOLEH masuk ke seperempat bawah ini; hewan berdiri di tiga perempat atas bingkai, kakinya boleh menyentuh tepi atas safe space.
+9. Realistis, bukan kartun: ilustrasi semi-realistis bergaya buku panduan alam modern — proporsi tubuh alami (kepala dan mata seukuran aslinya, tidak dibesarkan, tidak imut/chibi), warna persis warna asli spesiesnya (palet buku hanya memandu habitat dan latar, tidak mewarnai ulang hewan jadi warna kartun cerah), tekstur permukaan detail (sisik yang bertumpuk, helaian bulu, bulu halus terlihat satu per satu), serta cahaya dan bayangan lembut yang realistis sehingga hewan terasa bervolume dan berat. Dilarang: garis tepi hitam tebal ala kartun, bidang warna datar tanpa gradasi/bayangan, bentuk geometris yang disederhanakan, dan shading sel kartun.
+10. Crop-safe — margin aman di KEEMPAT sisi: seluruh hewan harus utuh di dalam frame dengan margin yang jelas di keempat sisi — minimal sekitar 10% lebar/tinggi frame dari setiap tepi (atas, bawah, kiri, kanan). Kepala sampai ekor kelihatan penuh; tidak ada satu pun bagian hewan yang menyentuh, melewati, atau terpotong tepi frame. Aturan ini lahir dari halaman 4 'Rahasia Tahan Tanpa Makan' yang ke-crop di tablet: ularnya hanya kelihatan sebagian badan di tepi bawah dan kepalanya tidak kelihatan sama sekali.
+11. Crop-safe — hewan di area aman tengah: hewan wajib berada di area aman tengah, kira-kira 80% bagian tengah frame — jangan pernah menaruh subjek dekat tepi. Alasannya: gambar yang sama bisa tampil sedikit terpotong saat ditampilkan di layar yang berbeda (phone vs tablet portrait), jadi komposisi harus tetap aman walaupun tepinya kepotong sedikit. Kalau ragu, kecilkan sedikit hewannya dan beri latar lebih lega daripada menaruhnya mepet tepi.
+12. Crop-safe — zona melt bawah HANYA berisi latar: seperempat bawah gambar (zona melt / safe space yang meleleh lewat gradasi ke teks di bawahnya) HANYA boleh berisi latar/habitat — tanah, air, rumput polos, atau latar tenang lain. Tidak boleh ada bagian hewan apa pun di zona itu: tidak ada badan, tidak ada kaki/sayap/sirip, dan terutama tidak ada kepala atau ekor yang masuk ke zona melt. Hewan selesai sepenuhnya di atas zona melt; kakinya hanya boleh menyentuh tepi atas zona itu.
+13. Crop-safe — QA wajib dicek di tablet portrait juga: setiap gambar hasil generate/regenerate wajib dicek tampilannya di ukuran tablet portrait (2136x3200) selain di phone. Gambar yang lolos QA di phone BELUM TENTU lolos di tablet — halaman 4 lolos di phone tetapi ke-crop di tablet — jadi gambar belum boleh dinyatakan lolos sebelum tampil utuh (kepala sampai ekor, margin aman terlihat) di kedua ukuran itu.
+14. Variasi shot — kamera wajib berpindah antar halaman: dalam satu buku, TIDAK ADA dua halaman yang boleh memakai jenis shot yang sama. Setiap buku wajib merotasi minimal 4 jenis shot berbeda dari daftar ini: (a) establishing wide — tampak lebar pembuka, hewan utuh memakai sekitar 70–80% lebar bingkai; (b) camouflage/hidden — hewan LEBIH KECIL (sekitar 40–50% lebar bingkai), setengah tersembunyi menyamar di habitatnya, pembaca harus menemukannya; (c) action close-up — momen aksi, hewan lebih besar di bingkai dengan sudut dinamis/diagonal, seluruh tubuh tetap utuh; (d) head-focus three-quarter — dilihat tiga perempat, kepala dan mata jadi titik fokus, seluruh badan tetap utuh di area aman; (e) life-cycle/multi-subject — dua subjek atau lebih dengan skala berbeda dalam framing lebih lebar (misalnya dewasa + anak/ooteka); (f) wide environment — lingkungan luas memenuhi bingkai, hewan kecil (sekitar 35–45% lebar bingkai) di tengahnya. Generator storyboard wajib menetapkan satu jenis shot BERBEDA untuk setiap halaman sejak awal dan menuliskannya di awal composition halaman itu; skala hewan mengikuti jenis shot-nya, BUKAN selalu 70–80%. Semua aturan lain tetap mengikat di setiap shot: hewan utuh, margin aman ~10% di keempat sisi, hewan di area aman tengah, seperempat bawah hanya latar. QA wajib memeriksa VARIASI SHOT antar halaman sebelum buku dinyatakan siap — bukan hanya memeriksa tiap gambar satu per satu. Aturan ini lahir dari buku Belalang Sembah yang keenam halamannya memakai komposisi hampir copy-paste (samping agak jauh, 70–80%, di tengah) sehingga bukunya terasa monoton walau adegannya berbeda.
+
+**Daftar periksa QA sebelum gambar tampil:**
+
+- [ ] Subjek utuh? Seluruh hewan terlihat dari kepala sampai ekor.
+- [ ] Kepala terlihat? Kepala hewan tampak jelas dan lengkap.
+- [ ] Tidak terpotong tepi? Tidak ada bagian tubuh yang kepotong tepi gambar mana pun.
+- [ ] Rasio 4:5 potret? Gambar tegak 4:5 (1408x1760), hewan memakai sebagian besar lebar bingkai (sekitar 70–80%) di tiga perempat atasnya.
+- [ ] Safe space bawah bersih? Seperempat bawah gambar tenang dan minim detail, melebur gradasi ke warna kertas — tidak ada hewan atau detail penting di sana, siap bertransisi ke teks.
+- [ ] Tidak ada teks liar? Gambar bebas kata, huruf, dan angka.
+- [ ] Sekali lihat kebaca? Anak langsung tahu hewan apa ini dan sedang apa.
+- [ ] Cukup realistis? Proporsi alami, mata tidak dibesarkan, warna sesuai spesies aslinya, tekstur permukaan detail, ada cahaya-bayangan lembut — tidak terlihat seperti kartun pipih bergaris tebal.
+- [ ] Margin aman keempat sisi? Ada jarak latar yang jelas (minimal ~10% frame) antara hewan dan SETIAP tepi — atas, bawah, kiri, kanan — dan tidak ada bagian hewan yang menyentuh atau memotong tepi mana pun.
+- [ ] Hewan di area aman tengah? Seluruh hewan berada di ~80% bagian tengah frame, tidak ada bagian subjek yang ditaruh dekat tepi, jadi gambar tetap aman walau tampil sedikit terpotong di layar lain.
+- [ ] Zona melt bawah bersih total? Seperempat bawah gambar HANYA berisi latar/habitat — tidak ada badan, kaki, sayap, sirip, kepala, atau ekor hewan di zona melt itu.
+- [ ] Sudah dicek di tablet portrait? Gambar sudah dilihat di ukuran tablet portrait (2136x3200) DAN di phone, dan hewan tampil utuh kepala sampai ekor dengan margin aman di kedua ukuran itu — lolos di phone saja tidak cukup.
+- [ ] Variasi shot antar halaman? Setiap halaman memakai jenis shot yang BERBEDA (establishing wide / camouflage-hidden / action close-up / head-focus three-quarter / life-cycle multi-subject / wide environment) dan buku merotasi minimal 4 jenis shot — tidak ada dua halaman dengan kamera, jarak, dan skala hewan yang sama.
