@@ -213,38 +213,42 @@ function esc(s) { var d = document.createElement("div"); d.textContent = s == nu
 </script>"""
 
 private val SHELF_HEAD = """<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{font-family:sans-serif;background:#FBF3E4;color:#2E2A23}
+body{font-family:'Nunito',sans-serif;background:#FBF3E4;color:#2E2A23}
+button{font-family:inherit}
 .wrap{max-width:768px;margin:0 auto;padding:16px 16px 40px}
-h1{font-size:32px;margin:8px 0 4px;font-weight:800}
-.sub{color:#7A6F5C;font-size:16px;margin:0;line-height:1.45}
-.statusbar{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:#FFFAF0;border-radius:14px;padding:10px 12px}
+h1{font-family:'Fredoka','Nunito',sans-serif;font-size:36px;margin:8px 0 4px;font-weight:600}
+.sub{color:#7A6F5C;font-size:16px;font-weight:600;margin:0;line-height:1.45}
+.statusbar{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:#FFFAF0;border-radius:24px;padding:14px 16px;box-shadow:inset 0 2px 0 rgba(255,255,255,.65), inset 0 -3px 0 rgba(46,42,35,.06), 0 14px 28px -12px rgba(80,55,15,.35)}
 .statusbar .ver{font-size:13px;font-weight:700;color:#7A6F5C}
-.refresh{margin-left:auto;background:#F2A93B;color:#2E2A23;border:0;border-radius:999px;padding:10px 16px;font-size:15px;font-weight:800;cursor:pointer;min-height:44px}
+.refresh{margin-left:auto;background:#F2A93B;color:#2E2A23;border:0;border-radius:999px;padding:10px 18px;font-size:15px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;cursor:pointer;min-height:44px;box-shadow:inset 0 2px 0 rgba(255,255,255,.35), inset 0 -4px 0 rgba(0,0,0,.16), 0 10px 20px -10px rgba(80,55,15,.45)}
+.refresh:active{transform:translateY(2px)}
 .status{font-size:14px;font-weight:700;color:#14665A;margin:10px 2px 0}
-.case{margin-top:16px;border:10px solid #6B4423;border-radius:22px;background:#FDF6E3;overflow:hidden;box-shadow:0 22px 44px -16px rgba(80,50,15,.5)}
+.case{margin-top:18px;border:12px solid #6B4423;border-radius:30px;background:#FDF6E3;overflow:hidden;box-shadow:0 28px 52px -18px rgba(80,50,15,.6)}
 .shelf-row{display:flex;gap:10px;padding:14px 10px 0;list-style:none;margin:0}
 .bookcell{flex:1;min-width:0;display:flex;flex-direction:column;padding-bottom:12px}
-.book{position:relative;display:block;width:100%;max-width:190px;margin:0 auto;border-radius:3px 8px 8px 3px;overflow:hidden;box-shadow:0 14px 20px -8px rgba(60,35,8,.55);text-decoration:none;background:#F3E8CF}
-.book img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.book{position:relative;display:block;width:100%;max-width:190px;margin:0 auto;border-radius:4px 12px 12px 4px;overflow:hidden;box-shadow:0 16px 24px -8px rgba(60,35,8,.6);text-decoration:none;background:#F3E8CF}
+.book img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
 .book .scrim{position:absolute;left:0;right:0;top:0;height:52%}
-.book .ctitle{position:absolute;left:0;right:0;top:0;padding:10px 12px 4px;text-align:center;font-weight:800;font-size:15px;line-height:1.25}
+.book .ctitle{position:absolute;left:0;right:0;top:0;padding:10px 12px 4px;text-align:center;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;font-size:15px;line-height:1.25}
 .book .spine{position:absolute;top:0;bottom:0;left:0;width:9px;background:linear-gradient(to right, rgba(0,0,0,.35), rgba(0,0,0,.10), rgba(0,0,0,0))}
 .book .fore{position:absolute;top:0;bottom:0;right:0;width:4px;background:repeating-linear-gradient(to right, rgba(120,100,60,.25) 0 1px, rgba(255,252,244,.95) 1px 2.5px)}
-.plank{height:16px;background:linear-gradient(to bottom, #C89B62 0%, #8A5A33 45%, #6B4423 100%);box-shadow:0 10px 14px -6px rgba(60,35,8,.55)}
-.plankshadow{height:7px;background:rgba(0,0,0,.10)}
-.tag{margin:10px auto 0;width:100%;max-width:190px;background:rgba(255,250,240,.95);border-radius:12px;padding:8px 10px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.tag .topic{display:block;font-size:13px;font-weight:700;line-height:1.3}
+.plank{height:20px;background:linear-gradient(to bottom, #C89B62 0%, #8A5A33 45%, #6B4423 100%);box-shadow:inset 0 2px 0 rgba(255,235,200,.5), 0 14px 18px -8px rgba(60,35,8,.6)}
+.plankshadow{height:8px;background:rgba(0,0,0,.10)}
+.tag{margin:12px auto 0;width:100%;max-width:190px;background:rgba(255,250,240,.95);border-radius:18px;padding:10px;text-align:center;box-shadow:inset 0 2px 0 rgba(255,255,255,.6), inset 0 -2px 0 rgba(46,42,35,.05), 0 8px 16px -8px rgba(80,55,15,.3)}
+.tag .topic{display:block;font-size:13px;font-weight:800;line-height:1.3}
 .tag .sty{display:block;font-size:11px;font-weight:600;color:#7A6F5C;line-height:1.3}
 .tag .strip{display:flex;gap:3px;margin-top:6px}
 .tag .strip i{flex:1;height:8px;border-radius:99px;display:block}
 .tag .meta{display:block;margin-top:4px;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#7A6F5C}
 .empty{padding:40px 24px 8px;text-align:center}
-.empty .lion{font-size:48px;margin:0}
-.empty h2{font-size:22px;margin:10px 0 4px}
-.empty p{color:#7A6F5C;margin:0 auto;max-width:360px;line-height:1.5}
+.empty .lion{font-size:56px;margin:0}
+.empty h2{font-family:'Fredoka','Nunito',sans-serif;font-size:24px;font-weight:600;margin:10px 0 4px}
+.empty p{color:#7A6F5C;font-weight:600;margin:0 auto;max-width:360px;line-height:1.5}
 .gap{height:40px}
 @media (prefers-color-scheme: dark){
 body{background:#221C14;color:#F5ECD9}
@@ -259,7 +263,7 @@ body{background:#221C14;color:#F5ECD9}
 </style></head>
 <body>
 <div class="wrap">
-<h1>Rak Buku Fauna</h1>
+<h1>&#129409; Rak Buku Fauna</h1>
 <p class="sub">Pilih buku di rak, lalu buka dan balik halamannya seperti buku beneran — satu halaman penuh, tanpa scroll.</p>
 <div id="app"></div>
 </div>
@@ -315,10 +319,13 @@ renderShelf();
 </script>"""
 
 private val READER_HEAD = """<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;height:100%}
-body{font-family:sans-serif;overflow:hidden;background:#171106;color:#F5ECD9}
+body{font-family:'Nunito',sans-serif;overflow:hidden;background:#171106;color:#F5ECD9}
+button{font-family:inherit}
 #stage{position:fixed;inset:0;perspective:1800px;perspective-origin:50% 50%}
 #leaf{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;backface-visibility:hidden}
 @keyframes flipNext{0%{opacity:.3;transform:rotateY(-58deg);filter:brightness(.8) drop-shadow(-24px 14px 28px rgba(0,0,0,.45))}55%{opacity:1;filter:brightness(.96) drop-shadow(-8px 5px 14px rgba(0,0,0,.28))}100%{opacity:1;transform:rotateY(0deg);filter:brightness(1)}}
@@ -334,54 +341,57 @@ body{font-family:sans-serif;overflow:hidden;background:#171106;color:#F5ECD9}
 .bottomstack{position:absolute;left:0;right:0;bottom:0;height:6px;background:repeating-linear-gradient(to bottom, rgba(120,100,60,.18) 0 1.5px, rgba(255,252,244,.9) 1.5px 3.5px);z-index:30;pointer-events:none}
 #topbar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:flex-start;padding:10px 12px;pointer-events:none}
 #topbar a,#topbar span{pointer-events:auto}
-#backbtn{background:rgba(0,0,0,.35);color:#F5ECD9;text-decoration:none;font-weight:700;font-size:15px;padding:12px 16px;border-radius:999px;display:inline-block}
-#toplabel{background:rgba(0,0,0,.35);color:#E8DCC2;font-weight:700;font-size:13px;padding:8px 14px;border-radius:999px}
+#backbtn{background:rgba(20,30,20,.55);color:#F5ECD9;text-decoration:none;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;font-size:15px;padding:12px 18px;border-radius:999px;display:inline-block;box-shadow:inset 0 2px 0 rgba(255,255,255,.14), inset 0 -3px 0 rgba(0,0,0,.28), 0 16px 32px -12px rgba(0,0,0,.55)}
+#toplabel{background:rgba(20,30,20,.5);color:#E8DCC2;font-weight:700;font-size:13px;padding:9px 15px;border-radius:999px;box-shadow:inset 0 2px 0 rgba(255,255,255,.14), inset 0 -3px 0 rgba(0,0,0,.28), 0 16px 32px -12px rgba(0,0,0,.55)}
 .edge{position:fixed;top:0;bottom:0;width:13%;z-index:10;background:transparent;border:0;padding:0;cursor:pointer}
 #edgeL{left:0}
 #edgeR{right:0}
 .edge[disabled]{cursor:default}
-#pill{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:20;display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.45);border-radius:999px;padding:6px;box-shadow:0 8px 20px rgba(0,0,0,.35)}
-#pill button{width:44px;height:44px;border-radius:999px;border:0;font-size:20px;font-weight:800;color:#F5ECD9;background:rgba(255,255,255,.10);cursor:pointer}
+#pill{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:20;display:flex;align-items:center;gap:10px;background:rgba(20,30,20,.88);border-radius:999px;padding:8px;box-shadow:inset 0 2px 0 rgba(255,255,255,.14), inset 0 -3px 0 rgba(0,0,0,.28), 0 16px 32px -12px rgba(0,0,0,.55)}
+#pill button{width:48px;height:48px;border-radius:999px;border:0;font-size:22px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;color:#F5ECD9;background:rgba(255,255,255,.12);cursor:pointer;box-shadow:inset 0 2px 0 rgba(255,255,255,.18), inset 0 -3px 0 rgba(0,0,0,.25)}
+#pill button:active{transform:scale(.95)}
 #pill button[disabled]{opacity:.25}
-.pillmid{display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 2px}
-#pilllabel{font-size:13px;font-weight:700;color:#F5ECD9;white-space:nowrap;line-height:1}
-.progbar{width:104px;height:5px;border-radius:99px;background:rgba(255,255,255,.20);overflow:hidden}
+.pillmid{display:flex;flex-direction:column;align-items:center;gap:5px;padding:0 2px}
+#pilllabel{font-size:13px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;color:#F5ECD9;white-space:nowrap;line-height:1}
+.progbar{width:116px;height:7px;border-radius:99px;background:rgba(255,255,255,.20);overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.35)}
 #prog{height:100%;border-radius:99px;transition:width .3s}
 .coverimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .coverscrim{position:absolute;left:0;right:0;top:0;height:46%;pointer-events:none}
 .covertitle{position:absolute;left:0;right:0;top:8%;text-align:center}
-.covertitle h2{margin:0;font-weight:800;line-height:1.08}
+.covertitle h2{margin:0;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;line-height:1.08}
+.composed h2{font-family:'Fredoka','Nunito',sans-serif;font-weight:600}
 .covertitle p{margin:8px auto 0;font-weight:600;line-height:1.35;max-width:78%}
-.platec{position:absolute;bottom:13%;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;border-radius:999px;padding:8px 16px 8px 12px;box-shadow:0 6px 16px rgba(0,0,0,.25);white-space:nowrap}
-.plate{display:inline-flex;flex-direction:column;align-items:center;gap:7px;border-radius:18px;padding:12px 20px;box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.platec{position:absolute;bottom:10%;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;border-radius:999px;padding:9px 18px 9px 13px;box-shadow:inset 0 2px 0 rgba(255,255,255,.55), inset 0 -3px 0 rgba(46,42,35,.07), 0 12px 22px -10px rgba(80,55,15,.35);white-space:nowrap}
+.plate{display:inline-flex;flex-direction:column;align-items:center;gap:7px;border-radius:24px;padding:13px 22px;box-shadow:inset 0 2px 0 rgba(255,255,255,.55), inset 0 -3px 0 rgba(46,42,35,.07), 0 12px 22px -10px rgba(80,55,15,.35)}
 .chips{display:inline-flex;gap:5px}
-.chip{display:inline-block;border-radius:5px;border:1px solid rgba(0,0,0,.10)}
-.platecap{font-weight:800}
-.platename{font-weight:800;text-transform:uppercase;letter-spacing:.16em}
+.chip{display:inline-block;border-radius:6px;border:1px solid rgba(0,0,0,.10)}
+.platecap{font-family:'Fredoka','Nunito',sans-serif;font-weight:600}
+.platename{font-family:'Fredoka','Nunito',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.16em}
 .composed{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.kicker{font-weight:700;text-transform:uppercase;letter-spacing:.22em;margin:0}
+.kicker{font-family:'Fredoka','Nunito',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.22em;margin:0}
 .imgzone{position:relative;overflow:hidden;flex:0 0 auto;width:100%}
 .zoneimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.amb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(12px);transform:scale(1.1)}
-.whole{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-.seam{position:absolute;z-index:10;pointer-events:none}
+.whole{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.meltb{position:absolute;left:0;right:0;bottom:0;height:46%;z-index:10;pointer-events:none}
+.melts{position:absolute;top:0;bottom:0;width:34%;z-index:10;pointer-events:none}
 .textzone{position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden;min-height:0;min-width:0}
 .textzone>*{flex:0 0 auto}
 .spreadhead{display:flex;align-items:center;gap:14px}
-.badge{display:flex;align-items:center;justify-content:center;border-radius:999px;color:#fff;font-weight:800;box-shadow:0 3px 8px rgba(0,0,0,.25);flex:0 0 auto}
-.spreadhead h3{margin:0;font-weight:800;line-height:1.15}
-.rule{display:flex;gap:5px}
-.rule i{display:block;height:6px;border-radius:99px}
-.anchor{border-radius:16px;font-weight:700;line-height:1.42;margin:0}
+.badge{display:flex;align-items:center;justify-content:center;border-radius:20px;color:#fff;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;box-shadow:inset 0 2px 0 rgba(255,255,255,.35), inset 0 -4px 0 rgba(0,0,0,.18), 0 10px 16px -8px rgba(80,55,15,.5);flex:0 0 auto}
+.spreadhead h3{margin:0;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;line-height:1.15}
+.rule{display:flex;gap:6px}
+.rule i{display:block;height:8px;border-radius:99px}
+.anchor{border-radius:24px;font-weight:700;line-height:1.42;margin:0;box-shadow:inset 0 2px 0 rgba(255,255,255,.5), 0 10px 18px -10px rgba(80,55,15,.3)}
 .cluster{font-weight:600;line-height:1.5;margin:0;opacity:.88}
-.callout{position:relative;border:3px solid;border-radius:18px}
-.callouttab{position:absolute;left:22px;border-radius:999px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.callout{position:relative;border:3px solid;border-radius:26px;box-shadow:inset 0 2px 0 rgba(255,255,255,.45), 0 10px 18px -10px rgba(80,55,15,.3)}
+.callouttab{position:absolute;left:22px;border-radius:999px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.14em;box-shadow:inset 0 2px 0 rgba(255,255,255,.4), inset 0 -2px 0 rgba(0,0,0,.12), 0 6px 10px -4px rgba(80,55,15,.4)}
 .callout p{margin:0;font-weight:600;line-height:1.45}
-.caption{position:absolute;z-index:10;background:rgba(255,250,240,.92);color:#5C5342;font-style:italic;font-weight:600;line-height:1.35;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.18);max-width:46%;margin:0}
-.folio{position:absolute;bottom:22px;z-index:20;border-radius:999px;font-weight:700}
-.missingbox{border:3px dashed #D8C9A8;background:#F3E8CF;border-radius:20px;text-align:center;font-weight:700;color:#7A6F5C}
+.caption{position:absolute;z-index:10;background:rgba(255,250,240,.92);color:#5C5342;font-style:italic;font-weight:600;line-height:1.35;border-radius:16px;box-shadow:inset 0 2px 0 rgba(255,255,255,.6), 0 10px 16px -8px rgba(60,35,8,.45);max-width:46%;margin:0}
+.folio{position:absolute;bottom:22px;z-index:20;border-radius:999px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;box-shadow:inset 0 2px 0 rgba(255,255,255,.22), inset 0 -2px 0 rgba(0,0,0,.3), 0 8px 14px -6px rgba(0,0,0,.4)}
+.missingbox{border:3px dashed #D8C9A8;background:#F3E8CF;border-radius:26px;text-align:center;font-weight:700;color:#7A6F5C}
 .endinner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.endbtn{display:inline-block;color:#fff;text-decoration:none;font-weight:800;border-radius:999px}
+.endinner h2{font-family:'Fredoka','Nunito',sans-serif;font-weight:600}
+.endbtn{display:inline-block;color:#fff;text-decoration:none;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;border-radius:999px;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -4px 0 rgba(0,0,0,.2), 0 14px 24px -10px rgba(80,55,15,.5)}
 </style></head>
 <body>
 <div id="stage"></div>
@@ -403,13 +413,13 @@ var aspects = {};
 var imgOk = {};
 var tiers = {};
 var TIERS = [
-  {body: 33, fact: 29, heading: 56, gap: 26, imgPct: 58},
-  {body: 30, fact: 27.5, heading: 51, gap: 24, imgPct: 55},
-  {body: 27.5, fact: 26, heading: 47, gap: 22, imgPct: 52},
-  {body: 25, fact: 24.5, heading: 43, gap: 20, imgPct: 48},
-  {body: 22.5, fact: 23, heading: 39, gap: 18, imgPct: 44},
-  {body: 20.5, fact: 21.5, heading: 36, gap: 16, imgPct: 40},
-  {body: 19, fact: 20, heading: 33, gap: 14, imgPct: 36}
+  {body: 33, fact: 29, heading: 56, gap: 26, imgPct: 64},
+  {body: 30, fact: 27.5, heading: 51, gap: 24, imgPct: 61},
+  {body: 27.5, fact: 26, heading: 47, gap: 22, imgPct: 58},
+  {body: 25, fact: 24.5, heading: 43, gap: 20, imgPct: 54},
+  {body: 22.5, fact: 23, heading: 39, gap: 18, imgPct: 50},
+  {body: 20.5, fact: 21.5, heading: 36, gap: 16, imgPct: 46},
+  {body: 19, fact: 20, heading: 33, gap: 14, imgPct: 42}
 ];
 function isLandscape() { return window.innerWidth / Math.max(1, window.innerHeight) > 1.05; }
 function S() {
@@ -506,14 +516,14 @@ function spreadHtml(p, pi, t) {
     + '<h3 style="font-size:' + Math.max(16, px(t.heading)) + 'px;color:' + pal.ink + '">' + esc(p.heading) + '</h3></div>'
     + '<div class="rule">' + rule + '</div>'
     + '<p class="anchor" style="font-size:' + Math.max(13, px(t.body + 4.5)) + 'px;color:' + pal.ink
-    + ';background:' + pal.wash + ';box-shadow:inset ' + Math.max(3, px(6)) + 'px 0 0 ' + pal.colors[0]
+    + ';background:' + pal.wash + ';box-shadow:inset ' + Math.max(4, px(8)) + 'px 0 0 ' + pal.colors[0] + ', inset 0 2px 0 rgba(255,255,255,.5), 0 10px 18px -10px rgba(80,55,15,.3)'
     + ';padding:' + Math.max(8, px(16)) + 'px ' + Math.max(10, px(22)) + 'px">' + esc(parts.anchor) + '</p>';
   if (parts.cluster) {
     h += '<p class="cluster" style="font-size:' + Math.max(12, px(t.body)) + 'px;color:' + pal.ink + '">' + esc(parts.cluster) + '</p>';
   }
   h += '<div class="callout" style="border-color:' + pal.callout + ';background:' + pal.callout + '26'
     + ';padding:' + Math.max(14, px(30)) + 'px ' + Math.max(12, px(30)) + 'px ' + Math.max(10, px(22)) + 'px'
-    + ';margin-top:' + Math.max(6, px(10)) + 'px">'
+    + ';margin-top:' + Math.max(6, px(12)) + 'px">'
     + '<span class="callouttab" style="background:' + pal.callout + ';color:' + pal.calloutInk
     + ';top:' + (-Math.max(9, px(17))) + 'px;font-size:' + Math.max(10, px(17)) + 'px;padding:'
     + Math.max(2, px(3)) + 'px ' + Math.max(8, px(14)) + 'px">&#128161; Tahukah Kamu?</span>'
@@ -568,48 +578,49 @@ function pageHtml(p, pi) {
   var sa = p.storyboard && p.storyboard.sceneAction ? p.storyboard.sceneAction : "";
   var caption = "";
   if (isLandscape()) {
-    var imgPct = Math.min(66, t.imgPct + 8 + (p.layout === "gambar-penuh" ? 4 : 0));
+    // Row ratio (Space parity): the 4:5 picture fills its column's
+    // full height (cover-fit biased to the top of the frame, where
+    // the animal lives) and melts sideways into the paper — no
+    // blurred ambience anywhere.
+    var imgPct = Math.min(58, t.imgPct - 6 + (p.layout === "gambar-penuh" ? 4 : 0));
     var right = p.layout === "gambar-kanan";
-    var seamStyle = right
-      ? "left:0;top:0;bottom:0;width:54px;background:linear-gradient(to left, " + pal.paper + "00 0%, " + pal.paper + " 100%)"
-      : "right:0;top:0;bottom:0;width:54px;background:linear-gradient(to right, " + pal.paper + "00 0%, " + pal.paper + " 100%)";
+    var meltStyle = right
+      ? "left:0;background:linear-gradient(to left, " + pal.paper + "00 0%, " + pal.paper + "2E 42%, " + pal.paper + "85 74%, " + pal.paper + " 100%)"
+      : "right:0;background:linear-gradient(to right, " + pal.paper + "00 0%, " + pal.paper + "2E 42%, " + pal.paper + "85 74%, " + pal.paper + " 100%)";
     if (sa) {
-      caption = '<p class="caption" style="bottom:' + px(76) + 'px;' + (right ? "right:" + px(22) + "px" : "left:" + px(22) + "px")
-        + ';font-size:' + Math.max(11, px(19)) + 'px;padding:' + Math.max(6, px(10)) + 'px ' + Math.max(9, px(16)) + 'px">'
+      caption = '<p class="caption" style="top:' + px(84) + 'px;' + (right ? "right:" + px(22) + "px" : "left:" + px(22) + "px")
+        + ';font-size:' + Math.max(11, px(19)) + 'px;padding:' + Math.max(6, px(11)) + 'px ' + Math.max(9, px(17)) + 'px">'
         + esc(sa) + '</p>';
     }
     return '<div class="sheet" style="background:' + pal.paper + ';color:' + pal.ink + ';display:flex;flex-direction:' + (right ? "row-reverse" : "row") + '">'
       + '<div class="imgzone" style="width:' + imgPct + '%;height:100%">'
-      + '<img class="amb" src="' + p.image + '" alt=""/><img class="whole" src="' + p.image + '" alt=""/>'
-      + '<div class="seam" style="' + seamStyle + '"></div>' + caption + '</div>'
-      + '<div id="textzone" class="textzone" style="flex:1;height:100%;gap:' + px(t.gap) + 'px;padding:' + px(36) + 'px ' + px(44) + 'px;' + paperBg() + '">'
+      + '<img class="whole" src="' + p.image + '" alt=""/>'
+      + '<div class="melts" style="' + meltStyle + '"></div>' + caption + '</div>'
+      + '<div id="textzone" class="textzone" style="flex:1;height:100%;gap:' + px(t.gap) + 'px;padding:' + px(36) + 'px ' + px(44) + 'px ' + (px(36) + 132) + 'px;' + paperBg() + '">'
       + spreadHtml(p, pi, t) + '</div>'
       + folio + '</div>';
   }
-  var cap = Math.min(66, t.imgPct + (p.layout === "gambar-penuh" ? 8 : 0));
+  var cap = Math.min(72, t.imgPct + (p.layout === "gambar-penuh" ? 6 : 0));
   var sheetRatio = window.innerWidth / Math.max(1, window.innerHeight);
   var asp = aspects[key];
   var naturalPct = asp ? (sheetRatio * 100) / asp : cap;
-  // Bigger zone, never a cropped animal (Space parity): the zone
-  // may grow past the natural height (up to 1.6x natural, capped by
-  // the tier share) so the illustration claims more of a tall
-  // portrait screen, but the picture is always shown whole
-  // (contain) over a blurred ambience copy of itself — the extra
-  // height is the picture's own colors, never a crop. A cover-zoom
-  // was tried and rejected: any side crop eats the edges of a
-  // wide-spanning animal (page 5's snake).
-  var zonePct = naturalPct <= cap
-    ? Math.max(30, Math.min(naturalPct * 1.6, cap))
-    : Math.max(28, cap);
-  var seamB = '<div class="seam" style="left:0;right:0;bottom:0;height:54px;background:linear-gradient(to bottom, ' + pal.paper + '00 0%, ' + pal.paper + ' 100%)"></div>';
-  var zoneInner = '<img class="amb" src="' + p.image + '" alt=""/><img class="whole" src="' + p.image + '" alt=""/>' + seamB;
+  // The 4:5 law (Space parity): the zone IS the picture's own shape
+  // — natural height at full sheet width, capped by the tier share —
+  // and the picture fills it edge to edge (cover-fit, top-biased so
+  // any squeeze spends itself on the calm safe-space bottom, never
+  // on the animal). No blurred ambience, no filler bars. The melt
+  // gradient lives inside the picture's safe-space quarter and
+  // lands on solid paper exactly where the text zone begins.
+  var zonePct = Math.min(Math.max(naturalPct, 30), cap);
+  var meltB = '<div class="meltb" style="background:linear-gradient(to bottom, ' + pal.paper + '00 0%, ' + pal.paper + '2E 42%, ' + pal.paper + '85 74%, ' + pal.paper + ' 100%)"></div>';
+  var zoneInner = '<img class="whole" src="' + p.image + '" alt=""/>' + meltB;
   if (sa) {
-    caption = '<p class="caption" style="bottom:' + px(76) + 'px;left:' + px(22) + 'px;font-size:' + Math.max(11, px(19)) + 'px;padding:'
-      + Math.max(6, px(10)) + 'px ' + Math.max(9, px(16)) + 'px">' + esc(sa) + '</p>';
+    caption = '<p class="caption" style="top:' + px(84) + 'px;left:' + px(22) + 'px;font-size:' + Math.max(11, px(19)) + 'px;padding:'
+      + Math.max(6, px(11)) + 'px ' + Math.max(9, px(17)) + 'px">' + esc(sa) + '</p>';
   }
   return '<div class="sheet" style="background:' + pal.paper + ';color:' + pal.ink + ';display:flex;flex-direction:column">'
     + '<div class="imgzone" style="height:' + zonePct + '%">' + zoneInner + caption + '</div>'
-    + '<div id="textzone" class="textzone" style="flex:1;justify-content:flex-start;gap:' + px(t.gap) + 'px;padding:' + px(22) + 'px ' + px(48) + 'px ' + px(44) + 'px;' + paperBg() + '">'
+    + '<div id="textzone" class="textzone" style="flex:1;justify-content:flex-start;gap:' + px(t.gap) + 'px;padding:' + px(20) + 'px ' + px(48) + 'px ' + (px(44) + 132) + 'px;' + paperBg() + '">'
     + spreadHtml(p, pi, t) + '</div>'
     + folio + '</div>';
 }
@@ -642,7 +653,9 @@ function render() {
   var prog = document.getElementById("prog");
   prog.style.width = ((idx + 1) / total * 100) + "%";
   prog.style.background = accent;
+  document.getElementById("pill").style.background = pal.deep + "E0";
   document.getElementById("nextBtn").style.background = accent;
+  document.getElementById("nextBtn").style.boxShadow = "inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 0 rgba(0,0,0,.22)";
   document.getElementById("prevBtn").disabled = idx === 0;
   document.getElementById("nextBtn").disabled = idx >= total - 1;
   document.getElementById("edgeL").disabled = idx === 0;
