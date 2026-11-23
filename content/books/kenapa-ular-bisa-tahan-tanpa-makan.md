@@ -10,7 +10,7 @@ _Topik: Kenapa ular bisa tahan tanpa makan · Gaya gambar: semi-realistis_
 
 ![Kenalan dengan Ular](../images/kenapa-ular-bisa-tahan-tanpa-makan/page-1.webp)
 
-Ular adalah reptil, yaitu hewan bersisik yang tubuhnya panjang, lentur, dan tidak mempunyai kaki. Sisiknya melindungi tubuhnya, sedangkan pola belang, bintik, atau garis pada kulitnya membantunya bersembunyi di antara daun dan tanah. Lidahnya yang bercabang sering dijulurkan untuk menangkap bau di udara, dan matanya membantunya melihat gerakan di sekitarnya. Ular sanca, salah satu ular di Indonesia, dikenal sebagai salah satu ular terpanjang di dunia.
+Ular adalah reptil. Tubuhnya panjang dan lentur, bersisik, dan tidak mempunyai kaki. Sisik melindungi tubuhnya, dan pola belang, bintik, atau garis pada kulitnya membantunya bersembunyi di antara daun dan tanah. Lidahnya bercabang dan sering dijulurkan untuk menangkap bau di udara. Matanya membantunya melihat gerakan di sekitarnya. Ular sanca, salah satu ular di Indonesia, dikenal sebagai salah satu ular terpanjang di dunia.
 
 > **Tahukah Kamu?** Ular tidak mempunyai kelopak mata, jadi matanya dilindungi lapisan bening dan selalu terbuka, bahkan saat ia tidur.
 
@@ -18,7 +18,7 @@ Ular adalah reptil, yaitu hewan bersisik yang tubuhnya panjang, lentur, dan tida
 
 ![Rumah Ular di Alam](../images/kenapa-ular-bisa-tahan-tanpa-makan/page-2.webp)
 
-Ular tinggal di banyak tempat, seperti hutan hujan, sawah, tepi sungai, padang rumput, dan bahkan gurun. Ada ular yang hidup di pohon, ada yang pandai berenang di air, dan ada pula yang bersembunyi di dalam tanah atau di bawah batu. Karena ular adalah hewan berdarah dingin, artinya suhu tubuhnya mengikuti suhu di sekitarnya, ia suka berjemur di bawah sinar matahari untuk menghangatkan tubuh. Saat udara terlalu panas atau terlalu dingin, ular akan bersembunyi di tempat teduh atau di dalam lubang agar tubuhnya tetap nyaman.
+Ular tinggal di banyak tempat, seperti hutan hujan, sawah, tepi sungai, padang rumput, dan bahkan gurun. Ada yang hidup di pohon, ada yang pandai berenang di air, dan ada pula yang bersembunyi di dalam tanah atau di bawah batu. Ular adalah hewan berdarah dingin: suhu tubuhnya mengikuti suhu di sekitarnya. Karena itu ia suka berjemur di bawah sinar matahari untuk menghangatkan tubuh. Saat udara terlalu panas atau terlalu dingin, ular bersembunyi di tempat teduh atau di dalam lubang agar tubuhnya tetap nyaman.
 
 > **Tahukah Kamu?** Ada ular laut yang ekornya pipih seperti dayung, sehingga ia bisa berenang dengan cepat di laut.
 
@@ -26,7 +26,7 @@ Ular tinggal di banyak tempat, seperti hutan hujan, sawah, tepi sungai, padang r
 
 ![Makanan dan Cara Berburu](../images/kenapa-ular-bisa-tahan-tanpa-makan/page-3.webp)
 
-Ular adalah karnivora, yaitu hewan pemakan daging, dan ia memangsa tikus, burung, katak, ikan, telur, serta hewan kecil lainnya. Ular tidak mengunyah makanannya, melainkan menelannya bulat-bulat dengan bantuan rahangnya yang bisa membuka sangat lebar dan gigi yang melengkung ke belakang untuk menahan mangsa. Ada ular yang melilit mangsanya dengan kuat, ada yang menggunakan bisa, yaitu cairan beracun, untuk melumpuhkan mangsa, dan ada pula yang menunggu dengan sabar sampai mangsa datang mendekat. Setelah menelan satu mangsa yang besar, ular bisa merasa kenyang untuk waktu yang sangat lama.
+Ular adalah karnivora, hewan pemakan daging. Ia memangsa tikus, burung, katak, ikan, telur, serta hewan kecil lainnya. Ular tidak mengunyah makanannya. Ia menelannya bulat-bulat, dengan rahang yang bisa membuka sangat lebar dan gigi yang melengkung ke belakang untuk menahan mangsa. Ada ular yang melilit mangsanya dengan kuat, ada yang memakai bisa untuk melumpuhkan mangsa, dan ada pula yang menunggu dengan sabar sampai mangsa datang mendekat. Bisa adalah cairan beracun. Setelah menelan satu mangsa yang besar, ular bisa merasa kenyang untuk waktu yang sangat lama.
 
 > **Tahukah Kamu?** Ada ular berbisa yang memiliki lubang kecil di wajahnya untuk merasakan panas tubuh mangsa, sehingga ia bisa berburu dalam gelap.
 
@@ -34,7 +34,7 @@ Ular adalah karnivora, yaitu hewan pemakan daging, dan ia memangsa tikus, burung
 
 ![Rahasia Tahan Tanpa Makan](../images/kenapa-ular-bisa-tahan-tanpa-makan/page-4.webp)
 
-Rahasia ular tahan lama tanpa makan adalah metabolismenya yang lambat, yaitu cara tubuhnya memakai energi dari makanan berjalan sangat pelan. Berbeda dengan kita yang memakai banyak energi untuk menjaga tubuh tetap hangat, ular tidak perlu melakukan itu karena suhu tubuhnya mengikuti suhu lingkungan. Saat sudah makan mangsa besar, ular menyimpan sebagian energi itu sebagai lemak di tubuhnya dan menggunakannya sedikit demi sedikit, seperti menabung makanan. Karena ia bergerak pelan dan banyak beristirahat, energi itu tidak cepat habis, sehingga beberapa ular besar bisa bertahan berminggu-minggu bahkan berbulan-bulan tanpa makan, tetapi ia tetap perlu minum air.
+Rahasia ular tahan lama tanpa makan adalah metabolismenya yang lambat. Metabolisme adalah cara tubuh memakai energi dari makanan, dan pada ular cara itu berjalan sangat pelan. Kita memakai banyak energi untuk menjaga tubuh tetap hangat. Ular tidak perlu begitu, karena suhu tubuhnya mengikuti suhu lingkungan. Setelah makan mangsa besar, ular menyimpan sebagian energi itu sebagai lemak di tubuhnya. Ia menggunakannya sedikit demi sedikit, seperti menabung makanan. Karena bergerak pelan dan banyak beristirahat, energi itu tidak cepat habis. Beberapa ular besar bisa bertahan berminggu-minggu, bahkan berbulan-bulan, tanpa makan. Tapi ia tetap perlu minum air.
 
 > **Tahukah Kamu?** Usus ular sanca bisa mengecil saat ia lama tidak makan, lalu membesar lagi setelah ia makan untuk mencerna mangsanya.
 
@@ -42,7 +42,7 @@ Rahasia ular tahan lama tanpa makan adalah metabolismenya yang lambat, yaitu car
 
 ![Cara Ular Hidup](../images/kenapa-ular-bisa-tahan-tanpa-makan/page-5.webp)
 
-Ular bergerak dengan merayap, yaitu menggerakkan otot-otot tubuh dan sisik perutnya untuk mendorong tubuh ke depan di atas tanah. Beberapa ular juga pandai memanjat pohon dan berenang, sehingga mereka bisa mencari makan di banyak tempat. Untuk mencari mangsa dan mengenali lingkungannya, ular menjulurkan lidah bercabangnya untuk menangkap bau, lalu bau itu dibaca oleh organ Jacobson, yaitu organ khusus di langit-langit mulutnya. Kebanyakan ular hidup sendiri, dan setelah bertelur atau melahirkan anak, induknya biasanya pergi, sehingga anak ular harus mencari makan sendiri sejak kecil.
+Ular bergerak dengan merayap: otot-otot tubuh dan sisik perutnya mendorong tubuh ke depan di atas tanah. Beberapa ular juga pandai memanjat pohon dan berenang, sehingga mereka bisa mencari makan di banyak tempat. Untuk mencari mangsa dan mengenali lingkungannya, ular menjulurkan lidah bercabangnya untuk menangkap bau. Bau itu lalu dibaca oleh organ Jacobson, organ khusus di langit-langit mulutnya. Kebanyakan ular hidup sendiri. Setelah bertelur atau melahirkan anak, induknya biasanya pergi, sehingga anak ular harus mencari makan sendiri sejak kecil.
 
 > **Tahukah Kamu?** Ular tidak mempunyai telinga luar, tetapi ia bisa merasakan getaran langkah hewan lain melalui tanah dan rahangnya.
 
@@ -50,7 +50,7 @@ Ular bergerak dengan merayap, yaitu menggerakkan otot-otot tubuh dan sisik perut
 
 ![Penjaga Alam yang Hebat](../images/kenapa-ular-bisa-tahan-tanpa-makan/page-6.webp)
 
-Ular berperan penting di alam sebagai pemburu tikus dan hewan kecil lainnya, sehingga jumlah hewan itu tidak bertambah terlalu banyak dan merusak tanaman petani. Ular juga menjadi makanan bagi elang dan hewan lain, sehingga ia membantu menjaga rantai makanan tetap seimbang. Jika ular hilang, tikus bisa berkembang biak dengan cepat dan sawah bisa rusak, jadi menjaga ular berarti menjaga alam dan hasil panen kita. Mari kita menyayangi ular dengan tidak mengganggunya, tidak membunuhnya, dan memberi tahu orang dewasa jika kita melihat ular dari jarak yang aman.
+Ular adalah pemburu tikus dan hewan kecil lainnya. Karena itu jumlah hewan tersebut tidak bertambah terlalu banyak sampai merusak tanaman petani. Ular juga menjadi makanan bagi elang dan hewan lain, sehingga rantai makanan tetap seimbang. Jika ular hilang, tikus bisa berkembang biak dengan cepat dan sawah bisa rusak. Menjaga ular berarti menjaga alam dan hasil panen kita. Kalau melihat ular, beri tahu orang dewasa dari jarak yang aman. Jangan mengganggu dan jangan membunuhnya.
 
 > **Tahukah Kamu?** Para ilmuwan mempelajari bisa ular untuk membuat obat yang dapat menolong manusia yang sakit.
 
@@ -86,6 +86,7 @@ Panduan ini mengikat: perintah gambar sampul dan semua halaman di semua buku sel
 11. Crop-safe — hewan di area aman tengah: hewan wajib berada di area aman tengah, kira-kira 80% bagian tengah frame — jangan pernah menaruh subjek dekat tepi. Alasannya: gambar yang sama bisa tampil sedikit terpotong saat ditampilkan di layar yang berbeda (phone vs tablet portrait), jadi komposisi harus tetap aman walaupun tepinya kepotong sedikit. Kalau ragu, kecilkan sedikit hewannya dan beri latar lebih lega daripada menaruhnya mepet tepi.
 12. Crop-safe — zona melt bawah HANYA berisi latar: seperempat bawah gambar (zona melt / safe space yang meleleh lewat gradasi ke teks di bawahnya) HANYA boleh berisi latar/habitat — tanah, air, rumput polos, atau latar tenang lain. Tidak boleh ada bagian hewan apa pun di zona itu: tidak ada badan, tidak ada kaki/sayap/sirip, dan terutama tidak ada kepala atau ekor yang masuk ke zona melt. Hewan selesai sepenuhnya di atas zona melt; kakinya hanya boleh menyentuh tepi atas zona itu.
 13. Crop-safe — QA wajib dicek di tablet portrait juga: setiap gambar hasil generate/regenerate wajib dicek tampilannya di ukuran tablet portrait (2136x3200) selain di phone. Gambar yang lolos QA di phone BELUM TENTU lolos di tablet — halaman 4 lolos di phone tetapi ke-crop di tablet — jadi gambar belum boleh dinyatakan lolos sebelum tampil utuh (kepala sampai ekor, margin aman terlihat) di kedua ukuran itu.
+14. Variasi shot — kamera wajib berpindah antar halaman: dalam satu buku, TIDAK ADA dua halaman yang boleh memakai jenis shot yang sama. Setiap buku wajib merotasi minimal 4 jenis shot berbeda dari daftar ini: (a) establishing wide — tampak lebar pembuka, hewan utuh memakai sekitar 70–80% lebar bingkai; (b) camouflage/hidden — hewan LEBIH KECIL (sekitar 40–50% lebar bingkai), setengah tersembunyi menyamar di habitatnya, pembaca harus menemukannya; (c) action close-up — momen aksi, hewan lebih besar di bingkai dengan sudut dinamis/diagonal, seluruh tubuh tetap utuh; (d) head-focus three-quarter — dilihat tiga perempat, kepala dan mata jadi titik fokus, seluruh badan tetap utuh di area aman; (e) life-cycle/multi-subject — dua subjek atau lebih dengan skala berbeda dalam framing lebih lebar (misalnya dewasa + anak/ooteka); (f) wide environment — lingkungan luas memenuhi bingkai, hewan kecil (sekitar 35–45% lebar bingkai) di tengahnya. Generator storyboard wajib menetapkan satu jenis shot BERBEDA untuk setiap halaman sejak awal dan menuliskannya di awal composition halaman itu; skala hewan mengikuti jenis shot-nya, BUKAN selalu 70–80%. Semua aturan lain tetap mengikat di setiap shot: hewan utuh, margin aman ~10% di keempat sisi, hewan di area aman tengah, seperempat bawah hanya latar. QA wajib memeriksa VARIASI SHOT antar halaman sebelum buku dinyatakan siap — bukan hanya memeriksa tiap gambar satu per satu. Aturan ini lahir dari buku Belalang Sembah yang keenam halamannya memakai komposisi hampir copy-paste (samping agak jauh, 70–80%, di tengah) sehingga bukunya terasa monoton walau adegannya berbeda.
 
 **Daftar periksa QA sebelum gambar tampil:**
 
@@ -101,3 +102,4 @@ Panduan ini mengikat: perintah gambar sampul dan semua halaman di semua buku sel
 - [ ] Hewan di area aman tengah? Seluruh hewan berada di ~80% bagian tengah frame, tidak ada bagian subjek yang ditaruh dekat tepi, jadi gambar tetap aman walau tampil sedikit terpotong di layar lain.
 - [ ] Zona melt bawah bersih total? Seperempat bawah gambar HANYA berisi latar/habitat — tidak ada badan, kaki, sayap, sirip, kepala, atau ekor hewan di zona melt itu.
 - [ ] Sudah dicek di tablet portrait? Gambar sudah dilihat di ukuran tablet portrait (2136x3200) DAN di phone, dan hewan tampil utuh kepala sampai ekor dengan margin aman di kedua ukuran itu — lolos di phone saja tidak cukup.
+- [ ] Variasi shot antar halaman? Setiap halaman memakai jenis shot yang BERBEDA (establishing wide / camouflage-hidden / action close-up / head-focus three-quarter / life-cycle multi-subject / wide environment) dan buku merotasi minimal 4 jenis shot — tidak ada dua halaman dengan kamera, jarak, dan skala hewan yang sama.
