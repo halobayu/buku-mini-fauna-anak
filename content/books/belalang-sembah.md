@@ -2,7 +2,7 @@
 
 Ayo mengintip si pemburu hijau yang menunggu diam-diam di antara daun!
 
-_Topik: Belalang sembah · Gaya gambar: cat-air_
+_Topik: Belalang sembah · Gaya gambar: semi-realistis_
 
 ![Sampul](../images/belalang-sembah/cover.webp)
 
@@ -10,7 +10,7 @@ _Topik: Belalang sembah · Gaya gambar: cat-air_
 
 ![Si Pemburu Berdoa](../images/belalang-sembah/page-1.webp)
 
-Belalang sembah adalah serangga pemburu yang kaki depannya selalu terlipat seperti sedang berdoa, padahal itu adalah perangkapnya. Kepalanya berbentuk segitiga dan bisa menoleh ke kiri dan ke kanan tanpa menggerakkan badannya, sehingga ia bisa mengawasi sekelilingnya. Matanya yang besar sangat peka terhadap gerakan, dan kaki depannya yang berduri kuat mencengkeram mangsa agar tidak lepas. Diam-diam, ia mengawasi.
+Belalang sembah adalah serangga pemburu. Kaki depannya selalu terlipat seperti sedang berdoa, padahal itu perangkapnya. Kepalanya berbentuk segitiga dan bisa menoleh ke kiri dan ke kanan tanpa menggerakkan badannya. Dengan begitu ia bisa mengawasi sekelilingnya. Matanya yang besar sangat peka terhadap gerakan, dan kaki depannya yang berduri kuat mencengkeram mangsa agar tidak lepas. Diam-diam, ia mengawasi.
 
 > **Tahukah Kamu?** Belalang sembah adalah salah satu dari sedikit serangga yang bisa menolehkan kepalanya seperti kita, bahkan sampai menoleh ke belakang tanpa menggerakkan badannya!
 
@@ -18,7 +18,7 @@ Belalang sembah adalah serangga pemburu yang kaki depannya selalu terlipat seper
 
 ![Rumah di Kebun](../images/belalang-sembah/page-2.webp)
 
-Belalang sembah tinggal di tempat yang hangat dan banyak tumbuhan, seperti kebun, semak, dan sawah. Ia suka bertengger di daun dan ranting karena di sana banyak serangga kecil yang lewat dan ia bisa bersembunyi di antara daun. Warna dan bentuk tubuhnya membantunya menyamar seperti daun atau ranting, sehingga mangsa dan musuh sulit melihatnya. Kalau kamu berjalan pelan di kebun, coba cari sosok yang diam di antara daun — diam-diam, ia mengawasi.
+Ia tinggal di tempat yang hangat dan banyak tumbuhan, seperti kebun, semak, dan sawah. Ia suka bertengger di daun dan ranting. Di sana banyak serangga kecil yang lewat, dan ia bisa bersembunyi di antara daun. Warna dan bentuk tubuhnya membantunya menyamar seperti daun atau ranting, sehingga mangsa dan musuh sulit melihatnya. Kalau kamu berjalan pelan di kebun, coba cari sosok yang diam di antara daun. Diam-diam, ia mengawasi.
 
 > **Tahukah Kamu?** Ada belalang sembah yang bentuk dan warnanya mirip bunga, daun kering, bahkan ranting, sampai serangga lain datang mendekat tanpa sadar!
 
@@ -26,7 +26,7 @@ Belalang sembah tinggal di tempat yang hangat dan banyak tumbuhan, seperti kebun
 
 ![Pemburu Serangga Kecil](../images/belalang-sembah/page-3.webp)
 
-Belalang sembah adalah pemakan daging, dan makanannya adalah serangga lain seperti lalat, nyamuk, kupu-kupu kecil, dan belalang kecil. Ia tidak mengejar mangsanya jauh-jauh, melainkan menunggu diam sampai serangga itu datang cukup dekat. Begitu mangsa mendekat, kaki depannya menyambar dengan sangat cepat dan mencengkeramnya erat, lalu ia memakannya sedikit demi sedikit. Diam-diam, ia mengawasi mangsa berikutnya — coba tebak, serangga apa yang datang selanjutnya?
+Ia pemakan daging. Makanannya serangga lain, seperti lalat, nyamuk, kupu-kupu kecil, dan belalang kecil. Ia tidak mengejar mangsanya jauh-jauh, melainkan menunggu diam sampai serangga itu datang cukup dekat. Begitu mangsa mendekat, kaki depannya menyambar dengan sangat cepat dan mencengkeramnya erat. Lalu ia memakannya sedikit demi sedikit. Diam-diam, ia mengawasi mangsa berikutnya. Coba tebak, serangga apa yang datang selanjutnya?
 
 > **Tahukah Kamu?** Belalang sembah hanya mau makan mangsa yang masih hidup dan bergerak, dan ia tidak mau makan serangga yang sudah mati!
 
@@ -34,7 +34,7 @@ Belalang sembah adalah pemakan daging, dan makanannya adalah serangga lain seper
 
 ![Kepala yang Bisa Menoleh](../images/belalang-sembah/page-4.webp)
 
-Kehebatan belalang sembah ada pada matanya: ia bisa melihat dengan dua mata sekaligus, sehingga ia tahu seberapa jauh mangsanya, seperti kita melihat dengan dua mata. Ia juga punya tiga mata kecil tambahan di tengah kepalanya yang peka terhadap cahaya. Kepalanya yang bisa menoleh membantunya mengikuti mangsa tanpa menggerakkan badan, lalu kaki depannya menyambar dalam sekejap. Diam-diam, ia mengawasi — dan dalam sekejap, ia sudah menangkapnya!
+Kehebatan belalang sembah ada pada matanya. Ia bisa melihat dengan dua mata sekaligus, jadi ia tahu seberapa jauh mangsanya, seperti kita. Ia juga punya tiga mata kecil tambahan di tengah kepalanya yang peka terhadap cahaya. Kepalanya yang bisa menoleh membantunya mengikuti mangsa tanpa menggerakkan badan. Lalu kaki depannya menyambar dalam sekejap. Diam-diam, ia mengawasi. Dalam sekejap, ia sudah menangkapnya!
 
 > **Tahukah Kamu?** Belalang sembah punya satu telinga di tengah tubuhnya, bukan di kepala, dan telinga itu bisa mendengar suara kelelawar yang berburu di malam hari!
 
@@ -42,7 +42,7 @@ Kehebatan belalang sembah ada pada matanya: ia bisa melihat dengan dua mata seka
 
 ![Tumbuh dan Berganti Kulit](../images/belalang-sembah/page-5.webp)
 
-Belalang sembah hidup sendiri-sendiri dan tidak tinggal berkelompok seperti semut. Ketika masih kecil, ia disebut nimfa, dan bentuknya sudah mirip belalang sembah dewasa tetapi belum bersayap. Supaya bisa tumbuh besar, ia berganti kulit, atau molting, yaitu melepaskan kulit lamanya yang sudah sempit, dan ia melakukannya beberapa kali sampai dewasa. Induk betina meletakkan telurnya dalam busa yang mengeras menjadi sarang telur bernama ooteka, dan anak-anak yang menetas langsung hidup sendiri — diam-diam, ia mengawasi dunia barunya.
+Ia hidup sendiri-sendiri dan tidak tinggal berkelompok seperti semut. Ketika masih kecil, ia disebut nimfa. Bentuknya sudah mirip belalang sembah dewasa, tetapi belum bersayap. Supaya bisa tumbuh besar, ia berganti kulit, atau molting. Molting artinya melepaskan kulit lamanya yang sudah sempit. Ia melakukannya beberapa kali sampai dewasa. Induk betina meletakkan telurnya dalam busa yang mengeras menjadi sarang telur bernama ooteka. Anak-anak yang menetas langsung hidup sendiri. Diam-diam, ia mengawasi dunia barunya.
 
 > **Tahukah Kamu?** Anak belalang sembah yang baru menetas sudah bisa berburu sendiri tanpa diajari induknya!
 
@@ -50,7 +50,7 @@ Belalang sembah hidup sendiri-sendiri dan tidak tinggal berkelompok seperti semu
 
 ![Penjaga Kebun Kita](../images/belalang-sembah/page-6.webp)
 
-Belalang sembah adalah sahabat kebun karena ia memakan serangga yang bisa merusak daun dan tanaman. Dengan begitu, ia membantu petani dan pekebun menjaga tanaman tetap sehat tanpa harus selalu memakai racun serangga. Kalau kamu bertemu belalang sembah, cukup lihat dari jauh dan jangan menangkap atau mengganggunya, supaya ia bisa terus berburu dengan tenang. Diam-diam, ia menjaga kebun kita — dan sekarang giliran kita menjaga rumahnya, ya?
+Ia sahabat kebun, karena memakan serangga yang bisa merusak daun dan tanaman. Dengan begitu, ia membantu petani dan pekebun menjaga tanaman tetap sehat tanpa harus selalu memakai racun serangga. Kalau kamu bertemu belalang sembah, cukup lihat dari jauh. Jangan menangkap atau mengganggunya, supaya ia bisa terus berburu dengan tenang. Diam-diam, ia menjaga kebun kita. Sekarang giliran kita menjaga rumahnya, ya?
 
 > **Tahukah Kamu?** Belalang sembah tidak menyengat dan tidak berbahaya bagi manusia, padahal ia pemburu yang hebat bagi serangga!
 
@@ -63,7 +63,7 @@ Belalang sembah adalah sahabat kebun karena ia memakan serangga yang bisa merusa
 | 3. Pemburu Serangga Kecil | gambar-kiri | Belalang sembah menyambar seekor lalat kecil dengan kaki depannya yang berduri sambil tetap bertengger di daun. | Shot ACTION CLOSE-UP: momen menyambar — belalang lebih besar di bingkai dengan sudut diagonal yang dinamis, kaki depan berduri terentang ke arah lalat kecil di dekatnya; seluruh tubuh tetap utuh di area aman tengah dengan margin di semua sisi; seperempat bawah hanya latar tenang. | tegang dan seru | Daun tempat bertengger yang sama dengan halaman sebelumnya, dan lalat kecil sebagai mangsa baru. |
 | 4. Kepala yang Bisa Menoleh | gambar-penuh | Belalang sembah menolehkan kepalanya ke arah lalat sambil bersiap menyambar dengan kaki depannya. | Shot HEAD-FOCUS THREE-QUARTER: dilihat tiga perempat dari sedikit atas — kepala segitiga menoleh ke arah penonton dan lalat di dekatnya, mata majemuk besar jadi titik fokus; seluruh badan tetap utuh di area aman tengah dengan margin di keempat sisi; seperempat bawah hanya latar tenang. | takjub dan kagum | Belalang sembah dan lalat yang sama seperti halaman 3. |
 | 5. Tumbuh dan Berganti Kulit | gambar-kiri | Belalang sembah dewasa bertengger di ranting di samping sarang telur ooteka berwarna cokelat yang menempel di ranting. | Shot LIFE-CYCLE / MULTI-SUBJECT: framing lebih lebar — belalang dewasa di ranting di samping ooteka cokelat yang menempel, plus satu nimfa kecil tak bersayap di dekatnya; dua subjek beda skala, keduanya utuh di area aman tengah dengan margin di semua sisi; seperempat bawah hanya latar tenang. | penasaran dan hangat | Ranting dan daun kebun yang sama, serta ooteka cokelat yang baru muncul di halaman ini. |
-| 6. Penjaga Kebun Kita | gambar-kanan | Belalang sembah bertengger tenang di atas daun di kebun yang sehat, menghadap ke tanaman hijau. | Shot WIDE ENVIRONMENT: kebun hijau sehat yang luas memenuhi bingkai; belalang kecil, sekitar 35–45% lebar bingkai, bertengger di daun di area tengah dengan banyak ruang kebun lega di sekelilingnya; tubuh tetap utuh dengan margin di semua sisi; seperempat bawah hanya latar tenang. | hangat dan peduli | Kebun, daun, dan belalang sembah yang sama seperti halaman-halaman sebelumnya. |
+| 6. Penjaga Kebun Kita | gambar-kanan | Belalang sembah bertengger tenang di atas daun di kebun yang sehat, menghadap ke tanaman hijau. | Shot WIDE ENVIRONMENT: kebun hijau sehat luas memenuhi bingkai; belalang kecil 35–45% lebar bingkai, bertengger di daun di area tengah, ruang kebun lega di sekelilingnya; TEPAT 6 kaki: 2 depan melipat berduri + 4 jalan; tubuh utuh margin semua sisi; seperempat bawah hanya latar tenang. | hangat dan peduli | Kebun, daun, dan belalang sembah yang sama seperti halaman-halaman sebelumnya. |
 
 **Jangkar penampilan hewan:** A slender green praying mantis with a long, narrow leaf-green body, a small triangular head, two very large bulging compound eyes, and two long, spiny front legs folded together like praying hands. It has a thin abdomen, four slender walking legs, and delicate folded wings along its back.
 
