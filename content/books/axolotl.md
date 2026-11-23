@@ -2,7 +2,7 @@
 
 Siap bertemu axolotl, salamander tersenyum yang bisa menumbuhkan lagi bagian tubuhnya?
 
-_Topik: Axolotl · Gaya gambar: cat-air_
+_Topik: Axolotl · Gaya gambar: semi-realistis_
 
 ![Sampul](../images/axolotl/cover.webp)
 
@@ -10,7 +10,7 @@ _Topik: Axolotl · Gaya gambar: cat-air_
 
 ![Kenalan dengan Axolotl](../images/axolotl/page-1.webp)
 
-Ini axolotl, salamander air yang nama ilmiahnya Ambystoma mexicanum. Salamander termasuk amfibi, yaitu hewan yang hidupnya berhubungan dengan air, tetapi axolotl istimewa karena biasanya ia tetap tinggal di air sampai dewasa dan tidak berubah menjadi hewan darat seperti kebanyakan salamander lain. Ia bernapas dengan insang luar, alat bernapas di luar kepala yang mengambil oksigen dari air, dan sesekali ia naik ke permukaan untuk menghirup udara dengan paru-parunya. Tubuhnya dapat tumbuh sampai kira-kira 30 sentimeter, sepanjang penggaris, jadi di mana ya rumah asli hewan istimewa ini?
+Ini axolotl, salamander air yang nama ilmiahnya Ambystoma mexicanum. Salamander termasuk amfibi. Amfibi adalah hewan yang hidupnya berhubungan dengan air. Axolotl istimewa, karena biasanya ia tetap tinggal di air sampai dewasa. Ia tidak berubah menjadi hewan darat seperti kebanyakan salamander lain. Ia bernapas dengan insang luar, alat bernapas di luar kepala yang mengambil oksigen dari air. Sesekali ia naik ke permukaan untuk menghirup udara dengan paru-parunya. Tubuhnya dapat tumbuh sampai kira-kira 30 sentimeter, sepanjang penggaris. Jadi, di mana ya rumah asli hewan istimewa ini?
 
 > **Tahukah Kamu?** Axolotl tidak punya kelopak mata, jadi ia tidak bisa berkedip sama sekali dan matanya selalu terbuka!
 
@@ -20,37 +20,37 @@ Ini axolotl, salamander air yang nama ilmiahnya Ambystoma mexicanum. Salamander 
 
 Rumah axolotl ada di kanal-kanal Xochimilco, dekat Kota Meksiko. Air di kanal itu dangkal, sejuk, dan keruh, dengan dasar lumpur yang lembut di bawahnya. Di sepanjang tepinya, tanaman air dan alang-alang tumbuh lebat dan menjadi tempat bersembunyi yang tenang bagi axolotl. Lalu, bagaimana axolotl menemukan makanannya di air yang keruh itu?
 
-> **Tahukah Kamu?** Di alam liar, axolotl hanya hidup di kanal Xochimilco—tidak ada di tempat lain di dunia!
+> **Tahukah Kamu?** Tahukah Kamu? Di alam liar, axolotl hanya hidup di kanal Xochimilco, tidak ada di tempat lain di dunia!
 
 ## 3. Berburu di Air Keruh
 
 ![Berburu di Air Keruh](../images/axolotl/page-3.webp)
 
-Di air kanal yang keruh, axolotl tidak mengandalkan matanya yang kecil untuk mencari makan. Ia mengendus bau mangsa dan merasakan getaran air saat cacing atau serangga kecil bergerak di dekat lumpur. Begitu mangsa cukup dekat, ia membuka mulutnya lebar-lebar dan menyedotnya bersama air, lalu menelannya bulat-bulat karena giginya yang kecil hanya untuk menahan, bukan mengunyah. Tapi, bagaimana kalau tubuhnya yang lembut terluka saat berburu di lumpur?
+Di air kanal yang keruh, axolotl tidak mengandalkan matanya yang kecil untuk mencari makan. Ia mengendus bau mangsa dan merasakan getaran air saat cacing atau serangga kecil bergerak di dekat lumpur. Begitu mangsa cukup dekat, ia membuka mulutnya lebar-lebar dan menyedotnya bersama air. Lalu ia menelannya bulat-bulat. Giginya yang kecil hanya untuk menahan, bukan mengunyah. Tapi, bagaimana kalau tubuhnya yang lembut terluka saat berburu di lumpur?
 
-> **Tahukah Kamu?** Nama axolotl berasal dari bahasa Nahuatl, bahasa suku Aztec — 'atl' artinya air dan 'xolotl' artinya monster, jadi axolotl berarti 'monster air'!
+> **Tahukah Kamu?** Tahukah Kamu? Nama axolotl berasal dari bahasa Nahuatl, bahasa suku Aztec, 'atl' artinya air dan 'xolotl' artinya monster, jadi axolotl berarti 'monster air'!
 
 ## 4. Ajaib Bisa Tumbuh Lagi
 
 ![Ajaib Bisa Tumbuh Lagi](../images/axolotl/page-4.webp)
 
-Axolotl punya kemampuan istimewa yang disebut regenerasi, yaitu tubuhnya bisa menumbuhkan lagi bagian yang hilang. Kalau kakinya terluka atau putus, kaki baru akan tumbuh pelan-pelan dengan tulang, otot, dan kulit yang lengkap. Ekornya pun bisa tumbuh kembali dengan sempurna, seperti tidak pernah hilang. Ajaib sekali, ya — kira-kira apa lagi keajaiban yang dimiliki hewan ini?
+Axolotl punya kemampuan istimewa yang disebut regenerasi. Regenerasi artinya tubuhnya bisa menumbuhkan lagi bagian yang hilang. Kalau kakinya terluka atau putus, kaki baru akan tumbuh pelan-pelan dengan tulang, otot, dan kulit yang lengkap. Ekornya pun bisa tumbuh kembali dengan sempurna, seperti tidak pernah hilang. Ajaib sekali, ya. Kira-kira apa lagi keajaiban yang dimiliki hewan ini?
 
-> **Tahukah Kamu?** Axolotl bahkan bisa menumbuhkan kembali sebagian otaknya yang rusak, dan para ilmuwan mempelajarinya untuk memahami cara tubuh menyembuhkan luka.
+> **Tahukah Kamu?** Tahukah Kamu? Axolotl bahkan bisa menumbuhkan kembali sebagian otaknya yang rusak, dan para ilmuwan mempelajarinya untuk memahami cara tubuh menyembuhkan luka.
 
 ## 5. Hidup Tenang dan Bertelur
 
 ![Hidup Tenang dan Bertelur](../images/axolotl/page-5.webp)
 
-Axolotl dewasa hidup dengan sangat tenang: ia banyak beristirahat di dasar air dan bergerak pelan-pelan saja. Ketika tiba musim bertelur, induk betina menempelkan ratusan telur kecilnya pada tanaman air, lalu meninggalkannya untuk tumbuh sendiri. Sekitar dua minggu kemudian, telur-telur itu menetas menjadi bayi axolotl yang amat kecil dan sudah bisa berenang sendiri. Bayi-bayi itu akan tumbuh perlahan di air yang sama — tetapi, apakah semuanya bisa tumbuh besar dengan aman?
+Axolotl dewasa hidup dengan sangat tenang. Ia banyak beristirahat di dasar air dan bergerak pelan-pelan saja. Ketika tiba musim bertelur, induk betina menempelkan ratusan telur kecilnya pada tanaman air, lalu meninggalkannya untuk tumbuh sendiri. Sekitar dua minggu kemudian, telur-telur itu menetas menjadi bayi axolotl yang amat kecil dan sudah bisa berenang sendiri. Bayi-bayi itu akan tumbuh perlahan di air yang sama, tetapi apakah semuanya bisa tumbuh besar dengan aman?
 
-> **Tahukah Kamu?** Axolotl betina menempelkan telurnya satu per satu ke tanaman air, bukan dalam satu gumpalan besar seperti telur katak — jadi setiap telur kecil itu punya tempatnya sendiri!
+> **Tahukah Kamu?** Tahukah Kamu? Axolotl betina menempelkan telurnya satu per satu ke tanaman air, bukan dalam satu gumpalan besar seperti telur katak, jadi setiap telur kecil itu punya tempatnya sendiri!
 
 ## 6. Ayo Jaga Axolotl
 
 ![Ayo Jaga Axolotl](../images/axolotl/page-6.webp)
 
-Di alam liar, axolotl kini terancam punah, artinya jumlahnya sudah sangat sedikit dan bisa hilang selamanya kalau rumahnya rusak. Kanal Xochimilco tempat ia tinggal makin sempit dan airnya makin kotor karena sampah dan limbah, sehingga axolotl sulit bernapas dan sulit bertahan hidup. Untungnya, para ilmuwan dan warga di Meksiko bekerja sama membersihkan kanal, merawat tanaman air, dan menjaga axolotl supaya tetap aman. Kita juga bisa ikut membantu: jangan membuang sampah ke sungai, hematlah air, dan ceritakan kepada teman-teman betapa istimewanya hewan ini supaya ia selalu disayang!
+Di alam liar, axolotl kini terancam punah. Artinya, jumlahnya sudah sangat sedikit dan bisa hilang selamanya kalau rumahnya rusak. Kanal Xochimilco tempat ia tinggal makin sempit. Airnya makin kotor karena sampah dan limbah, sehingga axolotl sulit bernapas dan sulit bertahan hidup. Untungnya, para ilmuwan dan warga di Meksiko bekerja sama membersihkan kanal, merawat tanaman air, dan menjaga axolotl supaya tetap aman. Kita juga bisa ikut membantu: jangan membuang sampah ke sungai, hematlah air, dan ceritakan kepada teman-teman betapa istimewanya hewan ini supaya ia selalu disayang!
 
 > **Tahukah Kamu?** Di Meksiko, gambar axolotl ada di uang kertas 50 peso bersama kanal Xochimilco, supaya semua orang selalu ingat untuk melindungi hewan istimewa ini!
 
@@ -58,12 +58,12 @@ Di alam liar, axolotl kini terancam punah, artinya jumlahnya sudah sangat sediki
 
 | Halaman | Layout | Adegan gambar | Komposisi | Suasana | Kesinambungan |
 | --- | --- | --- | --- | --- | --- |
-| 1. Kenalan dengan Axolotl | gambar-penuh | Axolotl merah muda berenang pelan menghadap ke samping sambil mengibaskan ekornya yang panjang dan memperlihatkan insang luarnya yang berbulu di kedua sisi kepala. | Establishing wide dalam bingkai potret 4:5 dengan gaya semi-realistis, sudut pandang samping setinggi air dengan axolotl merah muda utuh dari kepala sampai ekor selebar 70–80% bingkai di tengah area aman bermargin minimal 10% dari keempat tepi, insang luarnya yang berbulu menjadi bagian paling menonjol, di atas dasar lumpur lembut dengan tanaman air hijau, sedangkan seperempat bawah gambar hanya berisi air dan lumpur tenang yang melebur ke warna krem. | takjub dan penasaran | Ciri axolotl merah muda dan insang berbulunya yang sama dipakai di semua halaman. |
-| 2. Rumah di Kanal Xochimilco | gambar-atas | Axolotl berenang pelan di tengah kanal Xochimilco yang dikelilingi tanaman air dan alang-alang di bawah cahaya siang yang lembut. | Wide environment dalam bingkai potret 4:5 dengan gaya semi-realistis, sudut pandang agak tinggi dari atas permukaan kanal dengan axolotl merah muda kecil utuh selebar 35–45% bingkai di tengah area aman bermargin minimal 10% dari keempat tepi, kanal Xochimilco yang luas dengan tanaman air dan alang-alang menjadi latar paling menonjol, sedangkan seperempat bawah gambar hanya berisi air keruh tenang yang melebur ke warna krem. | tenang dan damai | Kanal Xochimilco, air keruh, dan tanaman air yang sama dipakai di semua halaman habitat. |
+| 1. Kenalan dengan Axolotl | gambar-penuh | Axolotl merah muda berenang pelan menghadap ke samping sambil mengibaskan ekornya yang panjang dan memperlihatkan insang luarnya yang berbulu di kedua sisi kepala. | Establishing wide 4:5 semi-realistis, samping setinggi air; axolotl merah muda utuh kepala-ekor selebar 70–80% bingkai di area aman, margin 10% semua tepi; insang berbulu jadi titik fokus; dasar lumpur lembut, tanaman air hijau; seperempat bawah hanya air dan lumpur tenang melebur ke krem. | takjub dan penasaran | Ciri axolotl merah muda dan insang berbulunya yang sama dipakai di semua halaman. |
+| 2. Rumah di Kanal Xochimilco | gambar-atas | Axolotl berenang pelan di tengah kanal Xochimilco yang dikelilingi tanaman air dan alang-alang di bawah cahaya siang yang lembut. | Wide environment 4:5 semi-realistis, sudut agak tinggi dari atas kanal; axolotl merah muda kecil utuh selebar 35–45% bingkai di area aman, margin 10% semua tepi; kanal Xochimilco luas, tanaman air dan alang-alang jadi latar; seperempat bawah hanya air keruh tenang melebur ke krem. | tenang dan damai | Kanal Xochimilco, air keruh, dan tanaman air yang sama dipakai di semua halaman habitat. |
 | 3. Berburu di Air Keruh | gambar-kanan | Axolotl membuka mulutnya dan menyedot seekor cacing kecil yang bergerak di dekat dasar lumpur. | Action close-up 4:5 semi-realistis, sudut diagonal samping-depan; axolotl utuh kepala-ekor, condong ke kanan, mulut terbuka menyedot cacing kecil; margin 10% semua tepi; seperempat bawah hanya lumpur tenang. | tegang seru | Dasar lumpur dan tanaman air yang sama dengan halaman rumahnya tetap terlihat di sini. |
-| 4. Ajaib Bisa Tumbuh Lagi | gambar-kiri | Axolotl berenang pelan sambil menunjukkan satu kaki depannya yang lebih kecil karena sedang tumbuh kembali setelah hilang. | Head-focus three-quarter dalam bingkai potret 4:5 dengan gaya semi-realistis, sudut tiga perempat dari depan-samping dengan axolotl merah muda utuh dari kepala sampai ekor dan condong ke kiri di tengah area aman bermargin minimal 10% dari keempat tepi, kepala dan mata gelapnya yang besar menjadi fokus utama sementara satu kaki depannya yang lebih kecil dan sedang tumbuh kembali terlihat jelas, di atas dasar lumpur dengan tanaman air lembut, sedangkan seperempat bawah gambar hanya berisi lumpur tenang yang melebur ke warna krem. | takjub dan penuh harap | Axolotl merah muda yang sama dengan insang berbulu dan ekor panjangnya tetap dikenali seperti halaman sebelumnya. |
-| 5. Hidup Tenang dan Bertelur | gambar-atas | Axolotl dewasa beristirahat pelan di dekat sekelompok telur bulat kecil yang menempel pada batang tanaman air. | Life-cycle/multi-subject dalam bingkai potret 4:5 dengan gaya semi-realistis, sudut pandang samping yang lebih lebar dengan axolotl dewasa merah muda utuh dari kepala sampai ekor di tengah area aman bermargin minimal 10% dari keempat tepi dan sekelompok telur bulat kecil yang menempel pada batang tanaman air di sampingnya menjadi subjek kedua yang berbeda skala, sedangkan seperempat bawah gambar hanya berisi dasar lumpur tenang yang melebur ke warna krem. | hangat dan lembut | Axolotl dewasa yang sama beristirahat di kanal Xochimilco dengan tanaman air yang sama seperti halaman sebelumnya. |
-| 6. Ayo Jaga Axolotl | gambar-penuh | Axolotl bersembunyi tenang di antara tanaman air hijau di kanalnya sambil mengintip dengan mata gelapnya yang kecil. | Camouflage/hidden dalam bingkai potret 4:5 dengan gaya semi-realistis, sudut pandang samping setinggi air dengan axolotl merah muda kecil utuh selebar 40–50% bingkai di tengah area aman bermargin minimal 10% dari keempat tepi, setengah tersembunyi di antara tanaman air hijau yang menyamarkan tubuhnya tanpa menutupi kepala, insang, badan, maupun ekornya, sedangkan seperempat bawah gambar hanya berisi air dan tanaman tenang yang melebur ke warna krem. | penuh sayang dan harapan | Axolotl merah muda dan kanal Xochimilco dengan tanaman air yang sama menutup buku seperti halaman awal. |
+| 4. Ajaib Bisa Tumbuh Lagi | gambar-kiri | Axolotl berenang pelan sambil menunjukkan satu kaki depannya yang lebih kecil karena sedang tumbuh kembali setelah hilang. | Head-focus tiga perempat depan 4:5 semi-realistis; axolotl menghadap penonton, kepala jadi fokus; TEPAT 4 kaki: 2 DEPAN di kiri-kanan bawah kepala (kanan SANGAT KECIL seperti tunas), 2 BELAKANG dekat ekor; ekor di dua pertiga tinggi, seperempat bawah hanya lumpur tenang; margin 10% semua tepi. | takjub dan penuh harap | Axolotl merah muda yang sama dengan insang berbulu dan ekor panjangnya tetap dikenali seperti halaman sebelumnya. |
+| 5. Hidup Tenang dan Bertelur | gambar-atas | Axolotl dewasa beristirahat pelan di dekat sekelompok telur bulat kecil yang menempel pada batang tanaman air. | Life-cycle/multi-subject 4:5 semi-realistis, samping lebih lebar; axolotl dewasa merah muda utuh kepala-ekor di area aman, margin 10% semua tepi; sekelompok telur bulat kecil menempel di batang tanaman air sebagai subjek kedua beda skala; seperempat bawah hanya lumpur tenang melebur ke krem. | hangat dan lembut | Axolotl dewasa yang sama beristirahat di kanal Xochimilco dengan tanaman air yang sama seperti halaman sebelumnya. |
+| 6. Ayo Jaga Axolotl | gambar-penuh | Axolotl bersembunyi tenang di antara tanaman air hijau di kanalnya sambil mengintip dengan mata gelapnya yang kecil. | Camouflage/hidden 4:5 semi-realistis, samping setinggi air; axolotl merah muda kecil utuh selebar 40–50% bingkai di area aman, margin 10% semua tepi; setengah tersembunyi di tanaman air hijau tanpa menutupi kepala, insang, badan, ekor; seperempat bawah hanya air dan tanaman tenang melebur ke krem. | penuh sayang dan harapan | Axolotl merah muda dan kanal Xochimilco dengan tanaman air yang sama menutup buku seperti halaman awal. |
 
 **Jangkar penampilan hewan:** A pale pink leucistic axolotl, Ambystoma mexicanum, a medium-sized salamander up to about 30 cm long with a broad flat head, a long flattened tail with a soft fin, four slender legs and smooth soft skin. It has small dark eyes, a wide mouth, and three pairs of feathery rose-pink external gills fanning out from each side of its head.
 
