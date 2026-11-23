@@ -45,13 +45,13 @@
   "pages": [
     {
       "heading": "Kenalan dengan Axolotl",
-      "body": "Ini axolotl, salamander air yang nama ilmiahnya Ambystoma mexicanum. Salamander termasuk amfibi, yaitu hewan yang hidupnya berhubungan dengan air, tetapi axolotl istimewa karena biasanya ia tetap tinggal di air sampai dewasa dan tidak berubah menjadi hewan darat seperti kebanyakan salamander lain. Ia bernapas dengan insang luar, alat bernapas di luar kepala yang mengambil oksigen dari air, dan sesekali ia naik ke permukaan untuk menghirup udara dengan paru-parunya. Tubuhnya dapat tumbuh sampai kira-kira 30 sentimeter, sepanjang penggaris, jadi di mana ya rumah asli hewan istimewa ini?",
+      "body": "Ini axolotl, salamander air yang nama ilmiahnya Ambystoma mexicanum. Salamander termasuk amfibi. Amfibi adalah hewan yang hidupnya berhubungan dengan air. Axolotl istimewa, karena biasanya ia tetap tinggal di air sampai dewasa. Ia tidak berubah menjadi hewan darat seperti kebanyakan salamander lain. Ia bernapas dengan insang luar, alat bernapas di luar kepala yang mengambil oksigen dari air. Sesekali ia naik ke permukaan untuk menghirup udara dengan paru-parunya. Tubuhnya dapat tumbuh sampai kira-kira 30 sentimeter, sepanjang penggaris. Jadi, di mana ya rumah asli hewan istimewa ini?",
       "funFact": "Axolotl tidak punya kelopak mata, jadi ia tidak bisa berkedip sama sekali dan matanya selalu terbuka!",
       "image": "images/axolotl/page-1.webp",
       "layout": "gambar-penuh",
       "storyboard": {
         "sceneAction": "Axolotl merah muda berenang pelan menghadap ke samping sambil mengibaskan ekornya yang panjang dan memperlihatkan insang luarnya yang berbulu di kedua sisi kepala.",
-        "composition": "Establishing wide dalam bingkai potret 4:5 dengan gaya semi-realistis, sudut pandang samping setinggi air dengan axolotl merah muda utuh dari kepala sampai ekor selebar 70–80% bingkai di tengah area aman bermargin minimal 10% dari keempat tepi, insang luarnya yang berbulu menjadi bagian paling menonjol, di atas dasar lumpur lembut dengan tanaman air hijau, sedangkan seperempat bawah gambar hanya berisi air dan lumpur tenang yang melebur ke warna krem.",
+        "composition": "Establishing wide 4:5 semi-realistis, samping setinggi air; axolotl merah muda utuh kepala-ekor selebar 70–80% bingkai di area aman, margin 10% semua tepi; insang berbulu jadi titik fokus; dasar lumpur lembut, tanaman air hijau; seperempat bawah hanya air dan lumpur tenang melebur ke krem.",
         "emotion": "takjub dan penasaran",
         "continuity": "Ciri axolotl merah muda dan insang berbulunya yang sama dipakai di semua halaman."
       }
@@ -59,20 +59,20 @@
     {
       "heading": "Rumah di Kanal Xochimilco",
       "body": "Rumah axolotl ada di kanal-kanal Xochimilco, dekat Kota Meksiko. Air di kanal itu dangkal, sejuk, dan keruh, dengan dasar lumpur yang lembut di bawahnya. Di sepanjang tepinya, tanaman air dan alang-alang tumbuh lebat dan menjadi tempat bersembunyi yang tenang bagi axolotl. Lalu, bagaimana axolotl menemukan makanannya di air yang keruh itu?",
-      "funFact": "Tahukah Kamu? Di alam liar, axolotl hanya hidup di kanal Xochimilco—tidak ada di tempat lain di dunia!",
+      "funFact": "Tahukah Kamu? Di alam liar, axolotl hanya hidup di kanal Xochimilco, tidak ada di tempat lain di dunia!",
       "image": "images/axolotl/page-2.webp",
       "layout": "gambar-atas",
       "storyboard": {
         "sceneAction": "Axolotl berenang pelan di tengah kanal Xochimilco yang dikelilingi tanaman air dan alang-alang di bawah cahaya siang yang lembut.",
-        "composition": "Wide environment dalam bingkai potret 4:5 dengan gaya semi-realistis, sudut pandang agak tinggi dari atas permukaan kanal dengan axolotl merah muda kecil utuh selebar 35–45% bingkai di tengah area aman bermargin minimal 10% dari keempat tepi, kanal Xochimilco yang luas dengan tanaman air dan alang-alang menjadi latar paling menonjol, sedangkan seperempat bawah gambar hanya berisi air keruh tenang yang melebur ke warna krem.",
+        "composition": "Wide environment 4:5 semi-realistis, sudut agak tinggi dari atas kanal; axolotl merah muda kecil utuh selebar 35–45% bingkai di area aman, margin 10% semua tepi; kanal Xochimilco luas, tanaman air dan alang-alang jadi latar; seperempat bawah hanya air keruh tenang melebur ke krem.",
         "emotion": "tenang dan damai",
         "continuity": "Kanal Xochimilco, air keruh, dan tanaman air yang sama dipakai di semua halaman habitat."
       }
     },
     {
       "heading": "Berburu di Air Keruh",
-      "body": "Di air kanal yang keruh, axolotl tidak mengandalkan matanya yang kecil untuk mencari makan. Ia mengendus bau mangsa dan merasakan getaran air saat cacing atau serangga kecil bergerak di dekat lumpur. Begitu mangsa cukup dekat, ia membuka mulutnya lebar-lebar dan menyedotnya bersama air, lalu menelannya bulat-bulat karena giginya yang kecil hanya untuk menahan, bukan mengunyah. Tapi, bagaimana kalau tubuhnya yang lembut terluka saat berburu di lumpur?",
-      "funFact": "Tahukah Kamu? Nama axolotl berasal dari bahasa Nahuatl, bahasa suku Aztec — 'atl' artinya air dan 'xolotl' artinya monster, jadi axolotl berarti 'monster air'!",
+      "body": "Di air kanal yang keruh, axolotl tidak mengandalkan matanya yang kecil untuk mencari makan. Ia mengendus bau mangsa dan merasakan getaran air saat cacing atau serangga kecil bergerak di dekat lumpur. Begitu mangsa cukup dekat, ia membuka mulutnya lebar-lebar dan menyedotnya bersama air. Lalu ia menelannya bulat-bulat. Giginya yang kecil hanya untuk menahan, bukan mengunyah. Tapi, bagaimana kalau tubuhnya yang lembut terluka saat berburu di lumpur?",
+      "funFact": "Tahukah Kamu? Nama axolotl berasal dari bahasa Nahuatl, bahasa suku Aztec, 'atl' artinya air dan 'xolotl' artinya monster, jadi axolotl berarti 'monster air'!",
       "image": "images/axolotl/page-3.webp",
       "layout": "gambar-kanan",
       "storyboard": {
@@ -84,39 +84,39 @@
     },
     {
       "heading": "Ajaib Bisa Tumbuh Lagi",
-      "body": "Axolotl punya kemampuan istimewa yang disebut regenerasi, yaitu tubuhnya bisa menumbuhkan lagi bagian yang hilang. Kalau kakinya terluka atau putus, kaki baru akan tumbuh pelan-pelan dengan tulang, otot, dan kulit yang lengkap. Ekornya pun bisa tumbuh kembali dengan sempurna, seperti tidak pernah hilang. Ajaib sekali, ya — kira-kira apa lagi keajaiban yang dimiliki hewan ini?",
+      "body": "Axolotl punya kemampuan istimewa yang disebut regenerasi. Regenerasi artinya tubuhnya bisa menumbuhkan lagi bagian yang hilang. Kalau kakinya terluka atau putus, kaki baru akan tumbuh pelan-pelan dengan tulang, otot, dan kulit yang lengkap. Ekornya pun bisa tumbuh kembali dengan sempurna, seperti tidak pernah hilang. Ajaib sekali, ya. Kira-kira apa lagi keajaiban yang dimiliki hewan ini?",
       "funFact": "Tahukah Kamu? Axolotl bahkan bisa menumbuhkan kembali sebagian otaknya yang rusak, dan para ilmuwan mempelajarinya untuk memahami cara tubuh menyembuhkan luka.",
       "image": "images/axolotl/page-4.webp",
       "layout": "gambar-kiri",
       "storyboard": {
         "sceneAction": "Axolotl berenang pelan sambil menunjukkan satu kaki depannya yang lebih kecil karena sedang tumbuh kembali setelah hilang.",
-        "composition": "Head-focus three-quarter dalam bingkai potret 4:5 dengan gaya semi-realistis, sudut tiga perempat dari depan-samping dengan axolotl merah muda utuh dari kepala sampai ekor dan condong ke kiri di tengah area aman bermargin minimal 10% dari keempat tepi, kepala dan mata gelapnya yang besar menjadi fokus utama sementara satu kaki depannya yang lebih kecil dan sedang tumbuh kembali terlihat jelas, di atas dasar lumpur dengan tanaman air lembut, sedangkan seperempat bawah gambar hanya berisi lumpur tenang yang melebur ke warna krem.",
+        "composition": "Head-focus tiga perempat depan 4:5 semi-realistis; axolotl menghadap penonton, kepala jadi fokus; TEPAT 4 kaki: 2 DEPAN di kiri-kanan bawah kepala (kanan SANGAT KECIL seperti tunas), 2 BELAKANG dekat ekor; ekor di dua pertiga tinggi, seperempat bawah hanya lumpur tenang; margin 10% semua tepi.",
         "emotion": "takjub dan penuh harap",
         "continuity": "Axolotl merah muda yang sama dengan insang berbulu dan ekor panjangnya tetap dikenali seperti halaman sebelumnya."
       }
     },
     {
       "heading": "Hidup Tenang dan Bertelur",
-      "body": "Axolotl dewasa hidup dengan sangat tenang: ia banyak beristirahat di dasar air dan bergerak pelan-pelan saja. Ketika tiba musim bertelur, induk betina menempelkan ratusan telur kecilnya pada tanaman air, lalu meninggalkannya untuk tumbuh sendiri. Sekitar dua minggu kemudian, telur-telur itu menetas menjadi bayi axolotl yang amat kecil dan sudah bisa berenang sendiri. Bayi-bayi itu akan tumbuh perlahan di air yang sama — tetapi, apakah semuanya bisa tumbuh besar dengan aman?",
-      "funFact": "Tahukah Kamu? Axolotl betina menempelkan telurnya satu per satu ke tanaman air, bukan dalam satu gumpalan besar seperti telur katak — jadi setiap telur kecil itu punya tempatnya sendiri!",
+      "body": "Axolotl dewasa hidup dengan sangat tenang. Ia banyak beristirahat di dasar air dan bergerak pelan-pelan saja. Ketika tiba musim bertelur, induk betina menempelkan ratusan telur kecilnya pada tanaman air, lalu meninggalkannya untuk tumbuh sendiri. Sekitar dua minggu kemudian, telur-telur itu menetas menjadi bayi axolotl yang amat kecil dan sudah bisa berenang sendiri. Bayi-bayi itu akan tumbuh perlahan di air yang sama, tetapi apakah semuanya bisa tumbuh besar dengan aman?",
+      "funFact": "Tahukah Kamu? Axolotl betina menempelkan telurnya satu per satu ke tanaman air, bukan dalam satu gumpalan besar seperti telur katak, jadi setiap telur kecil itu punya tempatnya sendiri!",
       "image": "images/axolotl/page-5.webp",
       "layout": "gambar-atas",
       "storyboard": {
         "sceneAction": "Axolotl dewasa beristirahat pelan di dekat sekelompok telur bulat kecil yang menempel pada batang tanaman air.",
-        "composition": "Life-cycle/multi-subject dalam bingkai potret 4:5 dengan gaya semi-realistis, sudut pandang samping yang lebih lebar dengan axolotl dewasa merah muda utuh dari kepala sampai ekor di tengah area aman bermargin minimal 10% dari keempat tepi dan sekelompok telur bulat kecil yang menempel pada batang tanaman air di sampingnya menjadi subjek kedua yang berbeda skala, sedangkan seperempat bawah gambar hanya berisi dasar lumpur tenang yang melebur ke warna krem.",
+        "composition": "Life-cycle/multi-subject 4:5 semi-realistis, samping lebih lebar; axolotl dewasa merah muda utuh kepala-ekor di area aman, margin 10% semua tepi; sekelompok telur bulat kecil menempel di batang tanaman air sebagai subjek kedua beda skala; seperempat bawah hanya lumpur tenang melebur ke krem.",
         "emotion": "hangat dan lembut",
         "continuity": "Axolotl dewasa yang sama beristirahat di kanal Xochimilco dengan tanaman air yang sama seperti halaman sebelumnya."
       }
     },
     {
       "heading": "Ayo Jaga Axolotl",
-      "body": "Di alam liar, axolotl kini terancam punah, artinya jumlahnya sudah sangat sedikit dan bisa hilang selamanya kalau rumahnya rusak. Kanal Xochimilco tempat ia tinggal makin sempit dan airnya makin kotor karena sampah dan limbah, sehingga axolotl sulit bernapas dan sulit bertahan hidup. Untungnya, para ilmuwan dan warga di Meksiko bekerja sama membersihkan kanal, merawat tanaman air, dan menjaga axolotl supaya tetap aman. Kita juga bisa ikut membantu: jangan membuang sampah ke sungai, hematlah air, dan ceritakan kepada teman-teman betapa istimewanya hewan ini supaya ia selalu disayang!",
-      "funFact": "Tahukah Kamu? Di Meksiko, gambar axolotl ada di uang kertas 50 peso bersama kanal Xochimilco, supaya semua orang selalu ingat untuk melindungi hewan istimewa ini!",
+      "body": "Di alam liar, axolotl kini terancam punah. Artinya, jumlahnya sudah sangat sedikit dan bisa hilang selamanya kalau rumahnya rusak. Kanal Xochimilco tempat ia tinggal makin sempit. Airnya makin kotor karena sampah dan limbah, sehingga axolotl sulit bernapas dan sulit bertahan hidup. Untungnya, para ilmuwan dan warga di Meksiko bekerja sama membersihkan kanal, merawat tanaman air, dan menjaga axolotl supaya tetap aman. Kita juga bisa ikut membantu: jangan membuang sampah ke sungai, hematlah air, dan ceritakan kepada teman-teman betapa istimewanya hewan ini supaya ia selalu disayang!",
+      "funFact": "Di Meksiko, gambar axolotl ada di uang kertas 50 peso bersama kanal Xochimilco, supaya semua orang selalu ingat untuk melindungi hewan istimewa ini!",
       "image": "images/axolotl/page-6.webp",
       "layout": "gambar-penuh",
       "storyboard": {
         "sceneAction": "Axolotl bersembunyi tenang di antara tanaman air hijau di kanalnya sambil mengintip dengan mata gelapnya yang kecil.",
-        "composition": "Camouflage/hidden dalam bingkai potret 4:5 dengan gaya semi-realistis, sudut pandang samping setinggi air dengan axolotl merah muda kecil utuh selebar 40–50% bingkai di tengah area aman bermargin minimal 10% dari keempat tepi, setengah tersembunyi di antara tanaman air hijau yang menyamarkan tubuhnya tanpa menutupi kepala, insang, badan, maupun ekornya, sedangkan seperempat bawah gambar hanya berisi air dan tanaman tenang yang melebur ke warna krem.",
+        "composition": "Camouflage/hidden 4:5 semi-realistis, samping setinggi air; axolotl merah muda kecil utuh selebar 40–50% bingkai di area aman, margin 10% semua tepi; setengah tersembunyi di tanaman air hijau tanpa menutupi kepala, insang, badan, ekor; seperempat bawah hanya air dan tanaman tenang melebur ke krem.",
         "emotion": "penuh sayang dan harapan",
         "continuity": "Axolotl merah muda dan kanal Xochimilco dengan tanaman air yang sama menutup buku seperti halaman awal."
       }
