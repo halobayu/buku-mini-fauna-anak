@@ -379,7 +379,6 @@ button{font-family:inherit}
 .callout{position:relative;border-radius:26px;box-shadow:inset 5px 5px 10px rgba(133,122,102,.45), inset -5px -5px 10px rgba(255,255,255,.9)}
 .callouttab{position:absolute;left:22px;border-radius:999px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.14em;box-shadow:inset 0 2px 0 rgba(255,255,255,.35), inset 0 -2px 0 rgba(0,0,0,.14), 0 6px 10px -4px rgba(90,78,58,.45)}
 .callout p{margin:0;font-weight:600;line-height:1.45}
-.caption{position:absolute;z-index:10;background:rgba(233,229,221,.94);color:#4A453C;font-style:italic;font-weight:600;line-height:1.35;border-radius:16px;box-shadow:inset 0 2px 0 rgba(255,255,255,.6), 0 10px 16px -8px rgba(90,80,64,.4);max-width:46%;margin:0}
 .missingbox{border:3px dashed #B9B09C;background:#E1DBCE;border-radius:26px;text-align:center;font-weight:700;color:#655E52}
 .endinner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .endinner h2{font-family:'Fredoka','Nunito',sans-serif;font-weight:600}
@@ -554,8 +553,9 @@ function pageHtml(p, pi) {
       + '<div id="textzone" class="textzone" style="flex:1;justify-content:flex-start;gap:' + px(t.gap) + 'px;margin-top:' + px(30) + 'px">' + spreadHtml(p, pi, t) + '</div>'
       + '</div></div>';
   }
-  var sa = p.storyboard && p.storyboard.sceneAction ? p.storyboard.sceneAction : "";
-  var caption = "";
+  // The storyboard's sceneAction is a production note for the
+  // illustrator only — it is never printed on the page (Space
+  // parity: it read as the image prompt stuck on the picture).
   if (isLandscape()) {
     // Row ratio (Space parity): the 4:5 picture fills its column's
     // full height (cover-fit biased to the top of the frame, where
@@ -566,15 +566,10 @@ function pageHtml(p, pi) {
     var meltStyle = right
       ? "left:0;background:linear-gradient(to left, " + pal.paper + "00 0%, " + pal.paper + "2E 42%, " + pal.paper + "85 74%, " + pal.paper + " 100%)"
       : "right:0;background:linear-gradient(to right, " + pal.paper + "00 0%, " + pal.paper + "2E 42%, " + pal.paper + "85 74%, " + pal.paper + " 100%)";
-    if (sa) {
-      caption = '<p class="caption" style="top:' + px(84) + 'px;' + (right ? "right:" + px(22) + "px" : "left:" + px(22) + "px")
-        + ';font-size:' + Math.max(11, px(19)) + 'px;padding:' + Math.max(6, px(11)) + 'px ' + Math.max(9, px(17)) + 'px">'
-        + esc(sa) + '</p>';
-    }
     return '<div class="sheet" style="background:' + pal.paper + ';color:' + pal.ink + ';display:flex;flex-direction:' + (right ? "row-reverse" : "row") + '">'
       + '<div class="imgzone" style="width:' + imgPct + '%;height:100%">'
       + '<img class="whole" src="' + p.image + '" alt=""/>'
-      + '<div class="melts" style="' + meltStyle + '"></div>' + caption + '</div>'
+      + '<div class="melts" style="' + meltStyle + '"></div></div>'
       + '<div id="textzone" class="textzone" style="flex:1;height:100%;gap:' + px(t.gap) + 'px;padding:' + px(36) + 'px ' + px(44) + 'px ' + (px(36) + 76) + 'px;' + paperBg() + '">'
       + spreadHtml(p, pi, t) + '</div>'
       + '</div>';
@@ -593,12 +588,8 @@ function pageHtml(p, pi) {
   var zonePct = Math.min(Math.max(naturalPct, 30), cap);
   var meltB = '<div class="meltb" style="background:linear-gradient(to bottom, ' + pal.paper + '00 0%, ' + pal.paper + '2E 42%, ' + pal.paper + '85 74%, ' + pal.paper + ' 100%)"></div>';
   var zoneInner = '<img class="whole" src="' + p.image + '" alt=""/>' + meltB;
-  if (sa) {
-    caption = '<p class="caption" style="top:' + px(84) + 'px;left:' + px(22) + 'px;font-size:' + Math.max(11, px(19)) + 'px;padding:'
-      + Math.max(6, px(11)) + 'px ' + Math.max(9, px(17)) + 'px">' + esc(sa) + '</p>';
-  }
   return '<div class="sheet" style="background:' + pal.paper + ';color:' + pal.ink + ';display:flex;flex-direction:column">'
-    + '<div class="imgzone" style="height:' + zonePct + '%">' + zoneInner + caption + '</div>'
+    + '<div class="imgzone" style="height:' + zonePct + '%">' + zoneInner + '</div>'
     + '<div id="textzone" class="textzone" style="flex:1;justify-content:flex-start;gap:' + px(t.gap) + 'px;padding:' + px(20) + 'px ' + px(48) + 'px ' + (px(44) + 76) + 'px;' + paperBg() + '">'
     + spreadHtml(p, pi, t) + '</div>'
     + '</div>';
