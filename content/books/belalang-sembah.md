@@ -10,7 +10,7 @@ _Topik: Belalang sembah · Gaya gambar: semi-realistis_
 
 ![Si Pemburu Berdoa](../images/belalang-sembah/page-1.webp)
 
-Belalang sembah adalah serangga pemburu. Kaki depannya selalu terlipat seperti sedang berdoa, padahal itu perangkapnya. Kepalanya berbentuk segitiga dan bisa menoleh ke kiri dan ke kanan tanpa menggerakkan badannya. Dengan begitu ia bisa mengawasi sekelilingnya. Matanya yang besar sangat peka terhadap gerakan, dan kaki depannya yang berduri kuat mencengkeram mangsa agar tidak lepas. Diam-diam, ia mengawasi.
+Coba lihat, belalang sembah adalah serangga pemburu. Kaki depannya selalu terlipat seperti sedang berdoa, padahal itu perangkapnya. Kepalanya berbentuk segitiga dan bisa menoleh ke kiri dan ke kanan tanpa menggerakkan badannya. Dengan begitu ia bisa mengawasi sekelilingnya. Matanya yang besar sangat peka terhadap gerakan, dan kaki depannya yang berduri kuat mencengkeram mangsa agar tidak lepas. Diam-diam, ia mengawasi.
 
 > **Tahukah Kamu?** Belalang sembah adalah salah satu dari sedikit serangga yang bisa menolehkan kepalanya seperti kita, bahkan sampai menoleh ke belakang tanpa menggerakkan badannya!
 
@@ -26,7 +26,7 @@ Ia tinggal di tempat yang hangat dan banyak tumbuhan, seperti kebun, semak, dan 
 
 ![Pemburu Serangga Kecil](../images/belalang-sembah/page-3.webp)
 
-Ia pemakan daging. Makanannya serangga lain, seperti lalat, nyamuk, kupu-kupu kecil, dan belalang kecil. Ia tidak mengejar mangsanya jauh-jauh, melainkan menunggu diam sampai serangga itu datang cukup dekat. Begitu mangsa mendekat, kaki depannya menyambar dengan sangat cepat dan mencengkeramnya erat. Lalu ia memakannya sedikit demi sedikit. Diam-diam, ia mengawasi mangsa berikutnya. Coba tebak, serangga apa yang datang selanjutnya?
+Belalang sembah pemakan daging, dan makanannya adalah serangga lain, seperti lalat, nyamuk, kupu-kupu kecil, dan belalang kecil. Ia tidak mengejar mangsanya jauh-jauh, melainkan menunggu diam sampai serangga itu datang cukup dekat. Begitu mangsa mendekat, kaki depannya menyambar dengan sangat cepat dan mencengkeramnya erat. Lalu ia memakannya sedikit demi sedikit. Diam-diam, ia mengawasi mangsa berikutnya. Coba tebak, serangga apa yang datang selanjutnya?
 
 > **Tahukah Kamu?** Belalang sembah hanya mau makan mangsa yang masih hidup dan bergerak, dan ia tidak mau makan serangga yang sudah mati!
 
@@ -42,7 +42,7 @@ Kehebatan belalang sembah ada pada matanya. Ia bisa melihat dengan dua mata seka
 
 ![Tumbuh dan Berganti Kulit](../images/belalang-sembah/page-5.webp)
 
-Ia hidup sendiri-sendiri dan tidak tinggal berkelompok seperti semut. Ketika masih kecil, ia disebut nimfa. Bentuknya sudah mirip belalang sembah dewasa, tetapi belum bersayap. Supaya bisa tumbuh besar, ia berganti kulit, atau molting. Molting artinya melepaskan kulit lamanya yang sudah sempit. Ia melakukannya beberapa kali sampai dewasa. Induk betina meletakkan telurnya dalam busa yang mengeras menjadi sarang telur bernama ooteka. Anak-anak yang menetas langsung hidup sendiri. Diam-diam, ia mengawasi dunia barunya.
+Belalang sembah hidup sendiri-sendiri dan tidak tinggal berkelompok seperti semut. Ketika masih kecil, ia disebut nimfa. Bentuknya sudah mirip belalang sembah dewasa, tetapi belum bersayap. Supaya bisa tumbuh besar, ia berganti kulit, atau molting. Molting artinya melepaskan kulit lamanya yang sudah sempit. Ia melakukannya beberapa kali sampai dewasa. Induk betina meletakkan telurnya dalam busa yang mengeras menjadi sarang telur bernama ooteka. Anak-anak yang menetas langsung hidup sendiri. Diam-diam, ia mengawasi dunia barunya. Wah, bayi belalang sembah sudah berani hidup sendiri sejak menetas, ya?
 
 > **Tahukah Kamu?** Anak belalang sembah yang baru menetas sudah bisa berburu sendiri tanpa diajari induknya!
 
