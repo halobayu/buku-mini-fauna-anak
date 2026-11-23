@@ -10,7 +10,7 @@ _Topik: Kenapa ular bisa tahan tanpa makan · Gaya gambar: semi-realistis_
 
 ![Kenalan dengan Ular](../images/kenapa-ular-bisa-tahan-tanpa-makan/page-1.webp)
 
-Ular adalah reptil. Tubuhnya panjang dan lentur, bersisik, dan tidak mempunyai kaki. Sisik melindungi tubuhnya, dan pola belang, bintik, atau garis pada kulitnya membantunya bersembunyi di antara daun dan tanah. Lidahnya bercabang dan sering dijulurkan untuk menangkap bau di udara. Matanya membantunya melihat gerakan di sekitarnya. Ular sanca, salah satu ular di Indonesia, dikenal sebagai salah satu ular terpanjang di dunia.
+Yuk, kenalan dengan ular! Ular adalah reptil, hewan bersisik yang tubuhnya panjang, lentur, dan tidak mempunyai kaki. Sisiknya melindungi tubuhnya, dan pola belang, bintik, atau garis pada kulitnya membantunya bersembunyi di antara daun dan tanah. Coba lihat lidahnya yang bercabang, ia sering menjulurkannya untuk menangkap bau di udara. Matanya membantunya melihat gerakan di sekitarnya. Ular sanca, salah satu ular di Indonesia, dikenal sebagai salah satu ular terpanjang di dunia. Hebat, ya?
 
 > **Tahukah Kamu?** Ular tidak mempunyai kelopak mata, jadi matanya dilindungi lapisan bening dan selalu terbuka, bahkan saat ia tidur.
 
@@ -18,7 +18,7 @@ Ular adalah reptil. Tubuhnya panjang dan lentur, bersisik, dan tidak mempunyai k
 
 ![Rumah Ular di Alam](../images/kenapa-ular-bisa-tahan-tanpa-makan/page-2.webp)
 
-Ular tinggal di banyak tempat, seperti hutan hujan, sawah, tepi sungai, padang rumput, dan bahkan gurun. Ada yang hidup di pohon, ada yang pandai berenang di air, dan ada pula yang bersembunyi di dalam tanah atau di bawah batu. Ular adalah hewan berdarah dingin: suhu tubuhnya mengikuti suhu di sekitarnya. Karena itu ia suka berjemur di bawah sinar matahari untuk menghangatkan tubuh. Saat udara terlalu panas atau terlalu dingin, ular bersembunyi di tempat teduh atau di dalam lubang agar tubuhnya tetap nyaman.
+Ular tinggal di banyak tempat, seperti hutan hujan, sawah, tepi sungai, padang rumput, dan bahkan gurun. Ada yang hidup di pohon, ada yang pandai berenang di air, dan ada pula yang bersembunyi di dalam tanah atau di bawah batu. Ular adalah hewan berdarah dingin, jadi suhu tubuhnya mengikuti suhu di sekitarnya. Karena itu ia suka berjemur di bawah sinar matahari untuk menghangatkan tubuh. Kalau udara terlalu panas atau terlalu dingin, ular bersembunyi di tempat teduh atau di dalam lubang supaya tubuhnya tetap nyaman. Pintar, ya, cara ular menjaga tubuhnya?
 
 > **Tahukah Kamu?** Ada ular laut yang ekornya pipih seperti dayung, sehingga ia bisa berenang dengan cepat di laut.
 
@@ -26,7 +26,7 @@ Ular tinggal di banyak tempat, seperti hutan hujan, sawah, tepi sungai, padang r
 
 ![Makanan dan Cara Berburu](../images/kenapa-ular-bisa-tahan-tanpa-makan/page-3.webp)
 
-Ular adalah karnivora, hewan pemakan daging. Ia memangsa tikus, burung, katak, ikan, telur, serta hewan kecil lainnya. Ular tidak mengunyah makanannya. Ia menelannya bulat-bulat, dengan rahang yang bisa membuka sangat lebar dan gigi yang melengkung ke belakang untuk menahan mangsa. Ada ular yang melilit mangsanya dengan kuat, ada yang memakai bisa untuk melumpuhkan mangsa, dan ada pula yang menunggu dengan sabar sampai mangsa datang mendekat. Bisa adalah cairan beracun. Setelah menelan satu mangsa yang besar, ular bisa merasa kenyang untuk waktu yang sangat lama.
+Ular adalah karnivora, hewan pemakan daging. Ia memangsa tikus, burung, katak, ikan, telur, serta hewan kecil lainnya. Ular tidak mengunyah makanannya, ia menelannya bulat-bulat dengan rahang yang bisa membuka sangat lebar dan gigi yang melengkung ke belakang untuk menahan mangsa. Ada ular yang melilit mangsanya dengan kuat, ada yang memakai bisa untuk melumpuhkan mangsa, dan ada pula yang menunggu dengan sabar sampai mangsa datang mendekat. Bisa itu cairan beracun, loh. Setelah menelan satu mangsa yang besar, ular bisa merasa kenyang untuk waktu yang sangat lama. Wah, sekali makan bisa kenyang lama sekali, ya?
 
 > **Tahukah Kamu?** Ada ular berbisa yang memiliki lubang kecil di wajahnya untuk merasakan panas tubuh mangsa, sehingga ia bisa berburu dalam gelap.
 
@@ -34,7 +34,7 @@ Ular adalah karnivora, hewan pemakan daging. Ia memangsa tikus, burung, katak, i
 
 ![Rahasia Tahan Tanpa Makan](../images/kenapa-ular-bisa-tahan-tanpa-makan/page-4.webp)
 
-Rahasia ular tahan lama tanpa makan adalah metabolismenya yang lambat. Metabolisme adalah cara tubuh memakai energi dari makanan, dan pada ular cara itu berjalan sangat pelan. Kita memakai banyak energi untuk menjaga tubuh tetap hangat. Ular tidak perlu begitu, karena suhu tubuhnya mengikuti suhu lingkungan. Setelah makan mangsa besar, ular menyimpan sebagian energi itu sebagai lemak di tubuhnya. Ia menggunakannya sedikit demi sedikit, seperti menabung makanan. Karena bergerak pelan dan banyak beristirahat, energi itu tidak cepat habis. Beberapa ular besar bisa bertahan berminggu-minggu, bahkan berbulan-bulan, tanpa makan. Tapi ia tetap perlu minum air.
+Kamu tahu tidak, rahasia ular tahan lama tanpa makan adalah metabolismenya yang lambat? Metabolisme adalah cara tubuh memakai energi dari makanan, dan pada ular cara itu berjalan sangat pelan. Kita memakai banyak energi untuk menjaga tubuh tetap hangat, tapi ular tidak perlu begitu karena suhu tubuhnya mengikuti suhu lingkungan. Setelah makan mangsa besar, ular menyimpan sebagian energi itu sebagai lemak di tubuhnya. Ia menggunakannya sedikit demi sedikit, seperti menabung makanan. Karena bergerak pelan dan banyak beristirahat, energi itu tidak cepat habis. Beberapa ular besar bisa bertahan berminggu-minggu, bahkan berbulan-bulan, tanpa makan. Tapi ia tetap perlu minum air, ya!
 
 > **Tahukah Kamu?** Usus ular sanca bisa mengecil saat ia lama tidak makan, lalu membesar lagi setelah ia makan untuk mencerna mangsanya.
 
@@ -42,7 +42,7 @@ Rahasia ular tahan lama tanpa makan adalah metabolismenya yang lambat. Metabolis
 
 ![Cara Ular Hidup](../images/kenapa-ular-bisa-tahan-tanpa-makan/page-5.webp)
 
-Ular bergerak dengan merayap: otot-otot tubuh dan sisik perutnya mendorong tubuh ke depan di atas tanah. Beberapa ular juga pandai memanjat pohon dan berenang, sehingga mereka bisa mencari makan di banyak tempat. Untuk mencari mangsa dan mengenali lingkungannya, ular menjulurkan lidah bercabangnya untuk menangkap bau. Bau itu lalu dibaca oleh organ Jacobson, organ khusus di langit-langit mulutnya. Kebanyakan ular hidup sendiri. Setelah bertelur atau melahirkan anak, induknya biasanya pergi, sehingga anak ular harus mencari makan sendiri sejak kecil.
+Ular bergerak dengan merayap, otot-otot tubuh dan sisik perutnya mendorong tubuh ke depan di atas tanah. Beberapa ular juga pandai memanjat pohon dan berenang, sehingga mereka bisa mencari makan di banyak tempat. Untuk mencari mangsa dan mengenali lingkungannya, ular menjulurkan lidah bercabangnya untuk menangkap bau. Bau itu lalu dibaca oleh organ Jacobson, organ khusus di langit-langit mulutnya. Kebanyakan ular hidup sendiri. Setelah bertelur atau melahirkan anak, induknya biasanya pergi, sehingga anak ular harus mencari makan sendiri sejak kecil. Wah, anak ular mandiri sekali sejak lahir, ya?
 
 > **Tahukah Kamu?** Ular tidak mempunyai telinga luar, tetapi ia bisa merasakan getaran langkah hewan lain melalui tanah dan rahangnya.
 
@@ -50,7 +50,7 @@ Ular bergerak dengan merayap: otot-otot tubuh dan sisik perutnya mendorong tubuh
 
 ![Penjaga Alam yang Hebat](../images/kenapa-ular-bisa-tahan-tanpa-makan/page-6.webp)
 
-Ular adalah pemburu tikus dan hewan kecil lainnya. Karena itu jumlah hewan tersebut tidak bertambah terlalu banyak sampai merusak tanaman petani. Ular juga menjadi makanan bagi elang dan hewan lain, sehingga rantai makanan tetap seimbang. Jika ular hilang, tikus bisa berkembang biak dengan cepat dan sawah bisa rusak. Menjaga ular berarti menjaga alam dan hasil panen kita. Kalau melihat ular, beri tahu orang dewasa dari jarak yang aman. Jangan mengganggu dan jangan membunuhnya.
+Ular adalah pemburu tikus dan hewan kecil lainnya. Karena itu jumlah hewan tersebut tidak bertambah terlalu banyak sampai merusak tanaman petani. Ular juga menjadi makanan bagi elang dan hewan lain, sehingga rantai makanan tetap seimbang. Jika ular hilang, tikus bisa berkembang biak dengan cepat dan sawah bisa rusak. Jadi, menjaga ular berarti menjaga alam dan hasil panen kita. Nah, kalau kamu melihat ular, beri tahu orang dewasa dari jarak yang aman, ya. Jangan mengganggu dan jangan membunuhnya, supaya ular bisa terus menjaga alam untuk kita.
 
 > **Tahukah Kamu?** Para ilmuwan mempelajari bisa ular untuk membuat obat yang dapat menolong manusia yang sakit.
 
