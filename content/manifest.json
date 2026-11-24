@@ -29,8 +29,18 @@
       "subtitle": "Siap bertemu axolotl, salamander tersenyum yang bisa menumbuhkan lagi bagian tubuhnya?",
       "title": "Axolotl Si Salamander Ajaib",
       "topic": "Axolotl"
+    },
+    {
+      "cover": "images/virus-influenza/cover.webp",
+      "file": "books/virus-influenza.json",
+      "id": "virus-influenza",
+      "pageCount": 6,
+      "style": "cat-air",
+      "subtitle": "Yuk, ikuti jejak virus flu yang sangat kecil dan cari tahu bagaimana tubuh kita melawannya!",
+      "title": "Flu Kecil yang Bikin Penasaran",
+      "topic": "Virus influenza"
     }
   ],
-  "contentVersion": 9,
-  "generatedAt": "2026-11-23T08:23:54.583Z"
+  "contentVersion": 10,
+  "generatedAt": "2026-11-23T23:54:14.056Z"
 }
