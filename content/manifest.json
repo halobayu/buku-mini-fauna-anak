@@ -39,7 +39,7 @@
       "file": "books/virus-influenza.json",
       "id": "virus-influenza",
       "pageCount": 6,
-      "style": "cat-air",
+      "style": "kartun-anak",
       "subtitle": "Yuk, ikuti jejak virus flu yang sangat kecil dan cari tahu bagaimana tubuh kita melawannya!",
       "title": "Flu Kecil yang Bikin Penasaran",
       "topic": "Virus influenza"
@@ -56,6 +56,6 @@
       "topic": "Cara kerja AC"
     }
   ],
-  "contentVersion": 13,
-  "generatedAt": "2026-11-24T05:18:35.000Z"
+  "contentVersion": 14,
+  "generatedAt": "2026-11-24T05:50:18.000Z"
 }
