@@ -1,6 +1,7 @@
 {
   "books": [
     {
+      "category": "fauna",
       "cover": "images/kenapa-ular-bisa-tahan-tanpa-makan/cover.webp",
       "file": "books/kenapa-ular-bisa-tahan-tanpa-makan.json",
       "id": "kenapa-ular-bisa-tahan-tanpa-makan",
@@ -11,6 +12,7 @@
       "topic": "Kenapa ular bisa tahan tanpa makan"
     },
     {
+      "category": "fauna",
       "cover": "images/belalang-sembah/cover.webp",
       "file": "books/belalang-sembah.json",
       "id": "belalang-sembah",
@@ -21,6 +23,7 @@
       "topic": "Belalang sembah"
     },
     {
+      "category": "fauna",
       "cover": "images/axolotl/cover.webp",
       "file": "books/axolotl.json",
       "id": "axolotl",
@@ -31,6 +34,7 @@
       "topic": "Axolotl"
     },
     {
+      "category": "sains",
       "cover": "images/virus-influenza/cover.webp",
       "file": "books/virus-influenza.json",
       "id": "virus-influenza",
@@ -39,8 +43,19 @@
       "subtitle": "Yuk, ikuti jejak virus flu yang sangat kecil dan cari tahu bagaimana tubuh kita melawannya!",
       "title": "Flu Kecil yang Bikin Penasaran",
       "topic": "Virus influenza"
+    },
+    {
+      "category": "sains",
+      "cover": "images/cara-kerja-ac/cover.webp",
+      "file": "books/cara-kerja-ac.json",
+      "id": "cara-kerja-ac",
+      "pageCount": 6,
+      "style": "kartun-anak",
+      "subtitle": "Yuk, ikuti perjalanan udara panas yang berubah menjadi sejuk di rumahmu!",
+      "title": "Kenapa AC Bikin Dingin?",
+      "topic": "Cara kerja AC"
     }
   ],
-  "contentVersion": 12,
-  "generatedAt": "2026-11-24T01:43:41.115Z"
+  "contentVersion": 13,
+  "generatedAt": "2026-11-24T05:18:35.000Z"
 }
