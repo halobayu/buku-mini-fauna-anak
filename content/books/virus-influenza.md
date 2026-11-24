@@ -2,7 +2,7 @@
 
 Yuk, ikuti jejak virus flu yang sangat kecil dan cari tahu bagaimana tubuh kita melawannya!
 
-_Topik: Virus influenza · Kategori: sains · Gaya gambar: cat-air_
+_Topik: Virus influenza · Kategori: sains · Gaya gambar: kartun-anak_
 
 ![Sampul](../images/virus-influenza/cover.webp)
 
@@ -81,7 +81,7 @@ Panduan ini mengikat: perintah gambar sampul dan semua halaman di semua buku sel
 6. Tanpa teks di dalam gambar: tidak ada kata, huruf, atau angka di gambar. Semua tulisan dipasang sebagai teks asli di halaman buku, bukan digambar.
 7. Rasio gambar 4:5 potret, selalu: setiap gambar halaman digambar dalam bingkai potret 4:5 (tegak, 1408x1760) — BUKAN lanskap. Halaman dibaca potret satu halaman penuh: gambar 4:5 berdiri di atas, teks di zona kertas di bawahnya. Tokoh memakai sebagian besar lebar bingkai — sekitar 70–80% — supaya gambarnya terasa penuh dan tokohnya besar, tetap utuh dengan ruang aman latar di semua sisi, dan teks TIDAK dicetak di dalam gambar.
 8. Seperempat bawah = safe space transisi: seperempat bagian bawah gambar WAJIB tenang — latar depan sederhana minim detail (lantai atau tanah lembut, air, atau rumput polos) yang warnanya melebur perlahan (gradasi mulus, tanpa garis keras) ke arah warna kertas krem buku. Di mode baca, safe space inilah yang bertransisi langsung ke teks di bawahnya, jadi tokoh dan detail penting TIDAK BOLEH masuk ke seperempat bawah ini; tokoh berdiri di tiga perempat atas bingkai, kakinya boleh menyentuh tepi atas safe space.
-9. Semi-realistis, bukan kartun: tokoh digambar dengan proporsi yang wajar dan terasa hidup — wajah ramah dan ekspresif dengan emosi yang jelas terbaca, warna hangat yang natural, tekstur lembut (kulit, rambut, kain pakaian terlihat nyata), serta cahaya dan bayangan lembut yang realistis sehingga tokoh terasa bervolume dan berat. Dilarang: garis tepi hitam tebal ala kartun, bidang warna datar tanpa gradasi/bayangan, bentuk geometris yang disederhanakan, shading sel kartun, dan wajah yang menakutkan.
+9. Kartun ceria, bukan realistis: ilustrasi kartun ala buku cerita anak — karakter ekspresif dengan wajah ramah dan emosi yang jelas terbaca (senang, penasaran, sayang, terkejut), garis lembut dan bentuk membulat yang ramah, warna hangat cerah dari palet terkunci buku, latar sederhana yang tidak menutupi tokoh. Dilarang: rendering fotorealistis, proporsi alami ala panduan alam, warna naturalis redup, garis tepi hitam tebal yang kasar, dan wajah yang menakutkan.
 10. Crop-safe — margin aman di KEEMPAT sisi: seluruh tokoh harus utuh di dalam frame dengan margin yang jelas di keempat sisi — minimal sekitar 10% lebar/tinggi frame dari setiap tepi (atas, bawah, kiri, kanan). Kepala sampai kaki kelihatan penuh; tidak ada satu pun bagian tokoh yang menyentuh, melewati, atau terpotong tepi frame. Aturan ini lahir dari halaman 4 'Rahasia Tahan Tanpa Makan' yang ke-crop di tablet: ularnya hanya kelihatan sebagian badan di tepi bawah dan kepalanya tidak kelihatan sama sekali.
 11. Crop-safe — tokoh di area aman tengah: tokoh wajib berada di area aman tengah, kira-kira 80% bagian tengah frame — jangan pernah menaruh subjek dekat tepi. Alasannya: gambar yang sama bisa tampil sedikit terpotong saat ditampilkan di layar yang berbeda (phone vs tablet portrait), jadi komposisi harus tetap aman walaupun tepinya kepotong sedikit. Kalau ragu, kecilkan sedikit tokohnya dan beri latar lebih lega daripada menaruhnya mepet tepi.
 12. Crop-safe — zona melt bawah HANYA berisi latar: seperempat bawah gambar (zona melt / safe space yang meleleh lewat gradasi ke teks di bawahnya) HANYA boleh berisi latar — lantai, tanah, air, rumput polos, atau latar tenang lain. Tidak boleh ada bagian tokoh apa pun di zona itu: tidak ada badan, tidak ada tangan atau kaki, dan terutama tidak ada kepala yang masuk ke zona melt. Tokoh selesai sepenuhnya di atas zona melt; kakinya hanya boleh menyentuh tepi atas zona itu.
@@ -98,7 +98,7 @@ Panduan ini mengikat: perintah gambar sampul dan semua halaman di semua buku sel
 - [ ] Safe space bawah bersih? Seperempat bawah gambar tenang dan minim detail, melebur gradasi ke warna kertas — tidak ada tokoh atau detail penting di sana, siap bertransisi ke teks.
 - [ ] Tidak ada teks liar? Gambar bebas kata, huruf, dan angka.
 - [ ] Sekali lihat kebaca? Anak langsung tahu siapa tokohnya, sedang apa, dan apa yang ia rasakan.
-- [ ] Cukup semi-realistis? Proporsi tokoh wajar, wajah ramah dan ekspresif dengan emosi jelas terbaca, warna hangat natural, tekstur lembut dan cahaya-bayangan lembut yang realistis — tidak terlihat seperti kartun pipih bergaris tebal dan tidak fotorealistis kaku.
+- [ ] Cukup kartun dan ekspresif? Wajah ramah, emosi jelas terbaca, garis lembut, warna hangat cerah — tidak terlihat seperti ilustrasi panduan alam yang realistis.
 - [ ] Margin aman keempat sisi? Ada jarak latar yang jelas (minimal ~10% frame) antara tokoh dan SETIAP tepi — atas, bawah, kiri, kanan — dan tidak ada bagian tokoh yang menyentuh atau memotong tepi mana pun.
 - [ ] Tokoh di area aman tengah? Seluruh tokoh berada di ~80% bagian tengah frame, tidak ada bagian subjek yang ditaruh dekat tepi, jadi gambar tetap aman walau tampil sedikit terpotong di layar lain.
 - [ ] Zona melt bawah bersih total? Seperempat bawah gambar HANYA berisi latar — tidak ada badan, tangan, kaki, atau kepala tokoh di zona melt itu.
