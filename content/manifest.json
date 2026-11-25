@@ -34,6 +34,17 @@
       "topic": "Axolotl"
     },
     {
+      "id": "kuda-laut",
+      "title": "Kuda Laut, Si Ikan Ajaib",
+      "subtitle": "Ayo menyelam dan temukan rahasia ikan kecil yang berenang tegak, pandai menyamar, dan dijaga oleh ayahnya!",
+      "topic": "Kuda laut",
+      "style": "krayon",
+      "category": "fauna",
+      "cover": "images/kuda-laut/cover.webp",
+      "file": "books/kuda-laut.json",
+      "pageCount": 6
+    },
+    {
       "category": "sains",
       "cover": "images/virus-influenza/cover.webp",
       "file": "books/virus-influenza.json",
@@ -56,6 +67,6 @@
       "topic": "Cara kerja AC"
     }
   ],
-  "contentVersion": 16,
-  "generatedAt": "2026-11-24T07:53:44.000Z"
+  "contentVersion": 17,
+  "generatedAt": "2026-11-25T15:26:44.000Z"
 }
