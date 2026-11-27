@@ -65,8 +65,30 @@
       "subtitle": "Yuk, ikuti perjalanan udara panas yang berubah menjadi sejuk di rumahmu!",
       "title": "Kenapa AC Bikin Dingin?",
       "topic": "Cara kerja AC"
+    },
+    {
+      "id": "dinosaurus-paling-kecil",
+      "title": "Dinosaurus Paling Kecil",
+      "subtitle": "Ayo kenali dinosaurus terkecil yang pernah ada, sekecil burung gagak!",
+      "topic": "Dinosaurus paling kecil",
+      "style": "cat-air",
+      "category": "fauna",
+      "cover": "images/dinosaurus-paling-kecil/cover.webp",
+      "file": "books/dinosaurus-paling-kecil.json",
+      "pageCount": 6
+    },
+    {
+      "id": "jenis-hiu",
+      "title": "Jenis Hiu",
+      "subtitle": "Ayo menyelam bersama Banu dan kenali empat hiu yang berbeda-beda!",
+      "topic": "Jenis hiu",
+      "style": "kartun",
+      "category": "fauna",
+      "cover": "images/jenis-hiu/cover.webp",
+      "file": "books/jenis-hiu.json",
+      "pageCount": 6
     }
   ],
-  "contentVersion": 17,
-  "generatedAt": "2026-11-25T15:26:44.000Z"
+  "contentVersion": 18,
+  "generatedAt": "2026-11-27T12:32:54.000Z"
 }
