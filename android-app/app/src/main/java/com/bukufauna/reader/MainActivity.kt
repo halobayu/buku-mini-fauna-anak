@@ -366,10 +366,13 @@ button{font-family:inherit}
 .imgzone{position:relative;overflow:hidden;flex:0 0 auto;width:100%}
 .zoneimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .whole{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%}
-.meltb{position:absolute;left:0;right:0;bottom:0;height:46%;z-index:10;pointer-events:none}
 .melts{position:absolute;top:0;bottom:0;width:34%;z-index:10;pointer-events:none}
 .textzone{position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden;min-height:0;min-width:0}
 .textzone>*{flex:0 0 auto}
+.bubble{max-width:72%;border-radius:18px;font-weight:700;line-height:1.42;box-shadow:0 2px 12px rgba(0,0,0,.25);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.topscrim{position:absolute;left:0;right:0;top:0;height:34%;z-index:5;pointer-events:none}
+.pagetitle{position:absolute;left:0;right:0;top:0;z-index:10;padding:7% 8% 0;pointer-events:none}
+.pagetitle h3{margin:0;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;line-height:1.15;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.5)}
 .spreadhead{display:flex;align-items:center;gap:14px}
 .spreadhead h3{margin:0;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;line-height:1.15}
 .rule{display:flex;gap:6px}
@@ -433,6 +436,14 @@ function paperBg() {
   return "background-color:" + pal.paper
     + ";background-image:radial-gradient(rgba(120,90,40,0.07) 1.3px, transparent 1.4px), radial-gradient(rgba(120,90,40,0.05) 1px, transparent 1.1px), linear-gradient(155deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 55%)"
     + ";background-size:22px 22px, 13px 13px, 100% 100%;background-position:0 0, 6px 9px, 0 0;";
+}
+// Hex colour to rgba() so a bubble can be paper at 85% opacity
+// (Space parity: the picture stays visible through the bubble).
+function hexA(hex, a) {
+  var h = String(hex || "").replace("#", "");
+  if (h.length === 3) h = h.charAt(0) + h.charAt(0) + h.charAt(1) + h.charAt(1) + h.charAt(2) + h.charAt(2);
+  var r = parseInt(h.substring(0, 2), 16), g = parseInt(h.substring(2, 4), 16), b = parseInt(h.substring(4, 6), 16);
+  return "rgba(" + r + "," + g + "," + b + "," + a + ")";
 }
 function slideLabel() {
   if (idx === 0) return "Sampul";
@@ -517,6 +528,40 @@ function spreadHtml(p, pi, t) {
     + '<p style="font-size:' + Math.max(12, px(t.fact)) + 'px;color:' + pal.ink + '">' + esc(fact) + '</p></div>';
   return h;
 }
+// Portrait, Space parity v1.8: the picture fills the whole sheet and
+// the text floats ON it as small paper bubbles (max-width 72%, paper
+// at 85% opacity), exactly like the Space reading page — the heading
+// as a white overlay title at the top, the whole body in ONE bubble
+// in the bottom zone, the fun fact as a second bubble. The v1.7
+// full-width paper panel is gone: no more paper block covering the
+// bottom half, the picture stays dominant. The bubble wrapper keeps
+// id="textzone" (with no paper background of its own) so fitCheck()
+// can still shrink the type tier when the text overflows.
+function portraitHtml(p, pi, t) {
+  // Same de-dup as spreadHtml: the callout tab already says
+  // "Tahukah Kamu?", so strip those words from the JSON fact.
+  var fact = (p.funFact || "").replace(/^\s*tahukah kamu\s*[!?.:;,]?\s*/i, "");
+  var bg = hexA(pal.paper, 0.85);
+  var pad = "padding:" + Math.max(8, px(16)) + "px " + Math.max(10, px(22)) + "px";
+  var head = p.heading
+    ? '<div class="pagetitle"><h3 style="font-size:' + Math.max(16, px(t.heading)) + 'px">' + esc(p.heading) + '</h3></div>'
+    : "";
+  var bodyB = '<p class="bubble" style="background:' + bg + ';font-size:' + Math.max(13, px(t.body + 4.5)) + 'px;color:' + pal.ink + ';' + pad + '">' + esc(p.body || "") + '</p>';
+  var factB = "";
+  if (fact) {
+    factB = '<div class="bubble" style="position:relative;background:' + bg + ';padding:' + Math.max(14, px(30)) + 'px ' + Math.max(12, px(30)) + 'px ' + Math.max(10, px(22)) + 'px">'
+      + '<span class="callouttab" style="background:' + pal.callout + ';color:' + pal.calloutInk
+      + ';top:' + (-Math.max(9, px(17))) + 'px;font-size:' + Math.max(10, px(17)) + 'px;padding:'
+      + Math.max(2, px(3)) + 'px ' + Math.max(8, px(14)) + 'px">&#128161; Tahukah Kamu?</span>'
+      + '<p style="margin:0;font-size:' + Math.max(12, px(t.fact)) + 'px;font-weight:600;line-height:1.45;color:' + pal.ink + '">' + esc(fact) + '</p></div>';
+  }
+  var scrim = '<div class="topscrim" style="background:linear-gradient(to bottom, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.12) 55%, rgba(0,0,0,0) 100%)"></div>';
+  return '<div class="sheet" style="background:' + pal.paper + ';color:' + pal.ink + '">'
+    + '<img class="whole" src="' + p.image + '" alt=""/>' + scrim + head
+    + '<div id="textzone" class="textzone" style="position:absolute;left:0;right:0;bottom:0;z-index:10;max-height:62%;justify-content:flex-end;align-items:center;gap:' + px(t.gap) + 'px;padding:' + px(16) + 'px ' + px(48) + 'px ' + (px(44) + 76) + 'px">'
+    + bodyB + factB + '</div>'
+    + '</div>';
+}
 function coverHtml() {
   if (imgOk["cover"] === false) {
     return '<div class="sheet" style="' + paperBg() + 'color:' + pal.ink + '">'
@@ -578,19 +623,7 @@ function pageHtml(p, pi) {
       + spreadHtml(p, pi, t) + '</div>'
       + '</div>';
   }
-  // Full-bleed portrait (Space parity, v1.7): the 4:5 picture fills the
-  // whole sheet edge to edge (cover-fit, top-biased so any squeeze
-  // spends itself on the calm safe-space bottom, never on the animal),
-  // and the text sits ON the picture as a paper bubble panel overlaid
-  // at the bottom, with a melt gradient behind it so the text stays
-  // readable. The panel keeps id="textzone" and a max-height, so
-  // fitCheck() can still shrink the type tier when the text overflows.
-  var meltB = '<div class="meltb" style="height:72%;background:linear-gradient(to bottom, ' + pal.paper + '00 0%, ' + pal.paper + '2E 38%, ' + pal.paper + '85 68%, ' + pal.paper + ' 100%)"></div>';
-  return '<div class="sheet" style="background:' + pal.paper + ';color:' + pal.ink + '">'
-    + '<img class="whole" src="' + p.image + '" alt=""/>' + meltB
-    + '<div id="textzone" class="textzone" style="position:absolute;left:0;right:0;bottom:0;z-index:10;max-height:64%;justify-content:flex-start;gap:' + px(t.gap) + 'px;padding:' + px(20) + 'px ' + px(48) + 'px ' + (px(44) + 76) + 'px;border-radius:28px 28px 0 0;box-shadow:0 -12px 28px rgba(0,0,0,.18);' + paperBg() + '">'
-    + spreadHtml(p, pi, t) + '</div>'
-    + '</div>';
+  return portraitHtml(p, pi, t);
 }
 function sheetHtml() {
   if (idx === 0) return coverHtml();
