@@ -489,6 +489,10 @@ function splitAnchor(body) {
 }
 function spreadHtml(p, pi, t) {
   var parts = splitAnchor(p.body || "");
+  // The callout already carries a "💡 Tahukah Kamu?" tab, so strip the
+  // same words when the JSON funFact itself starts with them — otherwise
+  // the reader prints "Tahukah Kamu?" twice (tab + first words).
+  var fact = (p.funFact || "").replace(/^\s*tahukah kamu\s*[!?.:;,]?\s*/i, "");
   var widths = [64, 38, 22];
   var rule = "";
   for (var i = 0; i < 3; i++) rule += '<i style="background:' + NEU.rule[i] + ';width:' + Math.max(10, px(widths[i])) + 'px"></i>';
@@ -510,7 +514,7 @@ function spreadHtml(p, pi, t) {
     + '<span class="callouttab" style="background:' + pal.callout + ';color:' + pal.calloutInk
     + ';top:' + (-Math.max(9, px(17))) + 'px;font-size:' + Math.max(10, px(17)) + 'px;padding:'
     + Math.max(2, px(3)) + 'px ' + Math.max(8, px(14)) + 'px">&#128161; Tahukah Kamu?</span>'
-    + '<p style="font-size:' + Math.max(12, px(t.fact)) + 'px;color:' + pal.ink + '">' + esc(p.funFact) + '</p></div>';
+    + '<p style="font-size:' + Math.max(12, px(t.fact)) + 'px;color:' + pal.ink + '">' + esc(fact) + '</p></div>';
   return h;
 }
 function coverHtml() {
@@ -574,23 +578,17 @@ function pageHtml(p, pi) {
       + spreadHtml(p, pi, t) + '</div>'
       + '</div>';
   }
-  var cap = Math.min(72, t.imgPct + (p.layout === "gambar-penuh" ? 6 : 0));
-  var sheetRatio = window.innerWidth / Math.max(1, window.innerHeight);
-  var asp = aspects[key];
-  var naturalPct = asp ? (sheetRatio * 100) / asp : cap;
-  // The 4:5 law (Space parity): the zone IS the picture's own shape
-  // — natural height at full sheet width, capped by the tier share —
-  // and the picture fills it edge to edge (cover-fit, top-biased so
-  // any squeeze spends itself on the calm safe-space bottom, never
-  // on the animal). No blurred ambience, no filler bars. The melt
-  // gradient lives inside the picture's safe-space quarter and
-  // lands on solid paper exactly where the text zone begins.
-  var zonePct = Math.min(Math.max(naturalPct, 30), cap);
-  var meltB = '<div class="meltb" style="background:linear-gradient(to bottom, ' + pal.paper + '00 0%, ' + pal.paper + '2E 42%, ' + pal.paper + '85 74%, ' + pal.paper + ' 100%)"></div>';
-  var zoneInner = '<img class="whole" src="' + p.image + '" alt=""/>' + meltB;
-  return '<div class="sheet" style="background:' + pal.paper + ';color:' + pal.ink + ';display:flex;flex-direction:column">'
-    + '<div class="imgzone" style="height:' + zonePct + '%">' + zoneInner + '</div>'
-    + '<div id="textzone" class="textzone" style="flex:1;justify-content:flex-start;gap:' + px(t.gap) + 'px;padding:' + px(20) + 'px ' + px(48) + 'px ' + (px(44) + 76) + 'px;' + paperBg() + '">'
+  // Full-bleed portrait (Space parity, v1.7): the 4:5 picture fills the
+  // whole sheet edge to edge (cover-fit, top-biased so any squeeze
+  // spends itself on the calm safe-space bottom, never on the animal),
+  // and the text sits ON the picture as a paper bubble panel overlaid
+  // at the bottom, with a melt gradient behind it so the text stays
+  // readable. The panel keeps id="textzone" and a max-height, so
+  // fitCheck() can still shrink the type tier when the text overflows.
+  var meltB = '<div class="meltb" style="height:72%;background:linear-gradient(to bottom, ' + pal.paper + '00 0%, ' + pal.paper + '2E 38%, ' + pal.paper + '85 68%, ' + pal.paper + ' 100%)"></div>';
+  return '<div class="sheet" style="background:' + pal.paper + ';color:' + pal.ink + '">'
+    + '<img class="whole" src="' + p.image + '" alt=""/>' + meltB
+    + '<div id="textzone" class="textzone" style="position:absolute;left:0;right:0;bottom:0;z-index:10;max-height:64%;justify-content:flex-start;gap:' + px(t.gap) + 'px;padding:' + px(20) + 'px ' + px(48) + 'px ' + (px(44) + 76) + 'px;border-radius:28px 28px 0 0;box-shadow:0 -12px 28px rgba(0,0,0,.18);' + paperBg() + '">'
     + spreadHtml(p, pi, t) + '</div>'
     + '</div>';
 }
