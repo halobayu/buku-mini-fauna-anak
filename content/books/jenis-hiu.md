@@ -1,0 +1,109 @@
+# Jenis Hiu
+
+Ayo menyelam bersama Banu dan kenali empat hiu yang berbeda-beda!
+
+_Topik: Jenis hiu · Kategori: fauna · Gaya gambar: kartun_
+
+![Sampul](../images/jenis-hiu/cover.webp)
+
+## 1. Pagi di Laut
+
+![Pagi di Laut](../images/jenis-hiu/page-1.webp)
+
+Pagi itu, Banu pergi ke laut. Ombak bernyanyi pelan, dan Banu tidak sabar melihat apa yang ada di bawah air. Ternyata, di laut ada hiu — bukan satu jenis saja, ada lebih dari 500 jenis hiu di dunia!
+
+> **Tahukah Kamu?** Di laut ada lebih dari 500 jenis hiu!
+
+## 2. Hiu Paus yang Jinak
+
+![Hiu Paus yang Jinak](../images/jenis-hiu/page-2.webp)
+
+Tiba-tiba, bayangan besar melintas di depan Banu. Itu hiu paus! Panjangnya bisa sampai 12 meter — sebesar bus. Tapi ia sangat jinak, makannya cuma plankton kecil. Bintik putih di badannya unik, seperti sidik jari.
+
+> **Tahukah Kamu?** Hiu paus bisa sampai 12 meter — sebesar bus — tapi ia sangat jinak dan makannya cuma plankton kecil.
+
+## 3. Hiu Martil yang Aneh
+
+![Hiu Martil yang Aneh](../images/jenis-hiu/page-3.webp)
+
+Lalu Banu melihat hiu yang kepalanya aneh sekali — seperti palu! Itulah hiu martil. Matanya ada di ujung kiri dan kanan kepala, jadi ia bisa melihat ke segala arah. Kepala lebarnya juga dipakai untuk menekan ikan pari ke dasar laut.
+
+> **Tahukah Kamu?** Mata hiu martil ada di ujung kiri dan kanan kepalanya yang seperti palu, jadi ia bisa melihat ke segala arah.
+
+## 4. Hiu Putih Besar
+
+![Hiu Putih Besar](../images/jenis-hiu/page-4.webp)
+
+Dari kejauhan, Banu melihat hiu putih besar meluncur cepat. Panjangnya bisa sampai 6 meter. Badannya seperti torpedo dan giginya segitiga tajam seperti gergaji. Ia pemburu yang cepat dan kuat, jadi Banu mengamatinya dari jauh saja.
+
+> **Tahukah Kamu?** Hiu putih besar bisa sampai 6 meter, badannya seperti torpedo dan giginya segitiga tajam seperti gergaji.
+
+## 5. Hiu Macan Bergaris
+
+![Hiu Macan Bergaris](../images/jenis-hiu/page-5.webp)
+
+Sebelum pulang, Banu bertemu hiu macan. Badannya bergaris-garis gelap seperti harimau — garisnya paling jelas saat ia masih muda. Panjangnya bisa sampai 5 meter dan ia makan hampir apa saja.
+
+> **Tahukah Kamu?** Garis-garis hiu macan paling jelas saat ia masih muda, dan panjangnya bisa sampai 5 meter.
+
+## 6. Pulang dengan Cerita Seru
+
+![Pulang dengan Cerita Seru](../images/jenis-hiu/page-6.webp)
+
+Sore itu, Banu pulang dengan cerita seru. Hiu itu macam-macam: ada yang raksasa tapi jinak, ada yang kepalanya seperti palu, ada yang bergaris seperti harimau. Tidak semua hiu menakutkan — semuanya punya caranya sendiri untuk hidup di laut.
+
+> **Tahukah Kamu?** Tidak semua hiu menakutkan — ada yang raksasa tapi jinak, ada yang kepalanya seperti palu, ada yang bergaris seperti harimau.
+
+## Storyboard & Layout
+
+| Halaman | Layout | Adegan gambar | Komposisi | Suasana | Kesinambungan |
+| --- | --- | --- | --- | --- | --- |
+| 1. Pagi di Laut | gambar-penuh | Banu kecil di pojok bawah berenang di laut biru pagi yang luas, menatap ke arah pembaca dengan penasaran. | Wide environment 4:5 kartun buku anak; laut biru pagi yang luas memenuhi bingkai, ombak tenang, sinar matahari pagi; Banu kecil di pojok bawah berenang, kostum selam terkunci; Banu utuh di area aman, margin 10% semua tepi; seperempat bawah hanya air dan pasir tenang. | penasaran dan ceria | Banu v2 dengan kostum selam terkunci yang sama dipakai di semua halaman: kaos biru print monster, celana gelap, clog krem tali merah, masker di dahi, snorkel biru. |
+| 2. Hiu Paus yang Jinak | gambar-penuh | Hiu paus raksasa berbintik putih berenang tenang, Banu kecil di pojok bawah kanan melambai pelan ke arahnya. | Establishing wide 4:5 kartun buku anak; hiu paus raksasa berbintik putih mengisi sebagian besar frame, utuh kepala sampai ekor, jauh lebih besar dari Banu; Banu kecil di pojok bawah kanan melambai; tubuh utuh di area aman, margin 10% semua tepi; seperempat bawah hanya air dan pasir tenang. Zona teks: atas-kiri. | takjub dan kagum | Hiu paus berbintik putih dan Banu v2 dengan kostum selam yang sama seperti halaman sebelumnya. |
+| 3. Hiu Martil yang Aneh | gambar-penuh | Hiu martil besar berenang di terumbu karang, Banu kecil di bawah menunjuk kepalanya yang seperti palu. | Head-focus three-quarter 4:5 kartun buku anak; hiu martil besar utuh, kepala palu horizontal dengan mata di kedua ujungnya jadi fokus, berenang di terumbu karang, tidak tertutup Banu; Banu kecil di bawah menunjuk ke arahnya; tubuh utuh di area aman, margin 10% semua tepi; seperempat bawah hanya air dan karang tenang. Zona teks: bawah-kiri. | takjub dan penasaran | Banu v2 dengan kostum selam yang sama seperti halaman sebelumnya; hiu martil baru. |
+| 4. Hiu Putih Besar | gambar-penuh | Hiu putih besar meluncur cepat di laut biru, Banu kecil di kejauhan atas mengamatinya dari jauh. | Action close-up 4:5 kartun buku anak, diagonal dinamis; hiu putih besar utuh, badan torpedo abu-abu atas putih bawah, gigi segitiga jadi fokus, meluncur cepat; Banu kecil di kejauhan atas menoleh ke arahnya; tubuh utuh di area aman, margin 10% semua tepi; seperempat bawah hanya air dan pasir tenang. | seru dan waspada | Banu v2 dengan kostum selam yang sama seperti halaman sebelumnya; hiu putih besar baru. |
+| 5. Hiu Macan Bergaris | gambar-penuh | Hiu macan besar bergaris harimau berenang di laut tropis, Banu kecil di samping menatap garis-garisnya. | Camouflage/hidden 4:5 kartun buku anak; hiu macan besar utuh diagonal kepala-ekor, garis-garis gelap seperti harimau jelas, berenang di laut tropis; Banu kecil di samping menatap garis-garisnya; tubuh utuh di area aman, margin 10% semua tepi; seperempat bawah hanya air dan karang tenang. Zona teks: atas-kanan. | takjub dan penasaran | Banu v2 dengan kostum selam yang sama seperti halaman sebelumnya; hiu macan baru. |
+| 6. Pulang dengan Cerita Seru | gambar-penuh | Hiu paus, hiu martil, dan hiu macan berenang bersama di laut biru, Banu kecil di tengah bawah tersenyum ke arah pembaca. | Life-cycle/multi-subject 4:5 kartun buku anak, framing lebar; hiu paus besar, hiu martil, dan hiu macan semuanya utuh dan tidak ter-crop, beda skala antar-spesies; Banu kecil di tengah bawah tersenyum ke arah pembaca; tubuh utuh di area aman, margin 10% semua tepi; seperempat bawah hanya air dan pasir tenang. Zona teks: atas. | hangat dan penuh cerita | Ketiga hiu dan Banu v2 yang sama seperti halaman-halaman sebelumnya, kini bersama. |
+
+**Jangkar penampilan tokoh:** Banu: 7-year-old Indonesian boy, light tan skin, spiky short black hair, large dark brown eyes, small nose, friendly smile. Wearing a bright blue long-sleeve T-shirt with a colourful monster Bowser print drawn by a child (orange circle background with a green-yellow monster, as in the reference sheet), dark charcoal-grey shorts, and beige clog sandals with red heel straps, a diving mask pushed up on his forehead and a blue snorkel. No full-body wetsuit.
+
+**Jangkar habitat:** Laut biru tropis yang cerah dengan terumbu karang warna-warni, sinar matahari pagi menembus air jernih, ombak tenang, ikan-ikan kecil berenang di sekitar karang; suasana pagi yang ceria dan penuh petualangan.
+
+## Panduan Gambar Buku Fauna (mengikat untuk semua gambar buku ini)
+
+Panduan ini mengikat: perintah gambar sampul dan semua halaman di semua buku selalu memuat panduan ini, dan setiap gambar dicek dengan daftar periksa di bawah sebelum tampil. Tujuannya satu — hewan selalu tampil utuh dan langsung kebaca oleh anak kelas 2 SD.
+
+1. Hewan utuh selalu: seluruh tubuh hewan — kepala, badan, kaki/sayap/sirip, dan ekor — terlihat lengkap di dalam bingkai, dari kepala sampai ekor.
+2. Ruang aman di semua sisi: ada jarak latar yang jelas (kira-kira sepersepuluh bingkai) antara hewan dan setiap tepi gambar; hewan tidak pernah menyentuh atau melewati tepi.
+3. Dilarang close-up ekstrem: jangan memperbesar satu bagian tubuh atau pola kulit sampai hewannya sendiri hilang. Detail boleh ditonjolkan hanya bila seluruh hewan tetap terlihat dalam bingkai yang sama.
+4. Langsung kebaca sekali lihat: anak kelas 2 harus bisa mengenali hewannya dan apa yang sedang ia lakukan dalam sekali pandang — satu subjek yang jelas, satu aksi yang jelas.
+5. Latar habitat lengkap tapi selalu di belakang: habitat digambar utuh dan mudah dikenali di belakang dan di sekeliling hewan; tidak ada tanaman, batu, atau benda apa pun yang menutupi kepala atau tubuh hewan.
+6. Tanpa teks di dalam gambar: tidak ada kata, huruf, atau angka di gambar. Semua tulisan dipasang sebagai teks asli di halaman buku, bukan digambar.
+7. Rasio gambar 4:5 potret, selalu: setiap gambar halaman digambar dalam bingkai potret 4:5 (tegak, 1408x1760) — BUKAN lanskap. Halaman dibaca potret satu halaman penuh: gambar 4:5 berdiri di atas, teks di zona kertas di bawahnya. Hewan memakai sebagian besar lebar bingkai — sekitar 70–80% — supaya gambarnya terasa penuh dan hewannya besar, tetap utuh dengan ruang aman latar di semua sisi, dan teks TIDAK dicetak di dalam gambar.
+8. Seperempat bawah = safe space transisi: seperempat bagian bawah gambar WAJIB tenang — latar depan sederhana minim detail (tanah lembut, air, atau rumput polos) yang warnanya melebur perlahan (gradasi mulus, tanpa garis keras) ke arah warna kertas krem buku. Di mode baca, safe space inilah yang bertransisi langsung ke teks di bawahnya, jadi hewan dan detail penting TIDAK BOLEH masuk ke seperempat bawah ini; hewan berdiri di tiga perempat atas bingkai, kakinya boleh menyentuh tepi atas safe space.
+9. Kartun Buku Anak: ilustrasi kartun buku anak yang ceria — garis bersih, warna cerah dan ramah anak, bentuk sederhana tapi tetap mudah dikenali, proporsi hewan tetap benar (tidak chibi berlebihan), ekspresi hangat dan bersahabat; palet Ceria Anak memandu warna latar dan suasana, bukan mewarnai ulang hewan jadi warna yang salah.
+10. Crop-safe — margin aman di KEEMPAT sisi: seluruh hewan harus utuh di dalam frame dengan margin yang jelas di keempat sisi — minimal sekitar 10% lebar/tinggi frame dari setiap tepi (atas, bawah, kiri, kanan). Kepala sampai ekor kelihatan penuh; tidak ada satu pun bagian hewan yang menyentuh, melewati, atau terpotong tepi frame. Aturan ini lahir dari halaman 4 'Rahasia Tahan Tanpa Makan' yang ke-crop di tablet: ularnya hanya kelihatan sebagian badan di tepi bawah dan kepalanya tidak kelihatan sama sekali.
+11. Crop-safe — hewan di area aman tengah: hewan wajib berada di area aman tengah, kira-kira 80% bagian tengah frame — jangan pernah menaruh subjek dekat tepi. Alasannya: gambar yang sama bisa tampil sedikit terpotong saat ditampilkan di layar yang berbeda (phone vs tablet portrait), jadi komposisi harus tetap aman walaupun tepinya kepotong sedikit. Kalau ragu, kecilkan sedikit hewannya dan beri latar lebih lega daripada menaruhnya mepet tepi.
+12. Crop-safe — zona melt bawah HANYA berisi latar: seperempat bawah gambar (zona melt / safe space yang meleleh lewat gradasi ke teks di bawahnya) HANYA boleh berisi latar/habitat — tanah, air, rumput polos, atau latar tenang lain. Tidak boleh ada bagian hewan apa pun di zona itu: tidak ada badan, tidak ada kaki/sayap/sirip, dan terutama tidak ada kepala atau ekor yang masuk ke zona melt. Hewan selesai sepenuhnya di atas zona melt; kakinya hanya boleh menyentuh tepi atas zona itu.
+13. Crop-safe — QA wajib dicek di tablet portrait juga: setiap gambar hasil generate/regenerate wajib dicek tampilannya di ukuran tablet portrait (2136x3200) selain di phone. Gambar yang lolos QA di phone BELUM TENTU lolos di tablet — halaman 4 lolos di phone tetapi ke-crop di tablet — jadi gambar belum boleh dinyatakan lolos sebelum tampil utuh (kepala sampai ekor, margin aman terlihat) di kedua ukuran itu.
+14. Variasi shot — kamera wajib berpindah antar halaman: dalam satu buku, TIDAK ADA dua halaman yang boleh memakai jenis shot yang sama. Setiap buku wajib merotasi minimal 4 jenis shot berbeda dari daftar ini: (a) establishing wide — tampak lebar pembuka, hewan utuh memakai sekitar 70–80% lebar bingkai; (b) camouflage/hidden — hewan LEBIH KECIL (sekitar 40–50% lebar bingkai), setengah tersembunyi menyamar di habitatnya, pembaca harus menemukannya; (c) action close-up — momen aksi, hewan lebih besar di bingkai dengan sudut dinamis/diagonal, seluruh tubuh tetap utuh; (d) head-focus three-quarter — dilihat tiga perempat, kepala dan mata jadi titik fokus, seluruh badan tetap utuh di area aman; (e) life-cycle/multi-subject — dua subjek atau lebih dengan skala berbeda dalam framing lebih lebar (misalnya dewasa + anak/ooteka); (f) wide environment — lingkungan luas memenuhi bingkai, hewan kecil (sekitar 35–45% lebar bingkai) di tengahnya. Generator storyboard wajib menetapkan satu jenis shot BERBEDA untuk setiap halaman sejak awal dan menuliskannya di awal composition halaman itu; skala hewan mengikuti jenis shot-nya, BUKAN selalu 70–80%. Semua aturan lain tetap mengikat di setiap shot: hewan utuh, margin aman ~10% di keempat sisi, hewan di area aman tengah, seperempat bawah hanya latar. QA wajib memeriksa VARIASI SHOT antar halaman sebelum buku dinyatakan siap — bukan hanya memeriksa tiap gambar satu per satu. Aturan ini lahir dari buku Belalang Sembah yang keenam halamannya memakai komposisi hampir copy-paste (samping agak jauh, 70–80%, di tengah) sehingga bukunya terasa monoton walau adegannya berbeda.
+15. Tokoh manusia bernama: sebelum generate ilustrasi apa pun, setiap tokoh manusia yang namanya muncul di naskah harus sudah punya deskripsi penampilan terkunci; deskripsi itu dipakai kata-per-kata di semua halaman tempat tokoh itu muncul; jangan menggambar tokoh dari teks halaman saja. Deskripsi wajib memuat warna kulit, rambut, pakaian, aksesori beserta warna dan letaknya (kiri/kanan), dan ciri khas. (Aturan ini lahir dari buku 'Nara Berkata Jujur, Hati Tenang': Sinta tidak punya deskripsi terkunci sehingga hal. 4 dan 5 menggambarkannya berbeda.)
+16. Fauna — hewan fokus utama: di buku Fauna, hewan adalah fokus utama gambar; Banu hanya pelengkap kecil di samping atau di kejauhan, dan ukuran harus proporsional dengan ukuran asli hewan (hiu paus jauh lebih besar dari Banu, bukan sebaliknya; Banu tidak boleh besar di foreground menutupi hewan).
+
+**Daftar periksa QA sebelum gambar tampil:**
+
+- [ ] Subjek utuh? Seluruh hewan terlihat dari kepala sampai ekor.
+- [ ] Kepala terlihat? Kepala hewan tampak jelas dan lengkap.
+- [ ] Tidak terpotong tepi? Tidak ada bagian tubuh yang kepotong tepi gambar mana pun.
+- [ ] Rasio 4:5 potret? Gambar tegak 4:5 (1408x1760), hewan memakai sebagian besar lebar bingkai (sekitar 70–80%) di tiga perempat atasnya.
+- [ ] Safe space bawah bersih? Seperempat bawah gambar tenang dan minim detail, melebur gradasi ke warna kertas — tidak ada hewan atau detail penting di sana, siap bertransisi ke teks.
+- [ ] Tidak ada teks liar? Gambar bebas kata, huruf, dan angka.
+- [ ] Sekali lihat kebaca? Anak langsung tahu hewan apa ini dan sedang apa.
+- [ ] Gaya kartun konsisten? Garis bersih, warna cerah Ceria Anak, hewan mudah dikenali dan proporsinya benar — tidak terlihat seperti foto realistis maupun coretan asal.
+- [ ] Margin aman keempat sisi? Ada jarak latar yang jelas (minimal ~10% frame) antara hewan dan SETIAP tepi — atas, bawah, kiri, kanan — dan tidak ada bagian hewan yang menyentuh atau memotong tepi mana pun.
+- [ ] Hewan di area aman tengah? Seluruh hewan berada di ~80% bagian tengah frame, tidak ada bagian subjek yang ditaruh dekat tepi, jadi gambar tetap aman walau tampil sedikit terpotong di layar lain.
+- [ ] Zona melt bawah bersih total? Seperempat bawah gambar HANYA berisi latar/habitat — tidak ada badan, kaki, sayap, sirip, kepala, atau ekor hewan di zona melt itu.
+- [ ] Sudah dicek di tablet portrait? Gambar sudah dilihat di ukuran tablet portrait (2136x3200) DAN di phone, dan hewan tampil utuh kepala sampai ekor dengan margin aman di kedua ukuran itu — lolos di phone saja tidak cukup.
+- [ ] Variasi shot antar halaman? Setiap halaman memakai jenis shot yang BERBEDA (establishing wide / camouflage-hidden / action close-up / head-focus three-quarter / life-cycle multi-subject / wide environment) dan buku merotasi minimal 4 jenis shot — tidak ada dua halaman dengan kamera, jarak, dan skala hewan yang sama.
+- [ ] Tokoh manusia bernama konsisten? Setiap tokoh manusia bernama memakai deskripsi penampilan terkunci yang sama kata-per-kata di semua halaman tempat ia muncul — tidak ada tokoh yang digambar berbeda antar halaman.
+- [ ] Hewan fokus utama? Hewan jauh lebih besar dan jadi fokus gambar, Banu hanya pelengkap kecil, dan ukuran keduanya proporsional dengan ukuran asli hewan.

@@ -1,0 +1,109 @@
+# Dinosaurus Paling Kecil
+
+Ayo kenali dinosaurus terkecil yang pernah ada, sekecil burung gagak!
+
+_Topik: Dinosaurus paling kecil · Kategori: fauna · Gaya gambar: cat-air_
+
+![Sampul](../images/dinosaurus-paling-kecil/cover.webp)
+
+## 1. Apa Ada Dinosaurus Kecil?
+
+![Apa Ada Dinosaurus Kecil?](../images/dinosaurus-paling-kecil/page-1.webp)
+
+Banu suka dinosaurus. Di bukunya, dinosaurus itu besar sekali — lebih tinggi dari rumah! Lalu Banu bertanya, "Apa ada dinosaurus yang kecil?" Ternyata ada! Bahkan ada yang sekecil burung gagak.
+
+> **Tahukah Kamu?** Ada dinosaurus yang sekecil burung gagak!
+
+## 2. Microraptor, Si Kecil Berbulu
+
+![Microraptor, Si Kecil Berbulu](../images/dinosaurus-paling-kecil/page-2.webp)
+
+Namanya Microraptor. Ia dinosaurus paling kecil yang pernah ditemukan. Panjangnya hanya sekitar 80 sentimeter — sebesar burung gagak — dan beratnya sekitar 1 kilogram, seperti sekantong gula.
+
+> **Tahukah Kamu?** Microraptor hanya sekitar 80 sentimeter panjangnya dan beratnya sekitar 1 kilogram, seperti sekantong gula.
+
+## 3. Empat Sayap Hebat
+
+![Empat Sayap Hebat](../images/dinosaurus-paling-kecil/page-3.webp)
+
+Yang paling hebat, Microraptor punya empat sayap! Sayapnya ada di tangan dan di kaki. Dengan empat sayap itu, ia bisa meluncur dari pohon ke pohon, seperti layang-layang hidup.
+
+> **Tahukah Kamu?** Microraptor punya empat sayap — sayapnya ada di tangan dan di kaki.
+
+## 4. Compsognathus, Pelari Cepat
+
+![Compsognathus, Pelari Cepat](../images/dinosaurus-paling-kecil/page-4.webp)
+
+Ada juga Compsognathus, sebesar ayam. Panjangnya sekitar 1 meter dan ia pelari yang cepat sekali. Ekornya yang panjang membantunya menjaga keseimbangan saat berlari mengejar kadal kecil.
+
+> **Tahukah Kamu?** Compsognathus sebesar ayam, panjangnya sekitar 1 meter, dan ekornya yang panjang membantunya menjaga keseimbangan saat berlari.
+
+## 5. Kecil Ternyata Hebat
+
+![Kecil Ternyata Hebat](../images/dinosaurus-paling-kecil/page-5.webp)
+
+Kecil ternyata hebat. Karena kecil, mereka bisa bersembunyi di antara daun, berlari cepat, dan makan serangga serta kadal kecil. Mereka tidak perlu makan banyak untuk tetap kuat.
+
+> **Tahukah Kamu?** Karena kecil, Microraptor dan Compsognathus bisa bersembunyi di antara daun, berlari cepat, dan makan serangga serta kadal kecil.
+
+## 6. Kecil Bukan Berarti Lemah
+
+![Kecil Bukan Berarti Lemah](../images/dinosaurus-paling-kecil/page-6.webp)
+
+Jadi, tidak semua dinosaurus besar. Ada yang sekecil gagak dan ada yang sebesar ayam. Kecil bukan berarti lemah — kecil bisa cepat, pintar, dan hebat dengan caranya sendiri.
+
+> **Tahukah Kamu?** Kecil bukan berarti lemah — kecil bisa cepat, pintar, dan hebat dengan caranya sendiri.
+
+## Storyboard & Layout
+
+| Halaman | Layout | Adegan gambar | Komposisi | Suasana | Kesinambungan |
+| --- | --- | --- | --- | --- | --- |
+| 1. Apa Ada Dinosaurus Kecil? | gambar-penuh | Banu full body berdiri di halaman rumah sambil memegang buku dinosaurus, menatap ke arah pembaca dengan penasaran. | Establishing wide 4:5 cat air semi-realistis; halaman rumah yang luas, Banu full body kecil di tengah memegang buku dinosaurus, langit dan pepohonan di belakang; Banu utuh di area aman, margin 10% semua tepi; seperempat bawah hanya tanah dan rumput tenang. Zona teks: bawah. | takjub dan penasaran | Banu v2 yang sama dipakai di semua halaman: rambut hitam berdiri, mata coklat besar, kaos biru bergambar monster, celana gelap, sandal clog krem tali merah. |
+| 2. Microraptor, Si Kecil Berbulu | gambar-penuh | Microraptor kecil berbulu hitam berkilau berdiri di dahan pohon di hutan purba China, Banu di sampingnya menunjuk pelan ke arahnya. | Head-focus three-quarter 4:5 cat air semi-realistis; Microraptor berbulu hitam berkilau utuh di dahan, sebesar gagak, ekor panjang, kepala dan mata jadi fokus; Banu kecil di samping menoleh ke arah Microraptor; tubuh utuh di area aman, margin 10% semua tepi; seperempat bawah hanya dedaunan dan tanah tenang. Zona teks: bawah. | takjub dan penasaran | Microraptor berbulu hitam berkilau dan Banu v2 yang sama seperti halaman sebelumnya. |
+| 3. Empat Sayap Hebat | gambar-penuh | Microraptor meluncur dari dahan tinggi ke dahan lain dengan keempat sayap terbentang, Banu di bawah mendongak kagum. | Action close-up 4:5 cat air semi-realistis, diagonal dinamis; Microraptor meluncur dengan keempat sayap terbentang, sayap di tangan DAN di kaki, tubuh utuh di area aman, margin 10% semua tepi; Banu kecil di bawah mendongak mengikuti geraknya; seperempat bawah hanya dedaunan dan tanah tenang. Zona teks: bawah. | kagum dan seru | Microraptor yang sama seperti halaman sebelumnya, kini sedang meluncur. |
+| 4. Compsognathus, Pelari Cepat | gambar-penuh | Compsognathus ramping berlari cepat di tepi laguna tropis purba, Banu berjongkok di samping menunjuk jejak kakinya. | Wide environment 4:5 cat air semi-realistis; tepi laguna tropis purba yang luas, Compsognathus sebesar ayam berlari cepat, badan ramping, leher panjang, ekor panjang, tubuh utuh di area aman, margin 10% semua tepi; Banu kecil berjongkok di samping; seperempat bawah hanya pasir dan air tenang. Zona teks: bawah-kanan. | seru dan menegangkan | Banu v2 yang sama seperti halaman sebelumnya; Compsognathus baru, sebesar ayam. |
+| 5. Kecil Ternyata Hebat | gambar-penuh | Microraptor kecil bersembunyi di antara daun dan Compsognathus kecil berlari di kejauhan, Banu di tengah memegang teropong mengamati dari kejauhan. | Camouflage/hidden 4:5 cat air semi-realistis; Microraptor kecil 40–50% bersembunyi di antara daun, Compsognathus kecil berlari di kejauhan, keduanya utuh dan tidak ter-crop; Banu kecil di tengah memegang teropong; tubuh utuh di area aman, margin 10% semua tepi; seperempat bawah hanya dedaunan dan tanah tenang. Zona teks: bawah-kanan. | takjub dan bangga | Microraptor dan Compsognathus yang sama seperti halaman sebelumnya, kini bersama. |
+| 6. Kecil Bukan Berarti Lemah | gambar-penuh | Banu tersenyum memegang ayam di halaman rumah, membandingkan besar ayam dengan bayangan dinosaurus kecil di buku yang dipegangnya. | Life-cycle/multi-subject 4:5 cat air semi-realistis, framing lebar; Banu tersenyum memegang ayam, buku dinosaurus terbuka di tangannya, ayam dan bayangan dinosaurus kecil beda skala; semua subjek utuh di area aman, margin 10% semua tepi; seperempat bawah hanya tanah dan rumput tenang. Zona teks: bawah-kanan. | hangat dan penuh harapan | Banu v2 dan halaman rumah yang sama seperti halaman pertama, kini menoleh ke pembaca. |
+
+**Jangkar penampilan tokoh:** Banu: 7-year-old Indonesian boy, light tan skin, spiky short black hair, large dark brown eyes, small nose, friendly smile. Wearing a bright blue short-sleeve T-shirt with a colourful monster Bowser print drawn by a child (orange circle background with a green-yellow monster, as in the reference sheet), dark charcoal-grey knee-length shorts, and beige clog sandals with red heel straps.
+
+**Jangkar habitat:** Hutan purba Kapur Awal di Liaoning, Tiongkok, sekitar 120–125 juta tahun lalu: hutan lebat dengan pohon-pohon tinggi dan dahan-dahan tempat Microraptor meluncur, serta tepi laguna tropis purba tempat Compsognathus berlari; cahaya hangat menembus dedaunan, suasana tenang dan penuh rasa ingin tahu.
+
+## Panduan Gambar Buku Fauna (mengikat untuk semua gambar buku ini)
+
+Panduan ini mengikat: perintah gambar sampul dan semua halaman di semua buku selalu memuat panduan ini, dan setiap gambar dicek dengan daftar periksa di bawah sebelum tampil. Tujuannya satu — hewan selalu tampil utuh dan langsung kebaca oleh anak kelas 2 SD.
+
+1. Hewan utuh selalu: seluruh tubuh hewan — kepala, badan, kaki/sayap/sirip, dan ekor — terlihat lengkap di dalam bingkai, dari kepala sampai ekor.
+2. Ruang aman di semua sisi: ada jarak latar yang jelas (kira-kira sepersepuluh bingkai) antara hewan dan setiap tepi gambar; hewan tidak pernah menyentuh atau melewati tepi.
+3. Dilarang close-up ekstrem: jangan memperbesar satu bagian tubuh atau pola kulit sampai hewannya sendiri hilang. Detail boleh ditonjolkan hanya bila seluruh hewan tetap terlihat dalam bingkai yang sama.
+4. Langsung kebaca sekali lihat: anak kelas 2 harus bisa mengenali hewannya dan apa yang sedang ia lakukan dalam sekali pandang — satu subjek yang jelas, satu aksi yang jelas.
+5. Latar habitat lengkap tapi selalu di belakang: habitat digambar utuh dan mudah dikenali di belakang dan di sekeliling hewan; tidak ada tanaman, batu, atau benda apa pun yang menutupi kepala atau tubuh hewan.
+6. Tanpa teks di dalam gambar: tidak ada kata, huruf, atau angka di gambar. Semua tulisan dipasang sebagai teks asli di halaman buku, bukan digambar.
+7. Rasio gambar 4:5 potret, selalu: setiap gambar halaman digambar dalam bingkai potret 4:5 (tegak, 1408x1760) — BUKAN lanskap. Halaman dibaca potret satu halaman penuh: gambar 4:5 berdiri di atas, teks di zona kertas di bawahnya. Hewan memakai sebagian besar lebar bingkai — sekitar 70–80% — supaya gambarnya terasa penuh dan hewannya besar, tetap utuh dengan ruang aman latar di semua sisi, dan teks TIDAK dicetak di dalam gambar.
+8. Seperempat bawah = safe space transisi: seperempat bagian bawah gambar WAJIB tenang — latar depan sederhana minim detail (tanah lembut, air, atau rumput polos) yang warnanya melebur perlahan (gradasi mulus, tanpa garis keras) ke arah warna kertas krem buku. Di mode baca, safe space inilah yang bertransisi langsung ke teks di bawahnya, jadi hewan dan detail penting TIDAK BOLEH masuk ke seperempat bawah ini; hewan berdiri di tiga perempat atas bingkai, kakinya boleh menyentuh tepi atas safe space.
+9. Cat Air Semi-Realistis: ilustrasi cat air semi-realistis bergaya buku panduan alam modern — proporsi tubuh alami (kepala dan mata seukuran aslinya, tidak dibesarkan, tidak imut/chibi), warna persis warna asli spesiesnya (palet buku hanya memandu habitat dan latar, tidak mewarnai ulang hewan jadi warna kartun cerah), sapuan cat air lembut terlihat, tekstur permukaan detail (sisik yang bertumpuk, helaian bulu, bulu halus terlihat satu per satu), serta cahaya dan bayangan lembut yang realistis sehingga hewan terasa bervolume dan berat. Dilarang: garis tepi hitam tebal ala kartun, bidang warna datar tanpa gradasi/bayangan, bentuk geometris yang disederhanakan, dan shading sel kartun.
+10. Crop-safe — margin aman di KEEMPAT sisi: seluruh hewan harus utuh di dalam frame dengan margin yang jelas di keempat sisi — minimal sekitar 10% lebar/tinggi frame dari setiap tepi (atas, bawah, kiri, kanan). Kepala sampai ekor kelihatan penuh; tidak ada satu pun bagian hewan yang menyentuh, melewati, atau terpotong tepi frame. Aturan ini lahir dari halaman 4 'Rahasia Tahan Tanpa Makan' yang ke-crop di tablet: ularnya hanya kelihatan sebagian badan di tepi bawah dan kepalanya tidak kelihatan sama sekali.
+11. Crop-safe — hewan di area aman tengah: hewan wajib berada di area aman tengah, kira-kira 80% bagian tengah frame — jangan pernah menaruh subjek dekat tepi. Alasannya: gambar yang sama bisa tampil sedikit terpotong saat ditampilkan di layar yang berbeda (phone vs tablet portrait), jadi komposisi harus tetap aman walaupun tepinya kepotong sedikit. Kalau ragu, kecilkan sedikit hewannya dan beri latar lebih lega daripada menaruhnya mepet tepi.
+12. Crop-safe — zona melt bawah HANYA berisi latar: seperempat bawah gambar (zona melt / safe space yang meleleh lewat gradasi ke teks di bawahnya) HANYA boleh berisi latar/habitat — tanah, air, rumput polos, atau latar tenang lain. Tidak boleh ada bagian hewan apa pun di zona itu: tidak ada badan, tidak ada kaki/sayap/sirip, dan terutama tidak ada kepala atau ekor yang masuk ke zona melt. Hewan selesai sepenuhnya di atas zona melt; kakinya hanya boleh menyentuh tepi atas zona itu.
+13. Crop-safe — QA wajib dicek di tablet portrait juga: setiap gambar hasil generate/regenerate wajib dicek tampilannya di ukuran tablet portrait (2136x3200) selain di phone. Gambar yang lolos QA di phone BELUM TENTU lolos di tablet — halaman 4 lolos di phone tetapi ke-crop di tablet — jadi gambar belum boleh dinyatakan lolos sebelum tampil utuh (kepala sampai ekor, margin aman terlihat) di kedua ukuran itu.
+14. Variasi shot — kamera wajib berpindah antar halaman: dalam satu buku, TIDAK ADA dua halaman yang boleh memakai jenis shot yang sama. Setiap buku wajib merotasi minimal 4 jenis shot berbeda dari daftar ini: (a) establishing wide — tampak lebar pembuka, hewan utuh memakai sekitar 70–80% lebar bingkai; (b) camouflage/hidden — hewan LEBIH KECIL (sekitar 40–50% lebar bingkai), setengah tersembunyi menyamar di habitatnya, pembaca harus menemukannya; (c) action close-up — momen aksi, hewan lebih besar di bingkai dengan sudut dinamis/diagonal, seluruh tubuh tetap utuh; (d) head-focus three-quarter — dilihat tiga perempat, kepala dan mata jadi titik fokus, seluruh badan tetap utuh di area aman; (e) life-cycle/multi-subject — dua subjek atau lebih dengan skala berbeda dalam framing lebih lebar (misalnya dewasa + anak/ooteka); (f) wide environment — lingkungan luas memenuhi bingkai, hewan kecil (sekitar 35–45% lebar bingkai) di tengahnya. Generator storyboard wajib menetapkan satu jenis shot BERBEDA untuk setiap halaman sejak awal dan menuliskannya di awal composition halaman itu; skala hewan mengikuti jenis shot-nya, BUKAN selalu 70–80%. Semua aturan lain tetap mengikat di setiap shot: hewan utuh, margin aman ~10% di keempat sisi, hewan di area aman tengah, seperempat bawah hanya latar. QA wajib memeriksa VARIASI SHOT antar halaman sebelum buku dinyatakan siap — bukan hanya memeriksa tiap gambar satu per satu. Aturan ini lahir dari buku Belalang Sembah yang keenam halamannya memakai komposisi hampir copy-paste (samping agak jauh, 70–80%, di tengah) sehingga bukunya terasa monoton walau adegannya berbeda.
+15. Tokoh manusia bernama: sebelum generate ilustrasi apa pun, setiap tokoh manusia yang namanya muncul di naskah harus sudah punya deskripsi penampilan terkunci; deskripsi itu dipakai kata-per-kata di semua halaman tempat tokoh itu muncul; jangan menggambar tokoh dari teks halaman saja. Deskripsi wajib memuat warna kulit, rambut, pakaian, aksesori beserta warna dan letaknya (kiri/kanan), dan ciri khas. (Aturan ini lahir dari buku 'Nara Berkata Jujur, Hati Tenang': Sinta tidak punya deskripsi terkunci sehingga hal. 4 dan 5 menggambarkannya berbeda.)
+16. Fauna — hewan fokus utama: di buku Fauna, hewan adalah fokus utama gambar; Banu hanya pelengkap kecil di samping atau di kejauhan, dan ukuran harus proporsional dengan ukuran asli hewan (hiu paus jauh lebih besar dari Banu, bukan sebaliknya; Banu tidak boleh besar di foreground menutupi hewan).
+
+**Daftar periksa QA sebelum gambar tampil:**
+
+- [ ] Subjek utuh? Seluruh hewan terlihat dari kepala sampai ekor.
+- [ ] Kepala terlihat? Kepala hewan tampak jelas dan lengkap.
+- [ ] Tidak terpotong tepi? Tidak ada bagian tubuh yang kepotong tepi gambar mana pun.
+- [ ] Rasio 4:5 potret? Gambar tegak 4:5 (1408x1760), hewan memakai sebagian besar lebar bingkai (sekitar 70–80%) di tiga perempat atasnya.
+- [ ] Safe space bawah bersih? Seperempat bawah gambar tenang dan minim detail, melebur gradasi ke warna kertas — tidak ada hewan atau detail penting di sana, siap bertransisi ke teks.
+- [ ] Tidak ada teks liar? Gambar bebas kata, huruf, dan angka.
+- [ ] Sekali lihat kebaca? Anak langsung tahu hewan apa ini dan sedang apa.
+- [ ] Cukup realistis? Proporsi alami, mata tidak dibesarkan, warna sesuai spesies aslinya, tekstur permukaan detail, ada cahaya-bayangan lembut — tidak terlihat seperti kartun pipih bergaris tebal.
+- [ ] Margin aman keempat sisi? Ada jarak latar yang jelas (minimal ~10% frame) antara hewan dan SETIAP tepi — atas, bawah, kiri, kanan — dan tidak ada bagian hewan yang menyentuh atau memotong tepi mana pun.
+- [ ] Hewan di area aman tengah? Seluruh hewan berada di ~80% bagian tengah frame, tidak ada bagian subjek yang ditaruh dekat tepi, jadi gambar tetap aman walau tampil sedikit terpotong di layar lain.
+- [ ] Zona melt bawah bersih total? Seperempat bawah gambar HANYA berisi latar/habitat — tidak ada badan, kaki, sayap, sirip, kepala, atau ekor hewan di zona melt itu.
+- [ ] Sudah dicek di tablet portrait? Gambar sudah dilihat di ukuran tablet portrait (2136x3200) DAN di phone, dan hewan tampil utuh kepala sampai ekor dengan margin aman di kedua ukuran itu — lolos di phone saja tidak cukup.
+- [ ] Variasi shot antar halaman? Setiap halaman memakai jenis shot yang BERBEDA (establishing wide / camouflage-hidden / action close-up / head-focus three-quarter / life-cycle multi-subject / wide environment) dan buku merotasi minimal 4 jenis shot — tidak ada dua halaman dengan kamera, jarak, dan skala hewan yang sama.
+- [ ] Tokoh manusia bernama konsisten? Setiap tokoh manusia bernama memakai deskripsi penampilan terkunci yang sama kata-per-kata di semua halaman tempat ia muncul — tidak ada tokoh yang digambar berbeda antar halaman.
+- [ ] Hewan fokus utama? Hewan jauh lebih besar dan jadi fokus gambar, Banu hanya pelengkap kecil, dan ukuran keduanya proporsional dengan ukuran asli hewan.
