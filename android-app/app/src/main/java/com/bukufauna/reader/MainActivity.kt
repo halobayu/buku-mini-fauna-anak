@@ -369,8 +369,8 @@ button{font-family:inherit}
 .melts{position:absolute;top:0;bottom:0;width:34%;z-index:10;pointer-events:none}
 .textzone{position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden;min-height:0;min-width:0}
 .textzone>*{flex:0 0 auto}
-.bubble{max-width:72%;border-radius:18px;font-weight:700;line-height:1.42;box-shadow:0 2px 12px rgba(0,0,0,.25);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
-.topscrim{position:absolute;left:0;right:0;top:0;height:34%;z-index:5;pointer-events:none}
+.botscrim{position:absolute;left:0;right:0;bottom:0;height:66%;z-index:5;pointer-events:none}
+.overlaytext{color:#fff;font-weight:700;line-height:1.42;text-shadow:0 2px 8px rgba(0,0,0,.6),0 1px 3px rgba(0,0,0,.5)}
 .pagetitle{position:absolute;left:0;right:0;top:0;z-index:10;padding:7% 8% 0;pointer-events:none}
 .pagetitle h3{margin:0;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;line-height:1.15;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.5)}
 .spreadhead{display:flex;align-items:center;gap:14px}
@@ -436,14 +436,6 @@ function paperBg() {
   return "background-color:" + pal.paper
     + ";background-image:radial-gradient(rgba(120,90,40,0.07) 1.3px, transparent 1.4px), radial-gradient(rgba(120,90,40,0.05) 1px, transparent 1.1px), linear-gradient(155deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 55%)"
     + ";background-size:22px 22px, 13px 13px, 100% 100%;background-position:0 0, 6px 9px, 0 0;";
-}
-// Hex colour to rgba() so a bubble can be paper at 85% opacity
-// (Space parity: the picture stays visible through the bubble).
-function hexA(hex, a) {
-  var h = String(hex || "").replace("#", "");
-  if (h.length === 3) h = h.charAt(0) + h.charAt(0) + h.charAt(1) + h.charAt(1) + h.charAt(2) + h.charAt(2);
-  var r = parseInt(h.substring(0, 2), 16), g = parseInt(h.substring(2, 4), 16), b = parseInt(h.substring(4, 6), 16);
-  return "rgba(" + r + "," + g + "," + b + "," + a + ")";
 }
 function slideLabel() {
   if (idx === 0) return "Sampul";
@@ -528,38 +520,84 @@ function spreadHtml(p, pi, t) {
     + '<p style="font-size:' + Math.max(12, px(t.fact)) + 'px;color:' + pal.ink + '">' + esc(fact) + '</p></div>';
   return h;
 }
-// Portrait, Space parity v1.8: the picture fills the whole sheet and
-// the text floats ON it as small paper bubbles (max-width 72%, paper
-// at 85% opacity), exactly like the Space reading page — the heading
-// as a white overlay title at the top, the whole body in ONE bubble
-// in the bottom zone, the fun fact as a second bubble. The v1.7
-// full-width paper panel is gone: no more paper block covering the
-// bottom half, the picture stays dominant. The bubble wrapper keeps
-// id="textzone" (with no paper background of its own) so fitCheck()
-// can still shrink the type tier when the text overflows.
+// Portrait, Space parity v1.8 (overlay penuh): the picture fills the
+// whole sheet and the text sits ON it directly — white bold text with
+// a dark text-shadow, no bubble, no paper panel anywhere — exactly
+// like the Space reading page with layout "overlay" (all Hiu + Dino
+// pages are set to overlay in the Space). A black gradient scrim
+// sits behind the text so the white text stays readable.
+// The heading is a white overlay title at the top (except when the
+// text zone itself is at the top, where it joins the text block).
+// The whole body is one white block; the fun fact follows as white
+// text with a plain "Tahukah Kamu?" label. The text wrapper keeps
+// id="textzone" (with no background of its own) so fitCheck() can
+// still shrink the type tier when the text overflows.
+// Placement is forward-compatible with the Space: when the book JSON
+// carries per-page `textZone` ("atas"/"bawah"/"tengah" + optional
+// "-kiri"/"-kanan"), `separatorOpacity` (0-100) or `layout`, the
+// reader uses them; otherwise it falls back to the overlay default
+// (bawah, 55%). Note the JSON value "gambar-penuh" is the v18
+// mapping of the Space "overlay" layout, so it renders as overlay.
+// (The book JSON today carries none of these per-page fields, so
+// every portrait page uses the default until Bayu's Space placement
+// is carried into the JSON, e.g. content v19.)
 function portraitHtml(p, pi, t) {
-  // Same de-dup as spreadHtml: the callout tab already says
+  // Same de-dup as spreadHtml: the label already says
   // "Tahukah Kamu?", so strip those words from the JSON fact.
   var fact = (p.funFact || "").replace(/^\s*tahukah kamu\s*[!?.:;,]?\s*/i, "");
-  var bg = hexA(pal.paper, 0.85);
-  var pad = "padding:" + Math.max(8, px(16)) + "px " + Math.max(10, px(22)) + "px";
-  var head = p.heading
-    ? '<div class="pagetitle"><h3 style="font-size:' + Math.max(16, px(t.heading)) + 'px">' + esc(p.heading) + '</h3></div>'
-    : "";
-  var bodyB = '<p class="bubble" style="background:' + bg + ';font-size:' + Math.max(13, px(t.body + 4.5)) + 'px;color:' + pal.ink + ';' + pad + '">' + esc(p.body || "") + '</p>';
-  var factB = "";
-  if (fact) {
-    factB = '<div class="bubble" style="position:relative;background:' + bg + ';padding:' + Math.max(14, px(30)) + 'px ' + Math.max(12, px(30)) + 'px ' + Math.max(10, px(22)) + 'px">'
-      + '<span class="callouttab" style="background:' + pal.callout + ';color:' + pal.calloutInk
-      + ';top:' + (-Math.max(9, px(17))) + 'px;font-size:' + Math.max(10, px(17)) + 'px;padding:'
-      + Math.max(2, px(3)) + 'px ' + Math.max(8, px(14)) + 'px">&#128161; Tahukah Kamu?</span>'
-      + '<p style="margin:0;font-size:' + Math.max(12, px(t.fact)) + 'px;font-weight:600;line-height:1.45;color:' + pal.ink + '">' + esc(fact) + '</p></div>';
+  // Per-page placement from the JSON when present, else Space defaults.
+  var zone = String(p.textZone || "bawah").toLowerCase();
+  var zp = zone.split("-");
+  var vert = zp[0] === "atas" ? "atas" : zp[0] === "tengah" ? "tengah" : "bawah";
+  var horiz = zp[1] === "kiri" ? "kiri" : zp[1] === "kanan" ? "kanan" : "tengah";
+  var sep = (p.separatorOpacity === undefined || p.separatorOpacity === null)
+    ? 55 : Math.max(0, Math.min(100, p.separatorOpacity));
+  var a = sep / 100;
+  var aMid = Math.round(a * 0.5 * 100) / 100;
+  var align = horiz === "kiri" ? "flex-start" : horiz === "kanan" ? "flex-end" : "center";
+  var talign = horiz === "kiri" ? "left" : horiz === "kanan" ? "right" : "center";
+  var head = "";
+  var headInZone = "";
+  if (p.heading) {
+    if (vert === "atas") {
+      // The zone itself is at the top: the heading joins the text
+      // block instead of floating separately over it.
+      headInZone = '<p class="overlaytext" style="margin:0;font-size:' + Math.max(18, px(t.heading)) + 'px;font-weight:800">' + esc(p.heading) + '</p>';
+    } else {
+      head = '<div class="pagetitle"><h3 style="font-size:' + Math.max(16, px(t.heading)) + 'px">' + esc(p.heading) + '</h3></div>';
+    }
   }
-  var scrim = '<div class="topscrim" style="background:linear-gradient(to bottom, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.12) 55%, rgba(0,0,0,0) 100%)"></div>';
+  var bodyT = '<p class="overlaytext" style="margin:0;text-align:' + talign + ';font-size:' + Math.max(13, px(t.body + 4.5)) + 'px">' + esc(p.body || "") + '</p>';
+  var factT = "";
+  if (fact) {
+    factT = '<p class="overlaytext" style="margin:0;text-align:' + talign + ';font-size:' + Math.max(12, px(t.fact)) + 'px;font-weight:600;line-height:1.45">'
+      + '<span style="font-weight:800">&#128161; Tahukah Kamu?</span> ' + esc(fact) + '</p>';
+  }
+  // The scrim follows the zone's side: bottom gradient for "bawah",
+  // top gradient for "atas", full dark overlay for "tengah". A thin
+  // top scrim stays for the heading whenever the zone is not "atas".
+  var scrim = "";
+  var topScrim = '<div class="topscrim" style="background:linear-gradient(to bottom, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.12) 55%, rgba(0,0,0,0) 100%)"></div>';
+  var tzPos = "";
+  var tzPad = "";
+  if (vert === "atas") {
+    scrim = '<div class="topscrim" style="height:66%;background:linear-gradient(to bottom, rgba(0,0,0,' + a + ') 0%, rgba(0,0,0,' + aMid + ') 45%, rgba(0,0,0,0) 100%)"></div>';
+    tzPos = "top:0;";
+    tzPad = "padding:" + px(20) + "px " + px(48) + "px " + px(16) + "px;";
+  } else if (vert === "tengah") {
+    scrim = '<div style="position:absolute;inset:0;z-index:5;pointer-events:none;background:rgba(0,0,0,' + a + ')"></div>';
+    tzPos = "top:0;bottom:0;";
+    tzPad = "padding:" + px(16) + "px " + px(48) + "px " + px(16) + "px;";
+  } else {
+    scrim = '<div class="botscrim" style="background:linear-gradient(to top, rgba(0,0,0,' + a + ') 0%, rgba(0,0,0,' + aMid + ') 45%, rgba(0,0,0,0) 100%)"></div>';
+    tzPos = "bottom:0;";
+    tzPad = "padding:" + px(16) + "px " + px(48) + "px " + (px(44) + 76) + "px;";
+  }
+  var tzJustify = vert === "atas" ? "flex-start" : vert === "tengah" ? "center" : "flex-end";
   return '<div class="sheet" style="background:' + pal.paper + ';color:' + pal.ink + '">'
-    + '<img class="whole" src="' + p.image + '" alt=""/>' + scrim + head
-    + '<div id="textzone" class="textzone" style="position:absolute;left:0;right:0;bottom:0;z-index:10;max-height:62%;justify-content:flex-end;align-items:center;gap:' + px(t.gap) + 'px;padding:' + px(16) + 'px ' + px(48) + 'px ' + (px(44) + 76) + 'px">'
-    + bodyB + factB + '</div>'
+    + '<img class="whole" src="' + p.image + '" alt=""/>' + scrim + (vert === "atas" ? "" : topScrim) + head
+    + '<div id="textzone" class="textzone" style="position:absolute;left:0;right:0;' + tzPos + 'z-index:10;max-height:62%;justify-content:' + tzJustify + ';align-items:' + align + ';gap:' + px(t.gap) + 'px;' + tzPad + '">'
+    + headInZone + bodyT + factT + '</div>'
     + '</div>';
 }
 function coverHtml() {
