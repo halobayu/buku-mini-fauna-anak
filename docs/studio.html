@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Storybook Canvas Studio — 2 Format Skenario</title>
+  <title>Storybook Canvas Studio — Alur Produksi Buku</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     :root {
@@ -15,6 +15,8 @@
       --primary: #2563eb;
       --primary-foreground: #ffffff;
       --muted-foreground: #64748b;
+      --success: #16a34a;
+      --warning: #d97706;
       --error: #dc2626;
     }
     @media (prefers-color-scheme: dark) {
@@ -27,6 +29,8 @@
         --primary: #3b82f6;
         --primary-foreground: #ffffff;
         --muted-foreground: #94a3b8;
+        --success: #22c55e;
+        --warning: #f59e0b;
         --error: #f87171;
       }
     }
@@ -40,158 +44,187 @@
     <!-- Header -->
     <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-4 border-b border-[var(--border)]">
       <div>
-        <h1 class="text-lg sm:text-xl font-bold tracking-tight">Storybook Canvas Studio</h1>
-        <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">
-          Pilih format Cerita Berkarakter atau Ensiklopedia Fakta (tanpa karakter), atur gaya gambar, lalu ACC sebelum generate.
+        <div class="flex items-center gap-2">
+          <h1 class="text-lg sm:text-xl font-bold tracking-tight">Storybook Canvas Studio</h1>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-[var(--content)] border border-[var(--border)] text-[var(--muted-foreground)]">v2.0</span>
+        </div>
+        <p class="text-xs sm:text-sm text-[var(--muted-foreground)] mt-0.5">
+          Alur: 1. Tentukan Tema &amp; Halaman &rarr; 2. Cek/Regenerate Naskah &rarr; 3. Cek/Regenerate Image &rarr; 4. ACC &amp; Push GitHub.
         </p>
       </div>
-      <div class="flex flex-wrap gap-2">
-        <button id="btnCopyAcc" class="px-3.5 py-2 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 transition cursor-pointer">
-          ACC &amp; Salin untuk Generate
+      <div class="flex flex-wrap items-center gap-2">
+        <button id="btnResetProject" type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--card)] border border-[var(--border)] hover:bg-[var(--content)] transition cursor-pointer">
+          Reset Proyek
         </button>
-        <button id="btnExportJson" class="px-3 py-2 rounded-lg text-xs font-medium bg-[var(--card)] border border-[var(--border)] hover:bg-[var(--content)] transition cursor-pointer">
-          Export JSON
+        <button id="btnQuickExportJson" type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--card)] border border-[var(--border)] hover:bg-[var(--content)] transition cursor-pointer">
+          Salin JSON
         </button>
       </div>
     </header>
+
+    <!-- 4-Step Stepper Navigation -->
+    <nav class="grid grid-cols-2 sm:grid-cols-4 gap-2" aria-label="Tahapan Produksi">
+      <button type="button" data-step-tab="1" class="step-tab p-2.5 rounded-xl border text-left transition cursor-pointer">
+        <div class="text-xs font-bold">1. Tema &amp; Setup</div>
+        <div id="step1Sub" class="text-xs text-[var(--muted-foreground)] truncate mt-0.5">6 halaman • semi-realistis</div>
+      </button>
+      <button type="button" data-step-tab="2" class="step-tab p-2.5 rounded-xl border text-left transition cursor-pointer">
+        <div class="text-xs font-bold">2. Naskah (Tanpa Image)</div>
+        <div id="step2Sub" class="text-xs text-[var(--muted-foreground)] truncate mt-0.5">0/6 naskah oke</div>
+      </button>
+      <button type="button" data-step-tab="3" class="step-tab p-2.5 rounded-xl border text-left transition cursor-pointer">
+        <div class="text-xs font-bold">3. Cek &amp; Regenerate Image</div>
+        <div id="step3Sub" class="text-xs text-[var(--muted-foreground)] truncate mt-0.5">0/6 image ACC</div>
+      </button>
+      <button type="button" data-step-tab="4" class="step-tab p-2.5 rounded-xl border text-left transition cursor-pointer">
+        <div class="text-xs font-bold">4. ACC &amp; Push GitHub</div>
+        <div id="step4Sub" class="text-xs text-[var(--muted-foreground)] truncate mt-0.5">Siapkan rilis konten</div>
+      </button>
+    </nav>
 
     <!-- Toast -->
     <div id="toast" class="hidden fixed bottom-4 right-4 z-50 px-4 py-2.5 rounded-lg text-xs font-medium bg-[var(--primary)] text-[var(--primary-foreground)] shadow-lg">
       Tersalin ke clipboard!
     </div>
 
-    <!-- Fallback Copy Output Box (shown if clipboard API is blocked) -->
+    <!-- Copy Output / Fallback Box -->
     <div id="copyFallbackBox" class="hidden bg-[var(--card)] border border-[var(--primary)] rounded-xl p-3.5 space-y-2">
       <div class="flex items-center justify-between gap-2">
-        <span id="copyFallbackTitle" class="text-xs font-semibold">Salin teks di bawah ini (Ctrl+C / Cmd+C):</span>
+        <span id="copyFallbackTitle" class="text-xs font-semibold">Salin teks di bawah ini lalu paste ke chat:</span>
         <button id="btnCloseFallback" type="button" class="text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] cursor-pointer">Tutup</button>
       </div>
       <textarea id="copyFallbackText" rows="6" readonly class="w-full p-2.5 rounded-lg text-xs font-mono bg-[var(--background)] border border-[var(--border)]"></textarea>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-      <!-- Left Column: Setup -->
-      <section class="lg:col-span-5 space-y-4">
-        <!-- 1. Format Skenario & Tema -->
-        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
-          <div class="flex items-center justify-between">
-            <h2 class="text-sm font-semibold">1. Format Skenario &amp; Tema</h2>
-            <span id="categoryBadge" class="text-xs px-2 py-0.5 rounded-full bg-[var(--content)] text-[var(--muted-foreground)]">fauna</span>
-          </div>
-
-          <!-- 2 Format Skenario Toggle -->
-          <div class="grid grid-cols-2 gap-2">
-            <button id="modeStoryBtn" type="button" class="p-2.5 rounded-lg border text-left text-xs transition cursor-pointer">
-              <div class="font-semibold">Cerita + Karakter</div>
-              <div class="text-[var(--muted-foreground)] mt-0.5">Pakai tokoh &amp; character sheet</div>
-            </button>
-            <button id="modeEncycBtn" type="button" class="p-2.5 rounded-lg border text-left text-xs transition cursor-pointer">
-              <div class="font-semibold">Ensiklopedia (Tanpa Karakter)</div>
-              <div class="text-[var(--muted-foreground)] mt-0.5">Fokus fakta tema &amp; objek</div>
-            </button>
-          </div>
-
-          <!-- Kategori Repo -->
-          <div id="categoryGrid" class="grid grid-cols-2 gap-2"></div>
-
-          <div class="space-y-2.5 pt-1">
-            <div>
-              <label class="block text-xs text-[var(--muted-foreground)] mb-1">Judul / Topik Buku</label>
-              <input id="bookTitle" type="text" value="Kenapa Gurita Punya Tiga Jantung?"
-                class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]" />
-            </div>
-            <div class="grid grid-cols-2 gap-2.5">
-              <div>
-                <label class="block text-xs text-[var(--muted-foreground)] mb-1">Target Usia</label>
-                <select id="ageGroup" class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
-                  <option value="3-5 tahun">3–5 tahun</option>
-                  <option value="6-8 tahun (Kelas 2 SD)" selected>6–8 tahun (Kelas 2 SD)</option>
-                  <option value="9-12 tahun">9–12 tahun</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs text-[var(--muted-foreground)] mb-1">Fokus Topik</label>
-                <input id="moral" type="text" value="Biologi laut &amp; adaptasi hewan"
-                  class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
-              </div>
+    <!-- STEP 1: TEMA, FORMAT, JUMLAH HALAMAN, GAYA & ANCHOR -->
+    <section id="stepPanel1" class="step-panel space-y-4">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        <!-- Left: Tema & Jumlah Halaman -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
+            <div class="flex items-center justify-between">
+              <h2 class="text-sm font-semibold">Format Skenario &amp; Tema</h2>
+              <span id="categoryBadge" class="text-xs px-2 py-0.5 rounded-full bg-[var(--content)] text-[var(--muted-foreground)]">fauna</span>
             </div>
 
-            <!-- Fact-Check Toggle -->
-            <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-[var(--content)] border border-[var(--border)] cursor-pointer">
-              <input id="factCheckMode" type="checkbox" checked class="mt-0.5 accent-[var(--primary)]" />
-              <div class="text-xs">
-                <div class="font-semibold">Wajib Fakta Ilmiah (Fact-Check)</div>
-                <div class="text-[var(--muted-foreground)]">Pastikan semua info fauna &amp; sains akurat secara ilmiah sebelum gambar di-generate.</div>
-              </div>
-            </label>
-          </div>
-        </div>
-
-        <!-- 2. Pilihan Gaya Gambar -->
-        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
-          <div class="flex items-center justify-between">
-            <h2 class="text-sm font-semibold">2. Pilih Gaya Gambar</h2>
-            <span id="selectedStyleBadge" class="text-xs px-2 py-0.5 rounded-full bg-[var(--content)] text-[var(--muted-foreground)]">semi-realistis</span>
-          </div>
-          <div id="styleGrid" class="grid grid-cols-2 gap-2"></div>
-        </div>
-
-        <!-- 3A. Character Anchor (Mode Cerita) -->
-        <div id="charAnchorCard" class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
-          <h2 class="text-sm font-semibold">3. Character Anchor &amp; Character Sheet</h2>
-          <p class="text-xs text-[var(--muted-foreground)]">
-            Upload gambar Character Sheet Anda sebagai referensi visual utama, lalu lengkapi deskripsinya.
-          </p>
-
-          <div class="p-3 rounded-lg border border-dashed border-[var(--border)] bg-[var(--background)] space-y-2">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <label for="sheetUpload" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
-                Upload Character Sheet
-              </label>
-              <input id="sheetUpload" type="file" accept="image/*" class="hidden" />
-              <button id="btnClearSheet" type="button" class="hidden text-xs text-[var(--muted-foreground)] hover:text-[var(--error)] cursor-pointer">
-                Hapus Gambar
+            <div class="grid grid-cols-2 gap-2">
+              <button id="modeStoryBtn" type="button" class="p-2.5 rounded-lg border text-left text-xs transition cursor-pointer">
+                <div class="font-semibold">Cerita + Karakter</div>
+                <div class="text-[var(--muted-foreground)] mt-0.5">Pakai tokoh &amp; character sheet</div>
+              </button>
+              <button id="modeEncycBtn" type="button" class="p-2.5 rounded-lg border text-left text-xs transition cursor-pointer">
+                <div class="font-semibold">Ensiklopedia (Tanpa Karakter)</div>
+                <div class="text-[var(--muted-foreground)] mt-0.5">Fokus fakta tema &amp; objek</div>
               </button>
             </div>
-            <div id="sheetInfo" class="text-xs text-[var(--muted-foreground)]">
-              Belum ada gambar diupload. (Lampirkan juga file sheet ini di chat saat ACC generate.)
+
+            <div id="categoryGrid" class="grid grid-cols-2 gap-2"></div>
+
+            <div class="space-y-2.5 pt-1">
+              <div>
+                <label class="block text-xs text-[var(--muted-foreground)] mb-1">Judul / Topik Buku</label>
+                <input id="bookTitle" type="text" value="Kenapa Gurita Punya Tiga Jantung?"
+                  class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]" />
+              </div>
+
+              <div class="grid grid-cols-2 gap-2.5">
+                <div>
+                  <label class="block text-xs text-[var(--muted-foreground)] mb-1">Target Usia</label>
+                  <select id="ageGroup" class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+                    <option value="3-5 tahun">3–5 tahun</option>
+                    <option value="6-8 tahun (Kelas 2 SD)" selected>6–8 tahun (Kelas 2 SD)</option>
+                    <option value="9-12 tahun">9–12 tahun</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs text-[var(--muted-foreground)] mb-1">Fokus Topik</label>
+                  <input id="moral" type="text" value="Biologi laut &amp; adaptasi hewan"
+                    class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
+                </div>
+              </div>
+
+              <!-- Jumlah Halaman -->
+              <div class="p-3 rounded-lg bg-[var(--content)] border border-[var(--border)] space-y-2">
+                <div class="flex items-center justify-between gap-2">
+                  <label for="pageCountInput" class="text-xs font-semibold">Jumlah Halaman Buku</label>
+                  <span class="text-xs text-[var(--muted-foreground)]">Isi halaman (1–20)</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <button type="button" data-page-preset="4" class="page-preset-btn px-2.5 py-1 rounded-md text-xs border border-[var(--border)] bg-[var(--background)] cursor-pointer">4 Hal</button>
+                  <button type="button" data-page-preset="6" class="page-preset-btn px-2.5 py-1 rounded-md text-xs border border-[var(--border)] bg-[var(--background)] cursor-pointer">6 Hal</button>
+                  <button type="button" data-page-preset="8" class="page-preset-btn px-2.5 py-1 rounded-md text-xs border border-[var(--border)] bg-[var(--background)] cursor-pointer">8 Hal</button>
+                  <button type="button" data-page-preset="10" class="page-preset-btn px-2.5 py-1 rounded-md text-xs border border-[var(--border)] bg-[var(--background)] cursor-pointer">10 Hal</button>
+                  <input id="pageCountInput" type="number" min="1" max="20" value="6"
+                    class="w-20 px-2.5 py-1 rounded-md text-xs bg-[var(--background)] border border-[var(--border)] font-semibold text-center" />
+                </div>
+              </div>
+
+              <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-[var(--content)] border border-[var(--border)] cursor-pointer">
+                <input id="factCheckMode" type="checkbox" checked class="mt-0.5 accent-[var(--primary)]" />
+                <div class="text-xs">
+                  <div class="font-semibold">Wajib Fakta Ilmiah (Fact-Check)</div>
+                  <div class="text-[var(--muted-foreground)]">Pastikan semua info fauna &amp; sains akurat sebelum gambar di-generate.</div>
+                </div>
+              </label>
             </div>
-            <img id="sheetPreview" alt="Preview Character Sheet" class="hidden w-full max-h-48 object-contain rounded-lg border border-[var(--border)] bg-[var(--card)]" />
+          </div>
+        </div>
+
+        <!-- Right: Gaya Gambar & Anchor -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
+            <div class="flex items-center justify-between">
+              <h2 class="text-sm font-semibold">Pilih Gaya Gambar</h2>
+              <span id="selectedStyleBadge" class="text-xs px-2 py-0.5 rounded-full bg-[var(--content)] text-[var(--muted-foreground)]">semi-realistis</span>
+            </div>
+            <div id="styleGrid" class="grid grid-cols-2 gap-2"></div>
           </div>
 
-          <div class="space-y-2.5">
+          <!-- 3A. Character Anchor -->
+          <div id="charAnchorCard" class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
+            <h2 class="text-sm font-semibold">Character Anchor &amp; Character Sheet</h2>
+            <div class="p-3 rounded-lg border border-dashed border-[var(--border)] bg-[var(--background)] space-y-2">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <label for="sheetUpload" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
+                  Upload Character Sheet
+                </label>
+                <input id="sheetUpload" type="file" accept="image/*" class="hidden" />
+                <button id="btnClearSheet" type="button" class="hidden text-xs text-[var(--muted-foreground)] hover:text-[var(--error)] cursor-pointer">
+                  Hapus Gambar
+                </button>
+              </div>
+              <div id="sheetInfo" class="text-xs text-[var(--muted-foreground)]">
+                Belum ada gambar diupload. (Lampirkan juga file sheet di chat saat generate.)
+              </div>
+              <img id="sheetPreview" alt="Preview Character Sheet" class="hidden w-full max-h-40 object-contain rounded-lg border border-[var(--border)] bg-[var(--card)]" />
+            </div>
+
             <div class="grid grid-cols-2 gap-2.5">
               <div>
                 <label class="block text-xs text-[var(--muted-foreground)] mb-1">Nama Karakter</label>
-                <input id="charName" type="text" value="Raka"
-                  class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
+                <input id="charName" type="text" value="Raka" class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
               </div>
               <div>
                 <label class="block text-xs text-[var(--muted-foreground)] mb-1">Jenis / Sosok</label>
-                <input id="charSpecies" type="text" value="Anak laki-laki penjelajah cilik"
-                  class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
+                <input id="charSpecies" type="text" value="Anak laki-laki penjelajah cilik" class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
               </div>
             </div>
             <div>
               <label class="block text-xs text-[var(--muted-foreground)] mb-1">Ciri Fisik Tetap</label>
-              <input id="charTraits" type="text" value="Rambut hitam ikal, kacamata bulat besar, senyum ingin tahu"
-                class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
+              <input id="charTraits" type="text" value="Rambut hitam ikal, kacamata bulat besar, senyum ingin tahu" class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
             </div>
             <div>
               <label class="block text-xs text-[var(--muted-foreground)] mb-1">Pakaian &amp; Aksesori Tetap</label>
-              <input id="charOutfit" type="text" value="Rompi penjelajah hijau zaitun, kaos kuning, dan kaca pembesar"
-                class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
+              <input id="charOutfit" type="text" value="Rompi penjelajah hijau zaitun, kaos kuning, dan kaca pembesar" class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
             </div>
           </div>
-        </div>
 
-        <!-- 3B. Subject & Habitat Anchor (Mode Ensiklopedia) -->
-        <div id="encycAnchorCard" class="hidden bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
-          <h2 class="text-sm font-semibold">3. Subject &amp; Habitat Anchor (Ensiklopedia)</h2>
-          <p class="text-xs text-[var(--muted-foreground)]">
-            Tanpa karakter fiksi. Menjaga bentuk objek/hewan dan habitat aslinya tetap konsisten di semua 6 halaman.
-          </p>
-          <div class="space-y-2.5">
+          <!-- 3B. Subject & Habitat Anchor -->
+          <div id="encycAnchorCard" class="hidden bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
+            <h2 class="text-sm font-semibold">Subject &amp; Habitat Anchor (Ensiklopedia)</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Tanpa karakter fiksi. Menjaga bentuk objek/hewan &amp; habitat aslinya konsisten di semua halaman.
+            </p>
             <div>
               <label class="block text-xs text-[var(--muted-foreground)] mb-1">Subjek Utama (Hewan / Objek Sains)</label>
               <input id="subjectAnchor" type="text" value="Gurita merah-jingga realistis dengan delapan lengan, mata horizontal, dan tubuh lunak tanpa tulang"
@@ -204,32 +237,141 @@
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- Right Column: Scenario & Storyboard Preview -->
-      <section class="lg:col-span-7 space-y-4">
-        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-4">
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <h2 class="text-sm font-semibold">4. Preview Skenario &amp; Fakta Per Halaman</h2>
-              <p class="text-xs text-[var(--muted-foreground)]">Format selaras repo <code>buku-mini-fauna-anak</code> (4:5 potret, safe space bawah, funFact).</p>
-            </div>
-            <button id="btnAddPage" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] hover:opacity-85 transition cursor-pointer">
-              + Tambah Halaman
+      <!-- Step 1 Action Bar -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div class="text-xs text-[var(--muted-foreground)]">
+          Klik tombol ini untuk meminta assistant membuatkan <strong class="text-[var(--foreground)]">naskah saja (tanpa gambar)</strong> sesuai tema &amp; jumlah halaman.
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button id="btnGoStep2Manual" type="button" class="px-3 py-2 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
+            Edit Naskah Manual &rarr;
+          </button>
+          <button id="btnGenerateScript" type="button" class="px-4 py-2 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 cursor-pointer">
+            Generate Naskah (Salin ke Chat) &rarr;
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 2: REVIEW & REGENERATE NASKAH (TANPA IMAGE) -->
+    <section id="stepPanel2" class="step-panel hidden space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-sm font-semibold">Review &amp; Edit Naskah (Tanpa Image)</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Periksa naskah tiap halaman. Jika ada yang kurang pas, edit langsung atau klik <strong>Regenerate Naskah</strong> pada halaman tersebut.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button id="btnApproveAllScripts" type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
+              ✓ Tandai Semua Naskah Oke
+            </button>
+            <button id="btnToggleImportScript" type="button" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
+              Paste JSON Naskah dari Chat
             </button>
           </div>
-
-          <!-- Anchor Summary Banner -->
-          <div id="anchorBanner" class="p-3 rounded-lg bg-[var(--content)] border border-[var(--border)] text-xs space-y-1"></div>
-
-          <!-- Pages List -->
-          <div id="pagesContainer" class="space-y-3"></div>
         </div>
-      </section>
-    </div>
+
+        <!-- Import JSON Naskah Box -->
+        <div id="importScriptBox" class="hidden p-3 rounded-lg bg-[var(--content)] border border-[var(--border)] space-y-2">
+          <label class="block text-xs font-semibold">Tempel JSON naskah dari chat (format array <code>pages</code> atau payload studio):</label>
+          <textarea id="importScriptInput" rows="4" placeholder='{"pages": [{"heading": "...", "body": "...", "funFact": "...", "scene": "..."}]}' class="w-full p-2 rounded-lg text-xs font-mono bg-[var(--background)] border border-[var(--border)]"></textarea>
+          <div class="flex gap-2">
+            <button id="btnApplyImportScript" type="button" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] cursor-pointer">
+              Terapkan Naskah ke Halaman
+            </button>
+            <button id="btnCancelImportScript" type="button" class="px-3 py-1.5 rounded-lg text-xs border border-[var(--border)] bg-[var(--background)] cursor-pointer">
+              Batal
+            </button>
+          </div>
+        </div>
+
+        <div id="scriptPagesContainer" class="space-y-3"></div>
+      </div>
+
+      <!-- Step 2 Action Bar -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <button type="button" data-goto-step="1" class="px-3 py-2 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] cursor-pointer">
+          &larr; Kembali ke Tema
+        </button>
+        <div class="flex flex-wrap gap-2">
+          <button type="button" data-goto-step="3" class="px-3 py-2 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] cursor-pointer">
+            Lewati ke Cek Image &rarr;
+          </button>
+          <button id="btnGenerateImages" type="button" class="px-4 py-2 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 cursor-pointer">
+            Naskah Oke &rarr; Generate Image (Salin ke Chat)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: CEK IMAGE & REGENERATE PER HALAMAN -->
+    <section id="stepPanel3" class="step-panel hidden space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-sm font-semibold">Cek Hasil Image &amp; Regenerate Per Halaman</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Upload / tempel URL gambar hasil generate untuk dicek komposisinya, klik <strong>Regenerate Image</strong> jika kurang pas, atau klik <strong>ACC Image</strong>.
+            </p>
+          </div>
+          <button id="btnApproveAllImages" type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
+            ✓ ACC Semua Image
+          </button>
+        </div>
+
+        <div id="imagePagesContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+      </div>
+
+      <!-- Step 3 Action Bar -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <button type="button" data-goto-step="2" class="px-3 py-2 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] cursor-pointer">
+          &larr; Kembali ke Naskah
+        </button>
+        <button type="button" data-goto-step="4" class="px-4 py-2 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 cursor-pointer">
+          Lanjut ke ACC Final &amp; Push GitHub &rarr;
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 4: ACC FINAL & SIAP PUSH KE GITHUB -->
+    <section id="stepPanel4" class="step-panel hidden space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-4">
+        <div>
+          <h2 class="text-sm font-semibold">ACC Final &amp; Siap Push Konten ke GitHub</h2>
+          <p class="text-xs text-[var(--muted-foreground)]">
+            Pastikan semua halaman sudah dicek. Klik tombol ACC Final di bawah lalu paste ke chat agar konten langsung di-commit &amp; push ke folder <code>content/</code> repo.
+          </p>
+        </div>
+
+        <div id="finalSummaryGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
+
+        <div id="finalPageChecklist" class="space-y-1.5 text-xs"></div>
+
+        <div class="flex flex-wrap gap-2 pt-2">
+          <button id="btnFinalAccPush" type="button" class="px-4 py-2.5 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 cursor-pointer">
+            ✓ ACC Final &amp; Salin Perintah Push ke GitHub
+          </button>
+          <button id="btnCopyFinalJson" type="button" class="px-3.5 py-2.5 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
+            Salin JSON Lengkap
+          </button>
+        </div>
+      </div>
+
+      <div class="flex justify-start">
+        <button type="button" data-goto-step="3" class="px-3 py-2 rounded-lg text-xs font-medium bg-[var(--card)] border border-[var(--border)] cursor-pointer">
+          &larr; Kembali ke Cek Image
+        </button>
+      </div>
+    </section>
   </div>
 
   <script>
+    const STORAGE_KEY = 'storybook_canvas_studio_v2';
+
     const CATEGORIES = [
       { id: 'fauna', name: 'Fauna & Satwa', sampleTitle: 'Kenapa Gurita Punya Tiga Jantung?', sampleMoral: 'Biologi laut & adaptasi hewan' },
       { id: 'sains', name: 'Sains & Alam', sampleTitle: 'Bagaimana Pelangi Terbentuk di Langit?', sampleMoral: 'Pembiasan cahaya & cuaca' }
@@ -274,103 +416,216 @@
       }
     ];
 
-    const ENCYC_PRESET_PAGES = [
+    const PRESET_ENCYC = [
       {
-        id: 1,
         heading: 'Kenalan dengan Gurita',
         text: 'Gurita adalah hewan laut bertubuh lunak yang tidak memiliki tulang belakang. Ia punya delapan lengan lentur dengan ratusan pengisap untuk memegang batu dan mangsa.',
         fact: 'Tahukah Kamu? Gurita punya 3 jantung: 2 jantung memompa darah ke insang, dan 1 jantung memompa darah ke seluruh tubuh!',
-        scene: 'Establishing wide: full octopus swimming gracefully above tropical coral reef, clear 10% margins, calm sandy bottom in lower quarter',
-        approved: true
+        scene: 'Establishing wide: full octopus swimming gracefully above tropical coral reef, clear 10% margins, calm sandy bottom in lower quarter'
       },
       {
-        id: 2,
         heading: 'Kenapa Darahnya Berwarna Biru?',
         text: 'Berbeda dengan manusia yang berdarah merah karena zat besi, darah gurita berwarna biru karena mengandung tembaga (hemosianin). Darah biru ini lebih efektif membawa oksigen di laut dalam yang dingin.',
         fact: 'Tahukah Kamu? Saat gurita berenang cepat, jantung utamanya berhenti berdetak sementara—makanya ia lebih suka merayap di dasar laut!',
-        scene: 'Wide environment: octopus crawling across deep cool blue rocky seabed surrounded by sea plants, lower quarter calm ocean sand',
-        approved: false
+        scene: 'Wide environment: octopus crawling across deep cool blue rocky seabed surrounded by sea plants, lower quarter calm ocean sand'
       },
       {
-        id: 3,
         heading: 'Ahli Menyamar di Karang',
         text: 'Kulit gurita punya sel warna khusus bernama kromatofora. Dalam sekejap, gurita bisa mengubah warna dan tekstur kulitnya agar mirip karang atau pasir untuk bersembunyi.',
         fact: 'Tahukah Kamu? Meski bisa menyamar sangat mirip dengan lingkungannya, sebagian besar gurita sebenarnya buta warna!',
-        scene: 'Camouflage/hidden: smaller octopus blending naturally beside textured reef rocks and algae, full body visible, calm sandy lower quarter',
-        approved: false
+        scene: 'Camouflage/hidden: smaller octopus blending naturally beside textured reef rocks and algae, full body visible, calm sandy lower quarter'
       }
     ];
 
-    const STORY_PRESET_PAGES = [
+    const PRESET_STORY = [
       {
-        id: 1,
         heading: 'Menyelam di Akuarium Raksasa',
         text: 'Raka menempelkan kaca pembesarnya di dinding akuarium laut. Di balik kaca, seekor gurita merah-jingga berenang pelan mengayunkan delapan lengannya.',
         fact: 'Tahukah Kamu? Gurita punya 3 jantung: 2 jantung untuk insang dan 1 jantung utama untuk seluruh tubuh!',
-        scene: 'Raka looking in awe through a large glass aquarium at a friendly realistic octopus swimming, calm floor in lower quarter',
-        approved: true
+        scene: 'Raka looking in awe through a large glass aquarium at a friendly realistic octopus swimming, calm floor in lower quarter'
       },
       {
-        id: 2,
         heading: 'Rahasia Darah Biru',
         text: 'Pemandu akuarium menjelaskan bahwa darah gurita berwarna biru karena mengandung tembaga, yang membantu gurita bertahan di air laut yang dingin.',
         fact: 'Tahukah Kamu? Darah gurita memakai protein hemosianin berbasis tembaga, bukan hemoglobin berbasis zat besi seperti manusia.',
-        scene: 'Raka taking notes in his field notebook while observing the octopus near blue coral rocks, calm floor in lower quarter',
-        approved: false
+        scene: 'Raka taking notes in his field notebook while observing the octopus near blue coral rocks, calm floor in lower quarter'
       }
     ];
 
-    let scenarioMode = 'encyclopedia'; // 'story' | 'encyclopedia'
-    let selectedCategoryId = 'fauna';
-    let selectedStyleId = 'semi-realistis';
-    let sheetFileName = '';
-    let pages = JSON.parse(JSON.stringify(ENCYC_PRESET_PAGES));
+    function makeBlankPage(idx, mode) {
+      const presets = mode === 'story' ? PRESET_STORY : PRESET_ENCYC;
+      const p = presets[idx];
+      return {
+        id: Date.now() + idx + Math.random(),
+        heading: p ? p.heading : `Halaman ${idx + 1}`,
+        text: p ? p.text : '',
+        fact: p ? p.fact : '',
+        scene: p ? p.scene : '',
+        scriptOk: false,
+        scriptNote: '',
+        imageUrl: '',
+        imageOk: false,
+        imageNote: ''
+      };
+    }
+
+    function createDefaultState() {
+      const count = 6;
+      const pages = Array.from({ length: count }, (_, i) => makeBlankPage(i, 'encyclopedia'));
+      return {
+        currentStep: 1,
+        scenarioMode: 'encyclopedia',
+        selectedCategoryId: 'fauna',
+        selectedStyleId: 'semi-realistis',
+        bookTitle: 'Kenapa Gurita Punya Tiga Jantung?',
+        ageGroup: '6-8 tahun (Kelas 2 SD)',
+        moral: 'Biologi laut & adaptasi hewan',
+        factCheckMode: true,
+        pageCount: count,
+        sheetFileName: '',
+        charName: 'Raka',
+        charSpecies: 'Anak laki-laki penjelajah cilik',
+        charTraits: 'Rambut hitam ikal, kacamata bulat besar, senyum ingin tahu',
+        charOutfit: 'Rompi penjelajah hijau zaitun, kaos kuning, dan kaca pembesar',
+        subjectAnchor: 'Gurita merah-jingga realistis dengan delapan lengan, mata horizontal, dan tubuh lunak tanpa tulang',
+        worldAnchor: 'Terumbu karang laut tropis jernih dengan cahaya matahari menembus air biru dan dasar pasir berbatu',
+        pages
+      };
+    }
+
+    let state = loadState();
+    let sheetPreviewDataUrl = '';
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && Array.isArray(parsed.pages) && parsed.pages.length > 0) {
+            return parsed;
+          }
+        }
+      } catch (e) {}
+      return createDefaultState();
+    }
+
+    function saveState() {
+      try {
+        // Avoid storing huge base64 image previews in localStorage
+        const compact = {
+          ...state,
+          pages: state.pages.map(p => ({
+            ...p,
+            imageUrl: p.imageUrl && p.imageUrl.startsWith('data:') ? '' : p.imageUrl
+          }))
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(compact));
+      } catch (e) {}
+    }
 
     const el = (id) => document.getElementById(id);
 
-    function getAnchorText() {
-      if (scenarioMode === 'encyclopedia') {
-        return `${el('subjectAnchor').value.trim()} | Habitat: ${el('worldAnchor').value.trim()}`;
-      }
-      const name = el('charName').value.trim() || 'Karakter';
-      const species = el('charSpecies').value.trim();
-      const traits = el('charTraits').value.trim();
-      const outfit = el('charOutfit').value.trim();
-      const sheetNote = sheetFileName ? ` [Referensi Sheet: ${sheetFileName}]` : '';
-      return `${name} (${species}), ${traits}, memakai ${outfit}${sheetNote}`;
+    function esc(str) {
+      return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
     function getSelectedStyle() {
-      return STYLES.find(s => s.id === selectedStyleId) || STYLES[0];
+      return STYLES.find(s => s.id === state.selectedStyleId) || STYLES[0];
     }
 
-    function getSelectedCategory() {
-      return CATEGORIES.find(c => c.id === selectedCategoryId) || CATEGORIES[0];
+    function getAnchorText() {
+      if (state.scenarioMode === 'encyclopedia') {
+        return `${state.subjectAnchor.trim()} | Habitat: ${state.worldAnchor.trim()}`;
+      }
+      const name = state.charName.trim() || 'Karakter';
+      const sheetNote = state.sheetFileName ? ` [Referensi Sheet: ${state.sheetFileName}]` : '';
+      return `${name} (${state.charSpecies.trim()}), ${state.charTraits.trim()}, memakai ${state.charOutfit.trim()}${sheetNote}`;
     }
 
-    function renderModeButtons() {
-      const storyBtn = el('modeStoryBtn');
-      const encycBtn = el('modeEncycBtn');
+    function resizePages(newCount) {
+      const target = Math.max(1, Math.min(20, Number(newCount) || 6));
+      state.pageCount = target;
+      while (state.pages.length < target) {
+        state.pages.push(makeBlankPage(state.pages.length, state.scenarioMode));
+      }
+      if (state.pages.length > target) {
+        state.pages = state.pages.slice(0, target);
+      }
+      saveState();
+      renderAll();
+    }
+
+    function goToStep(step) {
+      state.currentStep = step;
+      saveState();
+      renderStepNav();
+      [1, 2, 3, 4].forEach(s => {
+        el(`stepPanel${s}`).classList.toggle('hidden', s !== step);
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderStepNav() {
+      const total = state.pages.length;
+      const scriptOkCount = state.pages.filter(p => p.scriptOk).length;
+      const imageOkCount = state.pages.filter(p => p.imageOk).length;
+
+      el('step1Sub').textContent = `${total} hal • ${state.selectedStyleId}`;
+      el('step2Sub').textContent = `${scriptOkCount}/${total} naskah oke`;
+      el('step3Sub').textContent = `${imageOkCount}/${total} image ACC`;
+      el('step4Sub').textContent = scriptOkCount === total && imageOkCount === total ? 'Siap push!' : 'Belum semua ACC';
+
+      document.querySelectorAll('.step-tab').forEach(btn => {
+        const s = Number(btn.dataset.stepTab);
+        const active = s === state.currentStep;
+        btn.className = `step-tab p-2.5 rounded-xl border text-left transition cursor-pointer ${
+          active
+            ? 'border-[var(--primary)] bg-[var(--card)] ring-2 ring-[var(--primary)]'
+            : 'border-[var(--border)] bg-[var(--content)] hover:bg-[var(--card)] opacity-85'
+        }`;
+      });
+    }
+
+    function syncInputsFromState() {
+      el('bookTitle').value = state.bookTitle;
+      el('ageGroup').value = state.ageGroup;
+      el('moral').value = state.moral;
+      el('factCheckMode').checked = state.factCheckMode;
+      el('pageCountInput').value = state.pageCount;
+      el('charName').value = state.charName;
+      el('charSpecies').value = state.charSpecies;
+      el('charTraits').value = state.charTraits;
+      el('charOutfit').value = state.charOutfit;
+      el('subjectAnchor').value = state.subjectAnchor;
+      el('worldAnchor').value = state.worldAnchor;
+      el('categoryBadge').textContent = state.selectedCategoryId;
+      el('selectedStyleBadge').textContent = state.selectedStyleId;
+
+      document.querySelectorAll('.page-preset-btn').forEach(btn => {
+        const val = Number(btn.dataset.pagePreset);
+        const active = val === state.pageCount;
+        btn.className = `page-preset-btn px-2.5 py-1 rounded-md text-xs border cursor-pointer ${
+          active
+            ? 'border-[var(--primary)] bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold'
+            : 'border-[var(--border)] bg-[var(--background)]'
+        }`;
+      });
+    }
+
+    function renderModeAndAnchors() {
       const activeCls = 'border-[var(--primary)] bg-[var(--content)] ring-1 ring-[var(--primary)]';
       const idleCls = 'border-[var(--border)] bg-[var(--background)] hover:bg-[var(--content)]';
-
-      storyBtn.className = `p-2.5 rounded-lg border text-left text-xs transition cursor-pointer ${scenarioMode === 'story' ? activeCls : idleCls}`;
-      encycBtn.className = `p-2.5 rounded-lg border text-left text-xs transition cursor-pointer ${scenarioMode === 'encyclopedia' ? activeCls : idleCls}`;
-
-      if (scenarioMode === 'story') {
-        el('charAnchorCard').classList.remove('hidden');
-        el('encycAnchorCard').classList.add('hidden');
-      } else {
-        el('charAnchorCard').classList.add('hidden');
-        el('encycAnchorCard').classList.remove('hidden');
-      }
+      el('modeStoryBtn').className = `p-2.5 rounded-lg border text-left text-xs transition cursor-pointer ${state.scenarioMode === 'story' ? activeCls : idleCls}`;
+      el('modeEncycBtn').className = `p-2.5 rounded-lg border text-left text-xs transition cursor-pointer ${state.scenarioMode === 'encyclopedia' ? activeCls : idleCls}`;
+      el('charAnchorCard').classList.toggle('hidden', state.scenarioMode !== 'story');
+      el('encycAnchorCard').classList.toggle('hidden', state.scenarioMode === 'story');
     }
 
     function renderCategories() {
       const grid = el('categoryGrid');
       grid.innerHTML = '';
       CATEGORIES.forEach(cat => {
-        const active = cat.id === selectedCategoryId;
+        const active = cat.id === state.selectedCategoryId;
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = `text-left px-2.5 py-2 rounded-lg border text-xs transition cursor-pointer ${
@@ -380,11 +635,11 @@
         }`;
         btn.textContent = cat.name;
         btn.onclick = () => {
-          selectedCategoryId = cat.id;
-          el('categoryBadge').textContent = cat.id;
-          el('bookTitle').value = cat.sampleTitle;
-          el('moral').value = cat.sampleMoral;
-          renderCategories();
+          state.selectedCategoryId = cat.id;
+          state.bookTitle = cat.sampleTitle;
+          state.moral = cat.sampleMoral;
+          saveState();
+          renderAll();
         };
         grid.appendChild(btn);
       });
@@ -394,7 +649,7 @@
       const grid = el('styleGrid');
       grid.innerHTML = '';
       STYLES.forEach(style => {
-        const active = style.id === selectedStyleId;
+        const active = style.id === state.selectedStyleId;
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = `text-left p-2.5 rounded-lg border text-xs transition cursor-pointer ${
@@ -407,133 +662,293 @@
           <div class="text-[var(--muted-foreground)] mt-0.5 leading-snug">${style.desc}</div>
         `;
         btn.onclick = () => {
-          selectedStyleId = style.id;
-          el('selectedStyleBadge').textContent = style.name;
-          renderStyles();
-          renderAnchorBanner();
-          renderPages();
+          state.selectedStyleId = style.id;
+          saveState();
+          renderAll();
         };
         grid.appendChild(btn);
       });
     }
 
-    function renderAnchorBanner() {
-      const style = getSelectedStyle();
-      const factOn = el('factCheckMode').checked;
-      const modeLabel = scenarioMode === 'encyclopedia' ? 'Ensiklopedia (Tanpa Karakter)' : 'Cerita + Karakter';
-      el('anchorBanner').innerHTML = `
-        <div class="font-semibold">Ringkasan Mode, Anchor &amp; Gaya:</div>
-        <div class="text-[var(--muted-foreground)]"><span class="text-[var(--foreground)] font-medium">Format:</span> ${modeLabel} &bull; <span class="text-[var(--foreground)] font-medium">Gaya:</span> ${style.name} &bull; <span class="text-[var(--foreground)] font-medium">Fact-Check:</span> ${factOn ? 'Aktif' : 'Opsional'}</div>
-        <div class="text-[var(--muted-foreground)]"><span class="text-[var(--foreground)] font-medium">Anchor:</span> ${getAnchorText()}</div>
-      `;
-    }
-
-    function renderPages() {
-      const container = el('pagesContainer');
-      const style = getSelectedStyle();
+    function renderScriptPages() {
+      const container = el('scriptPagesContainer');
       container.innerHTML = '';
 
-      pages.forEach((p, idx) => {
+      state.pages.forEach((p, idx) => {
         const card = document.createElement('div');
         card.className = 'p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-2.5';
-
-        const fullPrompt = `${getAnchorText()}. Scene: ${p.scene}. Style: ${style.prompt}.`;
-
         card.innerHTML = `
           <div class="flex flex-wrap items-center justify-between gap-2">
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-[var(--content)]">Halaman ${idx + 1}</span>
             <div class="flex items-center gap-2">
-              <button data-toggle="${p.id}" class="px-2.5 py-1 rounded-md text-xs font-medium cursor-pointer transition ${
-                p.approved
-                  ? 'bg-[var(--primary)] text-[var(--primary-foreground)]'
-                  : 'bg-[var(--content)] border border-[var(--border)] text-[var(--muted-foreground)]'
-              }">
-                ${p.approved ? '✓ ACC Siap Generate' : 'Belum ACC'}
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-[var(--content)]">Halaman ${idx + 1}</span>
+              <span class="text-xs ${p.scriptOk ? 'text-[var(--success)] font-semibold' : 'text-[var(--muted-foreground)]'}">
+                ${p.scriptOk ? '✓ Naskah Oke' : 'Draft'}
+              </span>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <button type="button" data-regen-script="${idx}" class="px-2.5 py-1 rounded-md text-xs font-medium bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
+                ↻ Regenerate Naskah
               </button>
-              ${pages.length > 1 ? `<button data-del="${p.id}" class="px-2 py-1 rounded-md text-xs text-[var(--muted-foreground)] hover:text-[var(--error)] cursor-pointer">Hapus</button>` : ''}
+              <button type="button" data-toggle-script="${idx}" class="px-2.5 py-1 rounded-md text-xs font-semibold cursor-pointer ${
+                p.scriptOk
+                  ? 'bg-[var(--primary)] text-[var(--primary-foreground)]'
+                  : 'bg-[var(--content)] border border-[var(--border)]'
+              }">
+                ${p.scriptOk ? '✓ Naskah Oke' : 'Tandai Oke'}
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div>
+              <label class="block text-xs text-[var(--muted-foreground)] mb-1">Subjudul (heading)</label>
+              <input data-s-heading="${idx}" type="text" value="${esc(p.heading)}" class="w-full px-2.5 py-1.5 rounded-lg text-xs bg-[var(--card)] border border-[var(--border)]" />
+            </div>
+            <div>
+              <label class="block text-xs text-[var(--muted-foreground)] mb-1">Fakta Menarik (funFact)</label>
+              <input data-s-fact="${idx}" type="text" value="${esc(p.fact)}" class="w-full px-2.5 py-1.5 rounded-lg text-xs bg-[var(--card)] border border-[var(--border)]" />
             </div>
           </div>
 
           <div>
-            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Subjudul Halaman (heading)</label>
-            <input data-heading="${p.id}" type="text" value="${(p.heading || '').replace(/"/g, '&quot;')}" class="w-full px-2.5 py-1.5 rounded-lg text-xs bg-[var(--card)] border border-[var(--border)]" />
-          </div>
-
-          <div>
             <label class="block text-xs text-[var(--muted-foreground)] mb-1">Naskah Utama (body)</label>
-            <textarea data-text="${p.id}" rows="2" class="w-full px-2.5 py-1.5 rounded-lg text-xs bg-[var(--card)] border border-[var(--border)]">${p.text}</textarea>
+            <textarea data-s-text="${idx}" rows="2" placeholder="Belum diisi — klik Generate Naskah atau tulis manual..." class="w-full px-2.5 py-1.5 rounded-lg text-xs bg-[var(--card)] border border-[var(--border)]">${esc(p.text)}</textarea>
           </div>
 
           <div>
-            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Fakta Menarik (funFact)</label>
-            <input data-fact="${p.id}" type="text" value="${(p.fact || '').replace(/"/g, '&quot;')}" class="w-full px-2.5 py-1.5 rounded-lg text-xs bg-[var(--card)] border border-[var(--border)]" />
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Adegan Ilustrasi (scene)</label>
+            <input data-s-scene="${idx}" type="text" value="${esc(p.scene)}" placeholder="Deskripsi adegan untuk generator gambar..." class="w-full px-2.5 py-1.5 rounded-lg text-xs bg-[var(--card)] border border-[var(--border)]" />
           </div>
 
-          <div>
-            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Adegan Ilustrasi (storyboard)</label>
-            <input data-scene="${p.id}" type="text" value="${p.scene.replace(/"/g, '&quot;')}" class="w-full px-2.5 py-1.5 rounded-lg text-xs bg-[var(--card)] border border-[var(--border)]" />
-          </div>
-
-          <div class="p-2 rounded-lg bg-[var(--content)] text-xs text-[var(--muted-foreground)]">
-            <span class="font-medium text-[var(--foreground)]">Preview Prompt Gambar:</span> ${fullPrompt}
+          <div class="flex flex-wrap items-center gap-2 pt-1">
+            <input data-s-note="${idx}" type="text" value="${esc(p.scriptNote)}" placeholder="Catatan revisi jika mau regenerate naskah hal ${idx + 1} (opsional)..." class="flex-1 min-w-[200px] px-2.5 py-1 rounded-md text-xs bg-[var(--card)] border border-[var(--border)]" />
           </div>
         `;
         container.appendChild(card);
       });
 
-      container.querySelectorAll('[data-toggle]').forEach(btn => {
+      container.querySelectorAll('[data-s-heading]').forEach(inp => {
+        inp.oninput = () => { state.pages[inp.dataset.sHeading].heading = inp.value; saveState(); };
+      });
+      container.querySelectorAll('[data-s-fact]').forEach(inp => {
+        inp.oninput = () => { state.pages[inp.dataset.sFact].fact = inp.value; saveState(); };
+      });
+      container.querySelectorAll('[data-s-text]').forEach(inp => {
+        inp.oninput = () => { state.pages[inp.dataset.sText].text = inp.value; saveState(); };
+      });
+      container.querySelectorAll('[data-s-scene]').forEach(inp => {
+        inp.oninput = () => { state.pages[inp.dataset.sScene].scene = inp.value; saveState(); };
+      });
+      container.querySelectorAll('[data-s-note]').forEach(inp => {
+        inp.oninput = () => { state.pages[inp.dataset.sNote].scriptNote = inp.value; saveState(); };
+      });
+      container.querySelectorAll('[data-toggle-script]').forEach(btn => {
         btn.onclick = () => {
-          const id = Number(btn.dataset.toggle);
-          const page = pages.find(x => x.id === id);
-          if (page) page.approved = !page.approved;
-          renderPages();
+          const idx = Number(btn.dataset.toggleScript);
+          state.pages[idx].scriptOk = !state.pages[idx].scriptOk;
+          saveState();
+          renderStepNav();
+          renderScriptPages();
+          renderFinalStep();
         };
       });
+      container.querySelectorAll('[data-regen-script]').forEach(btn => {
+        btn.onclick = async () => {
+          const idx = Number(btn.dataset.regenScript);
+          const p = state.pages[idx];
+          const prompt = [
+            `REGENERATE NASKAH HALAMAN ${idx + 1} (TANPA IMAGE)`,
+            `Judul Buku: "${state.bookTitle}" (${state.scenarioMode}, ${state.selectedCategoryId}, usia ${state.ageGroup})`,
+            `Naskah saat ini: (${p.heading}) "${p.text}" | funFact: ${p.fact} | Scene: ${p.scene}`,
+            `Catatan revisi: ${p.scriptNote.trim() || 'Buat lebih menarik, jelas, dan ramah anak.'}`,
+            `Mohon buatkan ulang naskah halaman ${idx + 1} saja dalam format JSON (heading, body, funFact, scene).`
+          ].join('\n');
+          await copyTextSafe(prompt, `Prompt regenerate naskah Hal ${idx + 1} disalin! Paste ke chat.`, `Regenerate Naskah Hal ${idx + 1}:`);
+        };
+      });
+    }
 
-      container.querySelectorAll('[data-del]').forEach(btn => {
+    function renderImagePages() {
+      const container = el('imagePagesContainer');
+      const style = getSelectedStyle();
+      container.innerHTML = '';
+
+      state.pages.forEach((p, idx) => {
+        const card = document.createElement('div');
+        card.className = 'p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-2.5 flex flex-col justify-between';
+
+        const previewHtml = p.imageUrl
+          ? `<img src="${esc(p.imageUrl)}" alt="Halaman ${idx + 1}" class="w-full aspect-[4/5] object-cover rounded-lg border border-[var(--border)] bg-[var(--card)]" />`
+          : `<div class="w-full aspect-[4/5] rounded-lg border border-dashed border-[var(--border)] bg-[var(--card)] flex flex-col items-center justify-center p-4 text-center text-xs text-[var(--muted-foreground)]">
+               <div class="font-semibold text-[var(--foreground)] mb-1">Belum ada preview image</div>
+               <div>Upload file gambar dari chat atau tempel URL gambar di bawah untuk dicek.</div>
+             </div>`;
+
+        card.innerHTML = `
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-[var(--content)]">Hal ${idx + 1}: ${esc(p.heading || 'Tanpa Judul')}</span>
+              <button type="button" data-toggle-img="${idx}" class="px-2.5 py-1 rounded-md text-xs font-semibold cursor-pointer ${
+                p.imageOk
+                  ? 'bg-[var(--primary)] text-[var(--primary-foreground)]'
+                  : 'bg-[var(--content)] border border-[var(--border)]'
+              }">
+                ${p.imageOk ? '✓ ACC Image' : 'Belum ACC'}
+              </button>
+            </div>
+
+            ${previewHtml}
+
+            <div class="flex flex-wrap items-center gap-2">
+              <label class="px-2.5 py-1 rounded-md text-xs font-medium bg-[var(--content)] border border-[var(--border)] cursor-pointer hover:opacity-85">
+                Upload Preview
+                <input type="file" accept="image/*" data-upload-img="${idx}" class="hidden" />
+              </label>
+              <input data-url-img="${idx}" type="text" value="${p.imageUrl && !p.imageUrl.startsWith('data:') ? esc(p.imageUrl) : ''}" placeholder="atau tempel URL gambar..." class="flex-1 min-w-[140px] px-2.5 py-1 rounded-md text-xs bg-[var(--card)] border border-[var(--border)]" />
+            </div>
+
+            <div class="p-2 rounded-lg bg-[var(--content)] text-xs text-[var(--muted-foreground)]">
+              <span class="font-semibold text-[var(--foreground)]">Scene:</span> ${esc(p.scene || '(belum diisi)')}<br/>
+              <span class="font-semibold text-[var(--foreground)]">Gaya:</span> ${style.name}
+            </div>
+          </div>
+
+          <div class="space-y-1.5 pt-1 border-t border-[var(--border)]">
+            <input data-img-note="${idx}" type="text" value="${esc(p.imageNote)}" placeholder="Catatan jika image hal ${idx + 1} kurang oke (opsional)..." class="w-full px-2.5 py-1 rounded-md text-xs bg-[var(--card)] border border-[var(--border)]" />
+            <button type="button" data-regen-img="${idx}" class="w-full px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
+              ↻ Regenerate Image Hal ${idx + 1} (Salin ke Chat)
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      container.querySelectorAll('[data-toggle-img]').forEach(btn => {
         btn.onclick = () => {
-          const id = Number(btn.dataset.del);
-          pages = pages.filter(x => x.id !== id);
-          renderPages();
+          const idx = Number(btn.dataset.toggleImg);
+          state.pages[idx].imageOk = !state.pages[idx].imageOk;
+          saveState();
+          renderStepNav();
+          renderImagePages();
+          renderFinalStep();
         };
       });
 
-      container.querySelectorAll('[data-heading]').forEach(inp => {
+      container.querySelectorAll('[data-upload-img]').forEach(inp => {
+        inp.onchange = (e) => {
+          const idx = Number(inp.dataset.uploadImg);
+          const file = e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            state.pages[idx].imageUrl = ev.target.result;
+            renderImagePages();
+          };
+          reader.readAsDataURL(file);
+        };
+      });
+
+      container.querySelectorAll('[data-url-img]').forEach(inp => {
+        inp.onchange = () => {
+          const idx = Number(inp.dataset.urlImg);
+          state.pages[idx].imageUrl = inp.value.trim();
+          saveState();
+          renderImagePages();
+        };
+      });
+
+      container.querySelectorAll('[data-img-note]').forEach(inp => {
         inp.oninput = () => {
-          const id = Number(inp.dataset.heading);
-          const page = pages.find(x => x.id === id);
-          if (page) page.heading = inp.value;
+          state.pages[inp.dataset.imgNote].imageNote = inp.value;
+          saveState();
         };
       });
 
-      container.querySelectorAll('[data-text]').forEach(area => {
-        area.oninput = () => {
-          const id = Number(area.dataset.text);
-          const page = pages.find(x => x.id === id);
-          if (page) page.text = area.value;
+      container.querySelectorAll('[data-regen-img]').forEach(btn => {
+        btn.onclick = async () => {
+          const idx = Number(btn.dataset.regenImg);
+          const p = state.pages[idx];
+          const style = getSelectedStyle();
+          const prompt = [
+            `REGENERATE IMAGE HALAMAN ${idx + 1}`,
+            `Buku: "${state.bookTitle}" | Gaya: ${style.name} (${style.prompt})`,
+            `Anchor: ${getAnchorText()}`,
+            `Scene Hal ${idx + 1}: ${p.scene}`,
+            `Catatan perbaikan: ${p.imageNote.trim() || 'Perbaiki komposisi, jaga proporsi 4:5 dan safe space bawah untuk teks.'}`
+          ].join('\n');
+          await copyTextSafe(prompt, `Prompt regenerate image Hal ${idx + 1} disalin! Paste ke chat.`, `Regenerate Image Hal ${idx + 1}:`);
         };
       });
+    }
 
-      container.querySelectorAll('[data-fact]').forEach(inp => {
-        inp.oninput = () => {
-          const id = Number(inp.dataset.fact);
-          const page = pages.find(x => x.id === id);
-          if (page) page.fact = inp.value;
-        };
-      });
+    function renderFinalStep() {
+      const total = state.pages.length;
+      const scriptOk = state.pages.filter(p => p.scriptOk).length;
+      const imageOk = state.pages.filter(p => p.imageOk).length;
 
-      container.querySelectorAll('[data-scene]').forEach(inp => {
-        inp.oninput = () => {
-          const id = Number(inp.dataset.scene);
-          const page = pages.find(x => x.id === id);
-          if (page) {
-            page.scene = inp.value;
-            const preview = inp.parentElement.nextElementSibling;
-            const style = getSelectedStyle();
-            preview.innerHTML = `<span class="font-medium text-[var(--foreground)]">Preview Prompt Gambar:</span> ${getAnchorText()}. Scene: ${page.scene}. Style: ${style.prompt}.`;
-          }
-        };
-      });
+      el('finalSummaryGrid').innerHTML = `
+        <div class="p-3 rounded-lg bg-[var(--content)] border border-[var(--border)]">
+          <div class="text-xs text-[var(--muted-foreground)]">Total Halaman</div>
+          <div class="text-base font-bold mt-0.5">${total} Halaman</div>
+        </div>
+        <div class="p-3 rounded-lg bg-[var(--content)] border border-[var(--border)]">
+          <div class="text-xs text-[var(--muted-foreground)]">Naskah Oke</div>
+          <div class="text-base font-bold mt-0.5">${scriptOk} / ${total}</div>
+        </div>
+        <div class="p-3 rounded-lg bg-[var(--content)] border border-[var(--border)]">
+          <div class="text-xs text-[var(--muted-foreground)]">Image ACC</div>
+          <div class="text-base font-bold mt-0.5">${imageOk} / ${total}</div>
+        </div>
+        <div class="p-3 rounded-lg bg-[var(--content)] border border-[var(--border)]">
+          <div class="text-xs text-[var(--muted-foreground)]">Gaya &amp; Mode</div>
+          <div class="text-xs font-bold mt-1">${state.selectedStyleId} • ${state.scenarioMode}</div>
+        </div>
+      `;
+
+      el('finalPageChecklist').innerHTML = state.pages.map((p, i) => `
+        <div class="flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+          <span class="font-medium">Hal ${i + 1}: ${esc(p.heading || 'Tanpa Judul')}</span>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded ${p.scriptOk ? 'bg-[var(--content)] text-[var(--success)] font-semibold' : 'bg-[var(--content)] text-[var(--muted-foreground)]'}">
+              ${p.scriptOk ? '✓ Naskah' : 'Draft Naskah'}
+            </span>
+            <span class="px-2 py-0.5 rounded ${p.imageOk ? 'bg-[var(--content)] text-[var(--success)] font-semibold' : 'bg-[var(--content)] text-[var(--muted-foreground)]'}">
+              ${p.imageOk ? '✓ Image ACC' : 'Belum ACC Image'}
+            </span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function buildPayload() {
+      return {
+        scenarioMode: state.scenarioMode,
+        category: state.selectedCategoryId,
+        title: state.bookTitle.trim(),
+        ageGroup: state.ageGroup,
+        topic: state.moral.trim(),
+        factCheckRequired: state.factCheckMode,
+        pageCount: state.pages.length,
+        style: state.selectedStyleId,
+        anchor: state.scenarioMode === 'encyclopedia'
+          ? { subjectAnchor: state.subjectAnchor.trim(), worldAnchor: state.worldAnchor.trim() }
+          : {
+              sheetFile: state.sheetFileName || null,
+              name: state.charName.trim(),
+              species: state.charSpecies.trim(),
+              traits: state.charTraits.trim(),
+              outfit: state.charOutfit.trim()
+            },
+        pages: state.pages.map((p, idx) => ({
+          page: idx + 1,
+          scriptOk: p.scriptOk,
+          imageOk: p.imageOk,
+          heading: p.heading,
+          body: p.text,
+          funFact: p.fact,
+          scene: p.scene
+        }))
+      };
     }
 
     function showToast(msg) {
@@ -551,9 +966,7 @@
           showToast(successMsg);
           return;
         }
-      } catch (e) {
-        // Fall through to execCommand / manual textarea fallback
-      }
+      } catch (e) {}
       const box = el('copyFallbackBox');
       const ta = el('copyFallbackText');
       el('copyFallbackTitle').textContent = fallbackLabel;
@@ -562,148 +975,202 @@
       ta.focus();
       ta.select();
       try {
-        if (document.execCommand('copy')) {
-          showToast(successMsg);
-        }
-      } catch (e) {
-        // User can copy manually from the visible textarea
-      }
+        if (document.execCommand('copy')) showToast(successMsg);
+      } catch (e) {}
     }
 
-    el('btnCloseFallback').onclick = () => {
-      el('copyFallbackBox').classList.add('hidden');
-    };
-
-    function buildPayload() {
-      const style = getSelectedStyle();
-      const cat = getSelectedCategory();
-      return {
-        scenarioMode,
-        category: cat.id,
-        title: el('bookTitle').value.trim(),
-        ageGroup: el('ageGroup').value,
-        topic: el('moral').value.trim(),
-        factCheckRequired: el('factCheckMode').checked,
-        style: style.id,
-        anchor: scenarioMode === 'encyclopedia'
-          ? { subjectAnchor: el('subjectAnchor').value.trim(), worldAnchor: el('worldAnchor').value.trim() }
-          : {
-              sheetFile: sheetFileName || null,
-              name: el('charName').value.trim(),
-              species: el('charSpecies').value.trim(),
-              traits: el('charTraits').value.trim(),
-              outfit: el('charOutfit').value.trim()
-            },
-        pages: pages.map((p, idx) => ({
-          page: idx + 1,
-          approved: p.approved,
-          heading: p.heading,
-          body: p.text,
-          funFact: p.fact,
-          scene: p.scene
-        }))
-      };
+    function renderAll() {
+      syncInputsFromState();
+      renderModeAndAnchors();
+      renderCategories();
+      renderStyles();
+      renderStepNav();
+      renderScriptPages();
+      renderImagePages();
+      renderFinalStep();
+      goToStep(state.currentStep);
     }
+
+    // Event bindings
+    document.querySelectorAll('.step-tab').forEach(btn => {
+      btn.onclick = () => goToStep(Number(btn.dataset.stepTab));
+    });
+    document.querySelectorAll('[data-goto-step]').forEach(btn => {
+      btn.onclick = () => goToStep(Number(btn.dataset.gotoStep));
+    });
+    document.querySelectorAll('.page-preset-btn').forEach(btn => {
+      btn.onclick = () => resizePages(Number(btn.dataset.pagePreset));
+    });
+    el('pageCountInput').onchange = (e) => resizePages(e.target.value);
 
     el('modeStoryBtn').onclick = () => {
-      scenarioMode = 'story';
-      pages = JSON.parse(JSON.stringify(STORY_PRESET_PAGES));
-      renderModeButtons();
-      renderAnchorBanner();
-      renderPages();
+      state.scenarioMode = 'story';
+      saveState();
+      renderAll();
     };
-
     el('modeEncycBtn').onclick = () => {
-      scenarioMode = 'encyclopedia';
-      pages = JSON.parse(JSON.stringify(ENCYC_PRESET_PAGES));
-      renderModeButtons();
-      renderAnchorBanner();
-      renderPages();
+      state.scenarioMode = 'encyclopedia';
+      saveState();
+      renderAll();
     };
 
-    el('sheetUpload').addEventListener('change', (e) => {
+    const bindInput = (id, key, isCheck = false) => {
+      el(id).addEventListener(isCheck ? 'change' : 'input', (e) => {
+        state[key] = isCheck ? e.target.checked : e.target.value;
+        saveState();
+        renderStepNav();
+      });
+    };
+    bindInput('bookTitle', 'bookTitle');
+    bindInput('ageGroup', 'ageGroup', true);
+    bindInput('moral', 'moral');
+    bindInput('factCheckMode', 'factCheckMode', true);
+    bindInput('charName', 'charName');
+    bindInput('charSpecies', 'charSpecies');
+    bindInput('charTraits', 'charTraits');
+    bindInput('charOutfit', 'charOutfit');
+    bindInput('subjectAnchor', 'subjectAnchor');
+    bindInput('worldAnchor', 'worldAnchor');
+
+    el('sheetUpload').onchange = (e) => {
       const file = e.target.files[0];
       if (!file) return;
-      sheetFileName = file.name;
+      state.sheetFileName = file.name;
+      saveState();
       const reader = new FileReader();
       reader.onload = (ev) => {
-        el('sheetPreview').src = ev.target.result;
+        sheetPreviewDataUrl = ev.target.result;
+        el('sheetPreview').src = sheetPreviewDataUrl;
         el('sheetPreview').classList.remove('hidden');
         el('btnClearSheet').classList.remove('hidden');
-        el('sheetInfo').textContent = `Sheet aktif: ${file.name} (lampirkan juga file ini di chat saat ACC generate).`;
-        renderAnchorBanner();
-        renderPages();
+        el('sheetInfo').textContent = `Sheet aktif: ${file.name} (lampirkan juga di chat saat generate).`;
       };
       reader.readAsDataURL(file);
-    });
+    };
 
-    el('btnClearSheet').addEventListener('click', () => {
-      sheetFileName = '';
+    el('btnClearSheet').onclick = () => {
+      state.sheetFileName = '';
+      sheetPreviewDataUrl = '';
+      saveState();
       el('sheetUpload').value = '';
       el('sheetPreview').src = '';
       el('sheetPreview').classList.add('hidden');
       el('btnClearSheet').classList.add('hidden');
-      el('sheetInfo').textContent = 'Belum ada gambar diupload. (Lampirkan juga file sheet ini di chat saat ACC generate.)';
-      renderAnchorBanner();
-      renderPages();
-    });
-
-    el('factCheckMode').addEventListener('change', renderAnchorBanner);
-
-    el('btnAddPage').onclick = () => {
-      const nextId = pages.length ? Math.max(...pages.map(p => p.id)) + 1 : 1;
-      pages.push({
-        id: nextId,
-        heading: `Subjudul Halaman ${pages.length + 1}`,
-        text: 'Tuliskan naskah fakta / cerita untuk halaman baru di sini...',
-        fact: 'Tahukah Kamu? Fakta menarik untuk halaman ini...',
-        scene: 'Describe the scene and background here',
-        approved: false
-      });
-      renderPages();
+      el('sheetInfo').textContent = 'Belum ada gambar diupload. (Lampirkan juga file sheet di chat saat generate.)';
     };
 
-    el('btnCopyAcc').onclick = async () => {
-      const data = buildPayload();
-      const lines = [
-        `ACC GENERATE BUKU [${data.scenarioMode.toUpperCase()}] (${data.category}): "${data.title}" (${data.ageGroup})`,
-        `Wajib Fact-Check Ilmiah: ${data.factCheckRequired ? 'YA' : 'TIDAK'}`,
-        `Gaya Gambar: ${data.style}`,
+    el('btnCloseFallback').onclick = () => el('copyFallbackBox').classList.add('hidden');
+
+    el('btnGoStep2Manual').onclick = () => goToStep(2);
+
+    el('btnGenerateScript').onclick = async () => {
+      const d = buildPayload();
+      const prompt = [
+        `GENERATE NASKAH BUKU SAJA (TANPA IMAGE DULU)`,
+        `Format: ${d.scenarioMode.toUpperCase()} | Kategori: ${d.category}`,
+        `Judul / Topik: "${d.title}"`,
+        `Target Usia: ${d.ageGroup} | Fokus Topik: ${d.topic}`,
+        `Jumlah Halaman: ${d.pageCount} halaman`,
+        `Wajib Fact-Check Ilmiah: ${d.factCheckRequired ? 'YA' : 'TIDAK'}`,
+        `Gaya Gambar (untuk deskripsi scene): ${d.style}`,
         `Anchor: ${getAnchorText()}`,
         ``,
-        `Halaman:`
+        `Tolong buatkan naskah lengkap ${d.pageCount} halaman (tanpa generate gambar dulu) dalam format JSON agar bisa langsung saya paste ke Storybook Canvas Studio:`,
+        `{"pages": [{"heading": "...", "body": "...", "funFact": "Tahukah Kamu? ...", "scene": "..."}]}`
+      ].join('\n');
+      await copyTextSafe(prompt, 'Prompt Generate Naskah disalin! Paste ke chat.', 'Prompt Generate Naskah (paste ke chat):');
+      goToStep(2);
+    };
+
+    el('btnApproveAllScripts').onclick = () => {
+      state.pages.forEach(p => { p.scriptOk = true; });
+      saveState();
+      renderAll();
+      showToast('Semua naskah ditandai Oke!');
+    };
+
+    el('btnToggleImportScript').onclick = () => el('importScriptBox').classList.toggle('hidden');
+    el('btnCancelImportScript').onclick = () => el('importScriptBox').classList.add('hidden');
+
+    el('btnApplyImportScript').onclick = () => {
+      try {
+        const raw = el('importScriptInput').value.trim();
+        const parsed = JSON.parse(raw);
+        const arr = Array.isArray(parsed) ? parsed : parsed.pages;
+        if (!Array.isArray(arr) || arr.length === 0) throw new Error('Array pages tidak ditemukan');
+        state.pageCount = arr.length;
+        state.pages = arr.map((item, idx) => ({
+          id: Date.now() + idx,
+          heading: item.heading || `Halaman ${idx + 1}`,
+          text: item.body || item.text || '',
+          fact: item.funFact || item.fact || '',
+          scene: item.scene || '',
+          scriptOk: false,
+          scriptNote: '',
+          imageUrl: '',
+          imageOk: false,
+          imageNote: ''
+        }));
+        el('importScriptBox').classList.add('hidden');
+        el('importScriptInput').value = '';
+        saveState();
+        renderAll();
+        showToast(`Berhasil memuat ${arr.length} halaman naskah!`);
+      } catch (err) {
+        alert('Format JSON belum valid. Pastikan berisi array pages.');
+      }
+    };
+
+    el('btnGenerateImages').onclick = async () => {
+      const d = buildPayload();
+      const style = getSelectedStyle();
+      const lines = [
+        `NASKAH SUDAH OKE — TOLONG GENERATE IMAGE UNTUK SEMUA ${d.pageCount} HALAMAN`,
+        `Judul: "${d.title}" | Format: ${d.scenarioMode.toUpperCase()} | Gaya: ${d.style} (${style.prompt})`,
+        `Anchor: ${getAnchorText()}`,
+        ``,
+        `Daftar Halaman:`
       ];
-      data.pages.forEach(p => {
-        lines.push(`- Hal ${p.page} [${p.approved ? 'ACC' : 'DRAFT'}] (${p.heading}): "${p.body}" | funFact: ${p.funFact} | Adegan: ${p.scene}`);
+      d.pages.forEach(p => {
+        lines.push(`- Hal ${p.page} (${p.heading}): "${p.body}" | funFact: ${p.funFact} | Scene: ${p.scene}`);
       });
-      await copyTextSafe(
-        lines.join('\n'),
-        'Ringkasan ACC disalin! Paste ke chat untuk mulai generate.',
-        'Ringkasan ACC (salin teks di bawah lalu paste ke chat):'
-      );
+      await copyTextSafe(lines.join('\n'), 'Perintah Generate Image disalin! Paste ke chat.', 'Perintah Generate Image (paste ke chat):');
+      goToStep(3);
     };
 
-    el('btnExportJson').onclick = async () => {
-      const json = JSON.stringify(buildPayload(), null, 2);
-      await copyTextSafe(
-        json,
-        'JSON skenario disalin ke clipboard!',
-        'JSON Skenario (salin teks di bawah):'
-      );
+    el('btnApproveAllImages').onclick = () => {
+      state.pages.forEach(p => { p.imageOk = true; });
+      saveState();
+      renderAll();
+      showToast('Semua image ditandai ACC!');
     };
 
-    ['charName', 'charSpecies', 'charTraits', 'charOutfit', 'subjectAnchor', 'worldAnchor'].forEach(id => {
-      el(id).addEventListener('input', () => {
-        renderAnchorBanner();
-        renderPages();
-      });
-    });
+    el('btnFinalAccPush').onclick = async () => {
+      const d = buildPayload();
+      const lines = [
+        `ACC FINAL — SIAP PUSH KONTEN KE GITHUB (folder content/)`,
+        `Judul: "${d.title}" (${d.category}, ${d.scenarioMode}, ${d.pageCount} halaman, gaya ${d.style})`,
+        ``,
+        `Semua naskah & gambar sudah saya ACC. Tolong simpan ke repo buku-mini-fauna-anak dan push ke GitHub.`,
+        ``,
+        `JSON Final:`,
+        JSON.stringify(d, null, 2)
+      ];
+      await copyTextSafe(lines.join('\n'), 'Perintah ACC Final & Push GitHub disalin!', 'Perintah ACC Final (paste ke chat):');
+    };
 
-    renderModeButtons();
-    renderCategories();
-    renderStyles();
-    renderAnchorBanner();
-    renderPages();
+    el('btnCopyFinalJson').onclick = () => copyTextSafe(JSON.stringify(buildPayload(), null, 2), 'JSON lengkap disalin!', 'JSON Lengkap:');
+    el('btnQuickExportJson').onclick = () => copyTextSafe(JSON.stringify(buildPayload(), null, 2), 'JSON lengkap disalin!', 'JSON Lengkap:');
+
+    el('btnResetProject').onclick = () => {
+      if (!confirm('Reset semua isian proyek ke awal?')) return;
+      state = createDefaultState();
+      saveState();
+      renderAll();
+      showToast('Proyek di-reset!');
+    };
+
+    renderAll();
   </script>
 </body>
 </html>
