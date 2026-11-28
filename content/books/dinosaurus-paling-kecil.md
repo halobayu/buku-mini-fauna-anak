@@ -12,7 +12,7 @@ _Topik: Dinosaurus paling kecil · Kategori: fauna · Gaya gambar: cat-air_
 
 Banu suka dinosaurus. Di bukunya, dinosaurus itu besar sekali — lebih tinggi dari rumah! Lalu Banu bertanya, "Apa ada dinosaurus yang kecil?" Ternyata ada! Bahkan ada yang sekecil burung gagak.
 
-> **Tahukah Kamu?** Ada dinosaurus yang sekecil burung gagak!
+> **Tahukah Kamu?** Fosil Microraptor pertama ditemukan di Tiongkok, di tempat yang dulu hutan lebat.
 
 ## 2. Microraptor, Si Kecil Berbulu
 
@@ -20,7 +20,7 @@ Banu suka dinosaurus. Di bukunya, dinosaurus itu besar sekali — lebih tinggi d
 
 Namanya Microraptor. Ia dinosaurus paling kecil yang pernah ditemukan. Panjangnya hanya sekitar 80 sentimeter — sebesar burung gagak — dan beratnya sekitar 1 kilogram, seperti sekantong gula.
 
-> **Tahukah Kamu?** Microraptor hanya sekitar 80 sentimeter panjangnya dan beratnya sekitar 1 kilogram, seperti sekantong gula.
+> **Tahukah Kamu?** Bulu Microraptor berkilau hitam seperti minyak.
 
 ## 3. Empat Sayap Hebat
 
@@ -28,7 +28,7 @@ Namanya Microraptor. Ia dinosaurus paling kecil yang pernah ditemukan. Panjangny
 
 Yang paling hebat, Microraptor punya empat sayap! Sayapnya ada di tangan dan di kaki. Dengan empat sayap itu, ia bisa meluncur dari pohon ke pohon, seperti layang-layang hidup.
 
-> **Tahukah Kamu?** Microraptor punya empat sayap — sayapnya ada di tangan dan di kaki.
+> **Tahukah Kamu?** Ekornya yang panjang dan berbulu membantunya berbelok saat meluncur di udara.
 
 ## 4. Compsognathus, Pelari Cepat
 
@@ -36,7 +36,7 @@ Yang paling hebat, Microraptor punya empat sayap! Sayapnya ada di tangan dan di 
 
 Ada juga Compsognathus, sebesar ayam. Panjangnya sekitar 1 meter dan ia pelari yang cepat sekali. Ekornya yang panjang membantunya menjaga keseimbangan saat berlari mengejar kadal kecil.
 
-> **Tahukah Kamu?** Compsognathus sebesar ayam, panjangnya sekitar 1 meter, dan ekornya yang panjang membantunya menjaga keseimbangan saat berlari.
+> **Tahukah Kamu?** Fosil Compsognathus pernah ditemukan dengan makanan terakhirnya — seekor kadal kecil — masih di dalam perutnya!
 
 ## 5. Kecil Ternyata Hebat
 
@@ -44,7 +44,7 @@ Ada juga Compsognathus, sebesar ayam. Panjangnya sekitar 1 meter dan ia pelari y
 
 Kecil ternyata hebat. Karena kecil, mereka bisa bersembunyi di antara daun, berlari cepat, dan makan serangga serta kadal kecil. Mereka tidak perlu makan banyak untuk tetap kuat.
 
-> **Tahukah Kamu?** Karena kecil, Microraptor dan Compsognathus bisa bersembunyi di antara daun, berlari cepat, dan makan serangga serta kadal kecil.
+> **Tahukah Kamu?** Tulang Compsognathus ringan dan berongga, seperti tulang burung.
 
 ## 6. Kecil Bukan Berarti Lemah
 
@@ -52,7 +52,7 @@ Kecil ternyata hebat. Karena kecil, mereka bisa bersembunyi di antara daun, berl
 
 Jadi, tidak semua dinosaurus besar. Ada yang sekecil gagak dan ada yang sebesar ayam. Kecil bukan berarti lemah — kecil bisa cepat, pintar, dan hebat dengan caranya sendiri.
 
-> **Tahukah Kamu?** Kecil bukan berarti lemah — kecil bisa cepat, pintar, dan hebat dengan caranya sendiri.
+> **Tahukah Kamu?** Burung yang kita lihat setiap hari adalah keturunan dinosaurus kecil seperti Microraptor!
 
 ## Storyboard & Layout
 
