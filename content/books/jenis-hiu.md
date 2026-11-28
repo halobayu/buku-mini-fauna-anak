@@ -12,7 +12,7 @@ _Topik: Jenis hiu · Kategori: fauna · Gaya gambar: kartun_
 
 Pagi itu, Banu pergi ke laut. Ombak bernyanyi pelan, dan Banu tidak sabar melihat apa yang ada di bawah air. Ternyata, di laut ada hiu — bukan satu jenis saja, ada lebih dari 500 jenis hiu di dunia!
 
-> **Tahukah Kamu?** Di laut ada lebih dari 500 jenis hiu!
+> **Tahukah Kamu?** Hiu sudah ada di laut jauh sebelum dinosaurus — lebih dari 400 juta tahun!
 
 ## 2. Hiu Paus yang Jinak
 
@@ -20,7 +20,7 @@ Pagi itu, Banu pergi ke laut. Ombak bernyanyi pelan, dan Banu tidak sabar meliha
 
 Tiba-tiba, bayangan besar melintas di depan Banu. Itu hiu paus! Panjangnya bisa sampai 12 meter — sebesar bus. Tapi ia sangat jinak, makannya cuma plankton kecil. Bintik putih di badannya unik, seperti sidik jari.
 
-> **Tahukah Kamu?** Hiu paus bisa sampai 12 meter — sebesar bus — tapi ia sangat jinak dan makannya cuma plankton kecil.
+> **Tahukah Kamu?** Hiu paus bisa hidup sampai sekitar 100 tahun.
 
 ## 3. Hiu Martil yang Aneh
 
@@ -28,7 +28,7 @@ Tiba-tiba, bayangan besar melintas di depan Banu. Itu hiu paus! Panjangnya bisa 
 
 Lalu Banu melihat hiu yang kepalanya aneh sekali — seperti palu! Itulah hiu martil. Matanya ada di ujung kiri dan kanan kepala, jadi ia bisa melihat ke segala arah. Kepala lebarnya juga dipakai untuk menekan ikan pari ke dasar laut.
 
-> **Tahukah Kamu?** Mata hiu martil ada di ujung kiri dan kanan kepalanya yang seperti palu, jadi ia bisa melihat ke segala arah.
+> **Tahukah Kamu?** Hiu martil suka berenang bergerombol — kadang ratusan ekor bersama-sama di siang hari.
 
 ## 4. Hiu Putih Besar
 
@@ -36,7 +36,7 @@ Lalu Banu melihat hiu yang kepalanya aneh sekali — seperti palu! Itulah hiu ma
 
 Dari kejauhan, Banu melihat hiu putih besar meluncur cepat. Panjangnya bisa sampai 6 meter. Badannya seperti torpedo dan giginya segitiga tajam seperti gergaji. Ia pemburu yang cepat dan kuat, jadi Banu mengamatinya dari jauh saja.
 
-> **Tahukah Kamu?** Hiu putih besar bisa sampai 6 meter, badannya seperti torpedo dan giginya segitiga tajam seperti gergaji.
+> **Tahukah Kamu?** Gigi hiu putih besar tumbuh lagi terus — kalau satu copot, ada gigi baru yang maju menggantikannya.
 
 ## 5. Hiu Macan Bergaris
 
@@ -44,7 +44,7 @@ Dari kejauhan, Banu melihat hiu putih besar meluncur cepat. Panjangnya bisa samp
 
 Sebelum pulang, Banu bertemu hiu macan. Badannya bergaris-garis gelap seperti harimau — garisnya paling jelas saat ia masih muda. Panjangnya bisa sampai 5 meter dan ia makan hampir apa saja.
 
-> **Tahukah Kamu?** Garis-garis hiu macan paling jelas saat ia masih muda, dan panjangnya bisa sampai 5 meter.
+> **Tahukah Kamu?** Hiu macan dijuluki "tempat sampah laut" karena ia makan hampir apa saja.
 
 ## 6. Pulang dengan Cerita Seru
 
@@ -52,7 +52,7 @@ Sebelum pulang, Banu bertemu hiu macan. Badannya bergaris-garis gelap seperti ha
 
 Sore itu, Banu pulang dengan cerita seru. Hiu itu macam-macam: ada yang raksasa tapi jinak, ada yang kepalanya seperti palu, ada yang bergaris seperti harimau. Tidak semua hiu menakutkan — semuanya punya caranya sendiri untuk hidup di laut.
 
-> **Tahukah Kamu?** Tidak semua hiu menakutkan — ada yang raksasa tapi jinak, ada yang kepalanya seperti palu, ada yang bergaris seperti harimau.
+> **Tahukah Kamu?** Hiu tidak punya tulang seperti kita — kerangkanya dari tulang rawan, seperti tulang di hidung dan telingamu!
 
 ## Storyboard & Layout
 
