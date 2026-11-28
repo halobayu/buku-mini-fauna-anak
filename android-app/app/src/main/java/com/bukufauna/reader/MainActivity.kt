@@ -327,15 +327,49 @@ private val READER_HEAD = """<!doctype html><html><head><meta name="viewport" co
 html,body{margin:0;padding:0;height:100%}
 body{font-family:'Nunito',sans-serif;overflow:hidden;background:#14120E;color:#F2EDE2}
 button{font-family:inherit}
-#stage{position:fixed;inset:0;perspective:1800px;perspective-origin:50% 50%}
-#leaf{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;backface-visibility:hidden}
-@keyframes flipNext{0%{opacity:.3;transform:rotateY(-58deg);filter:brightness(.8) drop-shadow(-24px 14px 28px rgba(0,0,0,.45))}55%{opacity:1;filter:brightness(.96) drop-shadow(-8px 5px 14px rgba(0,0,0,.28))}100%{opacity:1;transform:rotateY(0deg);filter:brightness(1)}}
-@keyframes flipPrev{0%{opacity:.3;transform:rotateY(46deg);filter:brightness(.84) drop-shadow(20px 12px 24px rgba(0,0,0,.4))}55%{opacity:1;filter:brightness(.96) drop-shadow(7px 4px 12px rgba(0,0,0,.26))}100%{opacity:1;transform:rotateY(0deg);filter:brightness(1)}}
-@keyframes coverOpen{0%{opacity:.35;transform:rotateY(-74deg);filter:brightness(.78) drop-shadow(-28px 16px 32px rgba(0,0,0,.5))}100%{opacity:1;transform:rotateY(0deg);filter:brightness(1)}}
-.flip-next{animation:flipNext 460ms cubic-bezier(.22,.72,.28,1)}
-.flip-prev{animation:flipPrev 460ms cubic-bezier(.22,.72,.28,1)}
+#stage{position:fixed;inset:0;perspective:2200px;perspective-origin:42% 50%;overflow:hidden}
+#underleaf,#turnleaf,#leaf{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d}
+#underleaf{z-index:1;overflow:hidden}
+#turnleaf{z-index:5;pointer-events:none;will-change:transform}
+.face-front,.face-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.face-back{transform:rotateY(180deg);box-shadow:inset -18px 0 36px rgba(90,72,48,.18), inset 0 0 60px rgba(120,96,64,.08)}
+.under-shade{position:absolute;inset:0;z-index:25;pointer-events:none;opacity:0}
+.fold-sheen{position:absolute;top:0;bottom:0;right:0;width:42%;z-index:28;pointer-events:none;background:linear-gradient(to left, rgba(0,0,0,.22) 0%, rgba(255,255,255,.18) 18%, rgba(0,0,0,.06) 45%, rgba(0,0,0,0) 100%);opacity:0}
+@keyframes turnOutNext{
+  0%{transform:rotateY(0deg);filter:drop-shadow(-2px 4px 8px rgba(0,0,0,.18))}
+  35%{transform:rotateY(-42deg) skewY(-0.8deg);filter:drop-shadow(-18px 10px 26px rgba(0,0,0,.38))}
+  72%{transform:rotateY(-88deg) skewY(-0.4deg);filter:drop-shadow(-24px 12px 30px rgba(0,0,0,.32))}
+  100%{transform:rotateY(-112deg);opacity:0;filter:drop-shadow(-10px 6px 14px rgba(0,0,0,.15))}
+}
+@keyframes turnInPrev{
+  0%{transform:rotateY(-112deg);opacity:.25;filter:drop-shadow(-10px 6px 14px rgba(0,0,0,.2))}
+  32%{transform:rotateY(-76deg) skewY(-0.6deg);opacity:1;filter:drop-shadow(-24px 12px 30px rgba(0,0,0,.38))}
+  68%{transform:rotateY(-32deg) skewY(-0.4deg);opacity:1;filter:drop-shadow(-14px 8px 20px rgba(0,0,0,.28))}
+  100%{transform:rotateY(0deg);opacity:1;filter:drop-shadow(0 0 0 rgba(0,0,0,0))}
+}
+@keyframes underShadeNext{
+  0%{opacity:1;background:linear-gradient(to right, rgba(20,16,10,.45) 0%, rgba(20,16,10,.25) 45%, rgba(20,16,10,0) 85%)}
+  60%{opacity:.55;background:linear-gradient(to right, rgba(20,16,10,.35) 0%, rgba(20,16,10,.12) 40%, rgba(20,16,10,0) 75%)}
+  100%{opacity:0}
+}
+@keyframes underShadePrev{
+  0%{opacity:0}
+  45%{opacity:.65;background:linear-gradient(to right, rgba(20,16,10,.38) 0%, rgba(20,16,10,.14) 45%, rgba(20,16,10,0) 80%)}
+  100%{opacity:1;background:linear-gradient(to right, rgba(20,16,10,.45) 0%, rgba(20,16,10,.2) 40%, rgba(20,16,10,0) 75%)}
+}
+@keyframes sheenPulse{
+  0%{opacity:0;transform:translateX(15%)}
+  40%{opacity:.95;transform:translateX(-10%)}
+  100%{opacity:0;transform:translateX(-35%)}
+}
+@keyframes coverOpen{0%{opacity:.35;transform:rotateY(-78deg);filter:brightness(.78) drop-shadow(-28px 16px 32px rgba(0,0,0,.5))}100%{opacity:1;transform:rotateY(0deg);filter:brightness(1)}}
+.turn-next{animation:turnOutNext 620ms cubic-bezier(.22,.68,.24,1) forwards}
+.turn-prev{animation:turnInPrev 620ms cubic-bezier(.22,.68,.24,1) forwards}
+.shade-next{animation:underShadeNext 620ms cubic-bezier(.22,.68,.24,1) forwards}
+.shade-prev{animation:underShadePrev 620ms cubic-bezier(.22,.68,.24,1) forwards}
+.sheen-anim{animation:sheenPulse 620ms cubic-bezier(.22,.68,.24,1) forwards}
 .cover-open{animation:coverOpen 560ms cubic-bezier(.22,.72,.28,1)}
-@media (prefers-reduced-motion: reduce){.flip-next,.flip-prev,.cover-open{animation:none}}
+@media (prefers-reduced-motion: reduce){.turn-next,.turn-prev,.shade-next,.shade-prev,.sheen-anim,.cover-open{animation:none}}
 .sheet{position:absolute;inset:0;overflow:hidden}
 .bindshade{position:absolute;top:0;bottom:0;left:0;width:22px;background:linear-gradient(to right, rgba(0,0,0,.15), rgba(0,0,0,.05), rgba(0,0,0,0));z-index:30;pointer-events:none}
 .foreedge{position:absolute;top:0;bottom:0;right:0;width:7px;background:repeating-linear-gradient(to right, rgba(120,100,60,.20) 0 1.5px, rgba(255,252,244,.9) 1.5px 3.5px);z-index:30;pointer-events:none}
@@ -442,8 +476,9 @@ function slideLabel() {
   if (idx === total - 1) return "Tamat";
   return "Halaman " + idx + " dari " + pages.length;
 }
-function goNext() { if (idx < total - 1) { dir = "next"; idx++; render(); } }
-function goPrev() { if (idx > 0) { dir = "prev"; idx--; render(); } }
+var flipTimer = null;
+function goNext() { if (idx < total - 1) { var prev = sheetHtml(); dir = "next"; idx++; render(true, prev); } }
+function goPrev() { if (idx > 0) { var prev = sheetHtml(); dir = "prev"; idx--; render(true, prev); } }
 function currentKey() {
   if (idx === 0) return "cover";
   if (idx === total - 1) return "";
@@ -454,11 +489,11 @@ function preload(src, key) {
   im.onload = function() {
     imgOk[key] = true;
     if (im.naturalHeight > 0) aspects[key] = im.naturalWidth / im.naturalHeight;
-    if (currentKey() === key) render();
+    if (currentKey() === key) render(false);
   };
   im.onerror = function() {
     imgOk[key] = false;
-    if (currentKey() === key) render();
+    if (currentKey() === key) render(false);
   };
   im.src = src;
 }
@@ -670,23 +705,63 @@ function sheetHtml() {
 }
 function fitCheck() {
   if (idx === 0 || idx === total - 1) return;
-  var tz = document.getElementById("textzone");
+  var tz = document.querySelector('[data-active="1"] #textzone') || document.getElementById("textzone");
   if (!tz) return;
   if (tz.scrollHeight > tz.clientHeight + 4) {
     var pi = idx - 1;
     var t = tierOf(pi, pages[pi]);
-    if (t < TIERS.length - 1) { tiers[pi] = t + 1; render(); }
+    if (t < TIERS.length - 1) { tiers[pi] = t + 1; render(false); }
   }
 }
-function render() {
-  document.body.style.background = "radial-gradient(120% 90% at 50% 0%, " + pal.deep + " 0%, #14120E 130%)";
-  var stage = document.getElementById("stage");
+function leafChrome() {
+  return '<div class="bindshade"></div><div class="foreedge"></div><div class="bottomstack"></div>';
+}
+function settleLeaf(stage, html, isCoverOpen) {
+  stage.innerHTML = "";
   var leaf = document.createElement("div");
   leaf.id = "leaf";
-  leaf.className = idx === 0 ? "cover-open" : (dir === "prev" ? "flip-prev" : "flip-next");
-  leaf.innerHTML = sheetHtml() + '<div class="bindshade"></div><div class="foreedge"></div><div class="bottomstack"></div>';
-  stage.innerHTML = "";
+  leaf.setAttribute("data-active", "1");
+  if (isCoverOpen) leaf.className = "cover-open";
+  leaf.innerHTML = html + leafChrome();
   stage.appendChild(leaf);
+}
+function render(animate, prevContent) {
+  document.body.style.background = "radial-gradient(120% 90% at 50% 0%, " + pal.deep + " 0%, #14120E 130%)";
+  var stage = document.getElementById("stage");
+  var newContent = sheetHtml();
+  if (flipTimer) { clearTimeout(flipTimer); flipTimer = null; }
+
+  if (animate && prevContent) {
+    stage.innerHTML = "";
+    var under = document.createElement("div");
+    under.id = "underleaf";
+    var turn = document.createElement("div");
+    turn.id = "turnleaf";
+
+    if (dir === "next") {
+      under.setAttribute("data-active", "1");
+      under.innerHTML = newContent + leafChrome() + '<div class="under-shade shade-next"></div>';
+      turn.className = "turn-next";
+      turn.innerHTML = '<div class="face-front">' + prevContent + leafChrome() + '<div class="fold-sheen sheen-anim"></div></div>'
+        + '<div class="face-back" style="' + paperBg() + '"></div>';
+    } else {
+      under.innerHTML = prevContent + leafChrome() + '<div class="under-shade shade-prev"></div>';
+      turn.setAttribute("data-active", "1");
+      turn.className = "turn-prev";
+      turn.innerHTML = '<div class="face-front">' + newContent + leafChrome() + '<div class="fold-sheen sheen-anim"></div></div>'
+        + '<div class="face-back" style="' + paperBg() + '"></div>';
+    }
+
+    stage.appendChild(under);
+    stage.appendChild(turn);
+    flipTimer = setTimeout(function() {
+      flipTimer = null;
+      settleLeaf(stage, newContent, false);
+    }, 640);
+  } else {
+    settleLeaf(stage, newContent, idx === 0 && animate !== false);
+  }
+
   document.getElementById("indlabel").textContent = slideLabel();
   document.getElementById("indlabel").style.color = pal.ink;
   document.getElementById("indlabel").style.textShadow = "0 1px 6px " + pal.paper + ", 0 0 2px " + pal.paper;
@@ -726,9 +801,9 @@ document.addEventListener("keydown", function(e) {
 var resizeTimer = null;
 window.addEventListener("resize", function() {
   if (resizeTimer) clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(render, 150);
+  resizeTimer = setTimeout(function() { render(false); }, 150);
 });
 preload(BOOK.cover, "cover");
 for (var pi = 0; pi < pages.length; pi++) preload(pages[pi].image, "p" + pi);
-render();
+render(true);
 </script>"""
