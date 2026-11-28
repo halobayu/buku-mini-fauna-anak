@@ -68,7 +68,7 @@ class MainActivity : Activity() {
             override fun onReceive(context: Context, intent: Intent) {
                 val id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1L)
                 if (id != updateDownloadId) return
-                val dm = getSystemService(Context.DOWNLOAD_MANAGER_SERVICE) as DownloadManager
+                val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
                 val q = DownloadManager.Query().setFilterById(id)
                 val c = dm.query(q)
                 var ok = false
@@ -231,7 +231,7 @@ class MainActivity : Activity() {
             req.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
             req.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "buku-mini-fauna-reader.apk")
             req.setMimeType("application/vnd.android.package-archive")
-            val dm = getSystemService(Context.DOWNLOAD_MANAGER_SERVICE) as DownloadManager
+            val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
             updateDownloadId = dm.enqueue(req)
         } catch (e: Exception) {
             Toast.makeText(this, "Tidak bisa memulai unduhan update.", Toast.LENGTH_LONG).show()
