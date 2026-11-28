@@ -2,13 +2,24 @@
 package com.bukufauna.reader
 
 import android.app.Activity
+import android.app.DownloadManager
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
 import org.json.JSONObject
 import java.io.File
 import java.net.HttpURLConnection
 import java.net.URL
+import java.net.URLDecoder
 import kotlin.concurrent.thread
 
 // ============================================================
@@ -42,12 +53,46 @@ class MainActivity : Activity() {
     private lateinit var web: WebView
     private var manifestText: String? = null
     private var inBook = false
+    private var updateDownloadId: Long = -1L
+    private var updateReceiver: BroadcastReceiver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         web = WebView(this)
         web.settings.javaScriptEnabled = true
+        web.settings.domStorageEnabled = true
         web.webViewClient = Client()
+        // Unduhan update APK: saat DownloadManager selesai, pasang
+        // file-nya (atau beri tahu kalau gagal).
+        updateReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                val id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1L)
+                if (id != updateDownloadId) return
+                val dm = getSystemService(Context.DOWNLOAD_MANAGER_SERVICE) as DownloadManager
+                val q = DownloadManager.Query().setFilterById(id)
+                val c = dm.query(q)
+                var ok = false
+                var uri: Uri? = null
+                if (c != null) {
+                    if (c.moveToFirst()) {
+                        val status = c.getInt(c.getColumnIndexOrThrow(DownloadManager.COLUMN_STATUS))
+                        if (status == DownloadManager.STATUS_SUCCESSFUL) {
+                            ok = true
+                            uri = dm.getUriForDownloadedFile(id)
+                        }
+                    }
+                    c.close()
+                }
+                if (ok && uri != null) installApk(uri)
+                else Toast.makeText(this@MainActivity, "Unduhan update gagal.", Toast.LENGTH_LONG).show()
+            }
+        }
+        val filter = IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(updateReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
+        } else {
+            registerReceiver(updateReceiver, filter)
+        }
         setContentView(web)
         web.loadDataWithBaseURL(RAW + "/", simplePage("<h1>Rak Buku Fauna</h1><p class='dim'>Memuat rak buku...</p>"), "text/html", "utf-8", null)
         thread { loadShelf(firstLoad = true) }
@@ -152,11 +197,62 @@ class MainActivity : Activity() {
         if (inBook) showShelf("") else super.onBackPressed()
     }
 
+    override fun onDestroy() {
+        updateReceiver?.let { try { unregisterReceiver(it) } catch (e: Exception) { } }
+        super.onDestroy()
+    }
+
+    private fun installApk(uri: Uri) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.setDataAndType(uri, "application/vnd.android.package-archive")
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        startActivity(intent)
+    }
+
+    // Unduh APK rilis terbaru lewat DownloadManager. Sebelum mengunduh,
+    // Android 8+ wajib mengizinkan "install dari sumber ini" untuk
+    // aplikasi ini — kalau belum, buka halaman izin sistemnya dulu dan
+    // minta pengguna mengetuk "Unduh & pasang" lagi sesudahnya.
+    // Upgrade di tempat hanya berhasil kalau APK unduhan ditandatangani
+    // kunci yang sama dengan APK terpasang (aset rilis Actions cocok
+    // dengan instalasi dari aset yang sama).
+    private fun startApkDownload(url: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !packageManager.canRequestPackageInstalls()) {
+            val intent = Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:" + packageName))
+            startActivity(intent)
+            Toast.makeText(this, "Izinkan install dari aplikasi ini, lalu ketuk \"Unduh & pasang\" lagi.", Toast.LENGTH_LONG).show()
+            return
+        }
+        try {
+            val req = DownloadManager.Request(Uri.parse(url))
+            req.setTitle("Buku Mini Fauna \u2014 update")
+            req.setDescription("Mengunduh versi terbaru\u2026")
+            req.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+            req.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "buku-mini-fauna-reader.apk")
+            req.setMimeType("application/vnd.android.package-archive")
+            val dm = getSystemService(Context.DOWNLOAD_MANAGER_SERVICE) as DownloadManager
+            updateDownloadId = dm.enqueue(req)
+        } catch (e: Exception) {
+            Toast.makeText(this, "Tidak bisa memulai unduhan update.", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun openExternal(url: String) {
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+        } catch (e: Exception) {
+            // Tidak ada browser: abaikan saja.
+        }
+    }
+
     private inner class Client : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             if (url.startsWith("book:")) { showBook(url.removePrefix("book:")); return true }
             if (url.startsWith("shelf:")) { showShelf(""); return true }
             if (url.startsWith("refresh:")) { refreshShelf(); return true }
+            if (url.startsWith("update:")) { startApkDownload(URLDecoder.decode(url.removePrefix("update:"), "UTF-8")); return true }
+            if (url.startsWith("open:")) { openExternal(URLDecoder.decode(url.removePrefix("open:"), "UTF-8")); return true }
             return false
         }
     }
@@ -185,7 +281,7 @@ class MainActivity : Activity() {
 
     private fun bookPage(bookJson: String): String {
         return READER_HEAD +
-            "<script>var BOOK = " + jsJson(bookJson) + ";</script>" +
+            "<script>var BOOK = " + jsJson(bookJson) + ";var APP_VERSION = " + JSONObject.quote(BuildConfig.VERSION_NAME) + ";</script>" +
             STYLE_SCRIPT + READER_SCRIPT + "</body></html>"
     }
 
@@ -420,6 +516,21 @@ button{font-family:inherit}
 .endinner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .endinner h2{font-family:'Fredoka','Nunito',sans-serif;font-weight:600}
 .endbtn{display:inline-block;color:#fff;text-decoration:none;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;border-radius:999px;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -4px 0 rgba(0,0,0,.2), 0 14px 24px -10px rgba(90,78,58,.5)}
+.gearbtn{position:fixed;top:12px;right:12px;z-index:50;width:48px;height:48px;border-radius:999px;border:0;padding:0;color:#5C5041;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:0;background:#E9E5DD;box-shadow:5px 5px 10px rgba(133,122,102,.5), -5px -5px 10px rgba(255,255,255,.95)}
+.gearbtn:active{transform:scale(.95)}
+.settings-backdrop{position:fixed;inset:0;background:rgba(20,16,10,.45);z-index:60;display:none}
+.settings-backdrop.open{display:block}
+.settings-panel{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:61;width:min(420px,88vw);background:#E9E5DD;color:#35322C;border-radius:28px;padding:22px;box-shadow:10px 10px 24px rgba(0,0,0,.35);display:none}
+.settings-panel.open{display:block}
+.settings-panel h2{margin:0 0 4px;font-family:'Fredoka','Nunito',sans-serif;font-weight:600;font-size:22px}
+.settings-panel h3{margin:18px 0 8px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#655E52}
+.seg{display:flex;gap:8px}
+.seg button{flex:1;border:0;border-radius:999px;padding:11px 0;font-size:15px;font-weight:700;color:#5C5041;background:#DED8CB;cursor:pointer}
+.seg button[aria-pressed="true"]{background:#6F6152;color:#fff}
+.settings-close{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:999px;border:0;background:#DED8CB;color:#5C5041;font-size:18px;cursor:pointer}
+.upd-btn{border:0;border-radius:999px;padding:12px 18px;font-size:15px;font-weight:700;color:#fff;background:#6F6152;cursor:pointer}
+.upd-status{font-size:14px;font-weight:600;color:#5C5041;line-height:1.45;margin:10px 0 0}
+.upd-status a{color:#6F6152}
 </style></head>
 <body>
 <div id="stage"></div>
@@ -427,6 +538,26 @@ button{font-family:inherit}
 <button class="edge" id="edgeR" aria-label="Ketuk tepi kanan untuk halaman berikutnya"></button>
 <a id="backbtn" href="shelf:" aria-label="Kembali ke rak buku"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.2C10.3 4.6 8.1 4 5.5 4c-.5 0-1 .1-1.5.2v13.1c.5-.1 1-.2 1.5-.2 2.6 0 4.8.6 6.5 2.2 1.7-1.6 3.9-2.2 6.5-2.2.5 0 1 .1 1.5.2V4.2c-.5-.1-1-.2-1.5-.2-2.6 0-4.8.6-6.5 2.2z"/><path d="M12 6.2v13.1"/></svg></a>
 <button class="navbtn" id="prevBtn" aria-label="Halaman sebelumnya"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg></button><div id="pageind"><span id="indlabel"></span><div class="progbar" id="progbar"><div id="prog"></div></div></div><button class="navbtn" id="nextBtn" aria-label="Halaman berikutnya"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button>
+<button class="gearbtn" id="gearBtn" aria-label="Pengaturan"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+<div class="settings-backdrop" id="settingsBackdrop"></div>
+<div class="settings-panel" id="settingsPanel" role="dialog" aria-label="Pengaturan">
+<button class="settings-close" id="settingsClose" aria-label="Tutup">&#10005;</button>
+<h2>Pengaturan</h2>
+<h3>Ukuran teks</h3>
+<div class="seg" id="fontSeg">
+<button data-size="kecil" aria-pressed="false">Kecil</button>
+<button data-size="sedang" aria-pressed="true">Sedang</button>
+<button data-size="besar" aria-pressed="false">Besar</button>
+</div>
+<h3>Pembaruan aplikasi</h3>
+<p class="upd-status" id="updVersion"></p>
+<button class="upd-btn" id="checkUpdBtn">Periksa update</button>
+<p class="upd-status" id="updStatus"></p>
+<div id="updFound" style="display:none;margin-top:10px">
+<p class="upd-status" id="updFoundText" style="margin:0 0 10px"></p>
+<button class="upd-btn" id="dlUpdBtn">Unduh &amp; pasang</button>
+</div>
+</div>
 """
 
 private val READER_SCRIPT = """<script>
@@ -448,14 +579,61 @@ var aspects = {};
 var imgOk = {};
 var tiers = {};
 var TIERS = [
-  {body: 33, fact: 29, heading: 56, gap: 26, imgPct: 64},
-  {body: 30, fact: 27.5, heading: 51, gap: 24, imgPct: 61},
-  {body: 27.5, fact: 26, heading: 47, gap: 22, imgPct: 58},
-  {body: 25, fact: 24.5, heading: 43, gap: 20, imgPct: 54},
-  {body: 22.5, fact: 23, heading: 39, gap: 18, imgPct: 50},
-  {body: 20.5, fact: 21.5, heading: 36, gap: 16, imgPct: 46},
-  {body: 19, fact: 20, heading: 33, gap: 14, imgPct: 42}
+  {body: 25.5, fact: 22.5, heading: 43.5, gap: 26, imgPct: 64},
+  {body: 23.5, fact: 21.5, heading: 40, gap: 24, imgPct: 61},
+  {body: 21.5, fact: 20.5, heading: 36.5, gap: 22, imgPct: 58},
+  {body: 19.5, fact: 19, heading: 33.5, gap: 20, imgPct: 54},
+  {body: 17.5, fact: 18, heading: 30.5, gap: 18, imgPct: 50},
+  {body: 16, fact: 17, heading: 28, gap: 16, imgPct: 46},
+  {body: 15, fact: 15.5, heading: 25.5, gap: 14, imgPct: 42}
 ];
+// Ukuran teks (pengaturan gear): Kecil/Sedang/Besar, disimpan di
+// localStorage, diterapkan sebagai faktor skala pada TIERS (body,
+// funFact, heading). Judul cover TIDAK ikut skala (coverHtml tidak
+// memakai TIERS), jadi tetap besar dominan. Default Sedang = ukuran
+// hasil perubahan font v1.9.
+var FONT_SCALES = {"kecil": 0.85, "sedang": 1.0, "besar": 1.2};
+var fontChoice = "sedang";
+try { var savedFont = localStorage.getItem("bm_reader_font"); if (FONT_SCALES[savedFont]) fontChoice = savedFont; } catch (e) {}
+function fontScale() { return FONT_SCALES[fontChoice] || 1.0; }
+function scaledTier(t) { var s = fontScale(); return {body: t.body * s, fact: t.fact * s, heading: t.heading * s, gap: t.gap, imgPct: t.imgPct}; }
+function syncFontButtons() { var b = document.querySelectorAll("#fontSeg button"); for (var i = 0; i < b.length; i++) b[i].setAttribute("aria-pressed", b[i].getAttribute("data-size") === fontChoice ? "true" : "false"); }
+function setFontSize(choice) { if (!FONT_SCALES[choice]) return; fontChoice = choice; try { localStorage.setItem("bm_reader_font", choice); } catch (e) {} syncFontButtons(); render(false); }
+function openSettings() { syncFontButtons(); var v = (typeof APP_VERSION !== "undefined" && APP_VERSION) ? APP_VERSION : "?"; var el = document.getElementById("updVersion"); if (el) el.textContent = "Versi terpasang: v" + v; document.getElementById("settingsPanel").classList.add("open"); document.getElementById("settingsBackdrop").classList.add("open"); }
+function closeSettings() { document.getElementById("settingsPanel").classList.remove("open"); document.getElementById("settingsBackdrop").classList.remove("open"); }
+function compareVer(a, b) { var pa = String(a).split("."), pb = String(b).split("."); for (var i = 0; i < Math.max(pa.length, pb.length); i++) { var na = parseInt(pa[i] || "0", 10) || 0, nb = parseInt(pb[i] || "0", 10) || 0; if (na !== nb) return na > nb ? 1 : -1; } return 0; }
+function checkUpdate() {
+  var st = document.getElementById("updStatus");
+  var found = document.getElementById("updFound");
+  if (found) found.style.display = "none";
+  if (st) st.textContent = "Memeriksa…";
+  fetch("https://api.github.com/repos/halobayu/buku-mini-fauna-anak/releases/latest")
+    .then(function(r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(function(rel) {
+      var tag = rel.tag_name || "";
+      var ver = tag.replace(/^apk-v/i, "");
+      var cur = (typeof APP_VERSION !== "undefined" && APP_VERSION) ? APP_VERSION : "0";
+      if (!ver) { if (st) st.textContent = "Tidak bisa membaca versi rilis terbaru."; return; }
+      if (compareVer(ver, cur) > 0) {
+        var apk = null;
+        var assets = rel.assets || [];
+        for (var i = 0; i < assets.length; i++) { if (/\.apk$/i.test(assets[i].name || "")) { apk = assets[i]; break; } }
+        var ft = document.getElementById("updFoundText");
+        if (ft) ft.textContent = "Versi baru tersedia: v" + ver + " (terpasang v" + cur + ").";
+        if (apk) {
+          var dl = document.getElementById("dlUpdBtn");
+          if (dl) dl.setAttribute("data-url", apk.browser_download_url);
+          if (found) found.style.display = "block";
+          if (st) st.textContent = "";
+        } else {
+          if (st) st.innerHTML = "Versi baru v" + ver + " tersedia, tapi rilisnya tidak membawa file APK. <a href=\"open:" + rel.html_url + "\">Buka halaman rilis</a>";
+        }
+      } else {
+        if (st) st.textContent = "Sudah versi terbaru (v" + cur + ").";
+      }
+    })
+    .catch(function() { if (st) st.textContent = "Gagal memeriksa update — periksa internet lalu coba lagi."; });
+}
 function isLandscape() { return window.innerWidth / Math.max(1, window.innerHeight) > 1.05; }
 function S() {
   // Tablet: wider design canvas -> smaller scale -> type renders
@@ -597,15 +775,15 @@ function portraitHtml(p, pi, t) {
     if (vert === "atas") {
       // The zone itself is at the top: the heading joins the text
       // block instead of floating separately over it.
-      headInZone = '<p class="overlaytext" style="margin:0;font-size:' + Math.max(18, px(t.heading)) + 'px;font-weight:800">' + esc(p.heading) + '</p>';
+      headInZone = '<p class="overlaytext" style="margin:0;font-size:' + Math.max(18, px(t.heading)) + 'px;font-weight:800;background:rgba(255,255,255,0.75);color:#35322C;border-radius:' + Math.max(10, px(16)) + 'px;padding:' + Math.max(6, px(10)) + 'px ' + Math.max(10, px(18)) + 'px;text-shadow:none">' + esc(p.heading) + '</p>';
     } else {
-      head = '<div class="pagetitle"><h3 style="font-size:' + Math.max(16, px(t.heading)) + 'px">' + esc(p.heading) + '</h3></div>';
+      head = '<div class="pagetitle"><h3 style="display:inline-block;font-size:' + Math.max(16, px(t.heading)) + 'px;background:rgba(255,255,255,0.75);color:#35322C;border-radius:' + Math.max(10, px(16)) + 'px;padding:' + Math.max(6, px(10)) + 'px ' + Math.max(10, px(18)) + 'px;text-shadow:none">' + esc(p.heading) + '</h3></div>';
     }
   }
   var bodyT = '<p class="overlaytext" style="margin:0;text-align:' + talign + ';font-size:' + Math.max(13, px(t.body + 4.5)) + 'px">' + esc(p.body || "") + '</p>';
   var factT = "";
   if (fact) {
-    factT = '<p class="overlaytext" style="margin:0;text-align:' + talign + ';font-size:' + Math.max(12, px(t.fact)) + 'px;font-weight:600;line-height:1.45">'
+    factT = '<p class="overlaytext" style="margin:0;text-align:' + talign + ';font-size:' + Math.max(12, px(t.fact)) + 'px;font-weight:600;line-height:1.45;background:rgba(255,255,255,0.75);color:#35322C;border-radius:' + Math.max(10, px(18)) + 'px;padding:' + Math.max(8, px(12)) + 'px ' + Math.max(10, px(18)) + 'px;text-shadow:none">'
       + '<span style="font-weight:800">&#128161; Tahukah Kamu?</span> ' + esc(fact) + '</p>';
   }
   // The scrim follows the zone's side: bottom gradient for "bawah",
@@ -640,7 +818,7 @@ function coverHtml() {
     return '<div class="sheet" style="' + paperBg() + 'color:' + pal.ink + '">'
       + '<div class="composed" style="padding:0 ' + px(70) + 'px">'
       + '<p class="kicker" style="color:' + accent + ';font-size:' + Math.max(12, px(26)) + 'px">Buku Mini Fauna</p>'
-      + '<h2 style="font-size:' + Math.max(24, px(76)) + 'px;font-weight:800;line-height:1.08;margin:' + px(18) + 'px 0 0">' + esc(BOOK.title) + '</h2>'
+      + '<h2 style="font-size:' + Math.max(24, px(110)) + 'px;font-weight:800;line-height:1.08;margin:' + px(18) + 'px 0 0">' + esc(BOOK.title) + '</h2>'
       + '<p style="font-size:' + Math.max(14, px(30)) + 'px;font-weight:600;opacity:.7;margin:' + px(14) + 'px 0 0">' + esc(BOOK.subtitle) + '</p>'
       + '</div></div>';
   }
@@ -648,7 +826,7 @@ function coverHtml() {
     + '<img class="coverimg" src="' + BOOK.cover + '" alt=""/>'
     + '<div class="coverscrim" style="background:linear-gradient(to bottom, ' + pal.paper + 'F2 0%, ' + pal.paper + 'D9 26%, ' + pal.paper + '94 50%, ' + pal.paper + '47 72%, ' + pal.paper + '00 100%)"></div>'
     + '<div class="covertitle" style="padding:0 ' + px(56) + 'px">'
-    + '<h2 style="font-size:' + Math.max(20, px(60)) + 'px;color:' + pal.ink + '">' + esc(BOOK.title) + '</h2>'
+    + '<h2 style="font-size:' + Math.max(20, px(92)) + 'px;font-weight:800;color:' + pal.ink + '">' + esc(BOOK.title) + '</h2>'
     + '<p style="font-size:' + Math.max(12, px(25)) + 'px;color:' + pal.ink + ';opacity:.75">' + esc(BOOK.subtitle) + '</p>'
     + '</div>'
     + '</div>';
@@ -664,7 +842,7 @@ function endHtml() {
     + '</div></div>';
 }
 function pageHtml(p, pi) {
-  var t = TIERS[tierOf(pi, p)];
+  var t = scaledTier(TIERS[tierOf(pi, p)]);
   var key = "p" + pi;
   // No folio printed on the sheet (v1.5, Space parity) — the page
   // number appears once, in the bottom bar's label + progress bar.
@@ -798,6 +976,13 @@ document.addEventListener("keydown", function(e) {
   if (e.key === "ArrowRight") goNext();
   if (e.key === "ArrowLeft") goPrev();
 });
+document.getElementById("gearBtn").addEventListener("click", openSettings);
+document.getElementById("settingsClose").addEventListener("click", closeSettings);
+document.getElementById("settingsBackdrop").addEventListener("click", closeSettings);
+document.getElementById("checkUpdBtn").addEventListener("click", checkUpdate);
+document.getElementById("dlUpdBtn").addEventListener("click", function() { var u = this.getAttribute("data-url"); if (u) location.href = "update:" + encodeURIComponent(u); });
+var segBtns = document.querySelectorAll("#fontSeg button");
+for (var i = 0; i < segBtns.length; i++) segBtns[i].addEventListener("click", function() { setFontSize(this.getAttribute("data-size")); });
 var resizeTimer = null;
 window.addEventListener("resize", function() {
   if (resizeTimer) clearTimeout(resizeTimer);
