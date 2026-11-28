@@ -15,6 +15,10 @@ android {
         versionName = "1.9.1"
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     signingConfigs {
         getByName("debug") {
             storeFile = file(System.getenv("KEYSTORE_FILE") ?: "buku-fauna.keystore")
