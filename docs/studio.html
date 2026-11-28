@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Storybook Canvas Studio — Gateway Langsung</title>
+  <title>Storybook Canvas Studio — Alur Produksi Buku</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     :root {
@@ -44,95 +44,23 @@
     <!-- Header -->
     <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-4 border-b border-[var(--border)]">
       <div>
-        <div class="flex flex-wrap items-center gap-2">
+        <div class="flex items-center gap-2">
           <h1 class="text-lg sm:text-xl font-bold tracking-tight">Storybook Canvas Studio</h1>
-          <span class="text-xs px-2 py-0.5 rounded-full bg-[var(--content)] border border-[var(--border)] text-[var(--muted-foreground)]">v2.1 Gateway</span>
-          <span id="apiStatusBadge" class="text-xs px-2 py-0.5 rounded-full bg-[var(--content)] border border-[var(--border)] text-[var(--warning)]">API Belum Diatur</span>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-[var(--content)] border border-[var(--border)] text-[var(--muted-foreground)]">v2.0</span>
         </div>
         <p class="text-xs sm:text-sm text-[var(--muted-foreground)] mt-0.5">
-          Generate naskah &amp; gambar langsung di web (via Gemini API Key Anda) lalu push langsung ke GitHub.
+          Alur: 1. Tentukan Tema &amp; Halaman &rarr; 2. Cek/Regenerate Naskah &rarr; 3. Cek/Regenerate Image &rarr; 4. ACC &amp; Push GitHub.
         </p>
       </div>
       <div class="flex flex-wrap items-center gap-2">
-        <button id="btnOpenSettings" type="button" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--content)] border border-[var(--border)] hover:opacity-85 transition cursor-pointer">
-          ⚙ API &amp; GitHub
-        </button>
         <button id="btnResetProject" type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--card)] border border-[var(--border)] hover:bg-[var(--content)] transition cursor-pointer">
-          Reset
+          Reset Proyek
+        </button>
+        <button id="btnQuickExportJson" type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--card)] border border-[var(--border)] hover:bg-[var(--content)] transition cursor-pointer">
+          Salin JSON
         </button>
       </div>
     </header>
-
-    <!-- Settings Modal (BYOK Gemini + GitHub PAT) -->
-    <div id="settingsModal" class="hidden fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
-      <div class="w-full max-w-lg bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-2xl">
-        <div class="flex items-center justify-between">
-          <h2 class="text-base font-bold">Pengaturan Gateway (Tersimpan di Browser Anda)</h2>
-          <button id="btnCloseSettings" type="button" class="text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] cursor-pointer">Tutup ✕</button>
-        </div>
-        <p class="text-xs text-[var(--muted-foreground)]">
-          Key &amp; token hanya disimpan di <code>localStorage</code> browser Anda dan dikirim langsung ke API resmi Google Gemini / GitHub.
-        </p>
-
-        <div class="space-y-3">
-          <div>
-            <label class="block text-xs font-semibold mb-1">Gemini API Key (untuk Generate Naskah &amp; Image)</label>
-            <input id="cfgGeminiKey" type="password" placeholder="AIzaSy..." class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
-          </div>
-
-          <div class="grid grid-cols-2 gap-2.5">
-            <div>
-              <label class="block text-xs text-[var(--muted-foreground)] mb-1">Model Naskah</label>
-              <select id="cfgTextModel" class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
-                <option value="gemini-2.5-flash">gemini-2.5-flash</option>
-                <option value="gemini-2.5-pro">gemini-2.5-pro</option>
-                <option value="gemini-2.0-flash">gemini-2.0-flash</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-xs text-[var(--muted-foreground)] mb-1">Model Gambar</label>
-              <select id="cfgImageModel" class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
-                <option value="gemini-2.5-flash-image">gemini-2.5-flash-image</option>
-                <option value="gemini-2.0-flash-exp-image-generation">gemini-2.0-flash-exp-image-generation</option>
-                <option value="imagen-3.0-generate-002">imagen-3.0-generate-002</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="pt-2 border-t border-[var(--border)] space-y-2.5">
-            <div>
-              <label class="block text-xs font-semibold mb-1">GitHub Personal Access Token (opsional, untuk Push langsung)</label>
-              <input id="cfgGithubToken" type="password" placeholder="ghp_... atau github_pat_..." class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
-            </div>
-            <div class="grid grid-cols-2 gap-2.5">
-              <div>
-                <label class="block text-xs text-[var(--muted-foreground)] mb-1">Repo GitHub</label>
-                <input id="cfgGithubRepo" type="text" value="halobayu/buku-mini-fauna-anak" class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
-              </div>
-              <div>
-                <label class="block text-xs text-[var(--muted-foreground)] mb-1">Branch</label>
-                <input id="cfgGithubBranch" type="text" value="main" class="w-full px-2.5 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex justify-end gap-2 pt-2">
-          <button id="btnSaveSettings" type="button" class="px-4 py-2 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 cursor-pointer">
-            Simpan Pengaturan
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Global Status / Progress Banner -->
-    <div id="progressBanner" class="hidden p-3 rounded-xl bg-[var(--card)] border border-[var(--primary)] flex items-center justify-between gap-3">
-      <div class="flex items-center gap-2.5 text-xs">
-        <span class="inline-block w-3 h-3 rounded-full bg-[var(--primary)] animate-ping"></span>
-        <span id="progressText" class="font-medium">Memproses...</span>
-      </div>
-      <span id="progressCount" class="text-xs font-mono text-[var(--muted-foreground)]"></span>
-    </div>
 
     <!-- 4-Step Stepper Navigation -->
     <nav class="grid grid-cols-2 sm:grid-cols-4 gap-2" aria-label="Tahapan Produksi">
@@ -156,21 +84,22 @@
 
     <!-- Toast -->
     <div id="toast" class="hidden fixed bottom-4 right-4 z-50 px-4 py-2.5 rounded-lg text-xs font-medium bg-[var(--primary)] text-[var(--primary-foreground)] shadow-lg">
-      Selesai!
+      Tersalin ke clipboard!
     </div>
 
     <!-- Copy Output / Fallback Box -->
     <div id="copyFallbackBox" class="hidden bg-[var(--card)] border border-[var(--primary)] rounded-xl p-3.5 space-y-2">
       <div class="flex items-center justify-between gap-2">
-        <span id="copyFallbackTitle" class="text-xs font-semibold">Output:</span>
+        <span id="copyFallbackTitle" class="text-xs font-semibold">Salin teks di bawah ini lalu paste ke chat:</span>
         <button id="btnCloseFallback" type="button" class="text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] cursor-pointer">Tutup</button>
       </div>
-      <textarea id="copyFallbackText" rows="5" readonly class="w-full p-2.5 rounded-lg text-xs font-mono bg-[var(--background)] border border-[var(--border)]"></textarea>
+      <textarea id="copyFallbackText" rows="6" readonly class="w-full p-2.5 rounded-lg text-xs font-mono bg-[var(--background)] border border-[var(--border)]"></textarea>
     </div>
 
     <!-- STEP 1: TEMA, FORMAT, JUMLAH HALAMAN, GAYA & ANCHOR -->
     <section id="stepPanel1" class="step-panel space-y-4">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        <!-- Left: Tema & Jumlah Halaman -->
         <div class="lg:col-span-6 space-y-4">
           <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
             <div class="flex items-center justify-between">
@@ -234,13 +163,14 @@
                 <input id="factCheckMode" type="checkbox" checked class="mt-0.5 accent-[var(--primary)]" />
                 <div class="text-xs">
                   <div class="font-semibold">Wajib Fakta Ilmiah (Fact-Check)</div>
-                  <div class="text-[var(--muted-foreground)]">Pastikan semua info fauna &amp; sains akurat secara ilmiah.</div>
+                  <div class="text-[var(--muted-foreground)]">Pastikan semua info fauna &amp; sains akurat sebelum gambar di-generate.</div>
                 </div>
               </label>
             </div>
           </div>
         </div>
 
+        <!-- Right: Gaya Gambar & Anchor -->
         <div class="lg:col-span-6 space-y-4">
           <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
             <div class="flex items-center justify-between">
@@ -250,6 +180,7 @@
             <div id="styleGrid" class="grid grid-cols-2 gap-2"></div>
           </div>
 
+          <!-- 3A. Character Anchor -->
           <div id="charAnchorCard" class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
             <h2 class="text-sm font-semibold">Character Anchor &amp; Character Sheet</h2>
             <div class="p-3 rounded-lg border border-dashed border-[var(--border)] bg-[var(--background)] space-y-2">
@@ -263,7 +194,7 @@
                 </button>
               </div>
               <div id="sheetInfo" class="text-xs text-[var(--muted-foreground)]">
-                Opsional: upload character sheet agar ikut dikirim ke generator gambar.
+                Belum ada gambar diupload. (Lampirkan juga file sheet di chat saat generate.)
               </div>
               <img id="sheetPreview" alt="Preview Character Sheet" class="hidden w-full max-h-40 object-contain rounded-lg border border-[var(--border)] bg-[var(--card)]" />
             </div>
@@ -288,8 +219,12 @@
             </div>
           </div>
 
+          <!-- 3B. Subject & Habitat Anchor -->
           <div id="encycAnchorCard" class="hidden bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
             <h2 class="text-sm font-semibold">Subject &amp; Habitat Anchor (Ensiklopedia)</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Tanpa karakter fiksi. Menjaga bentuk objek/hewan &amp; habitat aslinya konsisten di semua halaman.
+            </p>
             <div>
               <label class="block text-xs text-[var(--muted-foreground)] mb-1">Subjek Utama (Hewan / Objek Sains)</label>
               <input id="subjectAnchor" type="text" value="Gurita merah-jingga realistis dengan delapan lengan, mata horizontal, dan tubuh lunak tanpa tulang"
@@ -307,14 +242,14 @@
       <!-- Step 1 Action Bar -->
       <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div class="text-xs text-[var(--muted-foreground)]">
-          Hasil naskah (tanpa gambar) akan langsung muncul di Tab 2.
+          Klik tombol ini untuk meminta assistant membuatkan <strong class="text-[var(--foreground)]">naskah saja (tanpa gambar)</strong> sesuai tema &amp; jumlah halaman.
         </div>
         <div class="flex flex-wrap gap-2">
-          <button type="button" data-goto-step="2" class="px-3 py-2 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
+          <button id="btnGoStep2Manual" type="button" class="px-3 py-2 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
             Edit Naskah Manual &rarr;
           </button>
           <button id="btnGenerateScript" type="button" class="px-4 py-2 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 cursor-pointer">
-            Generate Naskah Langsung &rarr;
+            Generate Naskah (Salin ke Chat) &rarr;
           </button>
         </div>
       </div>
@@ -327,32 +262,47 @@
           <div>
             <h2 class="text-sm font-semibold">Review &amp; Edit Naskah (Tanpa Image)</h2>
             <p class="text-xs text-[var(--muted-foreground)]">
-              Edit langsung atau klik <strong>↻ Regenerate Naskah</strong> di halaman yang kurang oke.
+              Periksa naskah tiap halaman. Jika ada yang kurang pas, edit langsung atau klik <strong>Regenerate Naskah</strong> pada halaman tersebut.
             </p>
           </div>
-          <button id="btnApproveAllScripts" type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
-            ✓ Tandai Semua Naskah Oke
-          </button>
+          <div class="flex flex-wrap gap-2">
+            <button id="btnApproveAllScripts" type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
+              ✓ Tandai Semua Naskah Oke
+            </button>
+            <button id="btnToggleImportScript" type="button" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
+              Paste JSON Naskah dari Chat
+            </button>
+          </div>
         </div>
 
-        <div class="p-3 rounded-lg bg-[var(--content)] border border-[var(--border)] space-y-1.5">
-          <label class="block text-xs text-[var(--muted-foreground)]">Subjudul Buku (untuk sampul &amp; katalog)</label>
-          <input id="bookSubtitle" type="text" value="Ayo kenali hewan laut cerdas yang punya tiga jantung dan darah berwarna biru!" class="w-full px-2.5 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
+        <!-- Import JSON Naskah Box -->
+        <div id="importScriptBox" class="hidden p-3 rounded-lg bg-[var(--content)] border border-[var(--border)] space-y-2">
+          <label class="block text-xs font-semibold">Tempel JSON naskah dari chat (format array <code>pages</code> atau payload studio):</label>
+          <textarea id="importScriptInput" rows="4" placeholder='{"pages": [{"heading": "...", "body": "...", "funFact": "...", "scene": "..."}]}' class="w-full p-2 rounded-lg text-xs font-mono bg-[var(--background)] border border-[var(--border)]"></textarea>
+          <div class="flex gap-2">
+            <button id="btnApplyImportScript" type="button" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] cursor-pointer">
+              Terapkan Naskah ke Halaman
+            </button>
+            <button id="btnCancelImportScript" type="button" class="px-3 py-1.5 rounded-lg text-xs border border-[var(--border)] bg-[var(--background)] cursor-pointer">
+              Batal
+            </button>
+          </div>
         </div>
 
         <div id="scriptPagesContainer" class="space-y-3"></div>
       </div>
 
+      <!-- Step 2 Action Bar -->
       <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <button type="button" data-goto-step="1" class="px-3 py-2 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] cursor-pointer">
           &larr; Kembali ke Tema
         </button>
         <div class="flex flex-wrap gap-2">
           <button type="button" data-goto-step="3" class="px-3 py-2 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] cursor-pointer">
-            Ke Tab Image &rarr;
+            Lewati ke Cek Image &rarr;
           </button>
           <button id="btnGenerateImages" type="button" class="px-4 py-2 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 cursor-pointer">
-            Naskah Oke &rarr; Generate Cover &amp; Semua Image
+            Naskah Oke &rarr; Generate Image (Salin ke Chat)
           </button>
         </div>
       </div>
@@ -360,12 +310,12 @@
 
     <!-- STEP 3: CEK IMAGE & REGENERATE PER HALAMAN -->
     <section id="stepPanel3" class="step-panel hidden space-y-4">
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <div>
             <h2 class="text-sm font-semibold">Cek Hasil Image &amp; Regenerate Per Halaman</h2>
             <p class="text-xs text-[var(--muted-foreground)]">
-              Gambar hasil generate muncul langsung di sini. Klik <strong>↻ Regenerate Image</strong> jika kurang oke, atau <strong>✓ ACC Image</strong>.
+              Upload / tempel URL gambar hasil generate untuk dicek komposisinya, klik <strong>Regenerate Image</strong> jika kurang pas, atau klik <strong>ACC Image</strong>.
             </p>
           </div>
           <button id="btnApproveAllImages" type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
@@ -373,13 +323,10 @@
           </button>
         </div>
 
-        <!-- Cover Card -->
-        <div id="coverPreviewCard" class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] grid grid-cols-1 sm:grid-cols-12 gap-4 items-center"></div>
-
-        <!-- Pages Grid -->
         <div id="imagePagesContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
       </div>
 
+      <!-- Step 3 Action Bar -->
       <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <button type="button" data-goto-step="2" class="px-3 py-2 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] cursor-pointer">
           &larr; Kembali ke Naskah
@@ -390,25 +337,26 @@
       </div>
     </section>
 
-    <!-- STEP 4: ACC FINAL & PUSH LANGSUNG KE GITHUB -->
+    <!-- STEP 4: ACC FINAL & SIAP PUSH KE GITHUB -->
     <section id="stepPanel4" class="step-panel hidden space-y-4">
       <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-4">
         <div>
-          <h2 class="text-sm font-semibold">ACC Final &amp; Push Konten ke GitHub</h2>
+          <h2 class="text-sm font-semibold">ACC Final &amp; Siap Push Konten ke GitHub</h2>
           <p class="text-xs text-[var(--muted-foreground)]">
-            Mengunggah gambar (WebP) ke <code>content/images/&lt;slug&gt;/</code>, membuat <code>content/books/&lt;slug&gt;.json</code>, dan memperbarui <code>content/manifest.json</code>.
+            Pastikan semua halaman sudah dicek. Klik tombol ACC Final di bawah lalu paste ke chat agar konten langsung di-commit &amp; push ke folder <code>content/</code> repo.
           </p>
         </div>
 
         <div id="finalSummaryGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
+
         <div id="finalPageChecklist" class="space-y-1.5 text-xs"></div>
 
         <div class="flex flex-wrap gap-2 pt-2">
-          <button id="btnPushGithubDirect" type="button" class="px-4 py-2.5 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 cursor-pointer">
-            ✓ ACC Final &amp; Push Langsung ke GitHub
+          <button id="btnFinalAccPush" type="button" class="px-4 py-2.5 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 cursor-pointer">
+            ✓ ACC Final &amp; Salin Perintah Push ke GitHub
           </button>
           <button id="btnCopyFinalJson" type="button" class="px-3.5 py-2.5 rounded-lg text-xs font-medium bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
-            Salin JSON Buku
+            Salin JSON Lengkap
           </button>
         </div>
       </div>
@@ -422,8 +370,7 @@
   </div>
 
   <script>
-    const STORAGE_KEY = 'storybook_canvas_studio_v2_1';
-    const CFG_KEY = 'storybook_canvas_cfg_v1';
+    const STORAGE_KEY = 'storybook_canvas_studio_v2';
 
     const CATEGORIES = [
       { id: 'fauna', name: 'Fauna & Satwa', sampleTitle: 'Kenapa Gurita Punya Tiga Jantung?', sampleMoral: 'Biologi laut & adaptasi hewan' },
@@ -435,64 +382,85 @@
         id: 'semi-realistis',
         name: 'semi-realistis',
         desc: 'Gaya buku panduan alam modern, proporsi alami & detail tekstur',
-        prompt: 'semi-realistic nature field guide illustration, natural proportions, detailed surface textures, soft natural lighting, no cartoon outlines, no text in image, 4:5 portrait with calm bottom quarter safe space'
+        prompt: 'semi-realistic nature field guide illustration, natural proportions, detailed surface textures, soft natural lighting, no cartoon outlines, 4:5 portrait with calm bottom safe space'
       },
       {
         id: 'cat-air',
         name: 'cat-air',
         desc: 'Cat air lembut, hangat, klasik buku cerita anak',
-        prompt: 'soft watercolor children book illustration, warm pastel palette, gentle paper texture, no text in image, 4:5 portrait with calm bottom quarter safe space'
+        prompt: 'soft watercolor children book illustration, warm pastel palette, gentle paper texture, 4:5 portrait with calm bottom safe space'
       },
       {
         id: 'krayon',
         name: 'krayon',
         desc: 'Tekstur krayon/pensil warna yang playful',
-        prompt: 'textured crayon and colored pencil children illustration, cozy storybook vibe, no text in image, 4:5 portrait with calm bottom quarter safe space'
+        prompt: 'textured crayon and colored pencil children illustration, cozy storybook vibe, 4:5 portrait with calm bottom safe space'
       },
       {
         id: 'kartun-anak',
         name: 'kartun-anak',
         desc: 'Kartun ramah anak, warna cerah, ekspresif',
-        prompt: 'friendly children cartoon illustration, bright cheerful colors, clear shapes, no text in image, 4:5 portrait with calm bottom quarter safe space'
+        prompt: 'friendly children cartoon illustration, bright cheerful colors, clear shapes, 4:5 portrait with calm bottom safe space'
       },
       {
         id: 'kartun',
         name: 'kartun',
         desc: 'Gaya kartun klasik dengan garis tegas & bersih',
-        prompt: 'clean classic cartoon illustration, vibrant colors, readable composition, no text in image, 4:5 portrait with calm bottom quarter safe space'
+        prompt: 'clean classic cartoon illustration, vibrant colors, readable composition, 4:5 portrait with calm bottom safe space'
       },
       {
         id: '3d-animasi',
         name: '3d-animasi',
         desc: 'Gaya 3D Pixar/clay halus dengan pencahayaan studio',
-        prompt: '3D animated style, soft studio lighting, smooth stylized textures, no text in image, 4:5 portrait with calm bottom quarter safe space'
+        prompt: '3D animated style, soft studio lighting, smooth stylized textures, 4:5 portrait with calm bottom safe space'
       }
     ];
 
-    function loadConfig() {
-      try {
-        const raw = localStorage.getItem(CFG_KEY);
-        if (raw) return JSON.parse(raw);
-      } catch (e) {}
-      return {
-        geminiKey: '',
-        textModel: 'gemini-2.5-flash',
-        imageModel: 'gemini-2.5-flash-image',
-        githubToken: '',
-        githubRepo: 'halobayu/buku-mini-fauna-anak',
-        githubBranch: 'main'
-      };
-    }
+    const PRESET_ENCYC = [
+      {
+        heading: 'Kenalan dengan Gurita',
+        text: 'Gurita adalah hewan laut bertubuh lunak yang tidak memiliki tulang belakang. Ia punya delapan lengan lentur dengan ratusan pengisap untuk memegang batu dan mangsa.',
+        fact: 'Tahukah Kamu? Gurita punya 3 jantung: 2 jantung memompa darah ke insang, dan 1 jantung memompa darah ke seluruh tubuh!',
+        scene: 'Establishing wide: full octopus swimming gracefully above tropical coral reef, clear 10% margins, calm sandy bottom in lower quarter'
+      },
+      {
+        heading: 'Kenapa Darahnya Berwarna Biru?',
+        text: 'Berbeda dengan manusia yang berdarah merah karena zat besi, darah gurita berwarna biru karena mengandung tembaga (hemosianin). Darah biru ini lebih efektif membawa oksigen di laut dalam yang dingin.',
+        fact: 'Tahukah Kamu? Saat gurita berenang cepat, jantung utamanya berhenti berdetak sementara—makanya ia lebih suka merayap di dasar laut!',
+        scene: 'Wide environment: octopus crawling across deep cool blue rocky seabed surrounded by sea plants, lower quarter calm ocean sand'
+      },
+      {
+        heading: 'Ahli Menyamar di Karang',
+        text: 'Kulit gurita punya sel warna khusus bernama kromatofora. Dalam sekejap, gurita bisa mengubah warna dan tekstur kulitnya agar mirip karang atau pasir untuk bersembunyi.',
+        fact: 'Tahukah Kamu? Meski bisa menyamar sangat mirip dengan lingkungannya, sebagian besar gurita sebenarnya buta warna!',
+        scene: 'Camouflage/hidden: smaller octopus blending naturally beside textured reef rocks and algae, full body visible, calm sandy lower quarter'
+      }
+    ];
 
-    let cfg = loadConfig();
+    const PRESET_STORY = [
+      {
+        heading: 'Menyelam di Akuarium Raksasa',
+        text: 'Raka menempelkan kaca pembesarnya di dinding akuarium laut. Di balik kaca, seekor gurita merah-jingga berenang pelan mengayunkan delapan lengannya.',
+        fact: 'Tahukah Kamu? Gurita punya 3 jantung: 2 jantung untuk insang dan 1 jantung utama untuk seluruh tubuh!',
+        scene: 'Raka looking in awe through a large glass aquarium at a friendly realistic octopus swimming, calm floor in lower quarter'
+      },
+      {
+        heading: 'Rahasia Darah Biru',
+        text: 'Pemandu akuarium menjelaskan bahwa darah gurita berwarna biru karena mengandung tembaga, yang membantu gurita bertahan di air laut yang dingin.',
+        fact: 'Tahukah Kamu? Darah gurita memakai protein hemosianin berbasis tembaga, bukan hemoglobin berbasis zat besi seperti manusia.',
+        scene: 'Raka taking notes in his field notebook while observing the octopus near blue coral rocks, calm floor in lower quarter'
+      }
+    ];
 
-    function makeBlankPage(idx) {
+    function makeBlankPage(idx, mode) {
+      const presets = mode === 'story' ? PRESET_STORY : PRESET_ENCYC;
+      const p = presets[idx];
       return {
         id: Date.now() + idx + Math.random(),
-        heading: `Halaman ${idx + 1}`,
-        text: '',
-        fact: '',
-        scene: '',
+        heading: p ? p.heading : `Halaman ${idx + 1}`,
+        text: p ? p.text : '',
+        fact: p ? p.fact : '',
+        scene: p ? p.scene : '',
         scriptOk: false,
         scriptNote: '',
         imageUrl: '',
@@ -503,68 +471,62 @@
 
     function createDefaultState() {
       const count = 6;
+      const pages = Array.from({ length: count }, (_, i) => makeBlankPage(i, 'encyclopedia'));
       return {
         currentStep: 1,
         scenarioMode: 'encyclopedia',
         selectedCategoryId: 'fauna',
         selectedStyleId: 'semi-realistis',
         bookTitle: 'Kenapa Gurita Punya Tiga Jantung?',
-        bookSubtitle: 'Ayo kenali hewan laut cerdas yang punya tiga jantung dan darah berwarna biru!',
         ageGroup: '6-8 tahun (Kelas 2 SD)',
         moral: 'Biologi laut & adaptasi hewan',
         factCheckMode: true,
         pageCount: count,
         sheetFileName: '',
-        coverUrl: '',
-        coverOk: false,
-        coverNote: '',
         charName: 'Raka',
         charSpecies: 'Anak laki-laki penjelajah cilik',
         charTraits: 'Rambut hitam ikal, kacamata bulat besar, senyum ingin tahu',
         charOutfit: 'Rompi penjelajah hijau zaitun, kaos kuning, dan kaca pembesar',
         subjectAnchor: 'Gurita merah-jingga realistis dengan delapan lengan, mata horizontal, dan tubuh lunak tanpa tulang',
         worldAnchor: 'Terumbu karang laut tropis jernih dengan cahaya matahari menembus air biru dan dasar pasir berbatu',
-        pages: Array.from({ length: count }, (_, i) => makeBlankPage(i))
+        pages
       };
     }
+
+    let state = loadState();
+    let sheetPreviewDataUrl = '';
 
     function loadState() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (raw) {
           const parsed = JSON.parse(raw);
-          if (parsed && Array.isArray(parsed.pages) && parsed.pages.length > 0) return parsed;
+          if (parsed && Array.isArray(parsed.pages) && parsed.pages.length > 0) {
+            return parsed;
+          }
         }
       } catch (e) {}
       return createDefaultState();
     }
 
-    let state = loadState();
-    let sheetDataUrl = '';
-
     function saveState() {
       try {
+        // Avoid storing huge base64 image previews in localStorage
         const compact = {
           ...state,
-          coverUrl: state.coverUrl && state.coverUrl.startsWith('data:') ? '' : state.coverUrl,
-          pages: state.pages.map(p => ({ ...p, imageUrl: p.imageUrl && p.imageUrl.startsWith('data:') ? '' : p.imageUrl }))
+          pages: state.pages.map(p => ({
+            ...p,
+            imageUrl: p.imageUrl && p.imageUrl.startsWith('data:') ? '' : p.imageUrl
+          }))
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(compact));
       } catch (e) {}
     }
 
     const el = (id) => document.getElementById(id);
+
     function esc(str) {
       return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-    }
-
-    function slugify(str) {
-      return String(str || 'buku-baru')
-        .toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, '')
-        .trim()
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-') || 'buku-baru';
     }
 
     function getSelectedStyle() {
@@ -576,175 +538,19 @@
         return `${state.subjectAnchor.trim()} | Habitat: ${state.worldAnchor.trim()}`;
       }
       const name = state.charName.trim() || 'Karakter';
-      return `${name} (${state.charSpecies.trim()}), ${state.charTraits.trim()}, memakai ${state.charOutfit.trim()}`;
-    }
-
-    function setProgress(active, text = '', count = '') {
-      el('progressBanner').classList.toggle('hidden', !active);
-      el('progressText').textContent = text;
-      el('progressCount').textContent = count;
-    }
-
-    function showToast(msg) {
-      const t = el('toast');
-      t.textContent = msg;
-      t.classList.remove('hidden');
-      setTimeout(() => t.classList.add('hidden'), 2800);
-    }
-
-    function requireGeminiKey() {
-      if (!cfg.geminiKey || !cfg.geminiKey.trim()) {
-        openSettings();
-        showToast('Masukkan Gemini API Key terlebih dulu.');
-        return false;
-      }
-      return true;
-    }
-
-    // ---- Gemini API Calls ----
-    async function callGeminiText(promptText) {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(cfg.textModel)}:generateContent?key=${encodeURIComponent(cfg.geminiKey.trim())}`;
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: promptText }] }],
-          generationConfig: { responseMimeType: 'application/json' }
-        })
-      });
-      if (!res.ok) {
-        const err = await res.text();
-        throw new Error(`Gemini Text API error (${res.status}): ${err}`);
-      }
-      const data = await res.json();
-      const rawText = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-      return JSON.parse(rawText);
-    }
-
-    async function callGeminiImage(promptText) {
-      const model = cfg.imageModel || 'gemini-2.5-flash-image';
-      if (model.startsWith('imagen-')) {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:predict?key=${encodeURIComponent(cfg.geminiKey.trim())}`;
-        const res = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            instances: [{ prompt: promptText }],
-            parameters: { sampleCount: 1, aspectRatio: '3:4' }
-          })
-        });
-        if (!res.ok) throw new Error(`Imagen API error (${res.status}): ${await res.text()}`);
-        const data = await res.json();
-        const b64 = data?.predictions?.[0]?.bytesBase64Encoded;
-        if (!b64) throw new Error('Gambar tidak dikembalikan oleh Imagen API');
-        return `data:image/png;base64,${b64}`;
-      }
-
-      const parts = [];
-      if (state.scenarioMode === 'story' && sheetDataUrl && sheetDataUrl.includes(',')) {
-        const [meta, b64] = sheetDataUrl.split(',');
-        const mime = meta.match(/data:(.*?);/)?.[1] || 'image/png';
-        parts.push({ inlineData: { mimeType: mime, data: b64 } });
-        parts.push({ text: `Use the attached character sheet as strict visual reference.\n\n${promptText}` });
-      } else {
-        parts.push({ text: promptText });
-      }
-
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(cfg.geminiKey.trim())}`;
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts }],
-          generationConfig: {
-            responseModalities: ['IMAGE'],
-            imageConfig: { aspectRatio: '4:5' }
-          }
-        })
-      });
-      if (!res.ok) throw new Error(`Gemini Image API error (${res.status}): ${await res.text()}`);
-      const data = await res.json();
-      const outParts = data?.candidates?.[0]?.content?.parts || [];
-      const imgPart = outParts.find(p => p.inlineData?.data);
-      if (!imgPart) throw new Error('Model tidak mengembalikan data gambar.');
-      return `data:${imgPart.inlineData.mimeType || 'image/png'};base64,${imgPart.inlineData.data}`;
-    }
-
-    async function dataUrlToWebpBase64(dataUrl) {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          canvas.width = img.naturalWidth || 1024;
-          canvas.height = img.naturalHeight || 1280;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0);
-          const webp = canvas.toDataURL('image/webp', 0.9);
-          resolve(webp.split(',')[1]);
-        };
-        img.onerror = reject;
-        img.src = dataUrl;
-      });
-    }
-
-    function utf8ToBase64(str) {
-      return btoa(unescape(encodeURIComponent(str)));
-    }
-
-    async function githubGetFile(repo, branch, path, token) {
-      const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}?ref=${encodeURIComponent(branch)}`, {
-        headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' }
-      });
-      if (res.status === 404) return null;
-      if (!res.ok) throw new Error(`GitHub GET ${path} error (${res.status})`);
-      return res.json();
-    }
-
-    async function githubPutFile(repo, branch, path, base64Content, message, token) {
-      const existing = await githubGetFile(repo, branch, path, token);
-      const body = { message, content: base64Content, branch };
-      if (existing?.sha) body.sha = existing.sha;
-      const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
-        method: 'PUT',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: 'application/vnd.github+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      });
-      if (!res.ok) throw new Error(`GitHub PUT ${path} error (${res.status}): ${await res.text()}`);
-      return res.json();
-    }
-
-    // ---- UI Logic ----
-    function openSettings() {
-      el('cfgGeminiKey').value = cfg.geminiKey || '';
-      el('cfgTextModel').value = cfg.textModel || 'gemini-2.5-flash';
-      el('cfgImageModel').value = cfg.imageModel || 'gemini-2.5-flash-image';
-      el('cfgGithubToken').value = cfg.githubToken || '';
-      el('cfgGithubRepo').value = cfg.githubRepo || 'halobayu/buku-mini-fauna-anak';
-      el('cfgGithubBranch').value = cfg.githubBranch || 'main';
-      el('settingsModal').classList.remove('hidden');
-    }
-
-    function updateApiBadge() {
-      const badge = el('apiStatusBadge');
-      if (cfg.geminiKey) {
-        badge.textContent = cfg.githubToken ? 'Gemini + GitHub Siap' : 'Gemini Siap';
-        badge.className = 'text-xs px-2 py-0.5 rounded-full bg-[var(--content)] border border-[var(--border)] text-[var(--success)] font-semibold';
-      } else {
-        badge.textContent = 'API Belum Diatur';
-        badge.className = 'text-xs px-2 py-0.5 rounded-full bg-[var(--content)] border border-[var(--border)] text-[var(--warning)]';
-      }
+      const sheetNote = state.sheetFileName ? ` [Referensi Sheet: ${state.sheetFileName}]` : '';
+      return `${name} (${state.charSpecies.trim()}), ${state.charTraits.trim()}, memakai ${state.charOutfit.trim()}${sheetNote}`;
     }
 
     function resizePages(newCount) {
       const target = Math.max(1, Math.min(20, Number(newCount) || 6));
       state.pageCount = target;
-      while (state.pages.length < target) state.pages.push(makeBlankPage(state.pages.length));
-      if (state.pages.length > target) state.pages = state.pages.slice(0, target);
+      while (state.pages.length < target) {
+        state.pages.push(makeBlankPage(state.pages.length, state.scenarioMode));
+      }
+      if (state.pages.length > target) {
+        state.pages = state.pages.slice(0, target);
+      }
       saveState();
       renderAll();
     }
@@ -753,20 +559,25 @@
       state.currentStep = step;
       saveState();
       renderStepNav();
-      [1, 2, 3, 4].forEach(s => el(`stepPanel${s}`).classList.toggle('hidden', s !== step));
+      [1, 2, 3, 4].forEach(s => {
+        el(`stepPanel${s}`).classList.toggle('hidden', s !== step);
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function renderStepNav() {
       const total = state.pages.length;
-      const scriptOk = state.pages.filter(p => p.scriptOk).length;
-      const imageOk = state.pages.filter(p => p.imageOk).length;
+      const scriptOkCount = state.pages.filter(p => p.scriptOk).length;
+      const imageOkCount = state.pages.filter(p => p.imageOk).length;
+
       el('step1Sub').textContent = `${total} hal • ${state.selectedStyleId}`;
-      el('step2Sub').textContent = `${scriptOk}/${total} naskah oke`;
-      el('step3Sub').textContent = `${imageOk}/${total} image ACC`;
-      el('step4Sub').textContent = scriptOk === total && imageOk === total && state.coverOk ? 'Siap push!' : 'Belum semua ACC';
+      el('step2Sub').textContent = `${scriptOkCount}/${total} naskah oke`;
+      el('step3Sub').textContent = `${imageOkCount}/${total} image ACC`;
+      el('step4Sub').textContent = scriptOkCount === total && imageOkCount === total ? 'Siap push!' : 'Belum semua ACC';
 
       document.querySelectorAll('.step-tab').forEach(btn => {
-        const active = Number(btn.dataset.stepTab) === state.currentStep;
+        const s = Number(btn.dataset.stepTab);
+        const active = s === state.currentStep;
         btn.className = `step-tab p-2.5 rounded-xl border text-left transition cursor-pointer ${
           active
             ? 'border-[var(--primary)] bg-[var(--card)] ring-2 ring-[var(--primary)]'
@@ -777,7 +588,6 @@
 
     function syncInputsFromState() {
       el('bookTitle').value = state.bookTitle;
-      el('bookSubtitle').value = state.bookSubtitle || '';
       el('ageGroup').value = state.ageGroup;
       el('moral').value = state.moral;
       el('factCheckMode').checked = state.factCheckMode;
@@ -792,7 +602,8 @@
       el('selectedStyleBadge').textContent = state.selectedStyleId;
 
       document.querySelectorAll('.page-preset-btn').forEach(btn => {
-        const active = Number(btn.dataset.pagePreset) === state.pageCount;
+        const val = Number(btn.dataset.pagePreset);
+        const active = val === state.pageCount;
         btn.className = `page-preset-btn px-2.5 py-1 rounded-md text-xs border cursor-pointer ${
           active
             ? 'border-[var(--primary)] bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold'
@@ -818,7 +629,9 @@
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = `text-left px-2.5 py-2 rounded-lg border text-xs transition cursor-pointer ${
-          active ? 'border-[var(--primary)] bg-[var(--content)] ring-1 ring-[var(--primary)] font-semibold' : 'border-[var(--border)] bg-[var(--background)] hover:bg-[var(--content)]'
+          active
+            ? 'border-[var(--primary)] bg-[var(--content)] ring-1 ring-[var(--primary)] font-semibold'
+            : 'border-[var(--border)] bg-[var(--background)] hover:bg-[var(--content)]'
         }`;
         btn.textContent = cat.name;
         btn.onclick = () => {
@@ -840,9 +653,14 @@
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = `text-left p-2.5 rounded-lg border text-xs transition cursor-pointer ${
-          active ? 'border-[var(--primary)] bg-[var(--content)] ring-1 ring-[var(--primary)]' : 'border-[var(--border)] bg-[var(--background)] hover:bg-[var(--content)]'
+          active
+            ? 'border-[var(--primary)] bg-[var(--content)] ring-1 ring-[var(--primary)]'
+            : 'border-[var(--border)] bg-[var(--background)] hover:bg-[var(--content)]'
         }`;
-        btn.innerHTML = `<div class="font-semibold">${style.name}</div><div class="text-[var(--muted-foreground)] mt-0.5 leading-snug">${style.desc}</div>`;
+        btn.innerHTML = `
+          <div class="font-semibold">${style.name}</div>
+          <div class="text-[var(--muted-foreground)] mt-0.5 leading-snug">${style.desc}</div>
+        `;
         btn.onclick = () => {
           state.selectedStyleId = style.id;
           saveState();
@@ -855,18 +673,26 @@
     function renderScriptPages() {
       const container = el('scriptPagesContainer');
       container.innerHTML = '';
+
       state.pages.forEach((p, idx) => {
         const card = document.createElement('div');
         card.className = 'p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-2.5';
         card.innerHTML = `
           <div class="flex flex-wrap items-center justify-between gap-2">
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-[var(--content)]">Halaman ${idx + 1}</span>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-[var(--content)]">Halaman ${idx + 1}</span>
+              <span class="text-xs ${p.scriptOk ? 'text-[var(--success)] font-semibold' : 'text-[var(--muted-foreground)]'}">
+                ${p.scriptOk ? '✓ Naskah Oke' : 'Draft'}
+              </span>
+            </div>
             <div class="flex flex-wrap items-center gap-2">
               <button type="button" data-regen-script="${idx}" class="px-2.5 py-1 rounded-md text-xs font-medium bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
                 ↻ Regenerate Naskah
               </button>
               <button type="button" data-toggle-script="${idx}" class="px-2.5 py-1 rounded-md text-xs font-semibold cursor-pointer ${
-                p.scriptOk ? 'bg-[var(--primary)] text-[var(--primary-foreground)]' : 'bg-[var(--content)] border border-[var(--border)]'
+                p.scriptOk
+                  ? 'bg-[var(--primary)] text-[var(--primary-foreground)]'
+                  : 'bg-[var(--content)] border border-[var(--border)]'
               }">
                 ${p.scriptOk ? '✓ Naskah Oke' : 'Tandai Oke'}
               </button>
@@ -886,25 +712,36 @@
 
           <div>
             <label class="block text-xs text-[var(--muted-foreground)] mb-1">Naskah Utama (body)</label>
-            <textarea data-s-text="${idx}" rows="2" class="w-full px-2.5 py-1.5 rounded-lg text-xs bg-[var(--card)] border border-[var(--border)]">${esc(p.text)}</textarea>
+            <textarea data-s-text="${idx}" rows="2" placeholder="Belum diisi — klik Generate Naskah atau tulis manual..." class="w-full px-2.5 py-1.5 rounded-lg text-xs bg-[var(--card)] border border-[var(--border)]">${esc(p.text)}</textarea>
           </div>
 
           <div>
             <label class="block text-xs text-[var(--muted-foreground)] mb-1">Adegan Ilustrasi (scene)</label>
-            <input data-s-scene="${idx}" type="text" value="${esc(p.scene)}" class="w-full px-2.5 py-1.5 rounded-lg text-xs bg-[var(--card)] border border-[var(--border)]" />
+            <input data-s-scene="${idx}" type="text" value="${esc(p.scene)}" placeholder="Deskripsi adegan untuk generator gambar..." class="w-full px-2.5 py-1.5 rounded-lg text-xs bg-[var(--card)] border border-[var(--border)]" />
           </div>
 
-          <input data-s-note="${idx}" type="text" value="${esc(p.scriptNote)}" placeholder="Catatan revisi jika mau regenerate naskah hal ${idx + 1} (opsional)..." class="w-full px-2.5 py-1 rounded-md text-xs bg-[var(--card)] border border-[var(--border)]" />
+          <div class="flex flex-wrap items-center gap-2 pt-1">
+            <input data-s-note="${idx}" type="text" value="${esc(p.scriptNote)}" placeholder="Catatan revisi jika mau regenerate naskah hal ${idx + 1} (opsional)..." class="flex-1 min-w-[200px] px-2.5 py-1 rounded-md text-xs bg-[var(--card)] border border-[var(--border)]" />
+          </div>
         `;
         container.appendChild(card);
       });
 
-      container.querySelectorAll('[data-s-heading]').forEach(inp => inp.oninput = () => { state.pages[inp.dataset.sHeading].heading = inp.value; saveState(); });
-      container.querySelectorAll('[data-s-fact]').forEach(inp => inp.oninput = () => { state.pages[inp.dataset.sFact].fact = inp.value; saveState(); });
-      container.querySelectorAll('[data-s-text]').forEach(inp => inp.oninput = () => { state.pages[inp.dataset.sText].text = inp.value; saveState(); });
-      container.querySelectorAll('[data-s-scene]').forEach(inp => inp.oninput = () => { state.pages[inp.dataset.sScene].scene = inp.value; saveState(); });
-      container.querySelectorAll('[data-s-note]').forEach(inp => inp.oninput = () => { state.pages[inp.dataset.sNote].scriptNote = inp.value; saveState(); });
-
+      container.querySelectorAll('[data-s-heading]').forEach(inp => {
+        inp.oninput = () => { state.pages[inp.dataset.sHeading].heading = inp.value; saveState(); };
+      });
+      container.querySelectorAll('[data-s-fact]').forEach(inp => {
+        inp.oninput = () => { state.pages[inp.dataset.sFact].fact = inp.value; saveState(); };
+      });
+      container.querySelectorAll('[data-s-text]').forEach(inp => {
+        inp.oninput = () => { state.pages[inp.dataset.sText].text = inp.value; saveState(); };
+      });
+      container.querySelectorAll('[data-s-scene]').forEach(inp => {
+        inp.oninput = () => { state.pages[inp.dataset.sScene].scene = inp.value; saveState(); };
+      });
+      container.querySelectorAll('[data-s-note]').forEach(inp => {
+        inp.oninput = () => { state.pages[inp.dataset.sNote].scriptNote = inp.value; saveState(); };
+      });
       container.querySelectorAll('[data-toggle-script]').forEach(btn => {
         btn.onclick = () => {
           const idx = Number(btn.dataset.toggleScript);
@@ -915,114 +752,71 @@
           renderFinalStep();
         };
       });
-
       container.querySelectorAll('[data-regen-script]').forEach(btn => {
         btn.onclick = async () => {
-          if (!requireGeminiKey()) return;
           const idx = Number(btn.dataset.regenScript);
           const p = state.pages[idx];
-          try {
-            setProgress(true, `Meregenerasi naskah halaman ${idx + 1}...`);
-            const prompt = `Kamu penulis buku anak usia ${state.ageGroup} dalam bahasa Indonesia.
-Buku: "${state.bookTitle}" (mode: ${state.scenarioMode}, kategori: ${state.selectedCategoryId}, topik: ${state.moral}).
-${state.factCheckMode ? 'WAJIB akurat secara ilmiah (fact-check ketat).' : ''}
-Revisi halaman ${idx + 1} dari ${state.pages.length}.
-Naskah lama: heading="${p.heading}", body="${p.text}", funFact="${p.fact}", scene="${p.scene}".
-Catatan revisi pengguna: "${p.scriptNote || 'Buat lebih menarik, jelas, dan ramah anak'}".
-Kembalikan JSON persis: {"heading":"...","body":"...","funFact":"Tahukah Kamu? ...","scene":"English visual scene description for 4:5 portrait, full subject with 10% safe margins, calm lower quarter safe space"}`;
-            const out = await callGeminiText(prompt);
-            state.pages[idx].heading = out.heading || p.heading;
-            state.pages[idx].text = out.body || p.text;
-            state.pages[idx].fact = out.funFact || p.fact;
-            state.pages[idx].scene = out.scene || p.scene;
-            state.pages[idx].scriptOk = true;
-            saveState();
-            renderAll();
-            showToast(`Naskah halaman ${idx + 1} diperbarui!`);
-          } catch (e) {
-            alert(e.message);
-          } finally {
-            setProgress(false);
-          }
+          const prompt = [
+            `REGENERATE NASKAH HALAMAN ${idx + 1} (TANPA IMAGE)`,
+            `Judul Buku: "${state.bookTitle}" (${state.scenarioMode}, ${state.selectedCategoryId}, usia ${state.ageGroup})`,
+            `Naskah saat ini: (${p.heading}) "${p.text}" | funFact: ${p.fact} | Scene: ${p.scene}`,
+            `Catatan revisi: ${p.scriptNote.trim() || 'Buat lebih menarik, jelas, dan ramah anak.'}`,
+            `Mohon buatkan ulang naskah halaman ${idx + 1} saja dalam format JSON (heading, body, funFact, scene).`
+          ].join('\n');
+          await copyTextSafe(prompt, `Prompt regenerate naskah Hal ${idx + 1} disalin! Paste ke chat.`, `Regenerate Naskah Hal ${idx + 1}:`);
         };
       });
     }
 
     function renderImagePages() {
-      const style = getSelectedStyle();
-
-      // Render Cover card
-      const coverCard = el('coverPreviewCard');
-      coverCard.innerHTML = `
-        <div class="sm:col-span-4">
-          ${state.coverUrl
-            ? `<img src="${esc(state.coverUrl)}" alt="Cover" class="w-full aspect-[4/5] object-cover rounded-lg border border-[var(--border)]" />`
-            : `<div class="w-full aspect-[4/5] rounded-lg border border-dashed border-[var(--border)] bg-[var(--card)] flex items-center justify-center p-3 text-center text-xs text-[var(--muted-foreground)]">Cover belum digenerate</div>`}
-        </div>
-        <div class="sm:col-span-8 space-y-2.5">
-          <div class="flex items-center justify-between gap-2">
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-[var(--content)]">Sampul Buku (Cover)</span>
-            <button id="btnToggleCoverOk" type="button" class="px-2.5 py-1 rounded-md text-xs font-semibold cursor-pointer ${
-              state.coverOk ? 'bg-[var(--primary)] text-[var(--primary-foreground)]' : 'bg-[var(--content)] border border-[var(--border)]'
-            }">${state.coverOk ? '✓ ACC Cover' : 'Belum ACC'}</button>
-          </div>
-          <div class="text-xs font-semibold">${esc(state.bookTitle)}</div>
-          <input id="coverNoteInput" type="text" value="${esc(state.coverNote)}" placeholder="Catatan jika cover mau di-regenerate (opsional)..." class="w-full px-2.5 py-1.5 rounded-md text-xs bg-[var(--card)] border border-[var(--border)]" />
-          <button id="btnRegenCover" type="button" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
-            ↻ Generate / Regenerate Cover
-          </button>
-        </div>
-      `;
-
-      el('btnToggleCoverOk').onclick = () => {
-        state.coverOk = !state.coverOk;
-        saveState();
-        renderStepNav();
-        renderImagePages();
-        renderFinalStep();
-      };
-      el('coverNoteInput').oninput = (e) => { state.coverNote = e.target.value; saveState(); };
-      el('btnRegenCover').onclick = async () => {
-        if (!requireGeminiKey()) return;
-        try {
-          setProgress(true, 'Membuat gambar Cover...');
-          const prompt = `Book cover illustration for children's book "${state.bookTitle}". ${getAnchorText()}. Style: ${style.prompt}. Clean composition, full subject inside 10% safe margins, NO TEXT OR LETTERS in image. ${state.coverNote ? 'Feedback: ' + state.coverNote : ''}`;
-          state.coverUrl = await callGeminiImage(prompt);
-          state.coverOk = false;
-          renderImagePages();
-          showToast('Cover berhasil digenerate!');
-        } catch (e) {
-          alert(e.message);
-        } finally {
-          setProgress(false);
-        }
-      };
-
-      // Render Page cards
       const container = el('imagePagesContainer');
+      const style = getSelectedStyle();
       container.innerHTML = '';
+
       state.pages.forEach((p, idx) => {
         const card = document.createElement('div');
         card.className = 'p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-2.5 flex flex-col justify-between';
+
+        const previewHtml = p.imageUrl
+          ? `<img src="${esc(p.imageUrl)}" alt="Halaman ${idx + 1}" class="w-full aspect-[4/5] object-cover rounded-lg border border-[var(--border)] bg-[var(--card)]" />`
+          : `<div class="w-full aspect-[4/5] rounded-lg border border-dashed border-[var(--border)] bg-[var(--card)] flex flex-col items-center justify-center p-4 text-center text-xs text-[var(--muted-foreground)]">
+               <div class="font-semibold text-[var(--foreground)] mb-1">Belum ada preview image</div>
+               <div>Upload file gambar dari chat atau tempel URL gambar di bawah untuk dicek.</div>
+             </div>`;
+
         card.innerHTML = `
           <div class="space-y-2.5">
             <div class="flex items-center justify-between gap-2">
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-[var(--content)]">Hal ${idx + 1}: ${esc(p.heading)}</span>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-[var(--content)]">Hal ${idx + 1}: ${esc(p.heading || 'Tanpa Judul')}</span>
               <button type="button" data-toggle-img="${idx}" class="px-2.5 py-1 rounded-md text-xs font-semibold cursor-pointer ${
-                p.imageOk ? 'bg-[var(--primary)] text-[var(--primary-foreground)]' : 'bg-[var(--content)] border border-[var(--border)]'
-              }">${p.imageOk ? '✓ ACC Image' : 'Belum ACC'}</button>
+                p.imageOk
+                  ? 'bg-[var(--primary)] text-[var(--primary-foreground)]'
+                  : 'bg-[var(--content)] border border-[var(--border)]'
+              }">
+                ${p.imageOk ? '✓ ACC Image' : 'Belum ACC'}
+              </button>
             </div>
-            ${p.imageUrl
-              ? `<img src="${esc(p.imageUrl)}" alt="Hal ${idx + 1}" class="w-full aspect-[4/5] object-cover rounded-lg border border-[var(--border)]" />`
-              : `<div class="w-full aspect-[4/5] rounded-lg border border-dashed border-[var(--border)] bg-[var(--card)] flex items-center justify-center p-4 text-center text-xs text-[var(--muted-foreground)]">Belum ada gambar</div>`}
+
+            ${previewHtml}
+
+            <div class="flex flex-wrap items-center gap-2">
+              <label class="px-2.5 py-1 rounded-md text-xs font-medium bg-[var(--content)] border border-[var(--border)] cursor-pointer hover:opacity-85">
+                Upload Preview
+                <input type="file" accept="image/*" data-upload-img="${idx}" class="hidden" />
+              </label>
+              <input data-url-img="${idx}" type="text" value="${p.imageUrl && !p.imageUrl.startsWith('data:') ? esc(p.imageUrl) : ''}" placeholder="atau tempel URL gambar..." class="flex-1 min-w-[140px] px-2.5 py-1 rounded-md text-xs bg-[var(--card)] border border-[var(--border)]" />
+            </div>
+
             <div class="p-2 rounded-lg bg-[var(--content)] text-xs text-[var(--muted-foreground)]">
-              <strong class="text-[var(--foreground)]">Scene:</strong> ${esc(p.scene || '(kosong)')}
+              <span class="font-semibold text-[var(--foreground)]">Scene:</span> ${esc(p.scene || '(belum diisi)')}<br/>
+              <span class="font-semibold text-[var(--foreground)]">Gaya:</span> ${style.name}
             </div>
           </div>
+
           <div class="space-y-1.5 pt-1 border-t border-[var(--border)]">
-            <input data-img-note="${idx}" type="text" value="${esc(p.imageNote)}" placeholder="Catatan perbaikan hal ${idx + 1} (opsional)..." class="w-full px-2.5 py-1 rounded-md text-xs bg-[var(--card)] border border-[var(--border)]" />
+            <input data-img-note="${idx}" type="text" value="${esc(p.imageNote)}" placeholder="Catatan jika image hal ${idx + 1} kurang oke (opsional)..." class="w-full px-2.5 py-1 rounded-md text-xs bg-[var(--card)] border border-[var(--border)]" />
             <button type="button" data-regen-img="${idx}" class="w-full px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--content)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
-              ↻ Generate / Regenerate Image Hal ${idx + 1}
+              ↻ Regenerate Image Hal ${idx + 1} (Salin ke Chat)
             </button>
           </div>
         `;
@@ -1039,26 +833,50 @@ Kembalikan JSON persis: {"heading":"...","body":"...","funFact":"Tahukah Kamu? .
           renderFinalStep();
         };
       });
-      container.querySelectorAll('[data-img-note]').forEach(inp => {
-        inp.oninput = () => { state.pages[inp.dataset.imgNote].imageNote = inp.value; saveState(); };
+
+      container.querySelectorAll('[data-upload-img]').forEach(inp => {
+        inp.onchange = (e) => {
+          const idx = Number(inp.dataset.uploadImg);
+          const file = e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            state.pages[idx].imageUrl = ev.target.result;
+            renderImagePages();
+          };
+          reader.readAsDataURL(file);
+        };
       });
+
+      container.querySelectorAll('[data-url-img]').forEach(inp => {
+        inp.onchange = () => {
+          const idx = Number(inp.dataset.urlImg);
+          state.pages[idx].imageUrl = inp.value.trim();
+          saveState();
+          renderImagePages();
+        };
+      });
+
+      container.querySelectorAll('[data-img-note]').forEach(inp => {
+        inp.oninput = () => {
+          state.pages[inp.dataset.imgNote].imageNote = inp.value;
+          saveState();
+        };
+      });
+
       container.querySelectorAll('[data-regen-img]').forEach(btn => {
         btn.onclick = async () => {
-          if (!requireGeminiKey()) return;
           const idx = Number(btn.dataset.regenImg);
           const p = state.pages[idx];
-          try {
-            setProgress(true, `Membuat gambar halaman ${idx + 1}...`);
-            const prompt = `${getAnchorText()}. Scene: ${p.scene || p.text}. Style: ${style.prompt}. Full subject inside 10% safe margins on all 4 sides, calm lower quarter safe space, NO TEXT. ${p.imageNote ? 'Feedback: ' + p.imageNote : ''}`;
-            state.pages[idx].imageUrl = await callGeminiImage(prompt);
-            state.pages[idx].imageOk = false;
-            renderImagePages();
-            showToast(`Gambar halaman ${idx + 1} diperbarui!`);
-          } catch (e) {
-            alert(e.message);
-          } finally {
-            setProgress(false);
-          }
+          const style = getSelectedStyle();
+          const prompt = [
+            `REGENERATE IMAGE HALAMAN ${idx + 1}`,
+            `Buku: "${state.bookTitle}" | Gaya: ${style.name} (${style.prompt})`,
+            `Anchor: ${getAnchorText()}`,
+            `Scene Hal ${idx + 1}: ${p.scene}`,
+            `Catatan perbaikan: ${p.imageNote.trim() || 'Perbaiki komposisi, jaga proporsi 4:5 dan safe space bawah untuk teks.'}`
+          ].join('\n');
+          await copyTextSafe(prompt, `Prompt regenerate image Hal ${idx + 1} disalin! Paste ke chat.`, `Regenerate Image Hal ${idx + 1}:`);
         };
       });
     }
@@ -1067,62 +885,101 @@ Kembalikan JSON persis: {"heading":"...","body":"...","funFact":"Tahukah Kamu? .
       const total = state.pages.length;
       const scriptOk = state.pages.filter(p => p.scriptOk).length;
       const imageOk = state.pages.filter(p => p.imageOk).length;
+
       el('finalSummaryGrid').innerHTML = `
         <div class="p-3 rounded-lg bg-[var(--content)] border border-[var(--border)]">
-          <div class="text-xs text-[var(--muted-foreground)]">Cover</div>
-          <div class="text-sm font-bold mt-0.5">${state.coverOk ? '✓ ACC' : 'Belum ACC'}</div>
+          <div class="text-xs text-[var(--muted-foreground)]">Total Halaman</div>
+          <div class="text-base font-bold mt-0.5">${total} Halaman</div>
         </div>
         <div class="p-3 rounded-lg bg-[var(--content)] border border-[var(--border)]">
           <div class="text-xs text-[var(--muted-foreground)]">Naskah Oke</div>
-          <div class="text-sm font-bold mt-0.5">${scriptOk} / ${total}</div>
+          <div class="text-base font-bold mt-0.5">${scriptOk} / ${total}</div>
         </div>
         <div class="p-3 rounded-lg bg-[var(--content)] border border-[var(--border)]">
           <div class="text-xs text-[var(--muted-foreground)]">Image ACC</div>
-          <div class="text-sm font-bold mt-0.5">${imageOk} / ${total}</div>
+          <div class="text-base font-bold mt-0.5">${imageOk} / ${total}</div>
         </div>
         <div class="p-3 rounded-lg bg-[var(--content)] border border-[var(--border)]">
-          <div class="text-xs text-[var(--muted-foreground)]">Slug Repo</div>
-          <div class="text-xs font-mono font-bold mt-1 truncate">${slugify(state.bookTitle)}</div>
+          <div class="text-xs text-[var(--muted-foreground)]">Gaya &amp; Mode</div>
+          <div class="text-xs font-bold mt-1">${state.selectedStyleId} • ${state.scenarioMode}</div>
         </div>
       `;
+
       el('finalPageChecklist').innerHTML = state.pages.map((p, i) => `
-        <div class="flex flex-wrap items-center justify-between gap-2 p-2 rounded-lg bg-[var(--background)] border border-[var(--border)]">
-          <span class="font-medium">Hal ${i + 1}: ${esc(p.heading)}</span>
+        <div class="flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+          <span class="font-medium">Hal ${i + 1}: ${esc(p.heading || 'Tanpa Judul')}</span>
           <div class="flex items-center gap-2">
-            <span class="px-2 py-0.5 rounded bg-[var(--content)] ${p.scriptOk ? 'text-[var(--success)] font-semibold' : 'text-[var(--muted-foreground)]'}">${p.scriptOk ? '✓ Naskah' : 'Draft'}</span>
-            <span class="px-2 py-0.5 rounded bg-[var(--content)] ${p.imageOk ? 'text-[var(--success)] font-semibold' : 'text-[var(--muted-foreground)]'}">${p.imageOk ? '✓ Image' : 'Belum ACC'}</span>
+            <span class="px-2 py-0.5 rounded ${p.scriptOk ? 'bg-[var(--content)] text-[var(--success)] font-semibold' : 'bg-[var(--content)] text-[var(--muted-foreground)]'}">
+              ${p.scriptOk ? '✓ Naskah' : 'Draft Naskah'}
+            </span>
+            <span class="px-2 py-0.5 rounded ${p.imageOk ? 'bg-[var(--content)] text-[var(--success)] font-semibold' : 'bg-[var(--content)] text-[var(--muted-foreground)]'}">
+              ${p.imageOk ? '✓ Image ACC' : 'Belum ACC Image'}
+            </span>
           </div>
         </div>
       `).join('');
     }
 
-    function buildRepoBookJson() {
-      const slug = slugify(state.bookTitle);
+    function buildPayload() {
       return {
-        id: slug,
-        title: state.bookTitle.trim(),
-        subtitle: state.bookSubtitle.trim(),
-        topic: state.moral.trim(),
+        scenarioMode: state.scenarioMode,
         category: state.selectedCategoryId,
-        style: state.selectedStyleId,
+        title: state.bookTitle.trim(),
         ageGroup: state.ageGroup,
-        cover: `images/${slug}/cover.webp`,
-        pages: state.pages.map((p, i) => ({
+        topic: state.moral.trim(),
+        factCheckRequired: state.factCheckMode,
+        pageCount: state.pages.length,
+        style: state.selectedStyleId,
+        anchor: state.scenarioMode === 'encyclopedia'
+          ? { subjectAnchor: state.subjectAnchor.trim(), worldAnchor: state.worldAnchor.trim() }
+          : {
+              sheetFile: state.sheetFileName || null,
+              name: state.charName.trim(),
+              species: state.charSpecies.trim(),
+              traits: state.charTraits.trim(),
+              outfit: state.charOutfit.trim()
+            },
+        pages: state.pages.map((p, idx) => ({
+          page: idx + 1,
+          scriptOk: p.scriptOk,
+          imageOk: p.imageOk,
           heading: p.heading,
           body: p.text,
           funFact: p.fact,
-          image: `images/${slug}/page-${i + 1}.webp`,
-          storyboard: {
-            sceneAction: p.scene,
-            composition: p.scene,
-            continuity: getAnchorText()
-          }
+          scene: p.scene
         }))
       };
     }
 
+    function showToast(msg) {
+      const t = el('toast');
+      t.textContent = msg;
+      t.classList.remove('hidden');
+      setTimeout(() => t.classList.add('hidden'), 2600);
+    }
+
+    async function copyTextSafe(text, successMsg, fallbackLabel) {
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+          el('copyFallbackBox').classList.add('hidden');
+          showToast(successMsg);
+          return;
+        }
+      } catch (e) {}
+      const box = el('copyFallbackBox');
+      const ta = el('copyFallbackText');
+      el('copyFallbackTitle').textContent = fallbackLabel;
+      ta.value = text;
+      box.classList.remove('hidden');
+      ta.focus();
+      ta.select();
+      try {
+        if (document.execCommand('copy')) showToast(successMsg);
+      } catch (e) {}
+    }
+
     function renderAll() {
-      updateApiBadge();
       syncInputsFromState();
       renderModeAndAnchors();
       renderCategories();
@@ -1135,30 +992,27 @@ Kembalikan JSON persis: {"heading":"...","body":"...","funFact":"Tahukah Kamu? .
     }
 
     // Event bindings
-    el('btnOpenSettings').onclick = openSettings;
-    el('btnCloseSettings').onclick = () => el('settingsModal').classList.add('hidden');
-    el('btnSaveSettings').onclick = () => {
-      cfg = {
-        geminiKey: el('cfgGeminiKey').value.trim(),
-        textModel: el('cfgTextModel').value,
-        imageModel: el('cfgImageModel').value,
-        githubToken: el('cfgGithubToken').value.trim(),
-        githubRepo: el('cfgGithubRepo').value.trim() || 'halobayu/buku-mini-fauna-anak',
-        githubBranch: el('cfgGithubBranch').value.trim() || 'main'
-      };
-      localStorage.setItem(CFG_KEY, JSON.stringify(cfg));
-      el('settingsModal').classList.add('hidden');
-      updateApiBadge();
-      showToast('Pengaturan disimpan di browser!');
-    };
-
-    document.querySelectorAll('.step-tab').forEach(btn => btn.onclick = () => goToStep(Number(btn.dataset.stepTab)));
-    document.querySelectorAll('[data-goto-step]').forEach(btn => btn.onclick = () => goToStep(Number(btn.dataset.gotoStep)));
-    document.querySelectorAll('.page-preset-btn').forEach(btn => btn.onclick = () => resizePages(Number(btn.dataset.pagePreset)));
+    document.querySelectorAll('.step-tab').forEach(btn => {
+      btn.onclick = () => goToStep(Number(btn.dataset.stepTab));
+    });
+    document.querySelectorAll('[data-goto-step]').forEach(btn => {
+      btn.onclick = () => goToStep(Number(btn.dataset.gotoStep));
+    });
+    document.querySelectorAll('.page-preset-btn').forEach(btn => {
+      btn.onclick = () => resizePages(Number(btn.dataset.pagePreset));
+    });
     el('pageCountInput').onchange = (e) => resizePages(e.target.value);
 
-    el('modeStoryBtn').onclick = () => { state.scenarioMode = 'story'; saveState(); renderAll(); };
-    el('modeEncycBtn').onclick = () => { state.scenarioMode = 'encyclopedia'; saveState(); renderAll(); };
+    el('modeStoryBtn').onclick = () => {
+      state.scenarioMode = 'story';
+      saveState();
+      renderAll();
+    };
+    el('modeEncycBtn').onclick = () => {
+      state.scenarioMode = 'encyclopedia';
+      saveState();
+      renderAll();
+    };
 
     const bindInput = (id, key, isCheck = false) => {
       el(id).addEventListener(isCheck ? 'change' : 'input', (e) => {
@@ -1168,7 +1022,6 @@ Kembalikan JSON persis: {"heading":"...","body":"...","funFact":"Tahukah Kamu? .
       });
     };
     bindInput('bookTitle', 'bookTitle');
-    bindInput('bookSubtitle', 'bookSubtitle');
     bindInput('ageGroup', 'ageGroup', true);
     bindInput('moral', 'moral');
     bindInput('factCheckMode', 'factCheckMode', true);
@@ -1186,80 +1039,47 @@ Kembalikan JSON persis: {"heading":"...","body":"...","funFact":"Tahukah Kamu? .
       saveState();
       const reader = new FileReader();
       reader.onload = (ev) => {
-        sheetDataUrl = ev.target.result;
-        el('sheetPreview').src = sheetDataUrl;
+        sheetPreviewDataUrl = ev.target.result;
+        el('sheetPreview').src = sheetPreviewDataUrl;
         el('sheetPreview').classList.remove('hidden');
         el('btnClearSheet').classList.remove('hidden');
-        el('sheetInfo').textContent = `Sheet aktif: ${file.name}`;
+        el('sheetInfo').textContent = `Sheet aktif: ${file.name} (lampirkan juga di chat saat generate).`;
       };
       reader.readAsDataURL(file);
     };
 
     el('btnClearSheet').onclick = () => {
       state.sheetFileName = '';
-      sheetDataUrl = '';
+      sheetPreviewDataUrl = '';
       saveState();
       el('sheetUpload').value = '';
       el('sheetPreview').src = '';
       el('sheetPreview').classList.add('hidden');
       el('btnClearSheet').classList.add('hidden');
-      el('sheetInfo').textContent = 'Opsional: upload character sheet agar ikut dikirim ke generator gambar.';
+      el('sheetInfo').textContent = 'Belum ada gambar diupload. (Lampirkan juga file sheet di chat saat generate.)';
     };
 
     el('btnCloseFallback').onclick = () => el('copyFallbackBox').classList.add('hidden');
 
-    // Step 1 -> Generate Script directly via Gemini
+    el('btnGoStep2Manual').onclick = () => goToStep(2);
+
     el('btnGenerateScript').onclick = async () => {
-      if (!requireGeminiKey()) return;
-      try {
-        setProgress(true, `Membuat naskah ${state.pageCount} halaman (tanpa gambar)...`);
-        const prompt = `Kamu adalah penulis buku anak profesional dalam bahasa Indonesia untuk target usia ${state.ageGroup}.
-Buat naskah buku format ${state.scenarioMode === 'story' ? 'Cerita Berkarakter' : 'Ensiklopedia Fakta Tanpa Karakter'} kategori ${state.selectedCategoryId}.
-Judul/Topik: "${state.bookTitle}"
-Fokus Topik: "${state.moral}"
-Jumlah Halaman: ${state.pageCount} halaman.
-Anchor Visual: ${getAnchorText()}
-${state.factCheckMode ? 'WAJIB akurat secara ilmiah (fact-check ketat, jangan mengarang fakta palsu).' : ''}
-
-Kembalikan JSON dengan format persis:
-{
-  "subtitle": "1 kalimat pengantar menarik untuk sampul",
-  "pages": [
-    {
-      "heading": "Subjudul singkat",
-      "body": "2-4 kalimat naskah ramah anak",
-      "funFact": "Tahukah Kamu? 1 fakta unik singkat",
-      "scene": "Detailed English visual scene description for 4:5 portrait, varying camera shots across pages, full subject with 10% safe margins, calm lower quarter safe space for text"
-    }
-  ]
-}
-Pastikan jumlah elemen di array "pages" TEPAT ${state.pageCount}.`;
-
-        const out = await callGeminiText(prompt);
-        if (!Array.isArray(out.pages) || out.pages.length === 0) throw new Error('Respon JSON tidak berisi pages');
-        state.bookSubtitle = out.subtitle || state.bookSubtitle;
-        state.pageCount = out.pages.length;
-        state.pages = out.pages.map((p, idx) => ({
-          id: Date.now() + idx,
-          heading: p.heading || `Halaman ${idx + 1}`,
-          text: p.body || '',
-          fact: p.funFact || '',
-          scene: p.scene || '',
-          scriptOk: false,
-          scriptNote: '',
-          imageUrl: '',
-          imageOk: false,
-          imageNote: ''
-        }));
-        saveState();
-        renderAll();
-        goToStep(2);
-        showToast(`Naskah ${state.pages.length} halaman selesai dibuat!`);
-      } catch (e) {
-        alert(e.message);
-      } finally {
-        setProgress(false);
-      }
+      const d = buildPayload();
+      const prompt = [
+        `GENERATE NASKAH BUKU SAJA (TANPA IMAGE DULU)`,
+        `Format: ${d.scenarioMode.toUpperCase()} | Kategori: ${d.category}`,
+        `Judul / Topik: "${d.title}"`,
+        `Target Usia: ${d.ageGroup} | Fokus Topik: ${d.topic}`,
+        `Jumlah Halaman: ${d.pageCount} halaman`,
+        `Wajib Fact-Check Ilmiah: ${d.factCheckRequired ? 'YA' : 'TIDAK'}`,
+        `Gaya Gambar (untuk deskripsi scene): ${d.style}`,
+        `Anchor: ${getAnchorText()}`,
+        ``,
+        `Tolong buatkan naskah lengkap ${d.pageCount} halaman (tanpa generate gambar dulu) dalam format JSON agar bisa langsung saya paste ke Storybook Canvas Studio:`,
+        `{"pages": [{"heading": "...", "body": "...", "funFact": "Tahukah Kamu? ...", "scene": "..."}]}`
+      ].join('\n');
+      await copyTextSafe(prompt, 'Prompt Generate Naskah disalin! Paste ke chat.', 'Prompt Generate Naskah (paste ke chat):');
+      goToStep(2);
     };
 
     el('btnApproveAllScripts').onclick = () => {
@@ -1269,111 +1089,78 @@ Pastikan jumlah elemen di array "pages" TEPAT ${state.pageCount}.`;
       showToast('Semua naskah ditandai Oke!');
     };
 
-    // Step 2 -> Generate Cover + All Page Images directly via Gemini
-    el('btnGenerateImages').onclick = async () => {
-      if (!requireGeminiKey()) return;
-      const style = getSelectedStyle();
-      const total = state.pages.length + 1;
-      goToStep(3);
-      try {
-        setProgress(true, 'Membuat gambar Cover...', `1 / ${total}`);
-        const coverPrompt = `Book cover illustration for children's book "${state.bookTitle}". ${getAnchorText()}. Style: ${style.prompt}. Full subject inside 10% safe margins, NO TEXT OR LETTERS in image.`;
-        state.coverUrl = await callGeminiImage(coverPrompt);
-        state.coverOk = false;
-        renderImagePages();
+    el('btnToggleImportScript').onclick = () => el('importScriptBox').classList.toggle('hidden');
+    el('btnCancelImportScript').onclick = () => el('importScriptBox').classList.add('hidden');
 
-        for (let i = 0; i < state.pages.length; i++) {
-          const p = state.pages[i];
-          setProgress(true, `Membuat gambar Halaman ${i + 1}...`, `${i + 2} / ${total}`);
-          const pagePrompt = `${getAnchorText()}. Scene: ${p.scene || p.text}. Style: ${style.prompt}. Full subject inside 10% safe margins on all 4 sides, calm lower quarter safe space, NO TEXT OR LETTERS.`;
-          state.pages[i].imageUrl = await callGeminiImage(pagePrompt);
-          state.pages[i].imageOk = false;
-          renderImagePages();
-        }
-        showToast('Semua gambar selesai digenerate! Silakan cek hasilnya.');
-      } catch (e) {
-        alert(e.message);
-      } finally {
-        setProgress(false);
+    el('btnApplyImportScript').onclick = () => {
+      try {
+        const raw = el('importScriptInput').value.trim();
+        const parsed = JSON.parse(raw);
+        const arr = Array.isArray(parsed) ? parsed : parsed.pages;
+        if (!Array.isArray(arr) || arr.length === 0) throw new Error('Array pages tidak ditemukan');
+        state.pageCount = arr.length;
+        state.pages = arr.map((item, idx) => ({
+          id: Date.now() + idx,
+          heading: item.heading || `Halaman ${idx + 1}`,
+          text: item.body || item.text || '',
+          fact: item.funFact || item.fact || '',
+          scene: item.scene || '',
+          scriptOk: false,
+          scriptNote: '',
+          imageUrl: '',
+          imageOk: false,
+          imageNote: ''
+        }));
+        el('importScriptBox').classList.add('hidden');
+        el('importScriptInput').value = '';
+        saveState();
+        renderAll();
+        showToast(`Berhasil memuat ${arr.length} halaman naskah!`);
+      } catch (err) {
+        alert('Format JSON belum valid. Pastikan berisi array pages.');
       }
+    };
+
+    el('btnGenerateImages').onclick = async () => {
+      const d = buildPayload();
+      const style = getSelectedStyle();
+      const lines = [
+        `NASKAH SUDAH OKE — TOLONG GENERATE IMAGE UNTUK SEMUA ${d.pageCount} HALAMAN`,
+        `Judul: "${d.title}" | Format: ${d.scenarioMode.toUpperCase()} | Gaya: ${d.style} (${style.prompt})`,
+        `Anchor: ${getAnchorText()}`,
+        ``,
+        `Daftar Halaman:`
+      ];
+      d.pages.forEach(p => {
+        lines.push(`- Hal ${p.page} (${p.heading}): "${p.body}" | funFact: ${p.funFact} | Scene: ${p.scene}`);
+      });
+      await copyTextSafe(lines.join('\n'), 'Perintah Generate Image disalin! Paste ke chat.', 'Perintah Generate Image (paste ke chat):');
+      goToStep(3);
     };
 
     el('btnApproveAllImages').onclick = () => {
-      state.coverOk = true;
       state.pages.forEach(p => { p.imageOk = true; });
       saveState();
       renderAll();
-      showToast('Cover & semua image ditandai ACC!');
+      showToast('Semua image ditandai ACC!');
     };
 
-    // Step 4 -> Push directly to GitHub repo content/
-    el('btnPushGithubDirect').onclick = async () => {
-      if (!cfg.githubToken) {
-        openSettings();
-        showToast('Masukkan GitHub Token dulu untuk push langsung ke repo.');
-        return;
-      }
-      const slug = slugify(state.bookTitle);
-      const repo = cfg.githubRepo || 'halobayu/buku-mini-fauna-anak';
-      const branch = cfg.githubBranch || 'main';
-      const token = cfg.githubToken.trim();
-
-      try {
-        const totalSteps = (state.coverUrl ? 1 : 0) + state.pages.filter(p => p.imageUrl).length + 2;
-        let done = 0;
-
-        if (state.coverUrl) {
-          setProgress(true, 'Mengunggah cover.webp ke GitHub...', `${++done} / ${totalSteps}`);
-          const webpB64 = await dataUrlToWebpBase64(state.coverUrl);
-          await githubPutFile(repo, branch, `content/images/${slug}/cover.webp`, webpB64, `Tambah cover buku ${slug}`, token);
-        }
-
-        for (let i = 0; i < state.pages.length; i++) {
-          if (!state.pages[i].imageUrl) continue;
-          setProgress(true, `Mengunggah page-${i + 1}.webp ke GitHub...`, `${++done} / ${totalSteps}`);
-          const webpB64 = await dataUrlToWebpBase64(state.pages[i].imageUrl);
-          await githubPutFile(repo, branch, `content/images/${slug}/page-${i + 1}.webp`, webpB64, `Tambah page-${i + 1} buku ${slug}`, token);
-        }
-
-        setProgress(true, `Mengunggah content/books/${slug}.json...`, `${++done} / ${totalSteps}`);
-        const bookJson = buildRepoBookJson();
-        await githubPutFile(repo, branch, `content/books/${slug}.json`, utf8ToBase64(JSON.stringify(bookJson, null, 2) + '\n'), `Tambah buku ${slug}`, token);
-
-        setProgress(true, 'Memperbarui content/manifest.json...', `${++done} / ${totalSteps}`);
-        const manifestFile = await githubGetFile(repo, branch, 'content/manifest.json', token);
-        let manifest = { books: [], contentVersion: 1, generatedAt: new Date().toISOString() };
-        if (manifestFile?.content) {
-          manifest = JSON.parse(decodeURIComponent(escape(atob(manifestFile.content.replace(/\n/g, '')))));
-        }
-        const entry = {
-          id: slug,
-          title: bookJson.title,
-          subtitle: bookJson.subtitle,
-          topic: bookJson.topic,
-          style: bookJson.style,
-          category: bookJson.category,
-          cover: bookJson.cover,
-          file: `books/${slug}.json`,
-          pageCount: bookJson.pages.length
-        };
-        manifest.books = [entry, ...manifest.books.filter(b => b.id !== slug)];
-        manifest.contentVersion = (Number(manifest.contentVersion) || 0) + 1;
-        manifest.generatedAt = new Date().toISOString();
-
-        await githubPutFile(repo, branch, 'content/manifest.json', utf8ToBase64(JSON.stringify(manifest, null, 2) + '\n'), `Rilis buku baru: ${bookJson.title}`, token);
-        showToast(`Berhasil push buku "${bookJson.title}" ke GitHub!`);
-      } catch (e) {
-        alert(e.message);
-      } finally {
-        setProgress(false);
-      }
+    el('btnFinalAccPush').onclick = async () => {
+      const d = buildPayload();
+      const lines = [
+        `ACC FINAL — SIAP PUSH KONTEN KE GITHUB (folder content/)`,
+        `Judul: "${d.title}" (${d.category}, ${d.scenarioMode}, ${d.pageCount} halaman, gaya ${d.style})`,
+        ``,
+        `Semua naskah & gambar sudah saya ACC. Tolong simpan ke repo buku-mini-fauna-anak dan push ke GitHub.`,
+        ``,
+        `JSON Final:`,
+        JSON.stringify(d, null, 2)
+      ];
+      await copyTextSafe(lines.join('\n'), 'Perintah ACC Final & Push GitHub disalin!', 'Perintah ACC Final (paste ke chat):');
     };
 
-    el('btnCopyFinalJson').onclick = () => {
-      el('copyFallbackTitle').textContent = 'JSON Buku (format content/books/):';
-      el('copyFallbackText').value = JSON.stringify(buildRepoBookJson(), null, 2);
-      el('copyFallbackBox').classList.remove('hidden');
-    };
+    el('btnCopyFinalJson').onclick = () => copyTextSafe(JSON.stringify(buildPayload(), null, 2), 'JSON lengkap disalin!', 'JSON Lengkap:');
+    el('btnQuickExportJson').onclick = () => copyTextSafe(JSON.stringify(buildPayload(), null, 2), 'JSON lengkap disalin!', 'JSON Lengkap:');
 
     el('btnResetProject').onclick = () => {
       if (!confirm('Reset semua isian proyek ke awal?')) return;
